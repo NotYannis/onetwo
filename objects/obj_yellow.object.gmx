@@ -36,6 +36,8 @@ vsp = 0;
 grav = 1;
 globalvar canshoot;
     canshoot = 1;
+globalvar canprotect;
+    canprotect = 1;
 
 // Else 
 
