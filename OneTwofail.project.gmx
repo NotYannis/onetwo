@@ -126,6 +126,7 @@
     <object>objects\obj_lantern</object>
     <object>objects\obj_targetpractice</object>
     <object>objects\obj_statue</object>
+    <object>objects\obj_grave</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Tutorial</room>
