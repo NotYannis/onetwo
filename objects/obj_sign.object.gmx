@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>tip = 1;
+size = 201;
+lightDown = false;
 image_speed = 0.5;
 </string>
           </argument>
@@ -50,13 +52,16 @@ image_speed = 0.5;
           <argument>
             <kind>1</kind>
             <string>if (dark = true){
-size = 256;
-draw_set_blend_mode(bm_subtract);
-surface_set_target(light);
-draw_ellipse_colour(x-size/2-view_xview,y-size/2-view_yview,x+size/2-view_xview,y+size/2-view_yview, c_white, c_black, false);
-
-surface_reset_target();
-draw_set_blend_mode(bm_normal);
+    if(!lightDown) size += 1.5;
+    else size -= 1.5;
+    if(size &gt;= 240) lightDown = true;
+    else if(size &lt;= 180) lightDown = false;
+    draw_set_blend_mode(bm_subtract);
+    surface_set_target(light);
+    draw_ellipse_colour(x-size/2-view_xview,y-size/2-view_yview,x+size/2-view_xview,y+size/2-view_yview, c_white, c_black, false);
+    
+    surface_reset_target();
+    draw_set_blend_mode(bm_normal);
 }
 </string>
           </argument>

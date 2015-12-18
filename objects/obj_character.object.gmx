@@ -130,7 +130,6 @@ if (!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right) || keyboard_ch
 }
 
 // Attack 
-
 if (keyboard_check(vk_numpad1) &amp;&amp; (gasbar &gt; 0) &amp;&amp; !gasFilling){
     if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
     strike = true;    
@@ -140,7 +139,7 @@ else if((!keyboard_check(vk_numpad1) &amp;&amp; gasbar &lt;=100) || gasFilling){
     gasbar += 2;
 }
 
-if(gasbar &lt;= 0){
+if(gasbar &lt;= 0){ //If the bar hit 0, you can't attack while refilling it to 100
     gasFilling = true;
     strike = false;
 }

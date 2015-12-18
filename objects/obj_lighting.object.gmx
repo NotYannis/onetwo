@@ -54,15 +54,14 @@ globalvar dark;
             <kind>1</kind>
             <string>// Light
 
-if (room = rm_village){
+if (room = rm_village || room = room4){
     dark = true;
 }
-
 if (dark = true){
-surface_set_target(light);
-draw_set_colour(c_ltgray);
-draw_rectangle(0,0, view_wview, view_hview, false);
-surface_reset_target();
+    surface_set_target(light);
+    draw_set_colour(c_ltgray);
+    draw_rectangle(0,0, view_wview, view_hview, false);
+    surface_reset_target();
 }
 </string>
           </argument>
