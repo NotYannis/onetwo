@@ -135,6 +135,7 @@
     <object>objects\obj_grave</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room4</room>
     <room>rooms\Tutorial</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>

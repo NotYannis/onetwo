@@ -40,6 +40,7 @@ hColl = false;
 grounded = true;
 jumping = false;
 walking = false;
+gasFilling = false;
 globalvar hit;
     hit = 1;
 globalvar strike;
@@ -122,8 +123,7 @@ else{
     image_speed = 0.2;
 }
 
-if (!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right) || keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_right)) 
-{
+if (!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right) || keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_right))  {
     hsp = 0;
     walking = false;
     
@@ -131,12 +131,26 @@ if (!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right) || keyboard_ch
 
 // Attack 
 
-if (keyboard_check(vk_numpad1) &amp;&amp; (gasbar &lt; 101)){
-    audio_play_sound(snd_chainsaw, 10, false);   
+if (keyboard_check(vk_numpad1) &amp;&amp; (gasbar &gt; 0) &amp;&amp; !gasFilling){
+    if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
     strike = true;    
-    gasbar = gasbar -5;
+    gasbar -= 5;
 }
-else{
+else if((!keyboard_check(vk_numpad1) &amp;&amp; gasbar &lt;=100) || gasFilling){
+    gasbar += 2;
+}
+
+if(gasbar &lt;= 0){
+    gasFilling = true;
+    strike = false;
+}
+else if(gasbar &gt;= 100){
+    gasFilling = false;
+}
+
+
+
+if(!keyboard_check(vk_numpad1)){
     strike = false;
 }
 
@@ -187,7 +201,6 @@ if (place_meeting(x,y+1, obj_ground01)) { // Player on the ground so he can jump
 else{
     vsp += grav;
 }
-show_debug_message(string(y));
 //---------------------------------------
 //------------------Animations-----------
 //---------------------------------------
