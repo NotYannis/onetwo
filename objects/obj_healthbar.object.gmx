@@ -29,8 +29,7 @@
     life = 100;
 globalvar gasbar;
     gasbar = 100;
-globalvar protectbar;
-    protectbar = 100;
+
 </string>
           </argument>
         </arguments>
@@ -65,20 +64,24 @@ draw_sprite(spr_lifebar, 1, view_xview+20, view_yview+45);
 draw_healthbar(view_xview+50, view_yview+100, view_xview+200, view_yview+80, gasbar, c_black, c_maroon, c_maroon, 0, true, true);
 draw_sprite(spr_gasbar, 1, view_xview+20, view_yview+75);
 
-// Protection
+// Magic shield
 
-draw_healthbar(view_xview+50, view_yview+150, view_xview+200, view_yview+130, protectbar, c_black, c_blue, c_black, 0, true, true);
-draw_sprite(spr_protectbar, 1, view_xview+20, view_yview+125);
-
+if (canprotect &lt;= 1){
+    draw_sprite(spr_magicshield, 1, view_xview+140, view_yview+100);
+}
+else{
+    draw_sprite(spr_magicshield, 2, view_xview+140, view_yview+100);
+}
 //-----------Bullets------
 //------------------------
 
 if (canshoot &lt;= 1){
-   draw_sprite(spr_bulletnumber2, 1, view_xview+50, view_yview+150);
+   draw_sprite(spr_bulletnumber2, 1, view_xview+30, view_yview+100);
 }
 else{
-    draw_sprite(spr_bulletnumber2, 2, view_xview+50, view_yview+150);
+    draw_sprite(spr_bulletnumber2, 2, view_xview+30, view_yview+100);
 }
+
 
 </string>
           </argument>

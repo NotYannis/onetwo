@@ -54,6 +54,7 @@
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_arrow</sprite>
     <sprite>sprites\spr_bulletnumber2</sprite>
+    <sprite>sprites\spr_magicshield</sprite>
     <sprite>sprites\spr_moon</sprite>
     <sprite>sprites\spr_ruins</sprite>
     <sprite>sprites\spr_shrine</sprite>
@@ -68,9 +69,8 @@
     <sprite>sprites\spr_house1_back</sprite>
     <sprite>sprites\spr_house2</sprite>
     <sprite>sprites\spr_skull</sprite>
-    <sprite>sprites\spr_protectbar</sprite>
     <sprite>sprites\spr_lifebar</sprite>
-    <sprite>sprites\sprite56</sprite>
+    <sprite>sprites\spr_gameover</sprite>
     <sprite>sprites\spr_gasbar</sprite>
     <sprite>sprites\spr_statue</sprite>
     <sprite>sprites\spr_water</sprite>
@@ -133,6 +133,7 @@
     <object>objects\obj_targetpractice</object>
     <object>objects\obj_statue</object>
     <object>objects\obj_grave</object>
+    <object>objects\obj_gameover</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Tutorial</room>
