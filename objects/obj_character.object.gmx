@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Movements ariables
+            <string>show_debug_overlay(false);
+//Movements variables
 
 hsp = 0;
 globalvar vsp;
@@ -34,6 +35,8 @@ grav = 1;
 
 // Animation Variables
 
+vColl = false;
+hColl = false;
 grounded = true;
 jumping = false;
 walking = false;
@@ -115,7 +118,7 @@ else if (keyboard_check(vk_left)){
 }
 
 else{
-    sprite_index = spr_red
+    sprite_index = spr_red;
     image_speed = 0.2;
 }
 
@@ -173,20 +176,19 @@ if (life = 0){
 
 //----------- Gravity and jump ------------
 //-----------------------------------------
-
-if (place_meeting(x,y+1, obj_ground01)) // Player on the ground so he can jump. 
-{
+if (place_meeting(x,y+1, obj_ground01)) { // Player on the ground so he can jump. 
     jumping = false;
     vsp = 0;
             if (keyboard_check(vk_space)){
-            jumping = true;
-            vsp = -25; 
-            }   
+                jumping = true;
+                vsp = -25;
+            }
 }
 else{
     vsp += grav;
 }
-
+show_debug_message(string(y));
+//---------------------------------------
 //------------------Animations-----------
 //---------------------------------------
 
@@ -201,10 +203,10 @@ if (walking = true) &amp;&amp; (jumping = false){
     image_speed = 0.5;
     sprite_index = spr_red_walk;
     if (strike = true){
-    walking = false;
-    hsp = 0;
-    image_speed = 0.5;
-    sprite_index = spr_red_hit;
+        walking = false;
+        hsp = 0;
+        image_speed = 0.5;
+        sprite_index = spr_red_hit;
     }
 }
 
@@ -216,39 +218,37 @@ if (strike = true){
 if (redprotect = true){
     sprite_index = spr_red_protect;
 }
+//---------------------------------------
+// --------------Collisions--------------
+//---------------------------------------
 
-// -------------- Horizontal Collisions----------
-//-----------------------------------------------
+hColl = place_meeting(x+hsp,y,obj_ground01);
+vColl = place_meeting(x,y+vsp,obj_ground01);
 
-if (place_meeting(x+hsp,y,obj_ground01))
-{
-    while (!place_meeting(x+sign(hsp),y,obj_ground01))
-    { x += sign(hsp); }
+// Horizontal
+
+if (hColl) {
+    if(!place_meeting(x+sign(hsp),y,obj_ground01)){
+        x += sign(hsp);
+    }
     hsp = 0;
 }
 
-if (place_meeting(x+hsp,y,obj_woodplank))
-{
-    while (!place_meeting(x+sign(hsp),y,obj_woodplank))
-    { x += sign(hsp); }
-    hsp = 0;
-}
 x += hsp; // Set the variable x, so that the player can move. 
 
-// Vertical Collisions
+// Vertical
 
-if (place_meeting(x,y+vsp,obj_ground01))
-{
-    while (!place_meeting(x,y+sign(vsp),obj_ground01))
-    { y += sign(vsp); }
-    vsp = 0;
+
+if (vColl) {
+    //if(!place_meeting(x,y+sign(vsp),obj_ground01)){
+       // y += sign(vsp);
+    //}
+    if(!hColl){
+        vsp = 0;
+    }
 }
-if (place_meeting(x,y+vsp,obj_woodplank))
-{
-    while (!place_meeting(x,y+sign(vsp),obj_woodplank))
-    { y += sign(vsp); }
-    vsp = 0;
-}
+
+
 y += vsp; // Set the variable y, so that the player vertical movements are set. 
 
 </string>
