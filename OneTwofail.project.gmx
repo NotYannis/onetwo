@@ -85,6 +85,9 @@
     <background>background\background5</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\script0.gml</script>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\TNR</font>
   </fonts>
