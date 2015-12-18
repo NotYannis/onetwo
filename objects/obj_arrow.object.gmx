@@ -57,9 +57,6 @@ if (place_meeting(x,y,obj_ground01)){
 if (place_meeting(x, y, obj_yellow)) &amp;&amp; (redprotect = true){
     instance_destroy();
 }
-if (obj_arrow.x &gt; obj_statue.x-20){
-    instance_destroy();
-}
 </string>
           </argument>
         </arguments>

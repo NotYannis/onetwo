@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>if (fire &lt;= 1){
     instance_create(x, y, obj_arrow);
-    fire = room_speed*3;
+    fire = room_speed*2;
 }
 else{
     fire--;
