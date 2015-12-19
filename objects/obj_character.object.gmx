@@ -70,14 +70,10 @@ globalvar redprotect;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (dark = true){
-size = 360;
-draw_set_blend_mode(bm_subtract);
-surface_set_target(light);
-draw_ellipse_colour(x-size/2-view_xview,y-size/2-view_yview,x+size/2-view_xview,y+size/2-view_yview, c_white, c_black, false);
+            <string>///Lighting
 
-surface_reset_target();
-draw_set_blend_mode(bm_normal); 
+if (obj_lighting.dark = true){
+    Lighting(360, c_white, c_black);
 }
 </string>
           </argument>
@@ -147,8 +143,6 @@ else if(gasbar &gt;= 100){
     gasFilling = false;
 }
 
-
-
 if(!keyboard_check(vk_numpad1)){
     strike = false;
 }
@@ -164,7 +158,7 @@ else{
 
 // Hit
 
-if (place_meeting(x,y,obj_ennemy1)) &amp;&amp; (strike = false) &amp;&amp; (hit &lt;= 1){
+if (place_meeting(x,y,obj_ennemy1)) &amp;&amp; !strike &amp;&amp; (hit &lt;= 1){
     life = life-10;
     hit = room_speed*0.9;
     obj_character.x = obj_character.x-80;
@@ -176,14 +170,14 @@ else{
 } 
 
 
-if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; (strike = false) &amp;&amp; (hit &lt;= 1)){
+if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; !strike &amp;&amp; (hit &lt;= 1)){
     life = 0;
 }
 
 
 // Death
 
-if (life = 0){
+if (life == 0){
     room_goto(Game_Over);
 }
 
@@ -204,17 +198,17 @@ else{
 //------------------Animations-----------
 //---------------------------------------
 
-if (jumping = true){
+if (jumping){
     sprite_index = spr_red_jump;
 }
 else{
     sprite_index = spr_red
 }
 
-if (walking = true) &amp;&amp; (jumping = false){
+if (walking &amp;&amp; !jumping){
     image_speed = 0.5;
     sprite_index = spr_red_walk;
-    if (strike = true){
+    if (strike){
         walking = false;
         hsp = 0;
         image_speed = 0.5;
@@ -222,12 +216,12 @@ if (walking = true) &amp;&amp; (jumping = false){
     }
 }
 
-if (strike = true){
+if (strike){
     image_speed = 0.5;
     sprite_index = spr_red_hit;
 }
 
-if (redprotect = true){
+if (redprotect){
     sprite_index = spr_red_protect;
 }
 //---------------------------------------
@@ -252,10 +246,7 @@ x += hsp; // Set the variable x, so that the player can move.
 
 
 if (vColl) {
-    //if(!place_meeting(x,y+sign(vsp),obj_ground01)){
-       // y += sign(vsp);
-    //}
-    if(!hColl){
+    if(!hColl){ //Shouldn't move vertically only if its grounded
         vsp = 0;
     }
 }

@@ -79,6 +79,7 @@
     <sprite>sprites\spr_lantern</sprite>
     <sprite>sprites\spr_targetpractice</sprite>
     <sprite>sprites\spr_grave</sprite>
+    <sprite>sprites\spr_particle</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -89,7 +90,8 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\script0.gml</script>
+    <script>scripts\Lighting.gml</script>
+    <script>scripts\Glowing.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\TNR</font>
@@ -134,6 +136,8 @@
     <object>objects\obj_statue</object>
     <object>objects\obj_grave</object>
     <object>objects\obj_gameover</object>
+    <object>objects\obj_particle</object>
+    <object>objects\obj_particle_spawn</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
