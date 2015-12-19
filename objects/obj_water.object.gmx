@@ -34,12 +34,6 @@ if (place_meeting(x,y,obj_character)){
    room_goto(room_last);
 }
 
-if (place_meeting(x,y,obj_ennemy1)){
-    audio_play_sound(snd_plouf, 10, false);
-    with (obj_ennemy1){
-        instance_destroy();
-        }
-}
 </string>
           </argument>
         </arguments>

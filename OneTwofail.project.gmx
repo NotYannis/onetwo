@@ -46,6 +46,8 @@
     <sprite>sprites\spr_ennemy3_death</sprite>
     <sprite>sprites\spr_ennemy3_spawn</sprite>
     <sprite>sprites\spr_ennemy_skeleton</sprite>
+    <sprite>sprites\spr_crow</sprite>
+    <sprite>sprites\spr_crow_death</sprite>
     <sprite>sprites\spr_ground02</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_ground01</sprite>
@@ -138,10 +140,11 @@
     <object>objects\obj_gameover</object>
     <object>objects\obj_particle</object>
     <object>objects\obj_particle_spawn</object>
+    <object>objects\obj_crow</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room4</room>
     <room>rooms\Tutorial</room>
+    <room>rooms\room4</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
