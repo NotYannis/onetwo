@@ -84,6 +84,7 @@
     <sprite>sprites\spr_grave</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\sprite68</sprite>
+    <sprite>sprites\spr_platform</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -144,10 +145,11 @@
     <object>objects\obj_particle_spawn</object>
     <object>objects\obj_crow</object>
     <object>objects\obj_magicshield</object>
+    <object>objects\obj_platform</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Tutorial</room>
     <room>rooms\room4</room>
+    <room>rooms\Tutorial</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>

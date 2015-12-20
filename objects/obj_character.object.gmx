@@ -229,10 +229,9 @@ if (redprotect){
 //---------------------------------------
 
 hColl = place_meeting(x+hsp,y,obj_ground01);
-vColl = place_meeting(x,y+vsp,obj_ground01);
+vColl = place_meeting(x,y+vsp,obj_ground01) || (place_meeting(x,y+vsp,obj_platform) &amp;&amp; vsp &gt;=0);
 
 // Horizontal
-
 if (hColl) {
     if(!place_meeting(x+sign(hsp),y,obj_ground01)){
         x += sign(hsp);
@@ -243,14 +242,11 @@ if (hColl) {
 x += hsp; // Set the variable x, so that the player can move. 
 
 // Vertical
-
-
 if (vColl) {
     if(!hColl){ //Shouldn't move vertically only if its grounded
         vsp = 0;
     }
 }
-
 
 y += vsp; // Set the variable y, so that the player vertical movements are set. 
 
