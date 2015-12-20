@@ -139,27 +139,6 @@ if (canprotect &lt;= 1){
 else{
     canprotect--;
 }
-
-// -------------- Hit --------------------
-// ---------------------------------------
-
-if (place_meeting(x,y,obj_ennemy1)){   
-    if (hit &lt;= 1) &amp;&amp; (redprotect = false){ // lorsque Yellow est touché
-        life = life-10;
-        hit = room_speed*0.9;
-        obj_character.x = obj_character.x-80;
-        obj_character.y = obj_character.y-10;
-        audio_play_sound(snd_ennemy1_hit, 10, false);
-    }
-    if (redprotect = true){ // lorsque Red protège Yellow
-        audio_play_sound(snd_shield, 10, false);
-    }
-}
-else{
-    hit --;
-}
-
-
 </string>
           </argument>
         </arguments>

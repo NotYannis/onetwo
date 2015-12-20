@@ -41,13 +41,13 @@ grounded = true;
 jumping = false;
 walking = false;
 gasFilling = false;
-globalvar hit;
-    hit = 1;
+hit = false;
+invulnerability = 1;
 globalvar strike;
     strike = false;
 globalvar redprotect;
     redprotect = false;
-
+var zombie;
 </string>
           </argument>
         </arguments>
@@ -97,7 +97,54 @@ if (obj_lighting.dark = true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>// Protect
+
+if (keyboard_check(vk_numpad3)){
+    redprotect = true;
+}
+else{
+    redprotect = false;
+}
+
+// Hit
+if(place_meeting(x,y,obj_ennemy1)){
+    zombie = instance_place(x,y,obj_ennemy1);
+    show_debug_message(string(zombie));
+    hit = true;
+}
+if(place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy1)) {
+    zombie = instance_place(obj_yellow.x, obj_yellow.y, obj_ennemy1);
+    hit = true;
+}
+
+if ( hit &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; !instance_exists(obj_magicshield) &amp;&amp; !redprotect){
+    life = life-10;
+    invulnerability = room_speed*0.9;
+    hsp = sign(zombie.image_xscale) * -15;
+    vsp = -10;
+    grounded = false;
+    audio_play_sound(snd_ennemy1_hit, 10, false);
+    if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy1)){
+        audio_play_sound(snd_shield, 10, false);
+    }
+}
+else if (invulnerability &gt;= 0){
+    hit = false;
+    invulnerability--;
+} 
+show_debug_message(string(hit));
+
+if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1)){
+    life = 0;
+}
+
+
+// Death
+if (life == 0){
+    room_goto(Game_Over);
+}
+
+
 // ------------- Horizontal Mouvements-------------
 //-------------------------------------------------
 
@@ -119,42 +166,9 @@ else{
     image_speed = 0.2;
 }
 
-if (!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right) || keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_right))  {
+if (((!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right)) || (keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_right))) &amp;&amp; !hit)  {
     hsp = 0;
     walking = false;
-}
-// Protect
-
-if (keyboard_check(vk_numpad3)){
-    redprotect = true;
-}
-else{
-    redprotect = false;
-}
-
-// Hit
-
-if (place_meeting(x,y,obj_ennemy1)) &amp;&amp; !strike &amp;&amp; (hit &lt;= 1) &amp;&amp; (!instance_exists(obj_magicshield)){
-    life = life-10;
-    hit = room_speed*0.9;
-    obj_character.x = obj_character.x-80;
-    obj_character.y = obj_character.y-10;
-    audio_play_sound(snd_ennemy1_hit, 10, false);
-}
-else{
-    hit --;
-} 
-
-
-if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; !strike &amp;&amp; (hit &lt;= 1)){
-    life = 0;
-}
-
-
-// Death
-
-if (life == 0){
-    room_goto(Game_Over);
 }
 
 //----------- Gravity and jump ------------
@@ -207,9 +221,8 @@ if (redprotect){
 platform = instance_place(x,y+vsp,obj_platform)
 
 hColl = place_meeting(x+hsp,y,obj_ground01) ;
-grounded = place_meeting(x,y+vsp,obj_ground01) || (place_meeting(x,y+vsp,obj_platform) &amp;&amp; vsp &gt;=0) &amp;&amp; (platform != noone  &amp;&amp; !place_meeting(x + hsp, y, obj_platform));
-
-show_debug_message(string(place_meeting(x,y+vsp,obj_platform)));
+grounded = place_meeting(x,y+vsp,obj_ground01) || (place_meeting(x,y+vsp,obj_platform) &amp;&amp; vsp &gt;=0)
+        &amp;&amp; (platform != noone  &amp;&amp; !place_meeting(x + hsp, y, obj_platform));
 
 // Horizontal
 if (hColl) {
@@ -219,7 +232,6 @@ if (hColl) {
     hsp = 0;
 }
 
-x += hsp; // Set the variable x, so that the player can move. 
 
 // Vertical
 if (grounded) {
@@ -229,7 +241,7 @@ if (grounded) {
 }
 
 y += vsp; // Set the variable y, so that the player vertical movements are set. 
-
+x += hsp; // Set the variable x, so that the player can move. 
 </string>
           </argument>
         </arguments>
