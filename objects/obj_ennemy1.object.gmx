@@ -49,16 +49,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Tentative de spawn quand le joueur approche. 
-
-// if (distance_to_object(obj_character &lt;= 1)){
-   // attack = true;
-// }
-// else{
-   // image_speed = 0;
-// }
-
-// Se tourne et va vers le joueur.  
+            <string>// Se tourne et va vers le joueur.  
 
  if (obj_character.x &lt; obj_ennemy1.x){
             image_xscale = 1;
@@ -100,8 +91,6 @@ if (attack = true){
 
         //--------- Collision ------
         //--------------------------
-    
-        // If hit. 
 
         if (place_meeting(x,y, obj_bullet)){
             sprite_index = spr_ennemy_death;
@@ -122,7 +111,13 @@ if (attack = true){
             hspeed = 0;
            audio_play_sound(snd_ennemy1_hit,10,false);
         }
-
+        if (place_meeting(x,y, obj_magicshield)){
+            x = x+100;
+            y = y-20;
+        }
+        
+        
+        // Death animation 
         if sprite_index = spr_ennemy_death{
             image_speed = 1;
             hspeed = 0;

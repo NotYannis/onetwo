@@ -158,7 +158,7 @@ else{
 
 // Hit
 
-if (place_meeting(x,y,obj_ennemy1)) &amp;&amp; !strike &amp;&amp; (hit &lt;= 1){
+if (place_meeting(x,y,obj_ennemy1)) &amp;&amp; !strike &amp;&amp; (hit &lt;= 1) &amp;&amp; (!instance_exists(obj_magicshield)){
     life = life-10;
     hit = room_speed*0.9;
     obj_character.x = obj_character.x-80;

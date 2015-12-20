@@ -112,11 +112,10 @@ if (linked){
 
 
 
-// ----------- Fire and Jump ---------------
+// ----------- Fire and Double Jump ---------------
 //------------------------------------------
 if (canshoot &lt;= 1){
-    
-    if (keyboard_check(vk_alt)){
+        if (keyboard_check(vk_alt)){
         canshoot = room_speed*0.7;
         instance_create (x-14,y+29,obj_bullet);
         if (gundown = true){
@@ -126,6 +125,19 @@ if (canshoot &lt;= 1){
 }
 else{
     canshoot --;
+}
+
+//------------- Protect Red ----------
+//------------------------------------
+
+if (canprotect &lt;= 1){
+    if (keyboard_check(vk_numpad2)){
+    canprotect = room_speed*4;
+    instance_create(x,y,obj_magicshield);
+    }
+}
+else{
+    canprotect--;
 }
 
 // -------------- Hit --------------------

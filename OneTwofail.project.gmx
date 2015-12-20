@@ -56,6 +56,7 @@
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_arrow</sprite>
     <sprite>sprites\spr_bulletnumber2</sprite>
+    <sprite>sprites\spr_magicshield_icon</sprite>
     <sprite>sprites\spr_magicshield</sprite>
     <sprite>sprites\spr_moon</sprite>
     <sprite>sprites\spr_ruins</sprite>
@@ -82,6 +83,7 @@
     <sprite>sprites\spr_targetpractice</sprite>
     <sprite>sprites\spr_grave</sprite>
     <sprite>sprites\spr_particle</sprite>
+    <sprite>sprites\sprite68</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -141,6 +143,7 @@
     <object>objects\obj_particle</object>
     <object>objects\obj_particle_spawn</object>
     <object>objects\obj_crow</object>
+    <object>objects\obj_magicshield</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Tutorial</room>
