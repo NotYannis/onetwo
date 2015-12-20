@@ -122,31 +122,7 @@ else{
 if (!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right) || keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_right))  {
     hsp = 0;
     walking = false;
-    
 }
-
-// Attack 
-if (keyboard_check(vk_numpad1) &amp;&amp; (gasbar &gt; 0) &amp;&amp; !gasFilling){
-    if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
-    strike = true;    
-    gasbar -= 5;
-}
-else if((!keyboard_check(vk_numpad1) &amp;&amp; gasbar &lt;=100) || gasFilling){
-    gasbar += 2;
-}
-
-if(gasbar &lt;= 0){ //If the bar hit 0, you can't attack while refilling it to 100
-    gasFilling = true;
-    strike = false;
-}
-else if(gasbar &gt;= 100){
-    gasFilling = false;
-}
-
-if(!keyboard_check(vk_numpad1)){
-    strike = false;
-}
-
 // Protect
 
 if (keyboard_check(vk_numpad3)){
@@ -183,13 +159,14 @@ if (life == 0){
 
 //----------- Gravity and jump ------------
 //-----------------------------------------
-if (place_meeting(x,y+1, obj_ground01)) { // Player on the ground so he can jump. 
+if (grounded) { // Player on the ground so he can jump. 
     jumping = false;
     vsp = 0;
-            if (keyboard_check(vk_space)){
-                jumping = true;
-                vsp = -25;
-            }
+    if (keyboard_check(vk_space)){
+        jumping = true;
+        vsp = -25;
+        grounded = false;
+    }
 }
 else{
     vsp += grav;
@@ -227,9 +204,12 @@ if (redprotect){
 //---------------------------------------
 // --------------Collisions--------------
 //---------------------------------------
+platform = instance_place(x,y+vsp,obj_platform)
 
-hColl = place_meeting(x+hsp,y,obj_ground01);
-vColl = place_meeting(x,y+vsp,obj_ground01) || (place_meeting(x,y+vsp,obj_platform) &amp;&amp; vsp &gt;=0);
+hColl = place_meeting(x+hsp,y,obj_ground01) ;
+grounded = place_meeting(x,y+vsp,obj_ground01) || (place_meeting(x,y+vsp,obj_platform) &amp;&amp; vsp &gt;=0) &amp;&amp; (platform != noone  &amp;&amp; !place_meeting(x + hsp, y, obj_platform));
+
+show_debug_message(string(place_meeting(x,y+vsp,obj_platform)));
 
 // Horizontal
 if (hColl) {
@@ -242,13 +222,56 @@ if (hColl) {
 x += hsp; // Set the variable x, so that the player can move. 
 
 // Vertical
-if (vColl) {
+if (grounded) {
     if(!hColl){ //Shouldn't move vertically only if its grounded
         vsp = 0;
     }
 }
 
 y += vsp; // Set the variable y, so that the player vertical movements are set. 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Attack 
+
+if (keyboard_check(vk_numpad1) &amp;&amp; (gasbar &gt; 0) &amp;&amp; !gasFilling){
+    if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
+    strike = true;    
+    gasbar -= 5;
+}
+else if((!keyboard_check(vk_numpad1) &amp;&amp; gasbar &lt;=100) || gasFilling){
+    gasbar += 2;
+}
+
+if(gasbar &lt;= 0){ //If the bar hit 0, you can't attack while refilling it to 100
+    gasFilling = true;
+    strike = false;
+}
+else if(gasbar &gt;= 100){
+    gasFilling = false;
+}
+
+if(!keyboard_check(vk_numpad1)){
+    strike = false;
+}
 
 </string>
           </argument>
