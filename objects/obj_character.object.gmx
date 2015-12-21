@@ -41,6 +41,8 @@ grounded = true;
 jumping = false;
 walking = false;
 gasFilling = false;
+gasbar = 100;
+life = 100;
 hit = false;
 invulnerability = 1;
 globalvar strike;
@@ -98,20 +100,7 @@ if (obj_lighting.dark = true){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Protect
-
-if (keyboard_check(vk_numpad3)){
-    redprotect = true;
-}
-else{
-    redprotect = false;
-}
-
-// Death
-if (life == 0){
-    room_goto(Game_Over);
-}
-
+            <string>///Movement, collisions and animatons
 
 // ------------- Horizontal Mouvements-------------
 //-------------------------------------------------
@@ -134,25 +123,12 @@ else{
     image_speed = 0.2;
 }
 
-if (((!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right)) || (keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_right))))  {
+if ((!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right)) 
+    || (keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_right) || redprotect))  {
     hsp = 0;
     walking = false;
 }
 
-//----------- Gravity and jump ------------
-//-----------------------------------------
-if (grounded) { // Player on the ground so he can jump. 
-    jumping = false;
-    vsp = 0;
-    if (keyboard_check(vk_space)){
-        jumping = true;
-        vsp = -25;
-        grounded = false;
-    }
-}
-else{
-    vsp += grav;
-}
 //---------------------------------------
 //------------------Animations-----------
 //---------------------------------------
@@ -189,7 +165,7 @@ if (redprotect){
 platform = instance_place(x,y+vsp,obj_platform)
 
 hColl = place_meeting(x+hsp,y,obj_ground01) ;
-grounded = place_meeting(x,y+vsp,obj_ground01) || (place_meeting(x,y+vsp,obj_platform) &amp;&amp; vsp &gt;=0)
+grounded = place_meeting(x,y + vsp + 1,obj_ground01) || (place_meeting(x,y+ vsp + 1,obj_platform) &amp;&amp; vsp &gt;=0)
         &amp;&amp; (platform != noone  &amp;&amp; !place_meeting(x + hsp, y, obj_platform));
 
 // Horizontal
@@ -206,6 +182,22 @@ if (grounded) {
         vsp = 0;
     }
 }
+
+//----------- Gravity and jump ------------
+//-----------------------------------------
+if (grounded) { // Player on the ground so he can jump. 
+    jumping = false;
+    vsp = 0;
+    if (keyboard_check(vk_space)){
+        jumping = true;
+        vsp = -25;
+        grounded = false;
+    }
+}
+else{
+    vsp += grav;
+}
+
 show_debug_message(string(grounded));
 y += vsp; // Set the variable y, so that the player vertical movements are set.
 x += hsp; // Set the variable x, so that the player can move. 
@@ -287,13 +279,14 @@ if(place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy1) &amp;&amp; !redprotect
 
 //Then apply the hit animation, and invulnerability
 if ( hit &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; !instance_exists(obj_magicshield)){
+    show_debug_message("HIT");
     life = life-10;
     invulnerability = room_speed*0.9;
     
     if(!place_meeting(x - sign(zombie.image_xscale) * 25, y, obj_ground01)) x -= sign(zombie.image_xscale) * 25;
     y -= 25
     audio_play_sound(snd_ennemy1_hit, 10, false);
-    
+
     if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy1)){
         audio_play_sound(snd_shield, 10, false);
     }
@@ -306,6 +299,39 @@ else if (invulnerability &gt;= 0){
 //Hit by a shadow
 if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1)){
     life = 0;
+}
+
+// Death
+if (life == 0){
+    room_goto(Game_Over);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Yellow protection
+
+if (keyboard_check(vk_numpad3)){
+    redprotect = true;
+}
+else{
+    redprotect = false;
 }
 </string>
           </argument>
