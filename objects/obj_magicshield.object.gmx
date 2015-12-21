@@ -52,7 +52,10 @@ obj_magicshield.y = obj_character.y;
             <kind>1</kind>
             <string>obj_magicshield.x = obj_character.x;
 obj_magicshield.y = obj_character.y;
-
+if(obj_yellow.canprotect &lt;= 1){
+    instance_destroy();
+    obj_yellow.canprotect = room_speed*3;
+}
 </string>
           </argument>
         </arguments>

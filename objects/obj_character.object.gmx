@@ -75,6 +75,7 @@ var zombie;
 if (obj_lighting.dark = true){
     Lighting(360, c_white, c_black);
 }
+
 </string>
           </argument>
         </arguments>
@@ -106,39 +107,6 @@ else{
     redprotect = false;
 }
 
-// Hit
-if(place_meeting(x,y,obj_ennemy1)){
-    zombie = instance_place(x,y,obj_ennemy1);
-    show_debug_message(string(zombie));
-    hit = true;
-}
-if(place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy1)) {
-    zombie = instance_place(obj_yellow.x, obj_yellow.y, obj_ennemy1);
-    hit = true;
-}
-
-if ( hit &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; !instance_exists(obj_magicshield) &amp;&amp; !redprotect){
-    life = life-10;
-    invulnerability = room_speed*0.9;
-    hsp = sign(zombie.image_xscale) * -15;
-    vsp = -10;
-    grounded = false;
-    audio_play_sound(snd_ennemy1_hit, 10, false);
-    if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy1)){
-        audio_play_sound(snd_shield, 10, false);
-    }
-}
-else if (invulnerability &gt;= 0){
-    hit = false;
-    invulnerability--;
-} 
-show_debug_message(string(hit));
-
-if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1)){
-    life = 0;
-}
-
-
 // Death
 if (life == 0){
     room_goto(Game_Over);
@@ -166,7 +134,7 @@ else{
     image_speed = 0.2;
 }
 
-if (((!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right)) || (keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_right))) &amp;&amp; !hit)  {
+if (((!keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right)) || (keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_right))))  {
     hsp = 0;
     walking = false;
 }
@@ -232,16 +200,16 @@ if (hColl) {
     hsp = 0;
 }
 
-
 // Vertical
 if (grounded) {
     if(!hColl){ //Shouldn't move vertically only if its grounded
         vsp = 0;
     }
 }
-
-y += vsp; // Set the variable y, so that the player vertical movements are set. 
+show_debug_message(string(grounded));
+y += vsp; // Set the variable y, so that the player vertical movements are set.
 x += hsp; // Set the variable x, so that the player can move. 
+
 </string>
           </argument>
         </arguments>
@@ -285,6 +253,60 @@ if(!keyboard_check(vk_numpad1)){
     strike = false;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Hit
+
+//Checks wich character has been hit
+if(place_meeting(x,y,obj_ennemy1)){
+    zombie = instance_place(x,y,obj_ennemy1);
+    hit = true;
+}
+if(place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy1) &amp;&amp; !redprotect) {
+    zombie = instance_place(obj_yellow.x, obj_yellow.y, obj_ennemy1);
+    hit = true;
+}
+
+//Then apply the hit animation, and invulnerability
+if ( hit &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; !instance_exists(obj_magicshield)){
+    life = life-10;
+    invulnerability = room_speed*0.9;
+    
+    if(!place_meeting(x - sign(zombie.image_xscale) * 25, y, obj_ground01)) x -= sign(zombie.image_xscale) * 25;
+    y -= 25
+    audio_play_sound(snd_ennemy1_hit, 10, false);
+    
+    if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy1)){
+        audio_play_sound(snd_shield, 10, false);
+    }
+}
+else if (invulnerability &gt;= 0){
+    hit = false;
+    invulnerability--;
+}
+
+//Hit by a shadow
+if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1)){
+    life = 0;
+}
 </string>
           </argument>
         </arguments>

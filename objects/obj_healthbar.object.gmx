@@ -62,11 +62,15 @@ draw_sprite(spr_lifebar, 1, view_xview+20, view_yview+45);
 // Gas
 
 draw_healthbar(view_xview+50, view_yview+100, view_xview+200, view_yview+80, gasbar, c_black, c_maroon, c_maroon, 0, true, true);
-draw_sprite(spr_gasbar, 1, view_xview+20, view_yview+75);
-
+if (!obj_character.gasFilling){
+    draw_sprite(spr_gasbar, 0, view_xview+20, view_yview+75);
+}
+else{
+    draw_sprite(spr_gasbar, 1, view_xview+20, view_yview+75);
+}
 // Magic shield icon
 
-if (canprotect &lt;= 1){
+if (obj_yellow.canprotect &lt;= 1){
     draw_sprite(spr_magicshield_icon, 1, view_xview+140, view_yview+100);
 }
 else{
