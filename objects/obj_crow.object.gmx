@@ -26,7 +26,13 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.5;
-goright = true;
+goRight = true;
+flightSpeed = 5;
+
+//Flight distances
+dist = 500;
+distMin = 0;
+distMax = 500;
 </string>
           </argument>
         </arguments>
@@ -49,21 +55,29 @@ goright = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (goright = true){
-    x++;
+            <string>
+if (dist &gt;= distMax){
+    goRight = false;
+}
+
+else if (dist &lt;= distMin){
+    goRight = true;
+}
+
+if(goRight){
+    x+= 5;
+    dist += 5
     image_xscale = -1;
 }
-else if (goright = false){
-    x--;
+else{
+    x-=5;
+    dist -= 5;
     image_xscale = 1;
 }
 
-if (room.x+3000 = obj_crow.x){
-    goright = false;
-}
-else{
-    goright = true;
-}
+
+
+show_debug_message(string(obj_crow.x));
 
 if (place_meeting(x,y, obj_bullet)){
             sprite_index = spr_crow_death;
