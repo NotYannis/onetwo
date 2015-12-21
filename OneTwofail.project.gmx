@@ -85,6 +85,8 @@
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\sprite68</sprite>
     <sprite>sprites\spr_platform</sprite>
+    <sprite>sprites\spr_screen</sprite>
+    <sprite>sprites\spr_mimic</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -146,6 +148,7 @@
     <object>objects\obj_crow</object>
     <object>objects\obj_magicshield</object>
     <object>objects\obj_platform</object>
+    <object>objects\obj_titlescreen</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
@@ -153,6 +156,7 @@
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
+    <room>rooms\rm_titlescreen</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
