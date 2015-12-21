@@ -112,10 +112,11 @@ if (attack = true){
            audio_play_sound(snd_ennemy1_hit,10,false);
         }
         if (place_meeting(x,y, obj_magicshield)){
-            x = x+100;
-            y = y-20;
+           if(!place_meeting(x + image_xscale * 100,y, obj_ground01)){
+                x += image_xscale * 100;
+            }
+            y -= 20;
         }
-        
         
         // Death animation 
         if sprite_index = spr_ennemy_death{

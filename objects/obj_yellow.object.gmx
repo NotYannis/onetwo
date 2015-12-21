@@ -30,14 +30,13 @@
 globalvar gundown;
 globalvar gunup;
 globalvar gunleft;
-    gunleft = false;
+gunleft = false;
 linked = true;
 vsp = 0;
 grav = 1;
 globalvar canshoot;
     canshoot = 1;
-globalvar canprotect;
-    canprotect = 1;
+canprotect = 1;
 
 // Else 
 
@@ -132,11 +131,11 @@ else{
 
 if (canprotect &lt;= 1){
     if (keyboard_check(vk_numpad2)){
-        canprotect = room_speed*4;
+        canprotect = room_speed*2;
         instance_create(x,y,obj_magicshield);
     }
 }
-else{
+else if(canprotect &gt;= 0) {
     canprotect--;
 }
 </string>

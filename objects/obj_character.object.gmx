@@ -188,7 +188,7 @@ if (redprotect){
 //---------------------------------------
 platform = instance_place(x,y+vsp,obj_platform)
 
-hColl = place_meeting(x+1,y,obj_ground01) ;
+hColl = place_meeting(x+hsp,y,obj_ground01) ;
 grounded = place_meeting(x,y+vsp,obj_ground01) || (place_meeting(x,y+vsp,obj_platform) &amp;&amp; vsp &gt;=0)
         &amp;&amp; (platform != noone  &amp;&amp; !place_meeting(x + hsp, y, obj_platform));
 
@@ -206,7 +206,7 @@ if (grounded) {
         vsp = 0;
     }
 }
-
+show_debug_message(string(grounded));
 y += vsp; // Set the variable y, so that the player vertical movements are set.
 x += hsp; // Set the variable x, so that the player can move. 
 
