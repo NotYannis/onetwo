@@ -52,7 +52,7 @@ attack = false;
           <argument>
             <kind>1</kind>
             <string>if (obj_lighting.dark) &amp;&amp; (sprite_index = spr_mimic_attack){
-    Lighting(300, c_red, c_black);
+    Lighting(300, c_silver, c_black);
 }
 else if (obj_lighting.dark){
     Lighting(300, c_white, c_black);
@@ -79,26 +79,8 @@ else if (obj_lighting.dark){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Spawn
-if (place_meeting(x,y,obj_bullet)) || (place_meeting(x,y,obj_character)){
-    image_speed = 0.2;
-}
-
-if (image_index = 13){
-    sprite_index = spr_mimic_attack;
-    attack = true;
-}
-
-// Attack
-if (sprite_index = spr_mimic_attack){
-    move_towards_point(obj_character.x, obj_character.y, 6);
-}
-
-if (place_meeting(x,y, obj_character)) &amp;&amp; (attack = true) &amp;&amp; (!redprotect = false) &amp;&amp; (canprotect = false){
-    life = 0;
-}
-
-// Gravity
+            <string>/// Behaviour. 
+// Gravity.
 if (place_meeting(x,y+1,obj_ground01)){
     vspeed = 0;
 }
@@ -106,9 +88,54 @@ else{
     vspeed = 5;
 }
 
-// Hit 
-if (place_meeting(x,y,obj_bullet)) &amp;&amp; (attack = true){
-    instance_destroy();
+//Proper scale.
+if (obj_character.x &lt; obj_ennemy_mimic.x){
+            image_xscale = 1;
+        }
+        else{
+            image_xscale = -1;
+        }
+
+// Attack variable : define the behaviour of the mimic, wheather it has been hit or not. 
+if (attack = false){
+
+    hspeed = 0;
+    // Spawn if attack, animation. 
+    if (place_meeting(x,y,obj_bullet)) || (place_meeting(x,y,obj_character)) &amp;&amp; (strike = true){
+        image_speed = 0.2;
+        with (obj_bullet){
+            instance_destroy();
+        }
+    }
+    
+    if (image_index = 13){
+        sprite_index = spr_mimic_attack;
+        attack = true;
+    }
+}
+
+else if (attack = true){
+    // Attack: move to the player. 
+    move_towards_point(obj_character.x, obj_character.y, 6);
+    audio_play_sound(snd_shadowteeth, 10, false);
+    if (place_meeting(x,y+1,obj_ground01)){
+        vspeed = 0;
+    }
+    else{
+        vspeed = 5;
+    }
+    
+    
+    // Hit: return to his chest.
+    if (place_meeting(x,y,obj_bullet)){
+        sprite_index = spr_mimic_spawn;
+        image_index = 0;
+        image_speed = 0;
+        attack = false;
+        with (obj_bullet){
+            instance_destroy();
+        }
+    }
 }
 </string>
           </argument>
