@@ -90,6 +90,7 @@
     <sprite>sprites\spr_mimic_spawn</sprite>
     <sprite>sprites\spr_mimic_attack</sprite>
     <sprite>sprites\spr_flyingdevil</sprite>
+    <sprite>sprites\spr_house_ruins</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
