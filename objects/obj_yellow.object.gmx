@@ -116,7 +116,12 @@ if (linked){
 if (canshoot &lt;= 1){
         if (keyboard_check(vk_alt)){
         canshoot = room_speed*0.7;
-        instance_create (x-14,y+29,obj_bullet);
+            if (image_xscale = 1){
+                instance_create (x-22,y+29,obj_bullet);
+                }
+            if (image_xscale = -1){
+                instance_create (x+20,y+29,obj_bullet);
+                }
         if (gundown = true){
             vsp = -10;
         }
