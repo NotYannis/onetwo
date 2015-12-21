@@ -132,8 +132,8 @@ else{
 
 if (canprotect &lt;= 1){
     if (keyboard_check(vk_numpad2)){
-    canprotect = room_speed*4;
-    instance_create(x,y,obj_magicshield);
+        canprotect = room_speed*4;
+        instance_create(x,y,obj_magicshield);
     }
 }
 else{
