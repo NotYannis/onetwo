@@ -29,7 +29,6 @@
     life = 100;
 globalvar gasbar;
     gasbar = 100;
-
 </string>
           </argument>
         </arguments>

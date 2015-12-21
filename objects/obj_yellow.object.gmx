@@ -63,7 +63,9 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_yellow.x = obj_character.x;
+            <string>//Movement and animation
+
+obj_yellow.x = obj_character.x;
 obj_yellow.y = obj_character.y-80;
 
 // Image and Animations
@@ -77,6 +79,27 @@ if (keyboard_check(vk_left)){
     image_xscale = -1;
     gunleft = true;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Weapon
 
 // ------------ Moving the Gun -----------
 //----------------------------------------
@@ -130,9 +153,27 @@ if (canshoot &lt;= 1){
 else{
     canshoot --;
 }
-
-//------------- Protect Red ----------
-//------------------------------------
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Red protection
 
 if (canprotect &lt;= 1){
     if (keyboard_check(vk_numpad2)){
