@@ -80,7 +80,7 @@ if (obj_lighting.dark){
             <kind>1</kind>
             <string>draw_sprite(spr_sign, 0-1-2, x, y);
 
-if (place_meeting(x,y,obj_character)) || keyboard_check(vk_numpad4) || (sprite_index = spr_sign){
+/* if (place_meeting(x,y,obj_character)) || keyboard_check(vk_numpad4) || (sprite_index = spr_sign){
     switch (tip){
     case 1 : {draw_text(x,y,'Use the spacebar to jump'); break;}
     case 2 : {draw_text(x,y,'You can aim with the joystick, then shoot with alt'); break;}
@@ -89,6 +89,10 @@ if (place_meeting(x,y,obj_character)) || keyboard_check(vk_numpad4) || (sprite_i
     if (keyboard_check(vk_numpad2)){
         tip++;
     }
+} */
+
+if (place_meeting(x,y,obj_character)){
+    show_message("Bonjour Yannis !");
 }
 
 </string>

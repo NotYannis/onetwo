@@ -49,7 +49,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// move_towards_point(obj_yellow.x, obj_yellow.y, 12);
+            <string>move_towards_point(obj_yellow.x, obj_yellow.y, 12);
 
 if (place_meeting(x,y,obj_ground01)){
     instance_destroy()

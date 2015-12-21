@@ -150,6 +150,7 @@
     <object>objects\obj_magicshield</object>
     <object>objects\obj_platform</object>
     <object>objects\obj_titlescreen</object>
+    <object>objects\obj_ennemy_mimic</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
