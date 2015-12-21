@@ -86,7 +86,8 @@
     <sprite>sprites\sprite68</sprite>
     <sprite>sprites\spr_platform</sprite>
     <sprite>sprites\spr_screen</sprite>
-    <sprite>sprites\spr_mimic</sprite>
+    <sprite>sprites\spr_mimic_spawn</sprite>
+    <sprite>sprites\spr_mimic_attack</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
