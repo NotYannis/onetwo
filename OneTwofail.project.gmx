@@ -104,6 +104,8 @@
     <script>scripts\Lighting.gml</script>
     <script>scripts\Glowing.gml</script>
     <script>scripts\getEnnemyAnimationSpeed.gml</script>
+    <script>scripts\getEnnemySpawnSprite.gml</script>
+    <script>scripts\getEnnemySprite.gml</script>
     <script>scripts\getEnnemyDeathSprite.gml</script>
     <script>scripts\getEnnemyDamage.gml</script>
     <script>scripts\getEnnemyDeathSpriteIndex.gml</script>

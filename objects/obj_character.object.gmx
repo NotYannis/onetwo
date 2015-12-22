@@ -47,8 +47,7 @@ hit = false;
 invulnerability = 1;
 globalvar strike;
     strike = false;
-globalvar redprotect;
-    redprotect = false;
+redprotect = false;
 var zombie;
 </string>
           </argument>
@@ -118,34 +117,43 @@ if(gasbar &lt;= 0){ //If the bar hit 0, you can't attack while refilling it to 1
 else if(gasbar &gt;= 100){
     gasFilling = false;
 }
-
 //Hit
 
 //Checks wich character has been hit
-if(place_meeting(x,y,obj_ennemy) &amp;&amp; !strike){
+if(place_meeting(x,y,obj_ennemy) &amp;&amp; !strike &amp;&amp; !instance_exists(obj_magicshield)){
     ennemy = instance_place(x,y,obj_ennemy);
     hit = true;
 }
-if(place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy) &amp;&amp; !redprotect &amp;&amp; !strike) {
+if(place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy) &amp;&amp; !redprotect) {
     ennemy = instance_place(obj_yellow.x, obj_yellow.y, obj_ennemy);
     hit = true;
 }
 
+if(strike || instance_exists(obj_magicshield) || redprotect)
+    hit = false;
+
 if(!keyboard_check(vk_numpad1)){
     strike = false;
 }
-
+    
+show_debug_message(string(hit));
 //Then apply the hit animation, and invulnerability
-if (hit &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; !instance_exists(obj_magicshield)){
+if (hit &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; instance_exists(ennemy) &amp;&amp; !ennemy.death &amp;&amp; !ennemy.spawn){
     life -= ennemy.damage;
     invulnerability = room_speed*0.9;
     
-    if(!place_meeting(x - sign(ennemy.image_xscale) * 25, y, obj_ground01)) x -= sign(ennemy.image_xscale) * 25;
+    if(!place_meeting(x - sign(ennemy.image_xscale) * 25, y, obj_ground01))
+        x -= sign(ennemy.image_xscale) * 25;
     y -= 25
-    if (!audio_is_playing(snd_ennemy1_hit)) audio_play_sound(snd_ennemy1_hit, 10, false);
+    if(ennemy.isProjectile){
+        with(ennemy) 
+        instance_destroy();
+    }
+    if (!audio_is_playing(snd_ennemy1_hit))
+        audio_play_sound(snd_ennemy1_hit, 10, false);
 
     if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy)){
-        if (!audio_is_playing(snd_shield)) audio_play_sound(snd_shield, 10, false);
+            audio_play_sound(snd_shield, 10, false);
     }
 }
 else if (invulnerability &gt;= 0){

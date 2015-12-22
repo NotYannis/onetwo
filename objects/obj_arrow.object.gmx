@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>obj_ennemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -15;
+            <string>event_inherited();
+spawn = false;
+applyGravity = false;
+followPlayer = false;
+isProjectile = true;
+hspeed = -15;
 
 </string>
           </argument>
@@ -53,9 +58,7 @@
 if (place_meeting(x,y,obj_ground01)){
     instance_destroy()
 }
-if (place_meeting(x, y, obj_yellow)) &amp;&amp; (redprotect = true){
-    instance_destroy();
-}
+event_inherited();
 </string>
           </argument>
         </arguments>
