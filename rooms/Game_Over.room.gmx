@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_quit_music" x="128" y="64" name="inst_A575970F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gameover" x="32" y="0" name="inst_73A30E97" locked="0" code="" scaleX="7.55905532836914" scaleY="5.79527568817139" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gameover" x="0" y="0" name="inst_73A30E97" locked="0" code="" scaleX="2.00391387939453" scaleY="1.5029354095459" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

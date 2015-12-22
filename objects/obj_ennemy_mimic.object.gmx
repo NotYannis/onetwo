@@ -117,7 +117,7 @@ if (attack = false){
 else if (attack = true){
     // Attack: move to the player. 
     move_towards_point(obj_character.x, obj_character.y, 6);
-    audio_play_sound(snd_shadowteeth, 10, false);
+    if (!audio_is_playing(snd_shadowteeth))  audio_play_sound(snd_shadowteeth, 10, false);
     if (place_meeting(x,y+1,obj_ground01)){
         vspeed = 0;
     }
