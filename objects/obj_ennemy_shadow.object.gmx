@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>event_inherited();
 follow_player = false;
-attack = false;
 audio_play_sound(snd_shadowcry,10,false);
 </string>
           </argument>
@@ -98,14 +97,6 @@ audio_play_sound(snd_shadowcry,10,false);
         }
 }
 */
-if (!attack){
-    image_speed = 0.2;
-    sprite_index = spr_shadow_spawn
-    if (image_index = 10){
-        attack = true;
-        sprite_index = spr_ennemy_shadow;
-    }    
-}
 </string>
           </argument>
         </arguments>

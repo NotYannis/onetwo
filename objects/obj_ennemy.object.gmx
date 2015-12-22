@@ -25,12 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>attack = true;
+            <string>spawn = true;
+attack = true;
 death = false;
 damage = getEnnemyDamage();
 applyGravity = true;
 followPlayer = true;
 animationSpeed = getEnnemyAnimationSpeed();
+spawnSprite = getEnnemySpawnSprite();
+sprite = getEnnemySprite();
 deathSprite = getEnnemyDeathSprite();
 deathSpriteIndex = getEnnemyDeathSpriteIndex();
 hsp = getEnnemyHspeed();
@@ -57,9 +60,20 @@ hsp = getEnnemyHspeed();
           <argument>
             <kind>1</kind>
             <string>// Comportement normal si attack = true.
+if(spawn){
+    attack = false;
+    sprite_index = spawnSprite;
+    object_set_mask(object_index, spawnSprite);
+    image_speed = 0.2;
+    if (image_index = 11){
+        spawn = false;
+        attack = true;
+        sprite_index = sprite;
+    }   
+}
 if (attack){
-
-    object_set_solid(object_index, true);
+    object_set_mask(object_index, sprite);
+    
     // Se tourne et va vers le joueur.  
     if(followPlayer) {
         if (obj_character.x &lt; obj_ennemy.x){
@@ -88,13 +102,14 @@ if (attack){
     }
     //--------- Collision ------
     //--------------------------
-    if ((place_meeting(x,y,obj_character) &amp;&amp; strike)){
+   /* if ()){
         death = true;
         attack = false;
         image_index = 0;
-    }
-    if(place_meeting(x,y, obj_bullet)){
+    }*/
+    if(place_meeting(x,y, obj_bullet) || (place_meeting(x,y,obj_character) &amp;&amp; strike)){
         with(obj_bullet) instance_destroy();
+        audio_play_sound(snd_ennemy1_hit,10,false)
         death = true;
         attack = false;
         image_index = 0;
@@ -116,11 +131,10 @@ if (attack){
     // Death animation 
 }
 if(death){
-    object_set_solid(obj_ennemy, false);
+    object_set_mask(object_index, deathSprite);
     sprite_index = deathSprite;
     image_speed = 1;
     hspeed = 0;
-    if (!audio_is_playing(snd_ennemy1_hit)) audio_play_sound(snd_ennemy1_hit,10,false);
     if (image_index &gt;= deathSpriteIndex){
         instance_destroy();
     }
