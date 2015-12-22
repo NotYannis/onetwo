@@ -4,5 +4,7 @@ switch(object_index) {
         break;
     case obj_ennemy_shadow : return spr_ennemy_shadow;
         break;
-    default : return 10;
+    case obj_arrow : return spr_arrow;
+        break;
+    default : return noone;
 }

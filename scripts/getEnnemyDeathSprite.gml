@@ -5,5 +5,5 @@ switch(object_index) {
         break;
     case obj_ennemy_shadow : return spr_shadow_death;
         break;
-    default : return spr_ennemy_death;
+    default : return noone;
 }

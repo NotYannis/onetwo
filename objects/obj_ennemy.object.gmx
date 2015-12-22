@@ -28,6 +28,7 @@
             <string>spawn = true;
 attack = true;
 death = false;
+isProjectile = false;
 damage = getEnnemyDamage();
 applyGravity = true;
 followPlayer = true;
@@ -107,25 +108,32 @@ if (attack){
         attack = false;
         image_index = 0;
     }*/
-    if(place_meeting(x,y, obj_bullet) || (place_meeting(x,y,obj_character) &amp;&amp; strike)){
-        with(obj_bullet) instance_destroy();
-        audio_play_sound(snd_ennemy1_hit,10,false)
-        death = true;
-        attack = false;
-        image_index = 0;
-    }
-    
-    if (place_meeting(x,y,obj_water)){
-        hspeed = 0;
-        audio_play_sound(snd_plouf, 10, false);
-        instance_destroy();
-    }
-    
-    if (place_meeting(x,y, obj_magicshield)){
-       if(!place_meeting(x + image_xscale * 100,y, obj_ground01)){
-            x += image_xscale * 100;
+    if(!isProjectile){
+        if(place_meeting(x,y, obj_bullet) || (place_meeting(x,y,obj_character) &amp;&amp; strike)){
+            with(obj_bullet) instance_destroy();
+            audio_play_sound(snd_ennemy1_hit,10,false)
+            death = true;
+            attack = false;
+            image_index = 0;
         }
-        y -= 20;
+    
+        if (place_meeting(x,y,obj_water)){
+            hspeed = 0;
+            audio_play_sound(snd_plouf, 10, false);
+            instance_destroy();
+        }
+       if (place_meeting(x,y, obj_magicshield)){
+            if(!place_meeting(x + image_xscale * 100,y, obj_ground01)){
+                x += image_xscale * 100;
+            }
+            y -= 20;
+        }
+    }
+    else{
+        if(place_meeting(x,y, obj_magicshield)
+            || (place_meeting(x,y, obj_yellow) &amp;&amp; obj_character.redprotect)){
+                instance_destroy();
+        }
     }
     
     // Death animation 

@@ -47,8 +47,7 @@ hit = false;
 invulnerability = 1;
 globalvar strike;
     strike = false;
-globalvar redprotect;
-    redprotect = false;
+redprotect = false;
 var zombie;
 </string>
           </argument>
@@ -146,11 +145,14 @@ if (hit &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; instance_exists(ennemy) 
     if(!place_meeting(x - sign(ennemy.image_xscale) * 25, y, obj_ground01))
         x -= sign(ennemy.image_xscale) * 25;
     y -= 25
+    if(ennemy.isProjectile){
+        with(ennemy) 
+        instance_destroy();
+    }
     if (!audio_is_playing(snd_ennemy1_hit))
         audio_play_sound(snd_ennemy1_hit, 10, false);
 
     if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy)){
-        //if (!audio_is_playing(snd_shield))
             audio_play_sound(snd_shield, 10, false);
     }
 }

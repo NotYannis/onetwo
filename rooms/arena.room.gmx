@@ -165,10 +165,7 @@
     <instance objName="obj_particle_spawn" x="288" y="-32" name="inst_42B47A05" locked="0" code="colour = make_colour_rgb(43, 216, 0);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle_spawn" x="320" y="-32" name="inst_60D796A4" locked="0" code="colour = make_colour_rgb(43, 216, 0);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle_spawn" x="544" y="-32" name="inst_DAB7079D" locked="0" code="colour = make_colour_rgb(43, 216, 0);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="288" y="640" name="inst_EB09DEB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="640" y="640" name="inst_6342DC4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="736" y="640" name="inst_7DB7B271" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_yellow" x="288" y="192" name="inst_D95FBD6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_statue" x="832" y="544" name="inst_C5D3D66B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
