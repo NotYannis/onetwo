@@ -100,6 +100,89 @@ if (obj_lighting.dark = true){
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Attack and Hit
+
+if (keyboard_check(vk_numpad1) &amp;&amp; (gasbar &gt; 0) &amp;&amp; !gasFilling){
+    if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
+    strike = true;    
+    gasbar -= 5;
+}
+else if((!keyboard_check(vk_numpad1) &amp;&amp; gasbar &lt;=100) || gasFilling){
+    gasbar += 2;
+}
+
+if(gasbar &lt;= 0){ //If the bar hit 0, you can't attack while refilling it to 100
+    gasFilling = true;
+    strike = false;
+}
+else if(gasbar &gt;= 100){
+    gasFilling = false;
+}
+
+//Hit
+
+//Checks wich character has been hit
+if(place_meeting(x,y,obj_ennemy) &amp;&amp; !strike){
+    ennemy = instance_place(x,y,obj_ennemy);
+    hit = true;
+}
+if(place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy) &amp;&amp; !redprotect &amp;&amp; !strike) {
+    ennemy = instance_place(obj_yellow.x, obj_yellow.y, obj_ennemy);
+    hit = true;
+}
+
+if(!keyboard_check(vk_numpad1)){
+    strike = false;
+}
+
+//Then apply the hit animation, and invulnerability
+if (hit &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; !instance_exists(obj_magicshield)){
+    life -= ennemy.damage;
+    invulnerability = room_speed*0.9;
+    
+    if(!place_meeting(x - sign(ennemy.image_xscale) * 25, y, obj_ground01)) x -= sign(ennemy.image_xscale) * 25;
+    y -= 25
+    if (!audio_is_playing(snd_ennemy1_hit)) audio_play_sound(snd_ennemy1_hit, 10, false);
+
+    if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy)){
+        if (!audio_is_playing(snd_shield)) audio_play_sound(snd_shield, 10, false);
+    }
+}
+else if (invulnerability &gt;= 0){
+    hit = false;
+    invulnerability--;
+}
+
+//Hit by a shadow
+/*if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1)){
+    life = 0;
+}
+*/
+// Death
+if (life &lt;= 0){
+    room_goto(Game_Over);
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Movement, collisions and animatons
 
 // ------------- Horizontal Mouvements-------------
@@ -200,91 +283,6 @@ else{
 
 y += vsp; // Set the variable y, so that the player vertical movements are set.
 x += hsp; // Set the variable x, so that the player can move. 
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Attack 
-
-if (keyboard_check(vk_numpad1) &amp;&amp; (gasbar &gt; 0) &amp;&amp; !gasFilling){
-    if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
-    strike = true;    
-    gasbar -= 5;
-}
-else if((!keyboard_check(vk_numpad1) &amp;&amp; gasbar &lt;=100) || gasFilling){
-    gasbar += 2;
-}
-
-if(gasbar &lt;= 0){ //If the bar hit 0, you can't attack while refilling it to 100
-    gasFilling = true;
-    strike = false;
-}
-else if(gasbar &gt;= 100){
-    gasFilling = false;
-}
-
-if(!keyboard_check(vk_numpad1)){
-    strike = false;
-}
-
-/// Hit
-
-//Checks wich character has been hit
-if(place_meeting(x,y,obj_ennemy) &amp;&amp; !strike){
-    ennemy = instance_place(x,y,obj_ennemy);
-    if(ennemy.death) hit = true;
-    else hit = false;
-}
-if(place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy) &amp;&amp; !redprotect &amp;&amp; !strike) {
-    ennemy = instance_place(obj_yellow.x, obj_yellow.y, obj_ennemy);
-    if(ennemy.death) hit = true;
-    else hit = false;
-}
-
-//Then apply the hit animation, and invulnerability
-if (hit &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; !instance_exists(obj_magicshield)){
-    life -= ennemy.damage;
-    invulnerability = room_speed*0.9;
-    
-    if(!place_meeting(x - sign(ennemy.image_xscale) * 25, y, obj_ground01)) x -= sign(ennemy.image_xscale) * 25;
-    y -= 25
-    audio_play_sound(snd_ennemy1_hit, 10, false);
-
-    if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy)){
-        audio_play_sound(snd_shield, 10, false);
-    }
-}
-else if (invulnerability &gt;= 0){
-    hit = false;
-    invulnerability--;
-}
-
-//Hit by a shadow
-/*if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1)){
-    life = 0;
-}
-*/
-// Death
-if (life &lt;= 0){
-    room_goto(Game_Over);
-}
 
 </string>
           </argument>

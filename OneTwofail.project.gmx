@@ -122,6 +122,7 @@
     <object>objects\obj_woodplank</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_arrow</object>
+    <object>objects\obj_ennemy</object>
     <object>objects\obj_ennemy1</object>
     <object>objects\obj_ennemy4</object>
     <object>objects\obj_ennemy2</object>
@@ -159,7 +160,6 @@
     <object>objects\obj_magicshield</object>
     <object>objects\obj_platform</object>
     <object>objects\obj_titlescreen</object>
-    <object>objects\obj_ennemy</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\arena</room>

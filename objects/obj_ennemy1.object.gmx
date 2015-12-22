@@ -134,7 +134,7 @@ if (attack = true){
 event_inherited();
 
 if(!attack){
-show_debug_message(string(image_index));
+    object_set_solid(object_index, false);
     if (sprite_index = spr_zombie_spawn){
         image_speed = 0.2;
         if (image_index = 11){

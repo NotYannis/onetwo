@@ -69,7 +69,9 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_lighting.dark){
+            <string>///Lighting
+
+if(obj_lighting.dark){
     Lighting(80, c_white, c_black);
 }
 </string>
@@ -94,13 +96,9 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (place_meeting(x,y,obj_ground01) || place_meeting(x, y, obj_ennemy)){
+            <string>if (place_meeting(x,y,obj_ground01)){
     instance_destroy();
 }
-// if (place_meeting (x,y,obj_ennemy1)) || (place_meeting (x,y,obj_ennemy4)) || (place_meeting(x,y,obj_ennemy2)) || (place_meeting(x,y,obj_ennemy3)){
-//    instance_destroy();
-// }
-
 </string>
           </argument>
         </arguments>
