@@ -31,7 +31,8 @@ beforeDestruct = 50;
 shake = 6;
 vertMaxShake = random_range(5, 50);
 vertMinShake = random_range(-50, 5);
-smooth = 0.5;
+smooth = 0.01;
+glowSmooth = 0.01;
 goRight = true;
 goUp = true;
 awake = irandom(40);
@@ -63,7 +64,7 @@ object_set_mask(obj_particle, spr_particle);
             <kind>1</kind>
             <string>///Lighting
 if(obj_lighting.dark){
-    Glowing(20, 40, 0.1, c_white, c_black, obj_particle);
+    Glowing(20, 40, glowSmooth, c_white, c_black, obj_particle);
 }
 </string>
           </argument>

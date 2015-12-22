@@ -103,6 +103,11 @@
   <scripts name="scripts">
     <script>scripts\Lighting.gml</script>
     <script>scripts\Glowing.gml</script>
+    <script>scripts\getEnnemyAnimationSpeed.gml</script>
+    <script>scripts\getEnnemyDeathSprite.gml</script>
+    <script>scripts\getEnnemyDamage.gml</script>
+    <script>scripts\getEnnemyDeathSpriteIndex.gml</script>
+    <script>scripts\getEnnemyHspeed.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\TNR</font>
@@ -154,8 +159,10 @@
     <object>objects\obj_magicshield</object>
     <object>objects\obj_platform</object>
     <object>objects\obj_titlescreen</object>
+    <object>objects\obj_ennemy</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\arena</room>
     <room>rooms\room4</room>
     <room>rooms\Tutorial</room>
     <room>rooms\rm_village</room>

@@ -94,7 +94,7 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (place_meeting(x,y,obj_ground01)){
+            <string>if (place_meeting(x,y,obj_ground01) || place_meeting(x, y, obj_ennemy)){
     instance_destroy();
 }
 // if (place_meeting (x,y,obj_ennemy1)) || (place_meeting (x,y,obj_ennemy4)) || (place_meeting(x,y,obj_ennemy2)) || (place_meeting(x,y,obj_ennemy3)){

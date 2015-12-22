@@ -53,6 +53,8 @@ if(irandom(50) == 1){
     particle = instance_create(x, y, obj_particle);
     particle.stay = false;
     particle.colour = colour;
+    particle.smooth = 0.5;
+    particle.glowSmooth = 0.1;
 }
 </string>
           </argument>

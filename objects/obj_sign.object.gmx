@@ -25,10 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tip = 1;
-size = 201;
-glowSize = 240;
-lightDown = false;
+            <string>glowSize = 240;
 image_speed = 0.5;
 </string>
           </argument>

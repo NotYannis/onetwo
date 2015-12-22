@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-5</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_ennemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>globalvar attack;
-    attack = true;
+            <string>//globalvar attack;
+event_inherited();
+attack = false;
 </string>
           </argument>
         </arguments>
@@ -50,7 +51,7 @@
           <argument>
             <kind>1</kind>
             <string>// Se tourne et va vers le joueur.  
-
+/*
  if (obj_character.x &lt; obj_ennemy1.x){
             image_xscale = 1;
         }
@@ -75,7 +76,7 @@ if (attack = true){
         image_speed = 0.5;
         
         // Se déplace vers le joueur (au lieu de hspeed = -2)
-        move_towards_point(obj_character.x, obj_character.y, 2);
+
        
  
         // -------- Gravity -------
@@ -127,6 +128,19 @@ if (attack = true){
            }
         }   
 
+    }
+}
+*/
+event_inherited();
+
+if(!attack){
+show_debug_message(string(image_index));
+    if (sprite_index = spr_zombie_spawn){
+        image_speed = 0.2;
+        if (image_index = 11){
+            attack = true;
+            sprite_index = spr_ennemy1;
+        }   
     }
 }
 </string>
