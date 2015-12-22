@@ -8,3 +8,5 @@ switch(object_index) {
         break;
     default : return 0.1;
 }
+
+// Si il y a un ennemi à ajouter, rajouter ligne "case" dans le switch avec le nom de l'objet et la vitesse en return. 

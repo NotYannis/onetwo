@@ -133,7 +133,8 @@
     <object>objects\obj_quit_music</object>
     <object>objects\obj_healthbar</object>
     <object>objects\obj_lighting</object>
-    <object>objects\obj_ennemytrigger</object>
+    <object>objects\obj_zombietrigger</object>
+    <object>objects\obj_shadowtrigger</object>
     <object>objects\obj_boss</object>
     <object>objects\obj_sign</object>
     <object>objects\obj_moon</object>
