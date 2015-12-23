@@ -75,10 +75,6 @@ else{
     image_xscale = 1;
 }
 
-
-
-show_debug_message(string(obj_crow.x));
-
 if (place_meeting(x,y, obj_bullet)){
             sprite_index = spr_crow_death;
             hspeed = 0;

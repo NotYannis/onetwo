@@ -136,7 +136,6 @@ if(!keyboard_check(vk_numpad1)){
     strike = false;
 }
     
-show_debug_message(string(hit));
 //Then apply the hit animation, and invulnerability
 if (hit &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; instance_exists(ennemy) &amp;&amp; !ennemy.death &amp;&amp; !ennemy.spawn){
     life -= ennemy.damage;
