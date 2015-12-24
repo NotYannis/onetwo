@@ -27,14 +27,12 @@
             <kind>1</kind>
             <string>show_debug_overlay(false);
 //Movements variables
-
 hsp = 0;
 globalvar vsp;
     vsp = 0;
 grav = 1;
 
 // Animation Variables
-
 vColl = false;
 hColl = false;
 grounded = true;
@@ -49,6 +47,12 @@ globalvar strike;
     strike = false;
 redprotect = false;
 var zombie;
+
+//View
+//
+var lSet, lPos, rSet, rPos, viewPos;
+viewUpdate = true; rTrigger = false; lTrigger = false;
+view_xview = 0;
 </string>
           </argument>
         </arguments>
@@ -192,9 +196,6 @@ if (life &lt;= 0){
             <kind>1</kind>
             <string>///Movement, collisions and animatons
 
-// ------------- Horizontal Mouvements-------------
-//-------------------------------------------------
-
 // Move 
 
 if (keyboard_check(vk_right)){
@@ -311,7 +312,15 @@ x += hsp; // Set the variable x, so that the player can move.
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>///Yellow protection
+
+if (keyboard_check(vk_numpad3)){
+    redprotect = true;
+}
+else{
+    redprotect = false;
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -331,14 +340,65 @@ x += hsp; // Set the variable x, so that the player can move.
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Yellow protection
+            <string>///View instanciation
+if(viewUpdate){
+    lBor = view_xview + 350;
+    lPos = view_xview + 500;
+    rBor = view_xview + 550;
+    rPos = view_xview + 400;
+    if(x &gt; rPos &amp;&amp; rTrigger) view_xview += 15;
+    else rTrigger = false;
+    if(x &lt; lPos &amp;&amp; lTrigger) view_xview -= 15;
+    else lTrigger = false;
+}
+// Move 
 
-if (keyboard_check(vk_numpad3)){
-    redprotect = true;
+if (keyboard_check(vk_right)){
+    if(x &gt;= rPos - 5 &amp;&amp; x &lt;= rPos + 5){
+        viewUpdate = true;
+        rTrigger = false;
+        view_xview = x - 400;
+    }
+    else if(x &gt;= rBor){
+        rTrigger = true
+    }
 }
-else{
-    redprotect = false;
+else if (keyboard_check(vk_left)){
+    if(x &gt;= lPos - 5 &amp;&amp; x &lt;= lPos + 5){
+        viewUpdate = true;
+        lTrigger = false;;
+        view_xview = x - 500;
+    }
+    else if(x &lt;= lBor){
+        lTrigger = true;
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Show camera lines
+//Copy this in draw even to see lines
+/*draw_line_colour(lBor, 200,lBor, 600, c_white, c_white);
+draw_line_colour(rPos, 200, rPos, 600, c_blue, c_blue);
+draw_line_colour(lPos, 200, lPos, 600, c_green, c_green);
+draw_line_colour(rBor, 200, rBor, 600, c_red, c_red);*/
 </string>
           </argument>
         </arguments>
