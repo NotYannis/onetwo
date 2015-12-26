@@ -88,7 +88,7 @@
     <instance objName="obj_ground01" x="640" y="640" name="inst_A96783D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombietrigger" x="1504" y="832" name="inst_95B5C3A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="-32" y="384" name="inst_64A78B70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="480" y="128" name="inst_06C1ED86" locked="0" code="" scaleX="1.45833337306976" scaleY="1.5254237651825" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree" x="384" y="288" name="inst_06C1ED86" locked="0" code="" scaleX="1.45833337306976" scaleY="1.5254237651825" colour="4294967295" rotation="0"/>
     <instance objName="obj_sign" x="704" y="544" name="inst_D6337FA0" locked="0" code="text = &quot;HELLOOOOOO !!&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="896" y="640" name="inst_3BA66513" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_targetpractice" x="1504" y="96" name="inst_41C74474" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -106,15 +106,15 @@
     <instance objName="obj_targetpractice" x="2528" y="576" name="inst_E9B8251E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="704" y="512" name="inst_05651985" locked="0" code="text = &quot;Use the spacebar to jump&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="1248" y="544" name="inst_FF98D499" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="128" y="192" name="inst_ECBE9452" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree" x="128" y="416" name="inst_ECBE9452" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="2720" y="640" name="inst_475AFCB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="2848" y="640" name="inst_9A31F5A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="2976" y="640" name="inst_D22C6A79" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="3072" y="640" name="inst_554F7776" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="3200" y="640" name="inst_4F603F0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombietrigger" x="3008" y="480" name="inst_ECF57D26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree2" x="256" y="192" name="inst_C4BBC143" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree2" x="800" y="256" name="inst_DBD16F2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="288" y="416" name="inst_C4BBC143" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="704" y="320" name="inst_DBD16F2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree2" x="928" y="448" name="inst_C20CDD82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree2" x="1376" y="320" name="inst_EAC70310" locked="0" code="" scaleX="1.3630952835083" scaleY="1.41694915294647" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="1024" y="352" name="inst_770F5CA7" locked="0" code="" scaleX="1.3630952835083" scaleY="1.30847454071045" colour="4294967295" rotation="0"/>
@@ -147,8 +147,17 @@
     <instance objName="obj_ground01" x="3840" y="480" name="inst_3C30EC2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground01" x="3712" y="576" name="inst_2DDBA7F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grave" x="0" y="288" name="inst_533F7787" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_crow" x="1120" y="32" name="inst_7B22E571" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sign" x="1152" y="544" name="inst_ABA31E33" locked="0" code="text = &quot;You can aim with the joystick, then shoot with alt&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="352" y="192" name="inst_4F0E6AF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="480" y="64" name="inst_4EBF3C50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="640" y="128" name="inst_128F0CC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="800" y="96" name="inst_EA6D1F00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="704" y="224" name="inst_7008D44F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="672" y="0" name="inst_346AC442" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="256" y="32" name="inst_77B192FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="928" y="192" name="inst_75CA62A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="1024" y="64" name="inst_D13CD322" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_particle_spawn" x="1088" y="192" name="inst_D7FBBBA5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

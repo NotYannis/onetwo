@@ -167,6 +167,8 @@ obj_lighting.color = c_white;</code>
     <instance objName="obj_particle_spawn" x="1824" y="0" name="inst_D1D6840A" locked="0" code="colour = c_blue;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle_spawn" x="1664" y="-32" name="inst_BBC3196E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle_spawn" x="1952" y="32" name="inst_4B99DCF4" locked="0" code="colour = c_blue;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shadowtrigger" x="480" y="608" name="inst_9CA46A9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sign" x="768" y="544" name="inst_63C94502" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="544" y="256" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_3B7EF676" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
