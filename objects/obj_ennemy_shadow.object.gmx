@@ -28,7 +28,7 @@
             <string>event_inherited();
 followPlayer = false;
 applyGravity = false;
-audio_play_sound(snd_shadowcry,10,false);
+
 </string>
           </argument>
         </arguments>
@@ -52,6 +52,9 @@ audio_play_sound(snd_shadowcry,10,false);
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+if(spawn){
+    if(!audio_is_playing(snd_shadowcry)) audio_play_sound(snd_shadowcry,10,false);
+}
 if(attack){ //Always run towards the player when it's 500 px far from him  
     if(x &gt; obj_character.x + 500){
         image_xscale = 1;

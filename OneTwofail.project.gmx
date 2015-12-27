@@ -165,7 +165,7 @@
     <object>objects\obj_titlescreen</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\arena</room>
+    <room>rooms\arena2</room>
     <room>rooms\Tutorial</room>
     <room>rooms\arena</room>
     <room>rooms\rm_village</room>

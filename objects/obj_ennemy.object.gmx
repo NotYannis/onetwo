@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spawn = true;
+            <string>instance_deactivate_object(object_index);
+spawn = true;
 attack = true;
 death = false;
 isProjectile = false;
@@ -61,6 +62,7 @@ hsp = getEnnemyHspeed();
           <argument>
             <kind>1</kind>
             <string>// Comportement normal si attack = true.
+
 if(spawn){
     attack = false;
     sprite_index = spawnSprite;

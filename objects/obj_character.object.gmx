@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_debug_overlay(false);
-//Movements variables
+            <string>//Movements variables
 hsp = 0;
 globalvar vsp;
     vsp = 0;
@@ -46,13 +45,37 @@ invulnerability = 1;
 globalvar strike;
     strike = false;
 redprotect = false;
-var zombie;
 
 //View
-//
-var lSet, lPos, rSet, rPos, viewPos;
+var lSet, lPos, rSet, rPos;
+viewPos = 0;
 viewUpdate = true; rTrigger = false; lTrigger = false;
 view_xview = 0;
+alarm[0] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Activate all instances around the character
+instance_activate_region(x - 650, y - 200, 1300, 400, true);
 </string>
           </argument>
         </arguments>
@@ -104,7 +127,6 @@ if (obj_lighting.dark = true){
           <argument>
             <kind>1</kind>
             <string>/// Attack and Hit
-
 if (keyboard_check(vk_numpad1) &amp;&amp; (gasbar &gt; 0) &amp;&amp; !gasFilling){
     if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
     strike = true;    
@@ -308,7 +330,7 @@ x += hsp; // Set the variable x, so that the player can move.
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Yellow protection
+            <string>///Yellow protection, Alarm
 
 if (keyboard_check(vk_numpad3)){
     redprotect = true;
@@ -316,6 +338,8 @@ if (keyboard_check(vk_numpad3)){
 else{
     redprotect = false;
 }
+
+if(alarm[0] == -1) alarm[0] = 30;
 </string>
           </argument>
         </arguments>
@@ -338,22 +362,22 @@ else{
             <kind>1</kind>
             <string>///View instanciation
 if(viewUpdate){
-    lBor = view_xview + 350;
-    lPos = view_xview + 500;
-    rBor = view_xview + 550;
-    rPos = view_xview + 400;
-    if(x &gt; rPos &amp;&amp; rTrigger) view_xview += 15;
+    lBor = view_xview + 350; //Left limit, when the camera reposition itself
+    lPos = view_xview + 500; //Position of the camera when the player walks to the left
+    rBor = view_xview + 550; //Right limit, when the camera reposition itself
+    rPos = view_xview + 400; //Position of the camera when the player walks to the right
+    if(x &gt; rPos &amp;&amp; rTrigger) viewPos += 15;
     else rTrigger = false;
-    if(x &lt; lPos &amp;&amp; lTrigger) view_xview -= 15;
+    if(x &lt; lPos &amp;&amp; lTrigger) viewPos -= 15;
     else lTrigger = false;
 }
-// Move 
 
+//View behaviour, depend of the direction of the player
 if (keyboard_check(vk_right)){
     if(x &gt;= rPos - 5 &amp;&amp; x &lt;= rPos + 5){
         viewUpdate = true;
         rTrigger = false;
-        view_xview = x - 400;
+        viewPos = x - 400;
     }
     else if(x &gt;= rBor){
         rTrigger = true
@@ -363,12 +387,18 @@ else if (keyboard_check(vk_left)){
     if(x &gt;= lPos - 5 &amp;&amp; x &lt;= lPos + 5){
         viewUpdate = true;
         lTrigger = false;;
-        view_xview = x - 500;
+        viewPos = x - 500;
     }
     else if(x &lt;= lBor){
         lTrigger = true;
     }
 }
+
+//If the view is outside the limits of the room
+if(viewPos &lt; 0) viewPos = 0;
+else if (viewPos &gt; room_width - view_wview) viewPos = room_width -view_wview; 
+
+view_xview = viewPos;
 </string>
           </argument>
         </arguments>
