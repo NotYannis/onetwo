@@ -101,13 +101,7 @@ if (attack){
             vspeed = 5;
         }
     }
-    //--------- Collision ------
-    //--------------------------
-   /* if ()){
-        death = true;
-        attack = false;
-        image_index = 0;
-    }*/
+
     if(!isProjectile){
         if(place_meeting(x,y, obj_bullet) || (place_meeting(x,y,obj_character) &amp;&amp; strike)){
             with(obj_bullet) instance_destroy();

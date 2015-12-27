@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-follow_player = false;
+followPlayer = false;
+applyGravity = false;
 audio_play_sound(snd_shadowcry,10,false);
 </string>
           </argument>
@@ -51,52 +52,18 @@ audio_play_sound(snd_shadowcry,10,false);
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-/*
-    else{
-        //-------- Animations &amp; speed----------
-        //------------------------------------- 
-        
-        image_speed = 0.5;
-        hspeed = -10;
- 
-        // -------- Gravity -------
-        //-------------------------
-
-        if (place_meeting(x,y+1,obj_ground01)){
-            vspeed = 0;
-        }
-        else{
-            vspeed = 5;
-        }
-
-        //--------- Collision ------
-        //--------------------------
-    
-        // If hit. 
-
-        if (place_meeting(x-1,y, obj_bullet)){
-            sprite_index = spr_shadow_death;
-            hspeed = 0;
-            audio_play_sound(snd_ennemy1_hit,10,false);
-            with (obj_bullet){
-            instance_destroy()
-            }
-    
-        }
-
-        if (place_meeting(x,y,obj_character)) &amp;&amp; (strike = true){
-            hspeed =0;
-            sprite_index = spr_shadow_death;
-           audio_play_sound(snd_ennemy1_hit,10,false);
-        }
-        if (sprite_index = spr_shadow_death){
-            hspeed = 0;
-            if (image_index &gt;= 8){
-                instance_destroy();
-            }
-        }
+if(attack){ //Always run towards the player when it's 500 px far from him  
+    if(x &gt; obj_character.x + 500){
+        image_xscale = 1;
+        hsp *= -1;
+        x -= 18;
+    }
+    else if( x &lt; obj_character.x - 500){
+        image_xscale = -1;
+        hsp *= -1;
+        x += 18;
+    }
 }
-*/
 </string>
           </argument>
         </arguments>

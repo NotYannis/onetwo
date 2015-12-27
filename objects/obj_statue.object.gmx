@@ -58,6 +58,7 @@ else{
 
 if (place_meeting(x,y,obj_bullet)){
     instance_destroy();
+    with(obj_bullet) instance_destroy();
 }
 
 </string>

@@ -133,7 +133,7 @@ if(place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy) &amp;&amp; !redprotect)
     hit = true;
 }
 
-if(strike || instance_exists(obj_magicshield) || redprotect)
+if(strike || instance_exists(obj_magicshield))
     hit = false;
 
 if(!keyboard_check(vk_numpad1)){
@@ -164,11 +164,7 @@ else if (invulnerability &gt;= 0){
     invulnerability--;
 }
 
-//Hit by a shadow
-/*if ((place_meeting(x,y,obj_ennemy_shadow)) &amp;&amp; !strike &amp;&amp; (invulnerability &lt;= 1)){
-    life = 0;
-}
-*/
+
 // Death
 if (life &lt;= 0){
     room_goto(Game_Over);
@@ -253,12 +249,12 @@ if (redprotect){
 //---------------------------------------
 // --------------Collisions--------------
 //---------------------------------------
-platform = instance_place(x,y+vsp,obj_platform)
+platform = instance_place(x,y + vsp + 1,obj_platform)
 
 hColl = place_meeting(x+hsp,y,obj_ground01) ;
-grounded = place_meeting(x,y + vsp + 1,obj_ground01) || (place_meeting(x,y+ vsp + 1,obj_platform) &amp;&amp; vsp &gt;=0)
-        &amp;&amp; (platform != noone  &amp;&amp; !place_meeting(x + hsp, y, obj_platform));
-
+grounded = place_meeting(x,y + vsp + 1,obj_ground01)
+         || ((place_meeting(x,y+ vsp + 1,obj_platform) &amp;&amp; vsp &gt;=0)
+                &amp;&amp; (platform != noone  &amp;&amp; !place_meeting(x + hsp, y, obj_platform)));
 // Horizontal
 if (hColl) {
     if(!place_meeting(x+sign(hsp),y,obj_ground01)){
