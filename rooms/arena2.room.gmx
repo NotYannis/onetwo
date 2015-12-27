@@ -209,12 +209,7 @@
     <instance objName="obj_platform" x="480" y="512" name="inst_3CB54DD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="544" y="512" name="inst_00691D37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="512" y="512" name="inst_D070A8B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="660" y="638" name="inst_75D167DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="1071" y="643" name="inst_AB8B3E87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="1528" y="639" name="inst_CB00E0A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="1599" y="479" name="inst_786F4D0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy_shadow" x="2345" y="623" name="inst_30DCD037" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy_shadow" x="2697" y="624" name="inst_14549A3F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombietrigger" x="736" y="608" name="inst_AD1C8824" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="768" y="544" w="16" h="16" xo="0" yo="0" id="10000002" name="inst_B4CD3ACE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

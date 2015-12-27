@@ -72,7 +72,7 @@ if(spawn){
         spawn = false;
         attack = true;
         sprite_index = sprite;
-    }   
+    }
 }
 if (attack){
     object_set_mask(object_index, sprite);
