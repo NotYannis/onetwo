@@ -139,7 +139,8 @@ if(!keyboard_check(vk_numpad1)){
 }
     
 //Then apply the hit animation, and invulnerability
-if (hit &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; instance_exists(ennemy) &amp;&amp; !ennemy.death &amp;&amp; !ennemy.spawn){
+if (hit &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; instance_exists(ennemy)
+     &amp;&amp; !ennemy.death &amp;&amp; !ennemy.isSpawning){
     life -= ennemy.damage;
     invulnerability = room_speed*0.9;
     

@@ -31,6 +31,7 @@ isSpawning = true;
 isProjectile = false;
 applyGravity = true;
 followPlayer = true;
+facing = 1;
 
 attack = true;
 death = false;
@@ -67,7 +68,6 @@ hsp = getEnnemyHspeed();
             <string>if(isSpawning){
     attack = false;
     sprite_index = spawnSprite;
-    object_set_mask(object_index, spawnSprite);
     image_speed = 0.2;
     if (image_index = 11){
         isSpawning = false;
@@ -77,14 +77,13 @@ hsp = getEnnemyHspeed();
 }
 if (attack){
     object_set_mask(object_index, sprite);
-    
     // Se tourne et va vers le joueur.  
     if(followPlayer) {
-        if (obj_character.x &lt; obj_ennemy.x){
-            image_xscale = 1;
+        if (obj_character.x &lt; id.x){
+            id.image_xscale = 1;
         }
         else {
-            image_xscale = -1;
+            id.image_xscale = -1;
         }
         move_towards_point(obj_character.x, obj_character.y, hsp);
     }
@@ -97,13 +96,17 @@ if (attack){
     // -------- Gravity -------
     //-------------------------
     if(applyGravity){
-        if (place_meeting(x,y+1,obj_ground01)){
+        if (place_meeting(x, y + vspeed + 2, obj_ground01)){
             vspeed = 0;
         }
         else{
             vspeed = 5;
         }
+        //if it's on the border of precipice, stop moving
+        if(place_empty(x - (sprite_get_width(sprite) * image_xscale - 20), y)) hspeed = 0;
     }
+    
+    
 
     if(!isProjectile){
         if(place_meeting(x,y, obj_bullet) || (place_meeting(x,y,obj_character) &amp;&amp; strike)){
@@ -129,6 +132,7 @@ if (attack){
     else{
         if(place_meeting(x,y, obj_magicshield)
             || (place_meeting(x,y, obj_yellow) &amp;&amp; obj_character.redprotect)){
+                audio_play_sound(snd_shield, 0, false);
                 instance_destroy();
         }
     }

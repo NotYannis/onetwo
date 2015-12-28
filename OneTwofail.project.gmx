@@ -115,54 +115,66 @@
     <font>fonts\TNR</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_yellow</object>
-    <object>objects\obj_yellow_leg</object>
-    <object>objects\obj_character</object>
-    <object>objects\obj_ground01</object>
-    <object>objects\obj_ground02</object>
-    <object>objects\obj_wall</object>
-    <object>objects\obj_woodplank</object>
-    <object>objects\obj_bullet</object>
-    <object>objects\obj_arrow</object>
-    <object>objects\obj_ennemy</object>
-    <object>objects\obj_ennemy1</object>
-    <object>objects\obj_ennemy4</object>
-    <object>objects\obj_ennemy2</object>
-    <object>objects\obj_ennemy3</object>
-    <object>objects\obj_ennemy_shadow</object>
-    <object>objects\obj_ennemy_mimic</object>
-    <object>objects\obj_view</object>
-    <object>objects\obj_quit_music</object>
-    <object>objects\obj_healthbar</object>
-    <object>objects\obj_lighting</object>
-    <object>objects\obj_zombietrigger</object>
-    <object>objects\obj_shadowtrigger</object>
-    <object>objects\obj_boss</object>
-    <object>objects\obj_sign</object>
-    <object>objects\obj_moon</object>
-    <object>objects\obj_ruins</object>
-    <object>objects\obj_cosmicjewel</object>
-    <object>objects\obj_shrine</object>
-    <object>objects\obj_tree</object>
-    <object>objects\obj_tree2</object>
-    <object>objects\obj_house1</object>
-    <object>objects\obj_house_back</object>
-    <object>objects\obj_house2</object>
-    <object>objects\obj_well</object>
-    <object>objects\obj_skull</object>
-    <object>objects\obj_water</object>
-    <object>objects\obj_bridge</object>
-    <object>objects\obj_lantern</object>
-    <object>objects\obj_targetpractice</object>
-    <object>objects\obj_statue</object>
-    <object>objects\obj_grave</object>
-    <object>objects\obj_gameover</object>
-    <object>objects\obj_particle</object>
-    <object>objects\obj_particle_spawn</object>
-    <object>objects\obj_crow</object>
-    <object>objects\obj_magicshield</object>
     <object>objects\obj_platform</object>
-    <object>objects\obj_titlescreen</object>
+    <objects name="perso">
+      <object>objects\obj_yellow</object>
+      <object>objects\obj_yellow_leg</object>
+      <object>objects\obj_character</object>
+      <object>objects\obj_magicshield</object>
+      <object>objects\obj_bullet</object>
+    </objects>
+    <objects name="decor">
+      <object>objects\obj_ground01</object>
+      <object>objects\obj_ground02</object>
+      <object>objects\obj_woodplank</object>
+      <object>objects\obj_wall</object>
+      <object>objects\obj_water</object>
+      <object>objects\obj_sign</object>
+      <object>objects\obj_lantern</object>
+      <object>objects\obj_grave</object>
+      <object>objects\obj_ruins</object>
+      <object>objects\obj_moon</object>
+      <object>objects\obj_house1</object>
+      <object>objects\obj_house_back</object>
+      <object>objects\obj_house2</object>
+      <object>objects\obj_well</object>
+      <object>objects\obj_skull</object>
+      <object>objects\obj_tree</object>
+      <object>objects\obj_tree2</object>
+      <object>objects\obj_bridge</object>
+      <object>objects\obj_shrine</object>
+      <object>objects\obj_cosmicjewel</object>
+      <object>objects\obj_titlescreen</object>
+      <object>objects\obj_particle</object>
+      <object>objects\obj_particle_spawn</object>
+      <object>objects\obj_gameover</object>
+    </objects>
+    <objects name="ennemies">
+      <object>objects\obj_ennemy</object>
+      <object>objects\obj_ennemy1</object>
+      <object>objects\obj_ennemy2</object>
+      <object>objects\obj_ennemy3</object>
+      <object>objects\obj_ennemy4</object>
+      <object>objects\obj_ennemy_shadow</object>
+      <object>objects\obj_ennemy_mimic</object>
+      <object>objects\obj_crow</object>
+      <object>objects\obj_statue</object>
+      <object>objects\obj_arrow</object>
+      <object>objects\obj_boss</object>
+      <object>objects\obj_targetpractice</object>
+    </objects>
+    <objects name="global objects">
+      <object>objects\obj_view</object>
+      <object>objects\obj_quit_music</object>
+      <object>objects\obj_healthbar</object>
+      <object>objects\obj_lighting</object>
+    </objects>
+    <objects name="triggers">
+      <object>objects\obj_zombietriggeroff</object>
+      <object>objects\obj_zombietrigger</object>
+      <object>objects\obj_shadowtrigger</object>
+      <object>objects\obj_zombieparty</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\arena2</room>
