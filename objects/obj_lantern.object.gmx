@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>///Lighting
 if (obj_lighting.dark){
-    Glowing(320, 370, 0.5, c_white, c_black, obj_lantern);
+    Glowing(320, 370, 0.5, c_white, c_black);
 }
 </string>
           </argument>

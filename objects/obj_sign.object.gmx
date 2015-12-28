@@ -52,7 +52,7 @@ text = "";
             <kind>1</kind>
             <string>///Lighting
 if (obj_lighting.dark){
-    Glowing(220, 240, 0.5, c_white, c_black, obj_sign);
+    Glowing(220, 240, 0.5, c_white, c_black);
 }
 </string>
           </argument>

@@ -26,13 +26,16 @@
           <argument>
             <kind>1</kind>
             <string>instance_deactivate_object(object_index);
-spawn = true;
-attack = true;
-death = false;
+
+isSpawning = true;
 isProjectile = false;
-damage = getEnnemyDamage();
 applyGravity = true;
 followPlayer = true;
+
+attack = true;
+death = false;
+
+damage = getEnnemyDamage();
 animationSpeed = getEnnemyAnimationSpeed();
 spawnSprite = getEnnemySpawnSprite();
 sprite = getEnnemySprite();
@@ -61,15 +64,13 @@ hsp = getEnnemyHspeed();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Comportement normal si attack = true.
-
-if(spawn){
+            <string>if(isSpawning){
     attack = false;
     sprite_index = spawnSprite;
     object_set_mask(object_index, spawnSprite);
     image_speed = 0.2;
     if (image_index = 11){
-        spawn = false;
+        isSpawning = false;
         attack = true;
         sprite_index = sprite;
     }
