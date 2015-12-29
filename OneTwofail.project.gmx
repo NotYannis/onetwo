@@ -16,38 +16,6 @@
     <sound>sound\snd_shadowteeth</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_red_jump</sprite>
-    <sprite>sprites\spr_red</sprite>
-    <sprite>sprites\spr_red_protect</sprite>
-    <sprite>sprites\spr_red_walk</sprite>
-    <sprite>sprites\spr_red_hit</sprite>
-    <sprite>sprites\spr_yellow</sprite>
-    <sprite>sprites\spr_yellow_leg</sprite>
-    <sprite>sprites\spr_yellow_up</sprite>
-    <sprite>sprites\spr_yellow_down</sprite>
-    <sprite>sprites\spr_boss1_1</sprite>
-    <sprite>sprites\spr_boss1_2</sprite>
-    <sprite>sprites\spr_boss1_3</sprite>
-    <sprite>sprites\spr_boss1_4</sprite>
-    <sprite>sprites\spr_boss1_5</sprite>
-    <sprite>sprites\spr_boss1_final</sprite>
-    <sprite>sprites\spr_boss_save</sprite>
-    <sprite>sprites\spr_ennemy1</sprite>
-    <sprite>sprites\spr_zombie_spawn</sprite>
-    <sprite>sprites\spr_shadow_spawn</sprite>
-    <sprite>sprites\spr_ennemy4</sprite>
-    <sprite>sprites\spr_ennemy2</sprite>
-    <sprite>sprites\spr_ennemy2_fire</sprite>
-    <sprite>sprites\spr_ennemy_death</sprite>
-    <sprite>sprites\spr_ennemy_shadow</sprite>
-    <sprite>sprites\spr_shadow_death</sprite>
-    <sprite>sprites\spr_ennemy3</sprite>
-    <sprite>sprites\spr_ennemy3_strike</sprite>
-    <sprite>sprites\spr_ennemy3_death</sprite>
-    <sprite>sprites\spr_ennemy3_spawn</sprite>
-    <sprite>sprites\spr_ennemy_skeleton</sprite>
-    <sprite>sprites\spr_crow</sprite>
-    <sprite>sprites\spr_crow_death</sprite>
     <sprite>sprites\spr_ground02</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_ground01</sprite>
@@ -87,15 +55,50 @@
     <sprite>sprites\sprite68</sprite>
     <sprite>sprites\spr_platform</sprite>
     <sprite>sprites\spr_screen</sprite>
+    <sprite>sprites\spr_orb</sprite>
     <sprite>sprites\spr_house_ruins</sprite>
+    <sprites name="Personnages">
+      <sprite>sprites\spr_yellow_leg</sprite>
+      <sprite>sprites\spr_yellow_down</sprite>
+      <sprite>sprites\spr_yellow</sprite>
+      <sprite>sprites\spr_yellow_up</sprite>
+      <sprite>sprites\spr_red_hit</sprite>
+      <sprite>sprites\spr_red_walk</sprite>
+      <sprite>sprites\spr_red</sprite>
+      <sprite>sprites\spr_red_protect</sprite>
+      <sprite>sprites\spr_red_jump</sprite>
+    </sprites>
     <sprites name="Ennemis">
+      <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_wizard</sprite>
       <sprite>sprites\spr_wizard_attack</sprite>
       <sprite>sprites\spr_flyingdevil</sprite>
       <sprite>sprites\spr_mimic_attack</sprite>
       <sprite>sprites\spr_mimic_spawn</sprite>
+      <sprite>sprites\spr_flyingeye</sprite>
+      <sprite>sprites\spr_crow_death</sprite>
+      <sprite>sprites\spr_ennemy_skeleton</sprite>
+      <sprite>sprites\spr_ennemy3_spawn</sprite>
+      <sprite>sprites\spr_ennemy3_strike</sprite>
+      <sprite>sprites\spr_ennemy4</sprite>
+      <sprite>sprites\spr_ennemy3_death</sprite>
+      <sprite>sprites\spr_ennemy_death</sprite>
+      <sprite>sprites\spr_ennemy2_fire</sprite>
+      <sprite>sprites\spr_shadow_spawn</sprite>
+      <sprite>sprites\spr_boss1_final</sprite>
+      <sprite>sprites\spr_boss_save</sprite>
+      <sprite>sprites\spr_ennemy1</sprite>
+      <sprite>sprites\spr_zombie_spawn</sprite>
+      <sprite>sprites\spr_ennemy2</sprite>
+      <sprite>sprites\spr_ennemy_shadow</sprite>
+      <sprite>sprites\spr_shadow_death</sprite>
+      <sprite>sprites\spr_ennemy3</sprite>
+      <sprite>sprites\spr_boss1_4</sprite>
+      <sprite>sprites\spr_boss1_5</sprite>
+      <sprite>sprites\spr_boss1_3</sprite>
+      <sprite>sprites\spr_boss1_2</sprite>
+      <sprite>sprites\spr_boss1_1</sprite>
     </sprites>
-    <sprite>sprites\spr_orb</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
