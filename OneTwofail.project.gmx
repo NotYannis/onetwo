@@ -87,10 +87,15 @@
     <sprite>sprites\sprite68</sprite>
     <sprite>sprites\spr_platform</sprite>
     <sprite>sprites\spr_screen</sprite>
-    <sprite>sprites\spr_mimic_spawn</sprite>
-    <sprite>sprites\spr_mimic_attack</sprite>
-    <sprite>sprites\spr_flyingdevil</sprite>
     <sprite>sprites\spr_house_ruins</sprite>
+    <sprites name="Ennemis">
+      <sprite>sprites\spr_wizard</sprite>
+      <sprite>sprites\spr_wizard_attack</sprite>
+      <sprite>sprites\spr_flyingdevil</sprite>
+      <sprite>sprites\spr_mimic_attack</sprite>
+      <sprite>sprites\spr_mimic_spawn</sprite>
+    </sprites>
+    <sprite>sprites\spr_orb</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
