@@ -47,16 +47,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/* if (place_meeting(x,y,obj_character)){
-    instance_create(x+300, y+22, obj_ennemy1);
-    instance_create(x-300, y+22, obj_ennemy1);
-    with (obj_ennemy1){
-    image_xscale = 1;
-    }
-    instance_destroy();
-}
-*/
-
+            <string>///Activate zombieparty
 if (place_meeting(x,y,obj_character)){
     instance_create(x, y, obj_zombieparty);
     instance_destroy();

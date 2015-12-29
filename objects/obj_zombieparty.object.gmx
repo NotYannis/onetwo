@@ -49,12 +49,10 @@
           <argument>
             <kind>1</kind>
             <string>if (irandom(100) == 1){
-    if(!place_free(obj_character.x-150, y+270)){
-        instance_create(obj_character.x-150, y+250, obj_ennemy1);
+    if(!place_free(obj_character.x-150, y + 1)){
+        instance_create(obj_character.x-150, y, obj_ennemy1);
     }
 }
-show_debug_message(string(place_free(obj_character.x-150, y+270)));
-show_debug_message(y+270);
 </string>
           </argument>
         </arguments>
