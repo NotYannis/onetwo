@@ -142,14 +142,17 @@ if (hit &amp;&amp; (invulnerability &lt;= 1) &amp;&amp; instance_exists(ennemy)
      &amp;&amp; !ennemy.death &amp;&amp; !ennemy.isSpawning){
     life -= ennemy.damage;
     invulnerability = room_speed*0.9;
-    
+
+    //Go back in the good direction if there is nothing behind
     if(!place_meeting(x - sign(ennemy.image_xscale) * 25, y, obj_ground01))
         x -= sign(ennemy.image_xscale) * 25;
     y -= 25
+    
     if(ennemy.isProjectile){
         with(ennemy) 
         instance_destroy();
     }
+    
     if (!audio_is_playing(snd_ennemy1_hit))
         audio_play_sound(snd_ennemy1_hit, 10, false);
 
@@ -167,6 +170,9 @@ else if (invulnerability &gt;= 0){
 if (life &lt;= 0){
     room_goto(Game_Over);
 }
+
+//Cheat code
+if(keyboard_check(vk_numpad8)) life = 1000;
 
 </string>
           </argument>

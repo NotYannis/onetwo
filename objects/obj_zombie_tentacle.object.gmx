@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>image_blend = c_purple;
-//make_colour_rgb(102, 54, 110);
 </string>
           </argument>
         </arguments>

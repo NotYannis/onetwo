@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 followPlayer = false;
-cooldown = 45;
+cooldown = 0;
 strike = false;
 </string>
           </argument>
@@ -51,10 +51,9 @@ strike = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-//if() {
-if(obj_character.x &gt; x - 200 &amp;&amp; obj_character.x &lt; x + 200 &amp;&amp; !isSpawning){
-    cooldown--;
+            <string>///Strike
+event_inherited();
+if(obj_character.x &gt; x - 180 &amp;&amp; obj_character.x &lt; x &amp;&amp; !isSpawning){
     if (cooldown == 0){
         image_index = 0;
         mask_index = spr_tentacle_strike;
@@ -62,16 +61,21 @@ if(obj_character.x &gt; x - 200 &amp;&amp; obj_character.x &lt; x + 200 &amp;&am
         image_speed = 0.5;
         strike = true;
     }
+    cooldown--;
 }
-
+else{
+    cooldown = 0
+}
 if(strike){
     if(image_index == sprite_get_number(spr_tentacle_strike) - 0.5){
         strike = false;
-        cooldown = 45;
+        cooldown = 28;
         sprite_index = spr_tentacle;
+        mask_index = spr_tentacle;
         image_speed = 0.5;
     }
 }
+
 </string>
           </argument>
         </arguments>

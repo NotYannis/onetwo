@@ -3,9 +3,9 @@
   <type>0</type>
   <xorig>54</xorig>
   <yorigin>56</yorigin>
-  <colkind>1</colkind>
-  <coltolerance>0</coltolerance>
-  <sepmasks>0</sepmasks>
+  <colkind>0</colkind>
+  <coltolerance>29</coltolerance>
+  <sepmasks>-1</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>18</bbox_left>
   <bbox_right>131</bbox_right>

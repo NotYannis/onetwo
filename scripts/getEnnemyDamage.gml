@@ -7,5 +7,6 @@ switch(object_index) {
         break;
     case obj_ennemy_shadow : return 100;
         break;
+    case obj_zombie_strong : return 50;
     default : return 100;
 }
