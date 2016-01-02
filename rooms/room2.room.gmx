@@ -76,11 +76,11 @@
     <instance objName="obj_ground01" x="-64" y="512" name="inst_E825237E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sign" x="608" y="576" name="inst_AA1FF213" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_house1" x="1632" y="-64" name="inst_C45D74EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="1856" y="704" name="inst_B9B06B10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="2368" y="704" name="inst_E67EE3AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="2208" y="704" name="inst_D8AEFFF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="2080" y="704" name="inst_29D84C11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy1" x="2144" y="704" name="inst_CBDFBBC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie" x="1856" y="704" name="inst_B9B06B10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie" x="2368" y="704" name="inst_E67EE3AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie" x="2208" y="704" name="inst_D8AEFFF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie" x="2080" y="704" name="inst_29D84C11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie" x="2144" y="704" name="inst_CBDFBBC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_house_back" x="1632" y="-64" name="inst_470F93D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_house2" x="768" y="256" name="inst_7E3AA83A" locked="0" code="" scaleX="1.01010096073151" scaleY="1.03048777580261" colour="4294967295" rotation="0"/>
     <instance objName="obj_sign" x="1440" y="576" name="inst_B6AF5D3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
