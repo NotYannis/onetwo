@@ -25,8 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_x[0] = view_xview[0];
-background_y[0] = view_yview[0];
+            <string>// background_x[0] = view_xview[0];
+// background_y[0] = view_yview[0];
+
+draw_background_tiled(bg_parallax1, view_xview[0], view_yview[0]+500);
+
 </string>
           </argument>
         </arguments>

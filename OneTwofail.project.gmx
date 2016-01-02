@@ -111,6 +111,7 @@
     <background>background\background4</background>
     <background>background\background5</background>
     <background>background\bg_parallax1</background>
+    <background>background\bg_parallax2</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
