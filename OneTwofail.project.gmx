@@ -72,6 +72,7 @@
     </sprites>
     <sprites name="Ennemis">
       <sprite>sprites\spr_crow</sprite>
+      <sprite>sprites\spr_crow_death</sprite>
       <sprite>sprites\spr_wizard</sprite>
       <sprite>sprites\spr_wizard_attack</sprite>
       <sprite>sprites\spr_flyingdevil</sprite>
@@ -79,28 +80,27 @@
       <sprite>sprites\spr_mimic_spawn</sprite>
       <sprite>sprites\spr_flyingeye</sprite>
       <sprite>sprites\spr_flyingeye_attack</sprite>
-      <sprite>sprites\spr_crow_death</sprite>
       <sprite>sprites\spr_ennemy_skeleton</sprite>
-      <sprite>sprites\spr_ennemy3_spawn</sprite>
-      <sprite>sprites\spr_ennemy3_strike</sprite>
-      <sprite>sprites\spr_ennemy4</sprite>
-      <sprite>sprites\spr_ennemy3_death</sprite>
-      <sprite>sprites\spr_ennemy_death</sprite>
-      <sprite>sprites\spr_ennemy2_fire</sprite>
-      <sprite>sprites\spr_shadow_spawn</sprite>
-      <sprite>sprites\spr_boss1_final</sprite>
-      <sprite>sprites\spr_boss_save</sprite>
-      <sprite>sprites\spr_ennemy1</sprite>
+      <sprite>sprites\spr_zombie</sprite>
       <sprite>sprites\spr_zombie_spawn</sprite>
-      <sprite>sprites\spr_ennemy2</sprite>
-      <sprite>sprites\spr_ennemy_shadow</sprite>
+      <sprite>sprites\spr_zombie_death</sprite>
+      <sprite>sprites\spr_tentacle_spawn</sprite>
+      <sprite>sprites\spr_tentacle</sprite>
+      <sprite>sprites\spr_tentacle_strike</sprite>
+      <sprite>sprites\spr_tentacle_death</sprite>
+      <sprite>sprites\spr_shadow_spawn</sprite>
+      <sprite>sprites\spr_shadow</sprite>
       <sprite>sprites\spr_shadow_death</sprite>
-      <sprite>sprites\spr_ennemy3</sprite>
-      <sprite>sprites\spr_boss1_4</sprite>
+      <sprite>sprites\spr_boss_save</sprite>
+      <sprite>sprites\spr_boss1_final</sprite>
       <sprite>sprites\spr_boss1_5</sprite>
+      <sprite>sprites\spr_boss1_4</sprite>
       <sprite>sprites\spr_boss1_3</sprite>
       <sprite>sprites\spr_boss1_2</sprite>
       <sprite>sprites\spr_boss1_1</sprite>
+      <sprite>sprites\spr_ennemy4</sprite>
+      <sprite>sprites\spr_ennemy2_fire</sprite>
+      <sprite>sprites\spr_ennemy2</sprite>
     </sprites>
     <sprite>sprites\spr_gate</sprite>
   </sprites>
@@ -117,10 +117,11 @@
     <script>scripts\Glowing.gml</script>
     <script>scripts\getEnnemyAnimationSpeed.gml</script>
     <script>scripts\getEnnemySpawnSprite.gml</script>
+    <script>scripts\getEnnemySpawnSpriteIndex.gml</script>
     <script>scripts\getEnnemySprite.gml</script>
     <script>scripts\getEnnemyDeathSprite.gml</script>
-    <script>scripts\getEnnemyDamage.gml</script>
     <script>scripts\getEnnemyDeathSpriteIndex.gml</script>
+    <script>scripts\getEnnemyDamage.gml</script>
     <script>scripts\getEnnemyHspeed.gml</script>
   </scripts>
   <fonts name="fonts">
@@ -163,7 +164,9 @@
     </objects>
     <objects name="ennemies">
       <object>objects\obj_ennemy</object>
-      <object>objects\obj_ennemy1</object>
+      <object>objects\obj_zombie</object>
+      <object>objects\obj_zombie_tentacle</object>
+      <object>objects\obj_tentacle</object>
       <object>objects\obj_ennemy2</object>
       <object>objects\obj_ennemy3</object>
       <object>objects\obj_ennemy4</object>
