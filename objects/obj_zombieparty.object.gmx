@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>if (irandom(100) == 1){
     if(!place_free(obj_character.x-150, y + 1)){
-        instance_create(obj_character.x-150, y, obj_ennemy1);
+        instance_create(obj_character.x-150, y, obj_zombie);
     }
 }
 </string>
