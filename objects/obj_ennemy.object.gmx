@@ -69,16 +69,15 @@ hsp = getEnnemyHspeed();
     attack = false;
     sprite_index = spawnSprite;
     image_speed = 0.2;
-    if (image_index == 10){
+    if (image_index == sprite_get_number(spawnSprite)){
         isSpawning = false;
         attack = true;
         sprite_index = sprite;
         mask_index = sprite;
+        image_speed = animationSpeed;
     }
 }
 if (attack){
-    image_speed = animationSpeed;
-    id.sprite_index = sprite;
     // Se tourne et va vers le joueur.
     if(followPlayer) {
         if (obj_character.x &lt; id.x){
@@ -109,7 +108,8 @@ if (attack){
     
 
     if(!isProjectile){
-        if(place_meeting(x,y, obj_bullet) || (place_meeting(x,y,obj_character) &amp;&amp; strike)){
+        if(place_meeting(x,y, obj_bullet)
+            || (place_meeting(x,y,obj_character) &amp;&amp; obj_character.strike)){
             with(obj_bullet) instance_destroy();
             audio_play_sound(snd_ennemy1_hit,10,false)
             death = true;
