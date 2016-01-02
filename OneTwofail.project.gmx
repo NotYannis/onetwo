@@ -31,6 +31,7 @@
     <sprite>sprites\spr_ruins</sprite>
     <sprite>sprites\spr_shrine</sprite>
     <sprite>sprites\spr_tree</sprite>
+    <sprite>sprites\spr_tree_3</sprite>
     <sprite>sprites\spr_tree_test</sprite>
     <sprite>sprites\spr_tree_2</sprite>
     <sprite>sprites\spr_sign</sprite>
