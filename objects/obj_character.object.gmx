@@ -42,8 +42,7 @@ gasbar = 100;
 life = 100;
 hit = false;
 invulnerability = 1;
-globalvar strike;
-    strike = false;
+strike = false;
 redprotect = false;
 
 //View

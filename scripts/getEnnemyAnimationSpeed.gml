@@ -1,7 +1,8 @@
 ///getEnnemyAnimationSpeed : return the animation speed for each ennemy
 
 switch(object_index) {
-    case obj_tentacle :
+    case obj_tentacle : return 0.4;
+        break;
     case obj_zombie : return 0.5;
         break;
     case obj_ennemy_mimic :
