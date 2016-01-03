@@ -32,6 +32,7 @@ isProjectile = false;
 applyGravity = true;
 followPlayer = true;
 facing = 1;
+invulnerability = 0;
 
 attack = true;
 death = false;
@@ -41,7 +42,10 @@ animationSpeed = getEnnemyAnimationSpeed();
 spawnSprite = getEnnemySpawnSprite();
 sprite = getEnnemySprite();
 deathSprite = getEnnemyDeathSprite();
+hp = getEnnemyHp();
+gunRes = getEnnemyGunRes();
 hsp = getEnnemyHspeed();
+
 </string>
           </argument>
         </arguments>
@@ -107,13 +111,18 @@ if (attack){
     
 
     if(!isProjectile){
-        if(place_meeting(x,y, obj_bullet)
-            || (place_meeting(x,y,obj_character) &amp;&amp; obj_character.strike)){
+        if(place_meeting(x,y, obj_bullet)){
             with(obj_bullet) instance_destroy();
             audio_play_sound(snd_ennemy1_hit,10,false)
-            death = true;
-            attack = false;
-            image_index = 0;
+            hp -= obj_character.gunDamage * gunRes;
+        }
+        if((place_meeting(x,y,obj_character) &amp;&amp; obj_character.strike)
+            &amp;&amp; invulnerability ==0){
+            hp -= obj_character.damage;
+            invulnerability = 30;
+        }
+        else if(invulnerability &gt; 0){
+            invulnerability--;
         }
         if (place_meeting(x,y,obj_water)){
             hspeed = 0;
@@ -135,10 +144,16 @@ if (attack){
         }
     }
     
-    // Death animation 
+    if(hp &lt;= 0) {
+        death = true;
+        attack = false;
+        image_index = 0;
+    }
 }
+
+// Death animation 
 if(death){
-    object_set_mask(object_index, deathSprite);
+    //object_set_mask(object_index, deathSprite);
     sprite_index = deathSprite;
     image_speed = 1;
     hspeed = 0;

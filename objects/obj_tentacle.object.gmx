@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-followPlayer = false;
 cooldown = 0;
 strike = false;
 </string>
@@ -53,7 +52,11 @@ strike = false;
             <kind>1</kind>
             <string>///Strike
 event_inherited();
-if(obj_character.x &gt; x - 180 &amp;&amp; obj_character.x &lt; x &amp;&amp; !isSpawning){
+
+//If the player is near the tentacle, it strikes
+if(((obj_character.x &gt; x - 200 &amp;&amp; obj_character.x &lt; x )
+        || (obj_character.x &lt; x + 200 &amp;&amp; obj_character.x &gt; x))
+     &amp;&amp; !isSpawning){
     if (cooldown == 0){
         image_index = 0;
         mask_index = spr_tentacle_strike;
@@ -63,9 +66,10 @@ if(obj_character.x &gt; x - 180 &amp;&amp; obj_character.x &lt; x &amp;&amp; !is
     }
     cooldown--;
 }
-else{
+else{ //When player is out of range, prepare to strike
     cooldown = 0
 }
+
 if(strike){
     if(image_index == sprite_get_number(spr_tentacle_strike) - 0.5){
         strike = false;

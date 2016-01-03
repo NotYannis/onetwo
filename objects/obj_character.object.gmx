@@ -40,6 +40,8 @@ walking = false;
 gasFilling = false;
 gasbar = 100;
 life = 100;
+damage = 10;
+gunDamage = 10;
 hit = false;
 invulnerability = 1;
 strike = false;
@@ -104,7 +106,7 @@ instance_activate_region(x - 650, y - 200, 1300, 400, true);
             <string>/// Attack and Hit
 if (keyboard_check(vk_numpad1) &amp;&amp; (gasbar &gt; 0) &amp;&amp; !gasFilling){
     if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
-    strike = true;    
+    strike = true;  
     gasbar -= 5;
 }
 else if((!keyboard_check(vk_numpad1) &amp;&amp; gasbar &lt;=100) || gasFilling){

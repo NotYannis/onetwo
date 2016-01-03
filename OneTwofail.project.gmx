@@ -123,6 +123,8 @@
     <script>scripts\getEnnemySprite.gml</script>
     <script>scripts\getEnnemyDeathSprite.gml</script>
     <script>scripts\getEnnemyDamage.gml</script>
+    <script>scripts\getEnnemyHp.gml</script>
+    <script>scripts\getEnnemyGunRes.gml</script>
     <script>scripts\getEnnemyHspeed.gml</script>
   </scripts>
   <fonts name="fonts">
@@ -136,6 +138,26 @@
       <object>objects\obj_character</object>
       <object>objects\obj_magicshield</object>
       <object>objects\obj_bullet</object>
+    </objects>
+    <objects name="ennemies">
+      <object>objects\obj_ennemy</object>
+      <object>objects\obj_zombie</object>
+      <object>objects\obj_zombie_strong</object>
+      <object>objects\obj_zombie_tentacle</object>
+      <object>objects\obj_tentacle</object>
+      <object>objects\obj_ennemy_shadow</object>
+      <object>objects\obj_ennemy_mimic</object>
+      <object>objects\obj_crow</object>
+      <object>objects\obj_statue</object>
+      <object>objects\obj_arrow</object>
+      <object>objects\obj_boss</object>
+      <object>objects\obj_targetpractice</object>
+    </objects>
+    <objects name="global objects">
+      <object>objects\obj_view</object>
+      <object>objects\obj_quit_music</object>
+      <object>objects\obj_healthbar</object>
+      <object>objects\obj_lighting</object>
     </objects>
     <objects name="decor">
       <object>objects\obj_ground01</object>
@@ -162,26 +184,6 @@
       <object>objects\obj_particle</object>
       <object>objects\obj_particle_spawn</object>
       <object>objects\obj_gameover</object>
-    </objects>
-    <objects name="ennemies">
-      <object>objects\obj_ennemy</object>
-      <object>objects\obj_zombie</object>
-      <object>objects\obj_zombie_strong</object>
-      <object>objects\obj_zombie_tentacle</object>
-      <object>objects\obj_tentacle</object>
-      <object>objects\obj_ennemy_shadow</object>
-      <object>objects\obj_ennemy_mimic</object>
-      <object>objects\obj_crow</object>
-      <object>objects\obj_statue</object>
-      <object>objects\obj_arrow</object>
-      <object>objects\obj_boss</object>
-      <object>objects\obj_targetpractice</object>
-    </objects>
-    <objects name="global objects">
-      <object>objects\obj_view</object>
-      <object>objects\obj_quit_music</object>
-      <object>objects\obj_healthbar</object>
-      <object>objects\obj_lighting</object>
     </objects>
     <objects name="triggers">
       <object>objects\obj_zombietriggeroff</object>
