@@ -29,7 +29,7 @@
 isSpawning = false;
 aiming = false;
 
-hsp = behindPlayer() * getEnnemyHspeed();
+hsp = getEnnemyHspeed();
 damage = getEnnemyDamage();
 xStartPos = x;
 stay = 10;

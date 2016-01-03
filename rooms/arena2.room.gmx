@@ -139,7 +139,7 @@
     <instance objName="obj_yellow_leg" x="256" y="480" name="inst_075CCD59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground01" x="64" y="512" name="inst_63C293EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground01" x="512" y="640" name="inst_92629262" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_statue" x="864" y="544" name="inst_6A0789EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wizard" x="864" y="224" name="inst_2546F5F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="768" y="544" w="16" h="16" xo="0" yo="0" id="10000002" name="inst_B4CD3ACE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

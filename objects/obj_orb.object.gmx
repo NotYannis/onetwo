@@ -29,7 +29,8 @@
 follow_player = true;
 isSpawning = true;
 aiming = true;
-glowSize = 40;
+glowSize = 100;
+lightDown = false;
 </string>
           </argument>
         </arguments>
@@ -52,8 +53,9 @@ glowSize = 40;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_lighting.dark){
-    Glowing(10, glowSize, 1, c_blue, c_black);
+            <string>///Lighting
+if(obj_lighting.dark){
+    Glowing(80, 100, 5, c_white, c_black);
 }
 </string>
           </argument>

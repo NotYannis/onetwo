@@ -46,6 +46,7 @@ hit = false;
 invulnerability = 1;
 strike = false;
 redprotect = false;
+canDoubleJump = true;
 
 //View
 var lSet, lPos, rSet, rPos;
@@ -266,6 +267,7 @@ if (hColl) {
 
 // Vertical
 if (grounded) {
+    canDoubleJump = true;
     if(!hColl){ //Shouldn't move vertically only if its grounded
         vsp = 0;
     }

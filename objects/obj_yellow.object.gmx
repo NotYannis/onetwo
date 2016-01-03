@@ -145,8 +145,9 @@ if (canshoot &lt;= 1){
             if (image_xscale = -1){
                 instance_create (x+20,y+29,obj_bullet);
                 }
-        if (gundown = true){
+        if (gundown = true &amp;&amp; obj_character.canDoubleJump){
             vsp = -10;
+            obj_character.canDoubleJump = false;
         }
     }
 }

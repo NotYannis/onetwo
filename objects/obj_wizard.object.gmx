@@ -31,6 +31,7 @@ isSpawning = false;
 
 cooldown = 120;
 strike = false;
+kameha = false;
 </string>
           </argument>
         </arguments>
@@ -54,22 +55,34 @@ strike = false;
           <argument>
             <kind>1</kind>
             <string>///Magic !
-
-if(cooldown &gt; 0 &amp;&amp; !strike) cooldown--;
-
-if(cooldown == 0){
-    cooldown--;
-    strike = true;
-    image_index = 0;
-    sprite_index = spr_wizard_attack;
-}
-
-if(strike){
-    if(image_index &gt;= sprite_get_number(spr_wizard_attack) - 1){
-        instance_create(x + 12, y + 72, obj_orb);
-        cooldown = 120;
-        sprite_index = spr_wizard;
-        strike = false;
+if(!death){
+    if(cooldown &gt; 0 &amp;&amp; !strike){//On cooldown
+        cooldown--;
+    }
+    
+    if(cooldown == 0){//Prepare to throw
+        cooldown--;
+        strike = true;
+        image_index = 0;
+        sprite_index = spr_wizard_attack;
+    }
+    
+    if(strike){//Throw the orb
+        if(image_index &gt;= sprite_get_number(spr_wizard_attack) - image_speed){
+            orb = instance_create(x + 12, y + 72, obj_orb);
+            cooldown = 120;
+            strike = false;
+            kameha = true;
+        }
+    }
+    
+    if(kameha){//Stay kameha style while the orb pops out
+        image_index = 4;
+        if(orb.stay == 0){
+            kameha = false;
+            sprite_index = spr_wizard;
+            image_index = 0;
+        }
     }
 }
 </string>
