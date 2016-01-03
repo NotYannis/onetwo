@@ -1,4 +1,4 @@
-///Glowing(sizeMin, sizeMax, smoothing, centerColour, edgeColour, obj)
+///Glowing(sizeMin, sizeMax, smoothing, centerColour, edgeColour)
 
 
 //Checks if the light ellipse is at size max or not

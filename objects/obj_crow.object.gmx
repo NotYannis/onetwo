@@ -28,11 +28,11 @@
             <string>image_speed = 0.5;
 goRight = true;
 flightSpeed = 5;
+death = false;
 
 //Flight distances
-dist = 500;
-distMin = 0;
-distMax = 500;
+distMin = x - 250;
+distMax = x + 250;
 </string>
           </argument>
         </arguments>
@@ -55,38 +55,38 @@ distMax = 500;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if (dist &gt;= distMax){
-    goRight = false;
-}
-
-else if (dist &lt;= distMin){
-    goRight = true;
-}
-
-if(goRight){
-    x+= 5;
-    dist += 5
-    image_xscale = -1;
-}
-else{
-    x-=5;
-    dist -= 5;
-    image_xscale = 1;
+            <string>if(!death){
+    if (x &gt;= distMax){
+        goRight = false;
+    }
+    
+    else if (x &lt;= distMin){
+        goRight = true;
+    }
+    
+    if(goRight){
+        x+= flightSpeed;
+        image_xscale = -1;
+    }
+    else{
+        x-=flightSpeed;
+        image_xscale = 1;
+    }
 }
 
 if (place_meeting(x,y, obj_bullet)){
-            sprite_index = spr_crow_death;
-            hspeed = 0;
-            audio_play_sound(snd_ennemy1_hit,10,false);
-            with (obj_bullet){
-            instance_destroy()
-            }
+    sprite_index = spr_crow_death;
+    hspeed = 0;
+    death = true;
+    audio_play_sound(snd_ennemy1_hit,10,false);
+    with (obj_bullet){
+        instance_destroy()
+    }
 }
 
-if (sprite_index = spr_crow_death){
+if (death){
     image_speed = 0.8;
-    if (image_index &gt;= 7){
+    if (image_index &gt;= sprite_get_number(spr_crow_death) - 1){
         instance_destroy();
     }
 }

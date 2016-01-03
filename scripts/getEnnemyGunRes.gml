@@ -7,5 +7,5 @@ switch(object_index) {
     case obj_ennemy_shadow :
     case obj_zombie_strong : return 0.5;
     case obj_tentacle : return 0;
-    default : return 10;
+    default : return 1;
 }

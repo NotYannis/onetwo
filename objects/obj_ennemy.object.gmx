@@ -46,6 +46,8 @@ hp = getEnnemyHp();
 gunRes = getEnnemyGunRes();
 hsp = getEnnemyHspeed();
 
+image_speed = animationSpeed;
+
 </string>
           </argument>
         </arguments>
@@ -83,12 +85,7 @@ hsp = getEnnemyHspeed();
 if (attack){
     // Se tourne et va vers le joueur.
     if(followPlayer) {
-        if (obj_character.x &lt; id.x){
-            id.image_xscale = 1;
-        }
-        else {
-            id.image_xscale = -1;
-        }
+            id.image_xscale = behindPlayer();
         move_towards_point(obj_character.x, obj_character.y, hsp);
     }
     else{
@@ -121,7 +118,15 @@ if (attack){
             hp -= obj_character.damage;
             invulnerability = 30;
         }
-        else if(invulnerability &gt; 0){
+        else if(place_meeting(x,y,obj_character)
+                 || place_meeting(x,y,obj_yellow) &amp;&amp; !obj_character.redprotect){
+            obj_character.hit = true;
+            obj_character.ennemy = id;
+            obj_character.damage = damage;
+            obj_character.enemyBehind = behindPlayer();
+        }
+        
+        if(invulnerability &gt; 0){
             invulnerability--;
         }
         if (place_meeting(x,y,obj_water)){

@@ -1,6 +1,7 @@
 ///getEnnemyDeathSprite
 
 switch(object_index) {
+    case obj_wizard :
     case obj_zombie_strong :
     case obj_zombie_tentacle :
     case obj_zombie : return spr_zombie_death;

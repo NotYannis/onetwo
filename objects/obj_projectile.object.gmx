@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,16 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>globalvar life;
-    life = 100;
-globalvar gasbar;
-    gasbar = 100;
+            <string>followPlayer = true;
+isSpawning = false;
+aiming = false;
+
+hsp = behindPlayer() * getEnnemyHspeed();
+damage = getEnnemyDamage();
+xStartPos = x;
+stay = 10;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,41 +55,51 @@ globalvar gasbar;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//------Health-------
-//-------------------
+            <string>if(isSpawning){ //If spawn, move a bit towards the direction of the player
+    if(behindPlayer() &lt; 0 &amp;&amp; x - xStartPos &lt;= 20){
+        x += hsp/2;
+    }
+    else if(behindPlayer() &gt; 0 &amp;&amp; xStartPos - x &lt;= 20){
+        x -= hsp/2;
+    }
+    else{
+        stay--
+    }
+    if(stay == 0) isSpawning = false;
 
-draw_healthbar(view_xview+50, view_yview+50, view_xview+400, view_yview+70, obj_character.hp, c_black, c_red, c_red, 0, true, true);
-draw_sprite(spr_lifebar, 1, view_xview+20, view_yview+45);
-
-
-// Gas
-
-draw_healthbar(view_xview+50, view_yview+100, view_xview+200, view_yview+80, gasbar, c_black, c_maroon, c_maroon, 0, true, true);
-if (!obj_character.gasFilling){
-    draw_sprite(spr_gasbar, 0, view_xview+20, view_yview+75);
 }
 else{
-    draw_sprite(spr_gasbar, 1, view_xview+20, view_yview+75);
+    if(aiming){ //Move in the direction of the player
+        motion_add(point_direction(x, y, obj_character.x, obj_character.y), hsp);
+        aiming = false;
+    }
+    if(!followPlayer){//or just move horizontally
+        hspeed = hsp;
+    }
+    
+    //If thouches the player, make some damage
+    if(place_meeting(x,y,obj_character)
+        || (place_meeting(x,y,obj_yellow) &amp;&amp; !obj_character.redprotect)){
+        obj_character.hit = true;
+        obj_character.ennemy = id;
+        obj_character.damage = damage;
+        obj_character.enemyBehind = behindPlayer();
+        instance_destroy();
+    }
+    //If touches the player when protected
+    if(place_meeting(x,y, obj_magicshield)
+       || (place_meeting(x,y, obj_yellow) &amp;&amp; obj_character.redprotect)){
+        audio_play_sound(snd_shield, 0, false);
+        instance_destroy();
+    }
+    
+    //If touches the ground or out of the view
+    if(place_meeting(x, y, obj_ground01)
+        || x &lt; view_xview || x &gt; view_xview + view_wview
+        || y &lt; view_yview || y &gt; view_yview + view_hview){
+        instance_destroy();
+    }
 }
-// Magic shield icon
-
-if (obj_yellow.canprotect &lt;= 1){
-    draw_sprite(spr_magicshield_icon, 1, view_xview+140, view_yview+100);
-}
-else{
-    draw_sprite(spr_magicshield_icon, 2, view_xview+140, view_yview+100);
-}
-//-----------Bullets------
-//------------------------
-
-if (canshoot &lt;= 1){
-   draw_sprite(spr_bulletnumber2, 1, view_xview+30, view_yview+100);
-}
-else{
-    draw_sprite(spr_bulletnumber2, 2, view_xview+30, view_yview+100);
-}
-
-
 </string>
           </argument>
         </arguments>

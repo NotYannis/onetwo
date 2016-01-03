@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_ennemy</parentName>
+  <parentName>obj_projectile</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,10 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 isSpawning = false;
-applyGravity = false;
 followPlayer = false;
-isProjectile = true;
-hspeed = -15;
 
 </string>
           </argument>

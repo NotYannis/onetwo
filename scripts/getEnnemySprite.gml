@@ -11,5 +11,6 @@ switch(object_index) {
         break;
     case obj_tentacle : return spr_tentacle;
         break;
+    case obj_wizard : return spr_wizard;
     default : return noone;
 }

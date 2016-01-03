@@ -5,6 +5,7 @@ switch(object_index) {
         break;
     case obj_zombie : return 0.5;
         break;
+    case obj_wizard :
     case obj_ennemy_mimic :
     case obj_zombie_strong :
     case obj_ennemy_shadow : return 0.2;

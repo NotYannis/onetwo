@@ -17,49 +17,40 @@
     <sound>sound\snd_onetwo</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_ground02</sprite>
-    <sprite>sprites\spr_wall</sprite>
-    <sprite>sprites\spr_ground01</sprite>
-    <sprite>sprites\spr_woodplanks</sprite>
-    <sprite>sprites\spr_cosmicjewel</sprite>
-    <sprite>sprites\spr_bullet</sprite>
-    <sprite>sprites\spr_arrow</sprite>
-    <sprite>sprites\spr_bulletnumber2</sprite>
-    <sprite>sprites\spr_magicshield_icon</sprite>
-    <sprite>sprites\spr_magicshield</sprite>
-    <sprite>sprites\spr_moon</sprite>
-    <sprite>sprites\spr_ruins</sprite>
-    <sprite>sprites\spr_shrine</sprite>
-    <sprite>sprites\spr_tree</sprite>
-    <sprite>sprites\spr_tree_3</sprite>
-    <sprite>sprites\spr_tree_test</sprite>
-    <sprite>sprites\spr_tree_2</sprite>
-    <sprite>sprites\spr_sign</sprite>
-    <sprite>sprites\spr_sign_off</sprite>
-    <sprite>sprites\spr_lantern2</sprite>
-    <sprite>sprites\spr_well</sprite>
-    <sprite>sprites\spr_house1</sprite>
-    <sprite>sprites\spr_house1_back</sprite>
-    <sprite>sprites\spr_house2</sprite>
-    <sprite>sprites\spr_skull</sprite>
-    <sprite>sprites\spr_lifebar</sprite>
-    <sprite>sprites\spr_gameover</sprite>
-    <sprite>sprites\spr_gasbar</sprite>
-    <sprite>sprites\spr_statue</sprite>
-    <sprite>sprites\spr_water</sprite>
     <sprite>sprites\spr_trigger</sprite>
-    <sprite>sprites\spr_bridge</sprite>
-    <sprite>sprites\spr_lantern</sprite>
-    <sprite>sprites\spr_targetpractice</sprite>
-    <sprite>sprites\spr_grave</sprite>
-    <sprite>sprites\spr_grave2</sprite>
-    <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\sprite68</sprite>
     <sprite>sprites\spr_platform</sprite>
-    <sprite>sprites\spr_screen</sprite>
-    <sprite>sprites\spr_orb</sprite>
-    <sprite>sprites\spr_bloodtear</sprite>
-    <sprite>sprites\spr_house_ruins</sprite>
+    <sprites name="decor">
+      <sprite>sprites\spr_house_ruins</sprite>
+      <sprite>sprites\spr_screen</sprite>
+      <sprite>sprites\spr_grave2</sprite>
+      <sprite>sprites\spr_grave</sprite>
+      <sprite>sprites\spr_lantern</sprite>
+      <sprite>sprites\spr_bridge</sprite>
+      <sprite>sprites\spr_house2</sprite>
+      <sprite>sprites\spr_skull</sprite>
+      <sprite>sprites\spr_water</sprite>
+      <sprite>sprites\spr_house1_back</sprite>
+      <sprite>sprites\spr_house1</sprite>
+      <sprite>sprites\spr_ground01</sprite>
+      <sprite>sprites\spr_ground02</sprite>
+      <sprite>sprites\spr_woodplanks</sprite>
+      <sprite>sprites\spr_wall</sprite>
+      <sprite>sprites\spr_cosmicjewel</sprite>
+      <sprite>sprites\spr_moon</sprite>
+      <sprite>sprites\spr_ruins</sprite>
+      <sprite>sprites\spr_shrine</sprite>
+      <sprite>sprites\spr_lantern2</sprite>
+      <sprite>sprites\spr_tree</sprite>
+      <sprite>sprites\spr_tree_test</sprite>
+      <sprite>sprites\spr_tree_2</sprite>
+      <sprite>sprites\spr_tree_3</sprite>
+      <sprite>sprites\spr_sign</sprite>
+      <sprite>sprites\spr_sign_off</sprite>
+      <sprite>sprites\spr_particle</sprite>
+      <sprite>sprites\spr_well</sprite>
+      <sprite>sprites\spr_gate</sprite>
+    </sprites>
     <sprites name="Personnages">
       <sprite>sprites\spr_yellow_leg</sprite>
       <sprite>sprites\spr_yellow_down</sprite>
@@ -70,12 +61,15 @@
       <sprite>sprites\spr_red</sprite>
       <sprite>sprites\spr_red_protect</sprite>
       <sprite>sprites\spr_red_jump</sprite>
+      <sprite>sprites\spr_bullet</sprite>
+      <sprite>sprites\spr_magicshield</sprite>
     </sprites>
     <sprites name="Ennemis">
       <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_crow_death</sprite>
       <sprite>sprites\spr_wizard</sprite>
       <sprite>sprites\spr_wizard_attack</sprite>
+      <sprite>sprites\spr_orb</sprite>
       <sprite>sprites\spr_flyingdevil</sprite>
       <sprite>sprites\spr_mimic_attack</sprite>
       <sprite>sprites\spr_mimic_spawn</sprite>
@@ -102,8 +96,19 @@
       <sprite>sprites\spr_boss1_1</sprite>
       <sprite>sprites\spr_ennemy2_fire</sprite>
       <sprite>sprites\spr_ennemy2</sprite>
+      <sprite>sprites\spr_bloodtear</sprite>
+      <sprite>sprites\spr_targetpractice</sprite>
+      <sprite>sprites\spr_arrow</sprite>
+      <sprite>sprites\spr_statue</sprite>
     </sprites>
-    <sprite>sprites\spr_gate</sprite>
+    <sprite>sprites\spr_gameover</sprite>
+    <sprites name="hud">
+      <sprite>sprites\spr_bulletnumber2</sprite>
+      <sprite>sprites\spr_magicshield_icon</sprite>
+      <sprite>sprites\spr_gasbar</sprite>
+      <sprite>sprites\spr_lifebar</sprite>
+    </sprites>
+    <sprite>sprites\sprite83</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -126,6 +131,7 @@
     <script>scripts\getEnnemyHp.gml</script>
     <script>scripts\getEnnemyGunRes.gml</script>
     <script>scripts\getEnnemyHspeed.gml</script>
+    <script>scripts\behindPlayer.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\TNR</font>
@@ -146,12 +152,17 @@
       <object>objects\obj_zombie_tentacle</object>
       <object>objects\obj_tentacle</object>
       <object>objects\obj_ennemy_shadow</object>
+      <object>objects\obj_wizard</object>
       <object>objects\obj_ennemy_mimic</object>
       <object>objects\obj_crow</object>
       <object>objects\obj_statue</object>
-      <object>objects\obj_arrow</object>
       <object>objects\obj_boss</object>
       <object>objects\obj_targetpractice</object>
+      <objects name="projectiles">
+        <object>objects\obj_projectile</object>
+        <object>objects\obj_orb</object>
+        <object>objects\obj_arrow</object>
+      </objects>
     </objects>
     <objects name="global objects">
       <object>objects\obj_view</object>

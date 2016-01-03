@@ -9,7 +9,10 @@ switch(object_index) {
         break;
     case obj_arrow : return -15;
         break;
+    case obj_wizard :
     case obj_tentacle : return 0;
+        break;
+    case obj_orb : return 10;
         break;
     default : return 1;
 }
