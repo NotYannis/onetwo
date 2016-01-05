@@ -83,7 +83,7 @@
       <sprite>sprites\spr_zombie_hit</sprite>
       <sprite>sprites\spr_zombie_spawn</sprite>
       <sprite>sprites\spr_zombie_death</sprite>
-      <sprite>sprites\spr_strongzombie_death</sprite>
+      <sprite>sprites\spr_zombie_strong_death</sprite>
       <sprite>sprites\spr_zombie_strong</sprite>
       <sprite>sprites\spr_zombie_strong_hit</sprite>
       <sprite>sprites\spr_tentacle_spawn</sprite>

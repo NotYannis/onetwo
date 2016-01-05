@@ -133,7 +133,6 @@
     <instance objName="obj_tree2" x="1120" y="0" name="inst_1323B8E5" locked="0" code="" scaleX="2.79166674613953" scaleY="2.94576263427734" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree2" x="768" y="128" name="inst_4472C736" locked="0" code="" scaleX="2.69642853736877" scaleY="2.51186442375183" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="704" y="288" name="inst_C263DBEF" locked="0" code="" scaleX="1.73214280605316" scaleY="1.63389825820923" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="960" y="672" name="inst_781F44D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle_spawn" x="1056" y="224" name="inst_7703BC40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle_spawn" x="1472" y="64" name="inst_DA4938D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle_spawn" x="1312" y="160" name="inst_0CE621FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
