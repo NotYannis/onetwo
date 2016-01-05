@@ -74,7 +74,7 @@ image_speed = animationSpeed;
     attack = false;
     sprite_index = spawnSprite;
     image_speed = 0.2;
-    if (image_index == sprite_get_number(spawnSprite)){
+    if (image_index &gt;= sprite_get_number(spawnSprite) - image_speed){
         isSpawning = false;
         attack = true;
         sprite_index = sprite;
@@ -85,7 +85,7 @@ image_speed = animationSpeed;
 if (attack){
     // Se tourne et va vers le joueur.
     if(followPlayer) {
-            id.image_xscale = behindPlayer();
+        id.image_xscale = behindPlayer();
         move_towards_point(obj_character.x, obj_character.y, hsp);
     }
     else{
@@ -102,7 +102,8 @@ if (attack){
             vspeed = 5;
         }
         //if it's on the border of precipice, stop moving
-        if(place_empty(x -((sprite_get_width(sprite)+ 10) * image_xscale), y + 2)) hspeed = 0;
+        if(place_meeting(x - (10 * behindPlayer()), y + 100, obj_water))
+            hspeed = 0;
     }
     
     

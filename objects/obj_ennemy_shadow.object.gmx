@@ -56,12 +56,12 @@ if(isSpawning){
     if(!audio_is_playing(snd_shadowcry)) audio_play_sound(snd_shadowcry,10,false);
 }
 if(attack){ //Always run towards the player when it's 500 px far from him  
-    if(x &gt; obj_character.x + 500){
+    if(x &gt; view_xview + view_wview + 200){
         image_xscale = 1;
         hsp *= -1;
         x -= 18;
     }
-    else if( x &lt; obj_character.x - 500){
+    else if( x &lt; view_xview - 200){
         image_xscale = -1;
         hsp *= -1;
         x += 18;

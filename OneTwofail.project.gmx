@@ -138,6 +138,7 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_platform</object>
+    <object>objects\obj_invis_wall</object>
     <objects name="perso">
       <object>objects\obj_yellow</object>
       <object>objects\obj_yellow_leg</object>
@@ -197,10 +198,17 @@
       <object>objects\obj_gameover</object>
     </objects>
     <objects name="triggers">
-      <object>objects\obj_zombietriggeroff</object>
-      <object>objects\obj_zombietrigger</object>
-      <object>objects\obj_shadowtrigger</object>
-      <object>objects\obj_zombieparty</object>
+      <object>objects\obj_zombie_party</object>
+      <object>objects\obj_zombie_party_triggeroff</object>
+      <object>objects\obj_zombie_party_trigger</object>
+      <object>objects\obj_shadow_party_trigger</object>
+      <object>objects\obj_arena_trigger</object>
+      <object>objects\obj_enemy_trigger</object>
+      <object>objects\obj_wizard_trigger</object>
+      <object>objects\obj_zombie_trigger</object>
+      <object>objects\obj_zombie_tentacle_trigger</object>
+      <object>objects\obj_zombie_strong_trigger</object>
+      <object>objects\obj_shadow_trigger</object>
     </objects>
   </objects>
   <rooms name="rooms">
