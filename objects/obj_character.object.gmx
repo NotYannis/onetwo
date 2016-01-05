@@ -30,13 +30,13 @@ hsp = 0;
 globalvar vsp;
     vsp = 0;
 grav = 1;
-
-// Animation Variables
-vColl = false;
-hColl = false;
 grounded = true;
 jumping = false;
 walking = false;
+canDoubleJump = true;
+hColl = false;
+
+//Attack and stats
 gasFilling = false;
 gasbar = 100;
 hp = 100;
@@ -46,13 +46,15 @@ hit = false;
 invulnerability = 1;
 strike = false;
 redprotect = false;
-canDoubleJump = true;
 
 //View
 var lSet, lPos, rSet, rPos;
 viewPos = 0;
 viewUpdate = true; rTrigger = false; lTrigger = false;
 view_xview = 0;
+
+//Deactivation of arena triggers
+arenaTime = false;
 </string>
           </argument>
         </arguments>
@@ -75,13 +77,17 @@ view_xview = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Lighting and ennemies activation
+            <string>///Lighting and objects activation
 
 if (obj_lighting.dark = true){
     Lighting(360, c_white, c_black);
 }
 
-instance_activate_region(x - 650, y - 200, 1300, 400, true);
+
+instance_activate_region(view_xview, view_yview, view_wview, view_hview, true);
+if(!arenaTime){
+    instance_deactivate_object(obj_enemy_trigger);
+}
 </string>
           </argument>
         </arguments>
@@ -340,44 +346,46 @@ else{
           <argument>
             <kind>1</kind>
             <string>///View instanciation
-if(viewUpdate){
-    lBor = view_xview + 362; //Left limit, when the camera reposition itself
-    lPos = view_xview + 612; //Position of the camera when the player walks to the left
-    rBor = view_xview + 662; //Right limit, when the camera reposition itself
-    rPos = view_xview + 412; //Position of the camera when the player walks to the right
-    if(x &gt; rPos &amp;&amp; rTrigger) viewPos += 15;
-    else rTrigger = false;
-    if(x &lt; lPos &amp;&amp; lTrigger) viewPos -= 15;
-    else lTrigger = false;
+if(!arenaTime){
+    if(viewUpdate){
+        lBor = view_xview + 362; //Left limit, when the camera reposition itself
+        lPos = view_xview + 612; //Position of the camera when the player walks to the left
+        rBor = view_xview + 662; //Right limit, when the camera reposition itself
+        rPos = view_xview + 412; //Position of the camera when the player walks to the right
+        if(x &gt; rPos &amp;&amp; rTrigger) viewPos += 15;
+        else rTrigger = false;
+        if(x &lt; lPos &amp;&amp; lTrigger) viewPos -= 15;
+        else lTrigger = false;
+    }
+    
+    //View behaviour, depend of the direction of the player
+    if (keyboard_check(vk_right)){
+        if(x &gt;= rPos - 5 &amp;&amp; x &lt;= rPos + 5){
+            viewUpdate = true;
+            rTrigger = false;
+            viewPos = x - 412;
+        }
+        else if(x &gt;= rBor){
+            rTrigger = true
+        }
+    }
+    else if (keyboard_check(vk_left)){
+        if(x &gt;= lPos - 5 &amp;&amp; x &lt;= lPos + 5){
+            viewUpdate = true;
+            lTrigger = false;;
+            viewPos = x - 612;
+        }
+        else if(x &lt;= lBor){
+            lTrigger = true;
+        }
+    }
+    
+    //If the view is outside the limits of the room
+    if(viewPos &lt; 0) viewPos = 0;
+    else if (viewPos &gt; room_width - view_wview) viewPos = room_width -view_wview; 
+    
+    view_xview = viewPos;
 }
-
-//View behaviour, depend of the direction of the player
-if (keyboard_check(vk_right)){
-    if(x &gt;= rPos - 5 &amp;&amp; x &lt;= rPos + 5){
-        viewUpdate = true;
-        rTrigger = false;
-        viewPos = x - 412;
-    }
-    else if(x &gt;= rBor){
-        rTrigger = true
-    }
-}
-else if (keyboard_check(vk_left)){
-    if(x &gt;= lPos - 5 &amp;&amp; x &lt;= lPos + 5){
-        viewUpdate = true;
-        lTrigger = false;;
-        viewPos = x - 612;
-    }
-    else if(x &lt;= lBor){
-        lTrigger = true;
-    }
-}
-
-//If the view is outside the limits of the room
-if(viewPos &lt; 0) viewPos = 0;
-else if (viewPos &gt; room_width - view_wview) viewPos = room_width -view_wview; 
-
-view_xview = viewPos;
 </string>
           </argument>
         </arguments>

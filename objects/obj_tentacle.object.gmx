@@ -70,8 +70,11 @@ else{ //When player is out of range, prepare to strike
     cooldown = 0
 }
 
+//When attacks the player
 if(strike){
-    if(image_index == sprite_get_number(spr_tentacle_strike) - 0.5){
+    //Do that at the end of the animation
+    if(image_index == sprite_get_number(spr_tentacle_strike) - 0.5
+        || sprite_index == spr_tentacle_hit &amp;&amp; invulnerability == 0){
         strike = false;
         cooldown = 28;
         sprite_index = spr_tentacle;

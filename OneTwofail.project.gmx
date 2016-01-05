@@ -80,12 +80,15 @@
       <sprite>sprites\spr_flyingeye_attack</sprite>
       <sprite>sprites\spr_ennemy_skeleton</sprite>
       <sprite>sprites\spr_zombie</sprite>
+      <sprite>sprites\spr_zombie_hit</sprite>
       <sprite>sprites\spr_zombie_spawn</sprite>
       <sprite>sprites\spr_zombie_death</sprite>
       <sprite>sprites\spr_strongzombie_death</sprite>
       <sprite>sprites\spr_zombie_strong</sprite>
+      <sprite>sprites\spr_zombie_strong_hit</sprite>
       <sprite>sprites\spr_tentacle_spawn</sprite>
       <sprite>sprites\spr_tentacle</sprite>
+      <sprite>sprites\spr_tentacle_hit</sprite>
       <sprite>sprites\spr_tentacle_strike</sprite>
       <sprite>sprites\spr_tentacle_death</sprite>
       <sprite>sprites\spr_shadow_spawn</sprite>
@@ -131,6 +134,7 @@
     <script>scripts\getEnnemySpawnSprite.gml</script>
     <script>scripts\getEnnemySprite.gml</script>
     <script>scripts\getEnnemyDeathSprite.gml</script>
+    <script>scripts\getEnemyHitSprite.gml</script>
     <script>scripts\getEnnemyDamage.gml</script>
     <script>scripts\getEnnemyHp.gml</script>
     <script>scripts\getEnnemyGunRes.gml</script>
@@ -142,6 +146,7 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_platform</object>
+    <object>objects\obj_invis_wall</object>
     <objects name="perso">
       <object>objects\obj_yellow</object>
       <object>objects\obj_yellow_leg</object>
@@ -201,10 +206,17 @@
       <object>objects\obj_gameover</object>
     </objects>
     <objects name="triggers">
-      <object>objects\obj_zombietriggeroff</object>
-      <object>objects\obj_zombietrigger</object>
-      <object>objects\obj_shadowtrigger</object>
-      <object>objects\obj_zombieparty</object>
+      <object>objects\obj_zombie_party</object>
+      <object>objects\obj_zombie_party_triggeroff</object>
+      <object>objects\obj_zombie_party_trigger</object>
+      <object>objects\obj_shadow_party_trigger</object>
+      <object>objects\obj_arena_trigger</object>
+      <object>objects\obj_enemy_trigger</object>
+      <object>objects\obj_wizard_trigger</object>
+      <object>objects\obj_zombie_trigger</object>
+      <object>objects\obj_zombie_tentacle_trigger</object>
+      <object>objects\obj_zombie_strong_trigger</object>
+      <object>objects\obj_shadow_trigger</object>
     </objects>
   </objects>
   <rooms name="rooms">

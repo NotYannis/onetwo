@@ -51,6 +51,7 @@
             <string>if (keyboard_check(vk_escape)){
     game_end();
 }
+x = view_xview;
 </string>
           </argument>
         </arguments>
