@@ -55,6 +55,7 @@
       <sprite>sprites\spr_yellow_leg</sprite>
       <sprite>sprites\spr_yellow_down</sprite>
       <sprite>sprites\spr_yellow</sprite>
+      <sprite>sprites\spr_yellow_angle</sprite>
       <sprite>sprites\spr_yellow_up</sprite>
       <sprite>sprites\spr_red_hit</sprite>
       <sprite>sprites\spr_red_walk</sprite>
@@ -68,6 +69,8 @@
       <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_crow_death</sprite>
       <sprite>sprites\spr_wizard</sprite>
+      <sprite>sprites\spr_wizard_death</sprite>
+      <sprite>sprites\spr_wizard_spawn</sprite>
       <sprite>sprites\spr_wizard_attack</sprite>
       <sprite>sprites\spr_orb</sprite>
       <sprite>sprites\spr_flyingdevil</sprite>

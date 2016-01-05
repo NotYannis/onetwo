@@ -7,10 +7,10 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>0</bbox_left>
-  <bbox_right>155</bbox_right>
-  <bbox_top>8</bbox_top>
-  <bbox_bottom>99</bbox_bottom>
+  <bbox_left>4</bbox_left>
+  <bbox_right>147</bbox_right>
+  <bbox_top>24</bbox_top>
+  <bbox_bottom>107</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -34,5 +34,6 @@
     <frame index="11">images\spr_crow_11.png</frame>
     <frame index="12">images\spr_crow_12.png</frame>
     <frame index="13">images\spr_crow_13.png</frame>
+    <frame index="14">images\spr_crow_14.png</frame>
   </frames>
 </sprite>
