@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_blend = c_teal;
+            <string>image_blend = c_lime;
 </string>
           </argument>
         </arguments>

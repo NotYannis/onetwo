@@ -59,7 +59,7 @@ else{
     if(collision_rectangle(view_xview - 200, view_yview,
                             view_xview + view_wview + 200, view_yview + view_hview,
                             obj_ennemy, false, false)
-        &amp;&amp; arenaDuration == 0) {
+        &amp;&amp; arenaDuration &lt;= 0) {
         obj_character.arenaTime = false;
         with wall1 instance_destroy();
         with wall2 instance_destroy();
