@@ -185,7 +185,7 @@ if(death){
     if(flying){
         hspeed = 0.5;
         vspeed += 0.5;
-        if(image_index == sprite_get_number(deathSprite) - 1)
+        if(image_index == sprite_get_number(deathSprite) - 1){
             image_speed = 0;
         }
         if(place_meeting(x,y, obj_ground01)){
