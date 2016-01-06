@@ -52,8 +52,7 @@ else if (obj_yellow.gunUp){
     }
     else vspeed = -25;
 }
-
-if(obj_yellow.gunLeft){
+else if(obj_yellow.gunLeft){
     hspeed = -25;
     image_index = 0;
 }

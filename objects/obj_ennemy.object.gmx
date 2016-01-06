@@ -149,7 +149,12 @@ if (attack){
         hspeed = 0;
     }
     else if(place_meeting(x,y,obj_character) //If hit the character while not attacking
-             || place_meeting(x,y,obj_yellow) &amp;&amp; !obj_character.redprotect){
+             || place_meeting(x,y,obj_yellow) 
+            &amp;&amp; (!obj_character.redprotect
+                || !collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
+                                        obj_character.y - 81,
+                                        obj_character.x + (40 * obj_character.image_xscale),
+                                        obj_character.y - 30, id, true, false))){
         obj_character.hit = true;
         obj_character.ennemy = id;
         obj_character.damage = damage;
