@@ -86,7 +86,12 @@ else{
     
     //If thouches the player, make some damage
     if(place_meeting(x,y,obj_character)
-        || (place_meeting(x,y,obj_yellow) &amp;&amp; !obj_character.redprotect)){
+        || place_meeting(x,y,obj_yellow)
+        &amp;&amp; ((!obj_character.redprotect)
+            || !collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
+                                        obj_character.y - 81,
+                                        obj_character.x + (40 * obj_character.image_xscale),
+                                        obj_character.y - 34, id, true, false))){
         obj_character.hit = true;
         obj_character.ennemy = id;
         obj_character.damage = damage;
