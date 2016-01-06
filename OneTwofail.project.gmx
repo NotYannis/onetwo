@@ -81,9 +81,9 @@
       <sprite>sprites\spr_flyingdevil</sprite>
       <sprite>sprites\spr_mimic_attack</sprite>
       <sprite>sprites\spr_mimic_spawn</sprite>
-      <sprite>sprites\spr_flyingeye</sprite>
-      <sprite>sprites\spr_flyingeye_death</sprite>
-      <sprite>sprites\spr_flyingeye_attack</sprite>
+      <sprite>sprites\spr_flying_eye</sprite>
+      <sprite>sprites\spr_flying_eye_death</sprite>
+      <sprite>sprites\spr_flying_eye_attack</sprite>
       <sprite>sprites\spr_ennemy_skeleton</sprite>
       <sprite>sprites\spr_zombie</sprite>
       <sprite>sprites\spr_zombie_hit</sprite>
@@ -146,6 +146,8 @@
     <script>scripts\getEnnemyGunRes.gml</script>
     <script>scripts\getEnnemyHspeed.gml</script>
     <script>scripts\behindPlayer.gml</script>
+    <script>scripts\getEnemyAnim.gml</script>
+    <script>scripts\getEnemyStat.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\TNR</font>
@@ -173,10 +175,12 @@
       <object>objects\obj_statue</object>
       <object>objects\obj_boss</object>
       <object>objects\obj_targetpractice</object>
+      <object>objects\obj_flying_eye</object>
       <objects name="projectiles">
         <object>objects\obj_projectile</object>
         <object>objects\obj_orb</object>
         <object>objects\obj_arrow</object>
+        <object>objects\obj_tear</object>
       </objects>
     </objects>
     <objects name="global objects">

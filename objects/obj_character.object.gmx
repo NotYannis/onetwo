@@ -27,8 +27,7 @@
             <kind>1</kind>
             <string>//Movements variables
 hsp = 0;
-globalvar vsp;
-    vsp = 0;
+vsp = 0;
 grav = 1;
 grounded = true;
 jumping = false;

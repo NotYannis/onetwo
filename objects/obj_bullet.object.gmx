@@ -26,25 +26,39 @@
           <argument>
             <kind>1</kind>
             <string>audio_play_sound (snd_shotgunfire, 10, false);
-if (gundown = true){
-    vspeed = 25;
+image_speed = 0;
+
+if (obj_yellow.gunDown){
     image_index = 1;
-    image_speed = 0;
+    if(obj_yellow.gunDownRight){
+        move_towards_point(x + 1, y + 1, 25);
+        image_angle = 225;
+    }
+    else if(obj_yellow.gunDownLeft){
+        move_towards_point(x - 1, y + 1, 25);
+        image_angle = 315;
+    }
+    else vspeed = 25;
 }
-else if (gunup = true){
-    vspeed = -25;
+else if (obj_yellow.gunUp){
     image_index = 2;
-    image_speed = 0;
+    if(obj_yellow.gunUpRight){
+        move_towards_point(x + 1, y - 1, 25);
+        image_angle = 135;
+    }
+    else if(obj_yellow.gunUpLeft){
+        move_towards_point(x - 1, y - 1, 25);
+        image_angle = 45;
+    }
+    else vspeed = -25;
 }
-else if (gunleft = true){
+else if (obj_yellow.gunLeft){
     hspeed = -25;
     image_index = 0;
-    image_speed = 0;
 }
 else{
     hspeed = 25;
     image_index = 0;
-    image_speed = 0;
 }
 
 </string>

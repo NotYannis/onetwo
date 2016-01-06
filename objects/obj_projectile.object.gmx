@@ -28,9 +28,13 @@
             <string>followPlayer = true;
 isSpawning = false;
 aiming = false;
+falling = false;
 
-hsp = getEnnemyHspeed();
-damage = getEnnemyDamage();
+stats = getEnemyStat()
+hsp = stats[0];
+damage = stats[3];
+vsp = stats[4];
+
 xStartPos = x;
 stay = 10;
 </string>
@@ -75,6 +79,9 @@ else{
     }
     if(!followPlayer){//or just move horizontally
         hspeed = hsp;
+        if(falling){
+            vspeed = vsp;
+        }
     }
     
     //If thouches the player, make some damage

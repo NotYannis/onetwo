@@ -27,15 +27,12 @@
             <kind>1</kind>
             <string>// Variables
 
-globalvar gundown;
-globalvar gunup;
-globalvar gunleft;
+gundown = false;
+gunup = false;
 gunleft = false;
 linked = true;
-vsp = 0;
 grav = 1;
-globalvar canshoot;
-    canshoot = 1;
+canshoot = 1;
 canprotect = 1;
 
 // Else 
@@ -69,16 +66,9 @@ obj_yellow.x = obj_character.x;
 obj_yellow.y = obj_character.y-80;
 
 // Image and Animations
-
-if (keyboard_check(vk_right)){
-    image_xscale = 1;
-    gunleft = false;
-}
-
-if (keyboard_check(vk_left)){
-    image_xscale = -1;
-    gunleft = true;
-}
+image_xscale = obj_character.image_xscale;
+gunleft = (image_xscale == -1)
+    
 </string>
           </argument>
         </arguments>
@@ -101,35 +91,24 @@ if (keyboard_check(vk_left)){
             <kind>1</kind>
             <string>///Weapon
 
-// ------------ Moving the Gun -----------
-//----------------------------------------
+gunDown = keyboard_check(vk_down);
+gunUp = keyboard_check(vk_up);
+gunUpRight = gunUp &amp;&amp; keyboard_check(vk_right);
+gunUpLeft = gunUp &amp;&amp; keyboard_check(vk_left);
+gunDownRight = gunDown &amp;&amp; keyboard_check(vk_right);
+gunDownLeft = gunDown &amp;&amp; keyboard_check(vk_left);
 
-// Up
-
-if (linked){
-    if (keyboard_check(vk_down)){
-        gundown = true;
-    }
-
-    if (!keyboard_check(vk_down)){
-        gundown = false;
-    }
-    if (keyboard_check(vk_up)){
-        gunup = true;
-    }
-    if (!keyboard_check(vk_up)){
-        gunup = false;
-    }
-    
-    if (gundown = true){
-        sprite_index = spr_yellow_down;
-    }
-    else if (gunup = true){
-        sprite_index = spr_yellow_up;
-    }
-    else {
-        sprite_index = spr_yellow;
-    }
+if (gunDown){
+    sprite_index = spr_yellow_down;
+}
+else if (gunUp){
+    sprite_index = spr_yellow_up;
+}
+if(gunUpLeft || gunUpRight || gunDownRight || gunDownLeft){
+    sprite_index = spr_yellow_angle;
+}
+else if(!gunDown &amp;&amp; ! gunUp &amp;&amp; !gunUpRight &amp;&amp; !gunUpLeft &amp;&amp; !gunDownLeft &amp;&amp; !gunDownRight){
+    sprite_index = spr_yellow;
 }
 
 
@@ -140,13 +119,13 @@ if (canshoot &lt;= 1){
         if (keyboard_check(vk_alt)){
         canshoot = room_speed*0.7;
             if (image_xscale = 1){
-                instance_create (x-22,y+29,obj_bullet);
-                }
+                instance_create (x-26,y+29,obj_bullet);
+            }
             if (image_xscale = -1){
-                instance_create (x+20,y+29,obj_bullet);
-                }
-        if (gundown = true &amp;&amp; obj_character.canDoubleJump){
-            vsp = -10;
+                instance_create (x+28,y+29,obj_bullet);
+            }
+        if (gunDown &amp;&amp; obj_character.canDoubleJump &amp;&amp; vspeed &lt;=0){
+            obj_character.vsp = -10;
             obj_character.canDoubleJump = false;
         }
     }
