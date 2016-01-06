@@ -82,6 +82,7 @@
       <sprite>sprites\spr_mimic_attack</sprite>
       <sprite>sprites\spr_mimic_spawn</sprite>
       <sprite>sprites\spr_flying_eye</sprite>
+      <sprite>sprites\spr_flyingeye_spawn</sprite>
       <sprite>sprites\spr_flying_eye_attack</sprite>
       <sprite>sprites\spr_flying_eye_death</sprite>
       <sprite>sprites\spr_ennemy_skeleton</sprite>
