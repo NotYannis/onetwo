@@ -67,8 +67,7 @@ obj_yellow.y = obj_character.y-80;
 
 // Image and Animations
 image_xscale = obj_character.image_xscale;
-gunleft = (image_xscale == -1)
-    
+gunLeft = (image_xscale == -1);
 </string>
           </argument>
         </arguments>
