@@ -31,6 +31,7 @@ isSpawning = true;
 isProjectile = false;
 applyGravity = true;
 followPlayer = true;
+flying = false;
 facing = 1;
 invulnerability = 0;
 
@@ -178,14 +179,20 @@ if (attack){
 
 // Death animation 
 if(death){
-    //object_set_mask(object_index, deathSprite);
     sprite_index = deathSprite;
-    image_speed = 1;
+    image_speed = 0.5;
     hspeed = 0;
-    if(image_index == sprite_get_number(deathSprite) - 1){
-        if(object_index == obj_zombie_tentacle){
-            instance_create(x, y, obj_tentacle);
+    if(flying){
+        hspeed = 0.5;
+        vspeed += 0.5;
+        if(image_index == sprite_get_number(deathSprite) - 1)
+            image_speed = 0;
         }
+        if(place_meeting(x,y, obj_ground01)){
+            instance_destroy();
+        }
+    }
+    if(image_index == sprite_get_number(deathSprite) - 1 &amp;&amp; !flying){
         instance_destroy();
     }
 }

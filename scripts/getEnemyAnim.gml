@@ -11,7 +11,7 @@ switch(object_index) {
             break;
     case obj_ennemy_shadow : 
         anim[0] = 0.2; anim[1] = spr_shadow_spawn; anim[2] = spr_shadow;
-        anim[3] = spr_shadow; anim[4] = spr_shadow_death;
+        anim[3] = spr_shadow_hit; anim[4] = spr_shadow_death;
             break;
     case obj_tentacle :
         anim[0] = 0.4; anim[1] = spr_tentacle_spawn; anim[2] = spr_tentacle;
@@ -23,7 +23,7 @@ switch(object_index) {
             break;
     case obj_flying_eye :
         anim[0] = 0.5; anim[1] = spr_flying_eye; anim[2] = spr_flying_eye;
-        anim[3] = spr_flying_eye; anim[4] = spr_flying_eye;
+        anim[3] = spr_flying_eye; anim[4] = spr_flying_eye_death;
             break;
     default : return noone;
 }

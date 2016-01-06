@@ -82,8 +82,8 @@
       <sprite>sprites\spr_mimic_attack</sprite>
       <sprite>sprites\spr_mimic_spawn</sprite>
       <sprite>sprites\spr_flying_eye</sprite>
-      <sprite>sprites\spr_flying_eye_death</sprite>
       <sprite>sprites\spr_flying_eye_attack</sprite>
+      <sprite>sprites\spr_flying_eye_death</sprite>
       <sprite>sprites\spr_ennemy_skeleton</sprite>
       <sprite>sprites\spr_zombie</sprite>
       <sprite>sprites\spr_zombie_hit</sprite>
@@ -100,6 +100,7 @@
       <sprite>sprites\spr_shadow_spawn</sprite>
       <sprite>sprites\spr_shadow</sprite>
       <sprite>sprites\spr_shadow_death</sprite>
+      <sprite>sprites\spr_shadow_hit</sprite>
       <sprite>sprites\spr_boss_save</sprite>
       <sprite>sprites\spr_boss1_final</sprite>
       <sprite>sprites\spr_boss1_5</sprite>
@@ -136,15 +137,6 @@
   <scripts name="scripts">
     <script>scripts\Lighting.gml</script>
     <script>scripts\Glowing.gml</script>
-    <script>scripts\getEnnemyAnimationSpeed.gml</script>
-    <script>scripts\getEnnemySpawnSprite.gml</script>
-    <script>scripts\getEnnemySprite.gml</script>
-    <script>scripts\getEnnemyDeathSprite.gml</script>
-    <script>scripts\getEnemyHitSprite.gml</script>
-    <script>scripts\getEnnemyDamage.gml</script>
-    <script>scripts\getEnnemyHp.gml</script>
-    <script>scripts\getEnnemyGunRes.gml</script>
-    <script>scripts\getEnnemyHspeed.gml</script>
     <script>scripts\behindPlayer.gml</script>
     <script>scripts\getEnemyAnim.gml</script>
     <script>scripts\getEnemyStat.gml</script>
