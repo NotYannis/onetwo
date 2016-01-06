@@ -110,7 +110,9 @@ if(obj_lighting.dark){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (place_meeting(x,y,obj_ground01)){
+            <string>///Disappear on ground hit
+
+if (place_meeting(x,y,obj_ground01)){
     instance_destroy();
 }
 </string>

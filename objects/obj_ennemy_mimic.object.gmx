@@ -79,8 +79,8 @@ else if (obj_lighting.dark){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Behaviour. 
-// Gravity.
+            <string>/// Behaviour
+// Gravity
 if (place_meeting(x,y+1,obj_ground01)){
     vspeed = 0;
 }
@@ -101,7 +101,7 @@ if (attack = false){
 
     hspeed = 0;
     // Spawn if attack, animation. 
-    if (place_meeting(x,y,obj_bullet)) || (place_meeting(x,y,obj_character)) &amp;&amp; (strike = true){
+    if (place_meeting(x,y,obj_bullet)) || (place_meeting(x,y,obj_character)) &amp;&amp; (obj_character.strike = true){
         image_speed = 0.2;
         with (obj_bullet){
             instance_destroy();

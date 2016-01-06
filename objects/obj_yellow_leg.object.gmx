@@ -28,13 +28,7 @@
             <string>obj_yellow_leg.x = obj_character.x;
 obj_yellow_leg.y = obj_character.y-80;
 
-if (keyboard_check(vk_right)){
-    image_xscale = 1;
-}
-
-if (keyboard_check(vk_left)){
-    image_xscale = -1;
-}
+image_xscale = obj_character.image_xscale;
 </string>
           </argument>
         </arguments>
