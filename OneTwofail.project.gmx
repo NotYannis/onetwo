@@ -28,6 +28,8 @@
       <sprite>sprites\spr_lantern</sprite>
       <sprite>sprites\spr_bridge</sprite>
       <sprite>sprites\spr_house2</sprite>
+      <sprite>sprites\spr_chapel</sprite>
+      <sprite>sprites\spr_chapel_save</sprite>
       <sprite>sprites\spr_skull</sprite>
       <sprite>sprites\spr_water</sprite>
       <sprite>sprites\spr_house1_back</sprite>
@@ -50,6 +52,9 @@
       <sprite>sprites\spr_particle</sprite>
       <sprite>sprites\spr_well</sprite>
       <sprite>sprites\spr_gate</sprite>
+      <sprite>sprites\spr_woodtower_top</sprite>
+      <sprite>sprites\spr_woodtower_middle</sprite>
+      <sprite>sprites\spr_woodtower_bottom</sprite>
     </sprites>
     <sprites name="Personnages">
       <sprite>sprites\spr_yellow_leg</sprite>
@@ -218,6 +223,9 @@
       <object>objects\obj_zombie_strong_trigger</object>
       <object>objects\obj_shadow_trigger</object>
     </objects>
+    <object>objects\obj_woodtower_bottom</object>
+    <object>objects\obj_woodtower_middle</object>
+    <object>objects\obj_woodtower_top</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\arena2</room>
