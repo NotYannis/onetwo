@@ -35,6 +35,7 @@
       <sprite>sprites\spr_house1_back</sprite>
       <sprite>sprites\spr_house1</sprite>
       <sprite>sprites\spr_ground01</sprite>
+      <sprite>sprites\spr_ground_good</sprite>
       <sprite>sprites\spr_ground02</sprite>
       <sprite>sprites\spr_woodplanks</sprite>
       <sprite>sprites\spr_wall</sprite>
@@ -113,6 +114,7 @@
       <sprite>sprites\spr_ennemy2</sprite>
       <sprite>sprites\spr_bloodtear</sprite>
       <sprite>sprites\spr_targetpractice</sprite>
+      <sprite>sprites\spr_target</sprite>
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_statue</sprite>
     </sprites>
@@ -214,6 +216,8 @@
       <object>objects\obj_particle</object>
       <object>objects\obj_particle_spawn</object>
       <object>objects\obj_gameover</object>
+      <object>objects\obj_ground_good</object>
+      <object>objects\obj_gate</object>
     </objects>
     <objects name="triggers">
       <object>objects\obj_zombie_party</object>
@@ -234,9 +238,9 @@
     <object>objects\obj_woodtower_top</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\Tutorial</room>
     <room>rooms\arena</room>
     <room>rooms\arena2</room>
-    <room>rooms\Tutorial</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
