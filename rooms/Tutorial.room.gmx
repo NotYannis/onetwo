@@ -161,6 +161,7 @@
     <instance objName="obj_woodtower_middle" x="1984" y="416" name="inst_968B1780" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_woodtower_bottom" x="1992" y="512" name="inst_B118DDCD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_woodtower_middle" x="1984" y="288" name="inst_52DE9CE2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_keymapping" x="32" y="32" name="inst_0549E306" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

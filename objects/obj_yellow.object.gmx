@@ -67,8 +67,7 @@ obj_yellow.y = obj_character.y-80;
 
 // Image and Animations
 image_xscale = obj_character.image_xscale;
-gunleft = (image_xscale == -1)
-    
+gunLeft = (image_xscale == -1);
 </string>
           </argument>
         </arguments>
@@ -91,12 +90,12 @@ gunleft = (image_xscale == -1)
             <kind>1</kind>
             <string>///Weapon
 
-gunDown = keyboard_check(vk_down);
-gunUp = keyboard_check(vk_up);
-gunUpRight = gunUp &amp;&amp; keyboard_check(vk_right);
-gunUpLeft = gunUp &amp;&amp; keyboard_check(vk_left);
-gunDownRight = gunDown &amp;&amp; keyboard_check(vk_right);
-gunDownLeft = gunDown &amp;&amp; keyboard_check(vk_left);
+gunDown = keyboard_check(yelDownKey);
+gunUp = keyboard_check(yelUpKey);
+gunUpRight = gunUp &amp;&amp; keyboard_check(yelRightKey);
+gunUpLeft = gunUp &amp;&amp; keyboard_check(yelLeftKey);
+gunDownRight = gunDown &amp;&amp; keyboard_check(yelRightKey);
+gunDownLeft = gunDown &amp;&amp; keyboard_check(yelLeftKey);
 
 if (gunDown){
     sprite_index = spr_yellow_down;
@@ -116,7 +115,7 @@ else if(!gunDown &amp;&amp; ! gunUp &amp;&amp; !gunUpRight &amp;&amp; !gunUpLeft
 // ----------- Fire and Double Jump ---------------
 //------------------------------------------
 if (canshoot &lt;= 1){
-        if (keyboard_check(vk_alt)){
+        if (keyboard_check(gunKey)){
         canshoot = room_speed*0.7;
             if (image_xscale = 1){
                 instance_create (x-26,y+29,obj_bullet);
@@ -156,7 +155,7 @@ else{
             <string>///Red protection
 
 if (canprotect &lt;= 1){
-    if (keyboard_check(vk_numpad2)){
+    if (keyboard_check(yelShieldKey)){
         canprotect = room_speed*2;
         instance_create(x,y,obj_magicshield);
     }

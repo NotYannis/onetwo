@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>activate = 10;
+            <string>id.activation = 10;
 </string>
           </argument>
         </arguments>
@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (activate &gt; 0) activate --;
+            <string>if (id.activation &gt; 0) id.activation --;
 </string>
           </argument>
         </arguments>

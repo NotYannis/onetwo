@@ -124,6 +124,7 @@
       <sprite>sprites\spr_lifebar</sprite>
     </sprites>
     <sprite>sprites\sprite83</sprite>
+    <sprite>sprites\sprite98</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -141,6 +142,7 @@
     <script>scripts\behindPlayer.gml</script>
     <script>scripts\getEnemyAnim.gml</script>
     <script>scripts\getEnemyStat.gml</script>
+    <script>scripts\activateEnemyTrigger.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\TNR</font>
@@ -181,6 +183,7 @@
       <object>objects\obj_quit_music</object>
       <object>objects\obj_healthbar</object>
       <object>objects\obj_lighting</object>
+      <object>objects\obj_keymapping</object>
     </objects>
     <objects name="decor">
       <object>objects\obj_ground01</object>
@@ -220,6 +223,7 @@
       <object>objects\obj_zombie_tentacle_trigger</object>
       <object>objects\obj_zombie_strong_trigger</object>
       <object>objects\obj_shadow_trigger</object>
+      <object>objects\obj_flying_eye_trigger</object>
     </objects>
     <object>objects\obj_woodtower_bottom</object>
     <object>objects\obj_woodtower_middle</object>
