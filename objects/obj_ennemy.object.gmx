@@ -46,12 +46,13 @@ hitSprite = anims[3];
 deathSprite = anims[4];
 
 stats = getEnemyStat();
-hsp = stats[0];
+hsp = stats[0] * behindPlayer();
 hp = stats[1];
 gunRes = stats[2];
 damage = stats[3];
 
 image_speed = animationSpeed;
+image_xscale = behindPlayer();
 
 </string>
           </argument>
@@ -90,8 +91,10 @@ image_speed = animationSpeed;
 if (attack){
     // Se tourne et va vers le joueur.
     if(followPlayer) {
-        id.image_xscale = behindPlayer();
-        move_towards_point(obj_character.x, obj_character.y, hsp);
+        if(x &lt; obj_character.x - 150 || x &gt; obj_character.x + 150){
+            move_towards_point(obj_character.x, obj_character.y, hsp);
+            id.image_xscale = behindPlayer();
+        }
     }
     else{
         hspeed = hsp;
@@ -134,8 +137,8 @@ if (attack){
                            obj_character.y + 20,
                            id, true, false)
         &amp;&amp; obj_character.strike
-        &amp;&amp; invulnerability ==0){
-        
+        &amp;&amp; invulnerability == 0)
+    {    
         audio_play_sound(snd_ennemy1_hit,10,false)
         invulnerability = 8;
         if(hp &gt; obj_character.damage){

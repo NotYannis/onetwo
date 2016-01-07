@@ -27,7 +27,7 @@ switch(object_index) {
         stat[0] = 0.2; stat[1] = 0; stat[2] = 0; stat[3] = 20; stat[4] = 7;
             break;
     case obj_flying_eye :
-        stat[0] = -5; stat[1] = 10; stat[2] = 1; stat[3] = 10;
+        stat[0] = -5; stat[1] = 30; stat[2] = 1; stat[3] = 10;
             break;
     default : return noone;
 }

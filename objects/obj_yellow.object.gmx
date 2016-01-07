@@ -43,6 +43,31 @@ image_speed = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Flicker with red
+
+image_alpha = obj_character.image_alpha;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -60,13 +85,13 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Movement and animation
+            <string>//Follow red
 
 obj_yellow.x = obj_character.x;
 obj_yellow.y = obj_character.y-80;
 
-// Image and Animations
 image_xscale = obj_character.image_xscale;
+
 gunLeft = (image_xscale == -1);
 </string>
           </argument>
@@ -96,6 +121,7 @@ gunUpRight = gunUp &amp;&amp; keyboard_check(yelRightKey);
 gunUpLeft = gunUp &amp;&amp; keyboard_check(yelLeftKey);
 gunDownRight = gunDown &amp;&amp; keyboard_check(yelRightKey);
 gunDownLeft = gunDown &amp;&amp; keyboard_check(yelLeftKey);
+gunDefaultPos = !gunDown &amp;&amp; ! gunUp &amp;&amp; !gunUpRight &amp;&amp; !gunUpLeft &amp;&amp; !gunDownLeft &amp;&amp; !gunDownRight;
 
 if (gunDown){
     sprite_index = spr_yellow_down;
@@ -106,7 +132,7 @@ else if (gunUp){
 if(gunUpLeft || gunUpRight || gunDownRight || gunDownLeft){
     sprite_index = spr_yellow_angle;
 }
-else if(!gunDown &amp;&amp; ! gunUp &amp;&amp; !gunUpRight &amp;&amp; !gunUpLeft &amp;&amp; !gunDownLeft &amp;&amp; !gunDownRight){
+else if(gunDefaultPos){
     sprite_index = spr_yellow;
 }
 
@@ -116,21 +142,24 @@ else if(!gunDown &amp;&amp; ! gunUp &amp;&amp; !gunUpRight &amp;&amp; !gunUpLeft
 //------------------------------------------
 if (canshoot &lt;= 1){
         if (keyboard_check(gunKey)){
-        canshoot = room_speed*0.7;
+            canshoot = room_speed*0.7;
             if (image_xscale = 1){
                 instance_create (x-26,y+29,obj_bullet);
             }
             if (image_xscale = -1){
                 instance_create (x+28,y+29,obj_bullet);
             }
-        if (gunDown &amp;&amp; obj_character.canDoubleJump &amp;&amp; vspeed &lt;=0){
-            obj_character.vsp = -10;
-            obj_character.canDoubleJump = false;
+            if (gunDown &amp;&amp; obj_character.canDoubleJump &amp;&amp; vspeed &lt;=0){
+                obj_character.vsp = -10;
+                obj_character.canDoubleJump = false;
+            }
         }
-    }
 }
 else{
+    if(gunDefaultPos &amp;&amp; canshoot == 20) image_index = 1;
+    else if(gunDefaultPos &amp;&amp; canshoot == 15) image_index = 0;
     canshoot --;
+
 }
 </string>
           </argument>

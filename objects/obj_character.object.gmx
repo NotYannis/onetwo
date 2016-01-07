@@ -136,7 +136,7 @@ if(!keyboard_check(strikeKey)){
 //Apply the hit animation, and invulnerability
 if (hit &amp;&amp; invulnerability &lt;= 1){
     hp -= damage;
-    invulnerability = room_speed*0.9;
+    invulnerability = room_speed*1;
 
     //Go back in the good direction if there is nothing behind
     if(!place_meeting(x - enemyBehind * 25, y, obj_ground01))
@@ -151,6 +151,10 @@ if (hit &amp;&amp; invulnerability &lt;= 1){
     }
 }
 if (invulnerability &gt;= 0){
+    if(invulnerability % 6 == 1
+        || invulnerability % 6 == 2
+        || invulnerability % 6 == 3) image_alpha = 0;
+    else image_alpha = 1;
     hit = false;
     invulnerability--;
 }
@@ -334,10 +338,10 @@ else{
             <string>///View instanciation
 if(!arenaTime){
     if(viewUpdate){
-        lBor = view_xview + 362; //Left limit, when the camera reposition itself
-        lPos = view_xview + 612; //Position of the camera when the player walks to the left
-        rBor = view_xview + 662; //Right limit, when the camera reposition itself
-        rPos = view_xview + 412; //Position of the camera when the player walks to the right
+        lBor = view_xview + (view_wview / 2 - 150); //Left limit, when the camera reposition itself
+        lPos = view_xview + (view_wview / 2 + 100); //Position of the camera when the player walks to the left
+        rBor = view_xview + (view_wview / 2 + 150); //Right limit, when the camera reposition itself
+        rPos = view_xview + (view_wview / 2 - 100); //Position of the camera when the player walks to the right
         if(x &gt; rPos &amp;&amp; rTrigger) viewPos += 15;
         else rTrigger = false;
         if(x &lt; lPos &amp;&amp; lTrigger) viewPos -= 15;
@@ -349,7 +353,7 @@ if(!arenaTime){
         if(x &gt;= rPos - 5 &amp;&amp; x &lt;= rPos + 5){
             viewUpdate = true;
             rTrigger = false;
-            viewPos = x - 412;
+            viewPos = x - (view_wview / 2 - 100);
         }
         else if(x &gt;= rBor){
             rTrigger = true
@@ -359,7 +363,7 @@ if(!arenaTime){
         if(x &gt;= lPos - 5 &amp;&amp; x &lt;= lPos + 5){
             viewUpdate = true;
             lTrigger = false;;
-            viewPos = x - 612;
+            viewPos = x - (view_wview / 2 + 100);
         }
         else if(x &lt;= lBor){
             lTrigger = true;
@@ -368,7 +372,7 @@ if(!arenaTime){
     
     //If the view is outside the limits of the room
     if(viewPos &lt; 0) viewPos = 0;
-    else if (viewPos &gt; room_width - view_wview) viewPos = room_width -view_wview; 
+    else if (viewPos &gt; room_width - view_wview) viewPos = room_width - view_wview; 
     
     view_xview = viewPos;
 }

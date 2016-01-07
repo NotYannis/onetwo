@@ -51,8 +51,8 @@
             <string>if(!obj_character.arenaTime){
     if(place_meeting(x, y, obj_character)){
         obj_character.arenaTime = true;
-        wall1 = instance_create(view_xview + 10, y, obj_invis_wall);
-        wall2 = instance_create(view_xview + view_wview - 20, y, obj_invis_wall);
+        instance_create(view_xview + 10, y, obj_invis_wall);
+        instance_create(view_xview + view_wview - 20, y, obj_invis_wall);
     }
 }
 else{
@@ -61,8 +61,7 @@ else{
                             obj_ennemy, false, false)
         &amp;&amp; arenaDuration &lt;= 0) {
         obj_character.arenaTime = false;
-        with wall1 instance_destroy();
-        with wall2 instance_destroy();
+        with obj_invis_wall instance_destroy();
         instance_destroy();
     }
     arenaDuration--;

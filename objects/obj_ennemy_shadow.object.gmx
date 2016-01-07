@@ -55,7 +55,9 @@ applyGravity = false;
 if(isSpawning){
     if(!audio_is_playing(snd_shadowcry)) audio_play_sound(snd_shadowcry,10,false);
 }
-if(attack){ //Always run towards the player when it's 500 px far from him  
+
+//Always run towards the player when it's 200 px far from the view
+if(attack){ 
     if(x &gt; view_xview + view_wview + 200){
         image_xscale = 1;
         hsp *= -1;
