@@ -63,13 +63,13 @@
       <sprite>sprites\spr_yellow_angle</sprite>
       <sprite>sprites\spr_yellow_up</sprite>
       <sprite>sprites\spr_red_hit</sprite>
-      <sprite>sprites\spr_red_walk</sprite>
       <sprite>sprites\spr_red</sprite>
       <sprite>sprites\spr_red_protect</sprite>
       <sprite>sprites\spr_red_jump</sprite>
       <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\spr_magicshield</sprite>
     </sprites>
+    <sprite>sprites\spr_red_walk</sprite>
     <sprites name="Ennemis">
       <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_crow_death</sprite>
@@ -122,6 +122,9 @@
       <sprite>sprites\spr_magicshield_icon</sprite>
       <sprite>sprites\spr_gasbar</sprite>
       <sprite>sprites\spr_lifebar</sprite>
+      <sprite>sprites\spr_health</sprite>
+      <sprite>sprites\spr_timer</sprite>
+      <sprite>sprites\spr_menubg</sprite>
     </sprites>
     <sprite>sprites\sprite83</sprite>
     <sprite>sprites\sprite98</sprite>
@@ -184,6 +187,7 @@
       <object>objects\obj_healthbar</object>
       <object>objects\obj_lighting</object>
       <object>objects\obj_keymapping</object>
+      <object>objects\obj_hud</object>
     </objects>
     <objects name="decor">
       <object>objects\obj_ground01</object>
@@ -230,9 +234,9 @@
     <object>objects\obj_woodtower_top</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\arena</room>
     <room>rooms\arena2</room>
     <room>rooms\Tutorial</room>
-    <room>rooms\arena</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
