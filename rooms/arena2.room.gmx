@@ -121,9 +121,6 @@
     <instance objName="obj_ground01" x="1440" y="640" name="inst_8E4DCEA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="1280" y="640" name="inst_BE96C2B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ennemy_shadow" x="2464" y="640" name="inst_457B0564" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie" x="640" y="640" name="inst_73C5030D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie" x="800" y="640" name="inst_B7BCD348" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie" x="992" y="640" name="inst_A31F8567" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow" x="256" y="480" name="inst_BD441EDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow_leg" x="256" y="480" name="inst_E00FA475" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree2" x="1664" y="480" name="inst_F21E6B6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -158,11 +155,8 @@
     <instance objName="obj_wizard_trigger" x="1824" y="160" name="inst_611A2E00" locked="0" code="activation = room_speed * 19;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arena_trigger" x="2048" y="320" name="inst_CA14DD47" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flying_eye_trigger" x="1824" y="128" name="inst_47E1196D" locked="0" code="activation = room_speed * 5&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_arena_trigger" x="800" y="320" name="inst_F4FDE255" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_shadow_trigger" x="416" y="640" name="inst_454F4351" locked="0" code="activation = room_speed * 5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_shadow_trigger" x="1216" y="640" name="inst_356E4C2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wizard" x="224" y="160" name="inst_5AD53D8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wizard" x="512" y="192" name="inst_549AFFDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="1600" y="-192" name="inst_86EB40DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="1632" y="-256" name="inst_652EDBA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="768" y="544" w="16" h="16" xo="0" yo="0" id="10000002" name="inst_B4CD3ACE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -1,4 +1,13 @@
+///activateEnemyTrigger(object to create)
+
 if(id.activation == 0){
-    instance_create(x, y, argument0);
-    instance_destroy();
+    id.activation --;
+    instance = instance_create(x, y, argument0);
+}
+else if(id.activation < 0){
+    if(!instance_exists(instance)){
+        with (id)
+            instance_destroy();
+            show_debug_message("yo");
+    }
 }

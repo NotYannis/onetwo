@@ -46,7 +46,7 @@ hitSprite = anims[3];
 deathSprite = anims[4];
 
 stats = getEnemyStat();
-hsp = stats[0] * behindPlayer();
+hsp = stats[0];
 hp = stats[1];
 gunRes = stats[2];
 damage = stats[3];
@@ -206,7 +206,7 @@ if(death){
             instance_destroy();
         }
     }
-    if(image_index == sprite_get_number(deathSprite) - 1 &amp;&amp; !flying){
+    else if(image_index == sprite_get_number(deathSprite) - image_speed){
         instance_destroy();
     }
 }

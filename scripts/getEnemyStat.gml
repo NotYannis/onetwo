@@ -18,7 +18,7 @@ switch(object_index) {
         stat[0] = 0; stat[1] = 10; stat[2] = 1; stat[3] = 30;
             break;
     case obj_orb :
-        stat[0] = 5; stat[1] = 0; stat[2] = 0; stat[3] = 10; stat[4] = 0;
+        stat[0] = 10; stat[1] = 0; stat[2] = 0; stat[3] = 10; stat[4] = 0;
             break;
     case obj_arrow :
         stat[0] = -10; stat[1] = 0; stat[2] = 0; stat[3] = 10; stat[4] = 0;
