@@ -25,10 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.5;
+            <string>image_speed = 0.2;
 
 if (place_meeting(x, y, obj_bullet)){
-    instance_destroy();
+    sprite_index = spr_target_destroy;
+    image_speed = 0.6;
+        if (image_index &gt; 9){
+            instance_destroy();
+        }
 }
 </string>
           </argument>

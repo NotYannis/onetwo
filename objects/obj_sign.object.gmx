@@ -79,7 +79,10 @@ if (obj_lighting.dark){
             <string>draw_sprite(spr_sign, 0-1-2, x, y);
 object_set_mask(obj_sign, spr_sign);
 if (place_meeting(x,y,obj_character)){
-    draw_text(x - 100,y - 100,text);
+    draw_set_colour(c_white);
+    draw_set_font(sign_font);
+    draw_rectangle_colour(x - 120, y - 220, x + 300, y - 150, c_black, c_black, c_black, c_black, false);
+    draw_text(x - 100,y - 200,text);
 }
 </string>
           </argument>

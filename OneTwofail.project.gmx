@@ -69,8 +69,8 @@
       <sprite>sprites\spr_red_jump</sprite>
       <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\spr_magicshield</sprite>
+      <sprite>sprites\spr_red_walk</sprite>
     </sprites>
-    <sprite>sprites\spr_red_walk</sprite>
     <sprites name="Ennemis">
       <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_crow_death</sprite>
@@ -115,6 +115,7 @@
       <sprite>sprites\spr_bloodtear</sprite>
       <sprite>sprites\spr_targetpractice</sprite>
       <sprite>sprites\spr_target</sprite>
+      <sprite>sprites\spr_target_destroy</sprite>
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_statue</sprite>
     </sprites>
@@ -150,7 +151,7 @@
     <script>scripts\activateEnemyTrigger.gml</script>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\TNR</font>
+    <font>fonts\sign_font</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_platform</object>
