@@ -55,14 +55,14 @@
     <instance objName="obj_ground01" x="0" y="768" name="inst_CD3936F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_character" x="224" y="736" name="inst_ED497034" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow" x="224" y="640" name="inst_F712416F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_quit_music" x="96" y="160" name="inst_D812C28A" locked="0" code="audio_play_sound (snd_tutorial_level, 10, true);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_quit" x="96" y="160" name="inst_D812C28A" locked="0" code="audio_play_sound (snd_tutorial_level, 10, true);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_view" x="64" y="128" name="inst_66DB077B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow_leg" x="224" y="672" name="inst_0750BA15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_healthbar" x="128" y="192" name="inst_DE5BBC86" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="128" y="576" name="inst_64A78B70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sign" x="576" y="704" name="inst_D6337FA0" locked="0" code="text = &quot;Welcome ! Press space to jump&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="864" y="768" name="inst_3BA66513" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_targetpractice" x="1632" y="224" name="inst_41C74474" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_targetpractice" x="1728" y="160" name="inst_41C74474" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lighting" x="32" y="96" name="inst_2DCF983C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sign" x="2208" y="704" name="inst_7487CB36" locked="0" code="text = &quot;Use D and F to protect your ally&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="2528" y="768" name="inst_6CF46D21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -86,13 +86,10 @@
     <instance objName="obj_ground_good" x="1248" y="768" name="inst_C4855D32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="1376" y="768" name="inst_14495BFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="1504" y="768" name="inst_A9991656" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground_good" x="1632" y="768" name="inst_13589F2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground_good" x="1760" y="768" name="inst_BE1777D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground_good" x="1888" y="768" name="inst_D92F1B96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2016" y="768" name="inst_2CE4987D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2144" y="768" name="inst_470E7247" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2272" y="768" name="inst_167522D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_targetpractice" x="1856" y="608" name="inst_4A778311" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_targetpractice" x="1952" y="416" name="inst_4A778311" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="0" y="608" name="inst_F6554AE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2400" y="768" name="inst_DFDF7D38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2304" y="672" name="inst_968EDEDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -169,6 +166,10 @@
     <instance objName="obj_water" x="4896" y="768" name="inst_11FA0049" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lantern" x="96" y="544" name="inst_ABE19676" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_targetpractice" x="3936" y="704" name="inst_0356F67A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_targetpractice" x="1504" y="416" name="inst_2B87365B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground_good" x="1632" y="672" name="inst_127774E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground_good" x="1760" y="608" name="inst_0B64AB6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground_good" x="1888" y="672" name="inst_BEFC2A73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

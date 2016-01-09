@@ -187,11 +187,12 @@
     </objects>
     <objects name="global objects">
       <object>objects\obj_view</object>
-      <object>objects\obj_quit_music</object>
+      <object>objects\obj_quit</object>
       <object>objects\obj_healthbar</object>
       <object>objects\obj_lighting</object>
       <object>objects\obj_keymapping</object>
       <object>objects\obj_hud</object>
+      <object>objects\obj_music</object>
     </objects>
     <objects name="decor">
       <object>objects\obj_ground01</object>
