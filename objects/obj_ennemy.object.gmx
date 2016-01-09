@@ -27,17 +27,30 @@
             <kind>1</kind>
             <string>instance_deactivate_object(object_index);
 
+//This determines what the enemy will do,
+//can be used in the creation event on each type of enemy
 isSpawning = true;
 isProjectile = false;
 applyGravity = true;
 followPlayer = true;
 flying = false;
-facing = 1;
-invulnerability = 0;
 
+//Intern state of the enemy
+invulnerability = 0;
 attack = true;
 death = false;
+touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
+                                    obj_character.y,
+                                    obj_character.x + (78 * obj_character.image_xscale),
+                                    obj_character.y + 20,
+                                    id, true, false);
+touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
+                                  obj_character.y - 81,
+                                  obj_character.x + (40 * obj_character.image_xscale),
+                                  obj_character.y - 30, id, true, false)
 
+//Instanciation, it will get stats, sprites and sound
+//Used with scripts getEnemyAnim, getEnemyStat and getEnemySound
 anims = getEnemyAnim();
 animationSpeed = anims[0];
 spawnSprite = anims[1];
@@ -53,7 +66,6 @@ damage = stats[3];
 
 image_speed = animationSpeed;
 image_xscale = behindPlayer();
-
 </string>
           </argument>
         </arguments>
@@ -76,10 +88,10 @@ image_xscale = behindPlayer();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(isSpawning){
+            <string>if(isSpawning){ //Animate the enemy spawn
     attack = false;
     sprite_index = spawnSprite;
-    image_speed = 0.2;
+    image_speed = 0.3;
     if (image_index &gt;= sprite_get_number(spawnSprite) - image_speed){
         isSpawning = false;
         attack = true;
@@ -88,9 +100,21 @@ image_xscale = behindPlayer();
         image_speed = animationSpeed;
     }
 }
-if (attack){
-    // Se tourne et va vers le joueur.
-    if(followPlayer) {
+if (attack){//Normal behaviour, between spawn and death
+    //Checks if touch the chainsaw
+    touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
+                                      obj_character.y,
+                                      obj_character.x + (78 * obj_character.image_xscale),
+                                      obj_character.y + 20,
+                                      id, true, false);
+    //Checks if touch the upper shield
+    touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
+                                      obj_character.y - 81,
+                                      obj_character.x + (40 * obj_character.image_xscale),
+                                      obj_character.y - 30, id, true, false)
+                                    
+                                    
+    if(followPlayer) {// Se tourne et va vers le joueur.
         if(x &lt; obj_character.x - 150 || x &gt; obj_character.x + 150){
             move_towards_point(obj_character.x, obj_character.y, hsp);
             id.image_xscale = behindPlayer();
@@ -100,10 +124,9 @@ if (attack){
         hspeed = hsp;
     }
 
-    // -------- Gravity -------
-    //-------------------------
+    //Gravity
     if(applyGravity){
-        if (place_meeting(x, y + 2, obj_ground01)){
+        if(place_meeting(x, y + 2, obj_ground01)){
             vspeed = 0;
         }
         else{
@@ -131,14 +154,7 @@ if (attack){
     }
     
     //If touched by the chainsaw
-    if(collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
-                           obj_character.y,
-                           obj_character.x + (78 * obj_character.image_xscale),
-                           obj_character.y + 20,
-                           id, true, false)
-        &amp;&amp; obj_character.strike
-        &amp;&amp; invulnerability == 0)
-    {    
+    if(touchWeapon &amp;&amp; obj_character.strike &amp;&amp; invulnerability == 0){    
         audio_play_sound(snd_ennemy1_hit,10,false)
         invulnerability = 8;
         if(hp &gt; obj_character.damage){
@@ -150,20 +166,15 @@ if (attack){
         }
         hp -= obj_character.damage;
         hspeed = 0;
-    }
-    else if(place_meeting(x,y,obj_character) //If hit the character while not attacking
-             || place_meeting(x,y,obj_yellow) 
-            &amp;&amp; (!obj_character.redprotect
-                || !collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
-                                        obj_character.y - 81,
-                                        obj_character.x + (40 * obj_character.image_xscale),
-                                        obj_character.y - 30, id, true, false))){
+    } //If hits the character while not attacking
+    else if(place_meeting(x,y,obj_character) || place_meeting(x,y,obj_yellow)
+            &amp;&amp; (!obj_character.redprotect || !touchShield)){
         obj_character.hit = true;
         obj_character.ennemy = id;
         obj_character.damage = damage;
         obj_character.enemyBehind = behindPlayer();
     }
-    
+
     //Short invulnerability after being striked
     if(invulnerability &gt; 0){
         invulnerability--;
@@ -172,14 +183,16 @@ if (attack){
     else if(object_index != obj_tentacle &amp;&amp; object_index != obj_wizard &amp;&amp; object_index != obj_flying_eye){
         sprite_index = sprite;
     }
+    
+    //Plouf !
     if (place_meeting(x,y,obj_water)){
         hspeed = 0;
         audio_play_sound(snd_plouf, 10, false);
         instance_destroy();
     }
-   if (place_meeting(x,y, obj_magicshield)){
-        if(!place_meeting(x + image_xscale * 100,y, obj_ground01)){
-            x += image_xscale * 100;
+    if (place_meeting(x,y, obj_magicshield)){
+        if(!place_meeting(x + behindPlayer() * 100,y, obj_ground01)){
+            x += behindPlayer() * 100;
         }
         y -= 20;
     }
@@ -202,7 +215,7 @@ if(death){
         if(image_index == sprite_get_number(deathSprite) - 1){
             image_speed = 0;
         }
-        if(place_meeting(x,y, obj_ground01)){
+        if(place_meeting(x, y + 2, obj_ground01)){
             instance_destroy();
         }
     }

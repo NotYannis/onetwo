@@ -29,7 +29,8 @@
 applyGravity = false;
 isSpawning = true;
 
-cooldown = 120;
+cooldown = 120
+canStrike = cooldown;
 strike = false;
 kameha = false;
 </string>
@@ -56,12 +57,12 @@ kameha = false;
             <kind>1</kind>
             <string>///Magic !
 if(!death){
-    if(cooldown &gt; 0 &amp;&amp; !strike){//On cooldown
-        cooldown--;
+    if(canStrike &gt; 0 &amp;&amp; !strike){//On cooldown
+        canStrike--;
     }
     
-    if(cooldown == 0){//Prepare to throw
-        cooldown--;
+    if(canStrike == 0){//Prepare to throw
+        canStrike--;
         strike = true;
         image_index = 0;
         sprite_index = spr_wizard_attack;
@@ -69,8 +70,8 @@ if(!death){
     
     if(strike){//Throw the orb
         if(image_index &gt;= sprite_get_number(spr_wizard_attack) - image_speed){
-            orb = instance_create(x + 12, y + 72, obj_orb);
-            cooldown = 120;
+            orb = instance_create(x - 36, y + 72, obj_orb);
+            canStrike = cooldown;
             strike = false;
             kameha = true;
         }

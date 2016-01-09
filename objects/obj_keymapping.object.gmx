@@ -39,14 +39,22 @@ globalvar redShieldKey;
 redShieldKey = ord('F');
 
 //Player two keys (yellow)
-globalvar yelLeftKey;
+/*globalvar yelLeftKey;
 yelLeftKey = ord('K');
 globalvar yelRightKey;
 yelRightKey = ord('M');
 globalvar yelUpKey;
 yelUpKey = ord('O');
 globalvar yelDownKey;
-yelDownKey = ord('L');
+yelDownKey = ord('L');*/
+globalvar yelLeftKey;
+yelLeftKey = vk_numpad4;
+globalvar yelRightKey;
+yelRightKey = vk_numpad6;
+globalvar yelUpKey;
+yelUpKey = vk_numpad8;
+globalvar yelDownKey;
+yelDownKey = vk_numpad5;
 globalvar yelShieldKey;
 yelShieldKey = ord('D');
 globalvar gunKey;

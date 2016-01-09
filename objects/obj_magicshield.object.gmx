@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//obj_magicshield.x = obj_character.x;
-//obj_magicshield.y = obj_character.y;
-
+            <string>obj_magicshield.x = obj_character.x;
+obj_magicshield.y = obj_character.y;
 </string>
           </argument>
         </arguments>
@@ -52,9 +51,9 @@
             <kind>1</kind>
             <string>obj_magicshield.x = obj_character.x;
 obj_magicshield.y = obj_character.y;
-if(obj_yellow.canprotect &lt;= 1){
+if(obj_yellow.canProtect &lt;= 1){
     instance_destroy();
-    obj_yellow.canprotect = room_speed*3;
+    obj_yellow.canProtect = room_speed*3;
 }
 </string>
           </argument>
