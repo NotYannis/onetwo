@@ -64,6 +64,13 @@ hp = stats[1];
 gunRes = stats[2];
 damage = stats[3];
 
+sounds = getEnemySound();
+spawnSound = sounds[0];
+attackSound = sounds[1];
+touchPlayerSound = sounds[2];
+hitedSound = sounds[3];
+deathSound = sounds[4];
+
 image_speed = animationSpeed;
 image_xscale = behindPlayer();
 </string>
@@ -89,6 +96,7 @@ image_xscale = behindPlayer();
           <argument>
             <kind>1</kind>
             <string>if(isSpawning){ //Animate the enemy spawn
+    if(!audio_is_playing(spawnSound)) audio_play_sound(spawnSound, 10, false);
     attack = false;
     sprite_index = spawnSprite;
     image_speed = 0.3;
@@ -141,7 +149,7 @@ if (attack){//Normal behaviour, between spawn and death
     if(place_meeting(x,y, obj_bullet)){
         bullet = instance_place(x, y, obj_bullet);
         with(bullet) instance_destroy();
-        audio_play_sound(snd_ennemy1_hit,10,false)
+        audio_play_sound(hitedSound, 10, false)
         invulnerability = 5;
         if(hp &gt; obj_character.gunDamage * gunRes &amp;&amp; gunRes != 0){
             sprite_index = hitSprite;
@@ -155,7 +163,7 @@ if (attack){//Normal behaviour, between spawn and death
     
     //If touched by the chainsaw
     if(touchWeapon &amp;&amp; obj_character.strike &amp;&amp; invulnerability == 0){    
-        audio_play_sound(snd_ennemy1_hit,10,false)
+        audio_play_sound(hitedSound, 10, false)
         invulnerability = 8;
         if(hp &gt; obj_character.damage){
         sprite_index = hitSprite;
@@ -196,6 +204,8 @@ if (attack){//Normal behaviour, between spawn and death
         }
         y -= 20;
     }
+
+    if(!audio_is_playing(attackSound)) audio_play_sound(attackSound, 10, false);
     
     if(hp &lt;= 0) {
         death = true;
@@ -206,6 +216,7 @@ if (attack){//Normal behaviour, between spawn and death
 
 // Death animation 
 if(death){
+    if(!audio_is_playing(deathSound)) audio_play_sound(deathSound, 10, false);
     sprite_index = deathSprite;
     image_speed = 0.5;
     hspeed = 0;

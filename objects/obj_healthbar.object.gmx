@@ -67,7 +67,7 @@ else{
 }
 // Magic shield icon
 
-if (obj_yellow.canprotect &lt;= 1){
+if (obj_yellow.canProtect &lt;= 1){
     draw_sprite(spr_magicshield_icon, 1, view_xview+140, view_yview+100);
 }
 else{
@@ -76,7 +76,7 @@ else{
 //-----------Bullets------
 //------------------------
 
-if (obj_yellow.canshoot &lt;= 1){
+if (obj_yellow.canShoot &lt;= 1){
    draw_sprite(spr_bulletnumber2, 1, view_xview+30, view_yview+100);
 }
 else{

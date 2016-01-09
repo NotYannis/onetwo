@@ -146,8 +146,8 @@ if (hit &amp;&amp; invulnerability &lt;= 1){
         x -= enemyBehind * 25;
     y -= 25
     
-    if (!audio_is_playing(snd_ennemy1_hit))
-        audio_play_sound(snd_ennemy1_hit, 10, false);
+    if (!audio_is_playing(snd_hit))
+        audio_play_sound(snd_hit, 10, false);
 
     if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy)){
             audio_play_sound(snd_shield, 10, false);
@@ -344,9 +344,9 @@ if(viewUpdate){
     lPos = view_xview + (view_wview / 2 + 100); //Position of the camera when the player walks to the left
     rBor = view_xview + (view_wview / 2 + 150); //Right limit, when the camera reposition itself
     rPos = view_xview + (view_wview / 2 - 100); //Position of the camera when the player walks to the right
-    if(x &gt; rPos &amp;&amp; rTrigger) viewPos += 15;
+    if(x &gt; rPos &amp;&amp; rTrigger) viewPos += 20;
     else rTrigger = false;
-    if(x &lt; lPos &amp;&amp; lTrigger) viewPos -= 15;
+    if(x &lt; lPos &amp;&amp; lTrigger) viewPos -= 20;
     else lTrigger = false;
 }
 

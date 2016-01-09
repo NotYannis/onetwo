@@ -1,4 +1,6 @@
-///getEnemyAnim(0 = AnimationSpeed, 1 = spawn sprite, 2 = sprite, 3 = hit sprite, 4 = death sprite
+///getEnemyAnim(0 = AnimationSpeed, 1 = spawn sprite, 2 = sprite, 3 = hit sprite, 4 = death sprite)
+//Return an array with all the sprites of the enemy type calling the script
+
 switch(object_index) {
     case obj_zombie :
     case obj_zombie_tentacle :

@@ -6,7 +6,7 @@
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\snd_gunfire</sound>
-    <sound>sound\snd_ennemy1_hit</sound>
+    <sound>sound\snd_hit</sound>
     <sound>sound\snd_chainsaw</sound>
     <sound>sound\snd_plouf</sound>
     <sound>sound\snd_shotgunfire</sound>
@@ -150,6 +150,7 @@
     <script>scripts\getEnemyAnim.gml</script>
     <script>scripts\getEnemyStat.gml</script>
     <script>scripts\activateEnemyTrigger.gml</script>
+    <script>scripts\getEnemySound.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\sign_font</font>
