@@ -84,7 +84,8 @@
       <sprite>sprites\spr_mimic_attack</sprite>
       <sprite>sprites\spr_mimic_spawn</sprite>
       <sprite>sprites\spr_flying_eye</sprite>
-      <sprite>sprites\spr_flyingeye_spawn</sprite>
+      <sprite>sprites\spr_flying_eye_hit</sprite>
+      <sprite>sprites\spr_flying_eye_spawn</sprite>
       <sprite>sprites\spr_flying_eye_attack</sprite>
       <sprite>sprites\spr_flying_eye_death</sprite>
       <sprite>sprites\spr_ennemy_skeleton</sprite>
@@ -243,8 +244,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Tutorial</room>
     <room>rooms\arena2</room>
+    <room>rooms\Tutorial</room>
     <room>rooms\arena</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>

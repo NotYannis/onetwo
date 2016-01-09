@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_ennemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,20 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.5;
+            <string>event_inherited();
+followPlayer = false;
+isSpawning = false;
+flying = true;
+applyGravity = false;
+
 goRight = true;
-flightSpeed = 5;
-death = false;
 
 //Flight distances
-distMin = x - 250;
-distMax = x + 250;
+distMin = -50;
+distMax = room_width + 50;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -55,39 +58,9 @@ distMax = x + 250;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!death){
-    if (x &gt;= distMax){
-        goRight = false;
-    }
-    
-    else if (x &lt;= distMin){
-        goRight = true;
-    }
-    
-    if(goRight){
-        x+= flightSpeed;
-        image_xscale = -1;
-    }
-    else{
-        x-=flightSpeed;
-        image_xscale = 1;
-    }
-}
-
-if (place_meeting(x,y, obj_bullet)){
-    sprite_index = spr_crow_death;
-    hspeed = 0;
-    death = true;
-    audio_play_sound(snd_ennemy1_hit,10,false);
-    with (obj_bullet){
-        instance_destroy()
-    }
-}
-
-if (death){
-    image_speed = 0.8;
-    if (image_index &gt;= sprite_get_number(spr_crow_death) - 1){
-        instance_destroy();
+            <string>if(attack){
+    if (x &gt;= distMax || x &lt;= distMin){
+        hsp *=-1
     }
 }
 </string>

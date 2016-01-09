@@ -30,8 +30,6 @@ applyGravity = false;
 followPlayer = false;
 isSpawning = false;
 flying = true;
-isStriking = true;
-
 
 dropTear = false;
 flyingLimit = 400;

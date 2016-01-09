@@ -33,7 +33,6 @@ isSpawning = true;
 isProjectile = false;
 applyGravity = true;
 followPlayer = true;
-isStriking = false;
 flying = false;
 
 //Intern state of the enemy
@@ -147,7 +146,7 @@ if (attack){//Normal behaviour, between spawn and death
     }
 
     //If touched by a bullet
-    if(place_meeting(x,y, obj_bullet)){
+    if(place_meeting(x,y, obj_bullet) &amp;&amp; invulnerability == -1){
         bullet = instance_place(x, y, obj_bullet);
         with(bullet) instance_destroy();
         audio_play_sound(hitedSound, 10, false)
@@ -163,18 +162,20 @@ if (attack){//Normal behaviour, between spawn and death
     }
     
     //If touched by the chainsaw
-    if(touchWeapon &amp;&amp; obj_character.strike &amp;&amp; invulnerability == 0){    
+    if(touchWeapon &amp;&amp; obj_character.strike &amp;&amp; invulnerability == -1){    
         audio_play_sound(hitedSound, 10, false)
         invulnerability = 8;
         if(hp &gt; obj_character.damage){
-        sprite_index = hitSprite;
-            if(!place_meeting(x + behindPlayer() * 35, y - 1, obj_ground01)){
-                x += behindPlayer() * 35;
+            sprite_index = hitSprite;
+            hp -= obj_character.damage;
+            if(!flying){ //If not flying, little push back
+                if(!place_meeting(x + behindPlayer() * 35, y - 1, obj_ground01)){
+                    x += behindPlayer() * 35;
+                }
+                y -= 25
             }
-            y -= 25
+            hspeed = 0;
         }
-        hp -= obj_character.damage;
-        hspeed = 0;
     } //If hits the character while not attacking
     else if(place_meeting(x,y,obj_character) || place_meeting(x,y,obj_yellow)
             &amp;&amp; (!obj_character.redprotect || !touchShield)){
@@ -189,8 +190,9 @@ if (attack){//Normal behaviour, between spawn and death
         invulnerability--;
         hspeed = 0;
     }
-    else if(!isStriking){
+    else if(invulnerability == 0){
         sprite_index = sprite;
+        invulnerability--
     }
     
     //Plouf !

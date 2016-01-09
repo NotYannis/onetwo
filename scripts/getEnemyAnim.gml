@@ -24,8 +24,12 @@ switch(object_index) {
         anim[3] = spr_wizard; anim[4] = spr_wizard_death;
             break;
     case obj_flying_eye :
-        anim[0] = 0.5; anim[1] = spr_flying_eye; anim[2] = spr_flying_eye;
-        anim[3] = spr_flying_eye; anim[4] = spr_flying_eye_death;
+        anim[0] = 0.5; anim[1] = spr_flying_eye_spawn; anim[2] = spr_flying_eye;
+        anim[3] = spr_flying_eye_hit; anim[4] = spr_flying_eye_death;
+            break;
+    case obj_crow :
+        anim[0] = 0.5; anim[1] = spr_crow; anim[2] = spr_crow;
+        anim[3] = spr_crow; anim[4] = spr_crow_death;
             break;
     default : return noone;
 }
