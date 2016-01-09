@@ -15,6 +15,7 @@
     <sound>sound\snd_shadowcry</sound>
     <sound>sound\snd_shadowteeth</sound>
     <sound>sound\snd_onetwo</sound>
+    <sound>sound\snd_tutorial_level</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_trigger</sprite>
@@ -210,6 +211,7 @@
       <object>objects\obj_skull</object>
       <object>objects\obj_tree</object>
       <object>objects\obj_tree2</object>
+      <object>objects\obj_tree3</object>
       <object>objects\obj_bridge</object>
       <object>objects\obj_shrine</object>
       <object>objects\obj_cosmicjewel</object>

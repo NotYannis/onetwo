@@ -31,7 +31,7 @@ if (place_meeting(x,y,obj_character)){
     audio_play_sound (snd_plouf, 10, false);
     // with (obj_character)
     //   instance_destroy();  ---&gt; Useless ?
-   room_goto(room_last);
+   room_goto(Game_Over);
 }
 
 </string>
