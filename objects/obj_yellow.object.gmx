@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Variables
-
-gunDown = false;
+            <string>gunDown = false;
 gunUp = false;
 gunLeft = false;
 grav = 1;
@@ -35,8 +33,6 @@ canShoot = 1;
 canProtect = 1;
 gunCooldown = room_speed * 0.7;
 shieldCooldown = room_speed * 2;
-
-// Else 
 
 image_speed = 0;
 </string>
@@ -118,10 +114,10 @@ gunLeft = (image_xscale == -1);
 
 gunDown = keyboard_check(yelDownKey);
 gunUp = keyboard_check(yelUpKey);
-gunUpRight = gunUp &amp;&amp; keyboard_check(yelRightKey);
-gunUpLeft = gunUp &amp;&amp; keyboard_check(yelLeftKey);
-gunDownRight = gunDown &amp;&amp; keyboard_check(yelRightKey);
-gunDownLeft = gunDown &amp;&amp; keyboard_check(yelLeftKey);
+gunUpRight = gunUp &amp;&amp; keyboard_check(yelRightKey) &amp;&amp; !gunLeft;
+gunUpLeft = gunUp &amp;&amp; keyboard_check(yelLeftKey) &amp;&amp; gunLeft;
+gunDownRight = gunDown &amp;&amp; keyboard_check(yelRightKey) &amp;&amp; !gunLeft;
+gunDownLeft = gunDown &amp;&amp; keyboard_check(yelLeftKey) &amp;&amp; gunLeft;
 gunDefaultPos = !gunDown &amp;&amp; ! gunUp &amp;&amp; !gunUpRight &amp;&amp; !gunUpLeft &amp;&amp; !gunDownLeft &amp;&amp; !gunDownRight;
 
 if (gunDown){

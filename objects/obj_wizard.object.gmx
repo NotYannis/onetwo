@@ -28,6 +28,7 @@
             <string>event_inherited();
 applyGravity = false;
 isSpawning = true;
+isStriking = true;
 
 cooldown = 120
 canStrike = cooldown;

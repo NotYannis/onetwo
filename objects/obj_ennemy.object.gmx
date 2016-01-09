@@ -33,6 +33,7 @@ isSpawning = true;
 isProjectile = false;
 applyGravity = true;
 followPlayer = true;
+isStriking = false;
 flying = false;
 
 //Intern state of the enemy
@@ -188,7 +189,7 @@ if (attack){//Normal behaviour, between spawn and death
         invulnerability--;
         hspeed = 0;
     }
-    else if(object_index != obj_tentacle &amp;&amp; object_index != obj_wizard &amp;&amp; object_index != obj_flying_eye){
+    else if(!isStriking){
         sprite_index = sprite;
     }
     
@@ -198,6 +199,7 @@ if (attack){//Normal behaviour, between spawn and death
         audio_play_sound(snd_plouf, 10, false);
         instance_destroy();
     }
+    //Boing !
     if (place_meeting(x,y, obj_magicshield)){
         if(!place_meeting(x + behindPlayer() * 100,y, obj_ground01)){
             x += behindPlayer() * 100;
