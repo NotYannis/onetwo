@@ -16,6 +16,7 @@
     <sound>sound\snd_shadowteeth</sound>
     <sound>sound\snd_onetwo</sound>
     <sound>sound\snd_tutorial_level</sound>
+    <sound>sound\snd_tutorial_arena</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_trigger</sprite>
@@ -101,6 +102,7 @@
       <sprite>sprites\spr_tentacle</sprite>
       <sprite>sprites\spr_imp_start</sprite>
       <sprite>sprites\spr_imp_fly</sprite>
+      <sprite>sprites\spr_imp_death</sprite>
       <sprite>sprites\spr_imp_fire</sprite>
       <sprite>sprites\spr_imp_go</sprite>
       <sprite>sprites\spr_tentacle_hit</sprite>
@@ -252,8 +254,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\arena2</room>
     <room>rooms\Tutorial</room>
+    <room>rooms\arena2</room>
     <room>rooms\arena</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>

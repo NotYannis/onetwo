@@ -114,22 +114,21 @@
     <instance objName="obj_water" x="4032" y="768" name="inst_6033CB42" locked="0" code="" scaleX="1.00787401199341" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="4160" y="768" name="inst_ED825633" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_woodtower_middle" x="4064" y="736" name="inst_6D2AB6BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_woodtower_middle" x="4064" y="640" name="inst_512353BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_woodtower_middle" x="4064" y="768" name="inst_DFCBE1F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_woodtower_top" x="4064" y="512" name="inst_E0C84D8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="4064" y="608" name="inst_D77F47AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="4096" y="608" name="inst_134C2C6D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="4128" y="608" name="inst_874B16DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="4160" y="608" name="inst_1A34856E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_woodtower_middle" x="4064" y="576" name="inst_512353BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_woodtower_middle" x="4064" y="704" name="inst_DFCBE1F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_woodtower_top" x="4064" y="448" name="inst_E0C84D8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="4064" y="544" name="inst_D77F47AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="4128" y="544" name="inst_874B16DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="4160" y="544" name="inst_1A34856E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="5024" y="768" name="inst_35EF2039" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="5152" y="768" name="inst_762EAFA5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_woodtower_middle" x="4960" y="736" name="inst_CC6DD1C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_woodtower_middle" x="4960" y="640" name="inst_CB5FD353" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_woodtower_top" x="4960" y="512" name="inst_2066F9E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="4960" y="608" name="inst_A1C8D967" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="5024" y="608" name="inst_36C4F6A1" locked="0" code="" scaleX="1.03225803375244" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="4992" y="608" name="inst_75300065" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="5056" y="608" name="inst_CE13782F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_woodtower_middle" x="4960" y="608" name="inst_CB5FD353" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_woodtower_top" x="4960" y="480" name="inst_2066F9E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="4960" y="576" name="inst_A1C8D967" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="4992" y="576" name="inst_36C4F6A1" locked="0" code="" scaleX="1.03225803375244" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="5024" y="576" name="inst_75300065" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="5056" y="576" name="inst_CE13782F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="5504" y="768" name="inst_117AA923" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="5632" y="768" name="inst_23B1F1CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="5856" y="736" name="inst_477D452C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -153,8 +152,8 @@
     <instance objName="obj_ground_good" x="2400" y="672" name="inst_53368C24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_statue" x="3456" y="672" name="inst_1F3780DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="3392" y="736" name="inst_382586FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wizard_trigger" x="4128" y="512" name="inst_9A2CD596" locked="0" code="activation = room_speed*6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wizard_trigger" x="5011" y="518" name="inst_50E5B7D2" locked="0" code="activation = room_speed*1&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wizard_trigger" x="4123" y="437" name="inst_9A2CD596" locked="0" code="activation = room_speed*6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wizard_trigger" x="5021" y="473" name="inst_50E5B7D2" locked="0" code="activation = room_speed*1&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arena_trigger" x="4593" y="292" name="inst_7C956500" locked="0" code="arenaSize = 600;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_trigger" x="4832" y="544" name="inst_8E0ECDF0" locked="0" code="activation = room_speed*1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_trigger" x="4352" y="544" name="inst_C38A76FF" locked="0" code="activation = room_speed*1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -170,6 +169,8 @@
     <instance objName="obj_ground_good" x="1632" y="672" name="inst_127774E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="1760" y="608" name="inst_0B64AB6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="1888" y="672" name="inst_BEFC2A73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_music" x="192" y="256" name="inst_88BA5BA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="4096" y="544" name="inst_413EAC99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
