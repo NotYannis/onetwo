@@ -27,9 +27,9 @@ switch(object_index) {
         anim[0] = 0.5; anim[1] = spr_flying_eye_spawn; anim[2] = spr_flying_eye;
         anim[3] = spr_flying_eye_hit; anim[4] = spr_flying_eye_death;
             break;
-    case obj_crow :
-        anim[0] = 0.5; anim[1] = spr_crow; anim[2] = spr_crow;
-        anim[3] = spr_crow; anim[4] = spr_crow_death;
+    case obj_imp :
+        anim[0] = 0.5; anim[1] = spr_imp_fly; anim[2] = spr_imp_fly;
+        anim[3] = spr_imp_fly; anim[4] = spr_imp_fly;
             break;
     default : return noone;
 }

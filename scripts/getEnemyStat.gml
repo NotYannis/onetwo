@@ -29,8 +29,8 @@ switch(object_index) {
     case obj_flying_eye :
         stat[0] = -10; stat[1] = 30; stat[2] = 1; stat[3] = 10;
             break;
-    case obj_crow :
-        stat[0] = -10; stat[1] = 30; stat[2] = 1; stat[3] = 20;
+    case obj_imp :
+        stat[0] = -8; stat[1] = 30; stat[2] = 1; stat[3] = 20;
             break;
     default : return noone;
 }

@@ -99,8 +99,8 @@
       <sprite>sprites\spr_zombie_strong_hit</sprite>
       <sprite>sprites\spr_tentacle_spawn</sprite>
       <sprite>sprites\spr_tentacle</sprite>
-      <sprite>sprites\spr_imp_start</sprite>
       <sprite>sprites\spr_imp_fly</sprite>
+      <sprite>sprites\spr_imp_start</sprite>
       <sprite>sprites\spr_imp_fire</sprite>
       <sprite>sprites\spr_imp_go</sprite>
       <sprite>sprites\spr_tentacle_hit</sprite>
@@ -183,7 +183,7 @@
       <object>objects\obj_ennemy_shadow</object>
       <object>objects\obj_wizard</object>
       <object>objects\obj_ennemy_mimic</object>
-      <object>objects\obj_crow</object>
+      <object>objects\obj_imp</object>
       <object>objects\obj_flying_eye</object>
       <object>objects\obj_statue</object>
       <object>objects\obj_boss</object>
@@ -252,9 +252,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\arena</room>
     <room>rooms\arena2</room>
     <room>rooms\Tutorial</room>
-    <room>rooms\arena</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
