@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>id.activation = 10;
+            <string>second = 2;
+id.activation = room_speed * second;
 </string>
           </argument>
         </arguments>

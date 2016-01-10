@@ -91,7 +91,7 @@ else{
     
     //If thouches the player, make some damage
     if(place_meeting(x,y,obj_character)|| place_meeting(x,y,obj_yellow)
-        &amp;&amp; (!obj_character.redprotect|| !touchshield)){
+        &amp;&amp; (!obj_character.redprotect|| !touchShield)){
         obj_character.hit = true;
         obj_character.ennemy = id;
         obj_character.damage = damage;
@@ -99,7 +99,7 @@ else{
         instance_destroy();
     }
     //If touches the player when protected
-    if(place_meeting(x,y, obj_magicshield) || (obj_character.redprotect &amp;&amp; touchshield)){
+    if(place_meeting(x,y, obj_magicshield) || (obj_character.redprotect &amp;&amp; touchShield)){
         audio_play_sound(snd_shield, 0, false);
         instance_destroy();
     }

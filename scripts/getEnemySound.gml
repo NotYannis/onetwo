@@ -27,7 +27,7 @@ switch(object_index) {
         sound[0] = noone; sound[1] = noone; sound[2] = snd_hit;
         sound[3] = snd_hit; sound[4] = noone;
             break;
-    case obj_crow :
+    case obj_imp :
         sound[0] = noone; sound[1] = noone; sound[2] = snd_hit;
         sound[3] = snd_hit; sound[4] = noone;
             break;
