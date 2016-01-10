@@ -135,7 +135,6 @@
     <instance objName="obj_ground_good" x="5760" y="768" name="inst_D340DC75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sign" x="4640" y="480" name="inst_4C285A65" locked="0" code="text = &quot;Ready to fight ?&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_gate" x="5679" y="529" name="inst_3B748BE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree2" x="4448" y="224" name="inst_257D4913" locked="0" code="" scaleX="1.45833337306976" scaleY="1.41694915294647" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4288" y="768" name="inst_81209521" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4288" y="672" name="inst_0DD7B0EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4416" y="768" name="inst_3B024240" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -171,6 +170,9 @@
     <instance objName="obj_ground_good" x="1888" y="672" name="inst_BEFC2A73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_music" x="192" y="256" name="inst_88BA5BA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="4096" y="544" name="inst_413EAC99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree" x="4448" y="672" name="inst_6F0B1919" locked="0" code="" scaleX="0.970238089561462" scaleY="1.01013517379761" colour="4294967295" rotation="0"/>
+    <instance objName="obj_arena_statue" x="4352" y="320" name="inst_871C6FE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_arena_ruins" x="4288" y="160" name="inst_4FE3CD0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

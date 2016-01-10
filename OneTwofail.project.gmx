@@ -58,6 +58,8 @@
       <sprite>sprites\spr_woodtower_top</sprite>
       <sprite>sprites\spr_woodtower_middle</sprite>
       <sprite>sprites\spr_woodtower_bottom</sprite>
+      <sprite>sprites\spr_arena_statue</sprite>
+      <sprite>sprites\spr_arena_ruins</sprite>
     </sprites>
     <sprites name="Personnages">
       <sprite>sprites\spr_yellow_leg</sprite>
@@ -237,6 +239,8 @@
       <object>objects\obj_woodtower_bottom</object>
       <object>objects\obj_woodtower_middle</object>
       <object>objects\obj_woodtower_top</object>
+      <object>objects\obj_arena_statue</object>
+      <object>objects\obj_arena_ruins</object>
     </objects>
     <objects name="triggers">
       <object>objects\obj_zombie_party</object>
