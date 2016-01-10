@@ -28,11 +28,14 @@
             <string>image_speed = 0.2;
 
 if (place_meeting(x, y, obj_bullet)){
+    with(obj_bullet) instance_destroy();
+    image_index = 0;
     sprite_index = spr_target_destroy;
     image_speed = 0.6;
-        if (image_index == sprite_get_number(spr_target_destroy) - image_speed){
-            instance_destroy();
-        }
+}
+
+if (sprite_index == spr_target_destroy &amp;&amp; image_index &gt;= sprite_get_number(spr_target_destroy) - image_speed){
+    instance_destroy();
 }
 </string>
           </argument>

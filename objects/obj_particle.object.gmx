@@ -120,30 +120,31 @@ if(!stay){
     }
 }
 else{
-    if (awake &lt; 80) awake++;
-    else{
-        vertMinShake = -6;
-        vertMaxShake = 6;
-        //Vertical movement
-        if(shake &gt;= vertMaxShake) goRight = true;
-        else if (shake &lt;= vertMinShake) goRight = false;
-        
-        if(goRight){
-            x += 0.2;
-            shake -= 0.2;
-        }
-        else{
-            x -= 0.2 ;
-            shake += 0.2;
-        }
-        
-        //Horizontal movement
-        if(shake &gt;= vertMaxShake/2) goUp = true;
-        else if (shake &lt;= vertMinShake/2) goUp = false;
-    
-        if(goUp) y+= 0.2;
-        else y-= 0.2;
+    //Vertical movement
+    if(shake &gt;= vertMaxShake){
+        goRight = true;
+        vertMaxShake = random_range(5, 7);
     }
+    else if (shake &lt;= vertMinShake){
+        goRight = false;
+        vertMinShake = random_range(-7, -5);
+    }
+    
+    if(goRight){
+        x += 0.2;
+        shake -= 0.2;
+    }
+    else{
+        x -= 0.2 ;
+        shake += 0.2;
+    }
+    
+    //Horizontal movement
+    if(shake &gt;= vertMaxShake/2) goUp = true;
+    else if (shake &lt;= vertMinShake/2) goUp = false;
+
+    if(goUp) y+= 0.2;
+    else y-= 0.2;
 }
 </string>
           </argument>

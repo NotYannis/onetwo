@@ -6,7 +6,7 @@
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\snd_gunfire</sound>
-    <sound>sound\snd_ennemy1_hit</sound>
+    <sound>sound\snd_hit</sound>
     <sound>sound\snd_chainsaw</sound>
     <sound>sound\snd_plouf</sound>
     <sound>sound\snd_shotgunfire</sound>
@@ -84,7 +84,8 @@
       <sprite>sprites\spr_mimic_attack</sprite>
       <sprite>sprites\spr_mimic_spawn</sprite>
       <sprite>sprites\spr_flying_eye</sprite>
-      <sprite>sprites\spr_flyingeye_spawn</sprite>
+      <sprite>sprites\spr_flying_eye_hit</sprite>
+      <sprite>sprites\spr_flying_eye_spawn</sprite>
       <sprite>sprites\spr_flying_eye_attack</sprite>
       <sprite>sprites\spr_flying_eye_death</sprite>
       <sprite>sprites\spr_ennemy_skeleton</sprite>
@@ -152,6 +153,7 @@
     <script>scripts\getEnemyAnim.gml</script>
     <script>scripts\getEnemyStat.gml</script>
     <script>scripts\activateEnemyTrigger.gml</script>
+    <script>scripts\getEnemySound.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\sign_font</font>
@@ -176,10 +178,10 @@
       <object>objects\obj_wizard</object>
       <object>objects\obj_ennemy_mimic</object>
       <object>objects\obj_crow</object>
+      <object>objects\obj_flying_eye</object>
       <object>objects\obj_statue</object>
       <object>objects\obj_boss</object>
       <object>objects\obj_targetpractice</object>
-      <object>objects\obj_flying_eye</object>
       <objects name="projectiles">
         <object>objects\obj_projectile</object>
         <object>objects\obj_orb</object>
@@ -244,8 +246,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Tutorial</room>
     <room>rooms\arena2</room>
+    <room>rooms\Tutorial</room>
     <room>rooms\arena</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>

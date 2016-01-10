@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>arenaDuration = room_speed * 5;
 arenaSize = view_wview;
+
+
 </string>
           </argument>
         </arguments>
@@ -49,9 +51,9 @@ arenaSize = view_wview;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!obj_character.arenaTime){
+            <string>if(!arenaTime){
     if(place_meeting(x, y, obj_character)){
-        obj_character.arenaTime = true;
+        arenaTime = true;
         obj_character.viewLeftLimit = x - arenaSize;
         obj_character.viewRightLimit = x + arenaSize - view_wview;
         instance_create(x - arenaSize, y, obj_invis_wall);
@@ -61,7 +63,7 @@ arenaSize = view_wview;
 else if(!collision_rectangle(x - arenaSize, view_yview,
                             x + arenaSize, view_yview + view_hview,
                             obj_enemy_trigger, false, false)){
-    obj_character.arenaTime = false;
+    arenaTime = false;
     obj_character.viewLeftLimit = 0;
     obj_character.viewRightLimit = room_width - view_wview;
     show_debug_message("end arena");

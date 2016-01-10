@@ -26,7 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-cooldown = 0;
+isStriking = true;
+
+cooldown = 28
+canStrike = 0;
 strike = false;
 </string>
           </argument>
@@ -57,17 +60,17 @@ event_inherited();
 if(((obj_character.x &gt; x - 200 &amp;&amp; obj_character.x &lt; x )
         || (obj_character.x &lt; x + 200 &amp;&amp; obj_character.x &gt; x))
      &amp;&amp; !isSpawning){
-    if (cooldown == 0){
+    if (canStrike == 0){
         image_index = 0;
         mask_index = spr_tentacle_strike;
         sprite_index = spr_tentacle_strike;
         image_speed = 0.5;
         strike = true;
     }
-    cooldown--;
+    canStrike--;
 }
 else{ //When player is out of range, prepare to strike
-    cooldown = 0
+    canStrike = 0
 }
 
 //When attacks the player
@@ -76,7 +79,7 @@ if(strike){
     if(image_index == sprite_get_number(spr_tentacle_strike) - 0.5
         || sprite_index == spr_tentacle_hit &amp;&amp; invulnerability == 0){
         strike = false;
-        cooldown = 28;
+        canStrike = cooldown;
         sprite_index = spr_tentacle;
         mask_index = spr_tentacle;
         image_speed = 0.5;

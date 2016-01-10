@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_ennemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,20 +25,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.5;
+            <string>event_inherited();
+followPlayer = false;
+isSpawning = false;
+flying = true;
+applyGravity = false;
+
 goRight = true;
-flightSpeed = 5;
-death = false;
+image_xscale = behindPlayer();
 
 //Flight distances
-distMin = x - 250;
-distMax = x + 250;
+distMin = -50;
+distMax = room_width + 50;
+
+//Attack instanciation
+onSlope = false;
+goDown = false;
+goUp = false;
+
+spriteAngle = image_angle;
+
+yMinLimit = obj_yellow.y + 50;
+yMaxLimit = y;
+xMinLimit = obj_yellow.x - 50 * behindPlayer();
+xMaxLimit = obj_yellow.x + 500 * behindPlayer();
+
+speedLimit = 15 * behindPlayer();
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -55,41 +74,40 @@ distMax = x + 250;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!death){
-    if (x &gt;= distMax){
-        goRight = false;
+            <string>if(attack){
+    if (x &gt;= distMax || x &lt;= distMin){//Go back and forth
+        hsp *=-1
+        image_xscale *= -1;
     }
     
-    else if (x &lt;= distMin){
-        goRight = true;
+    //Going down
+    if(!goDown) xMaxLimit = obj_yellow.x + 500 * behindPlayer();
+    if(x &gt; xMaxLimit + hsp &amp;&amp; x &lt; xMaxLimit - hsp){
+        vspeed = 15;
+        goDown = true;
+    }
+    if(y &gt;= yMinLimit - vspeed &amp;&amp; y &lt;= yMinLimit + vspeed &amp;&amp; goDown){
+        vspeed = 0;
+        goDown = false;
     }
     
-    if(goRight){
-        x+= flightSpeed;
-        image_xscale = -1;
+    //Going up
+    if(!goUp &amp;&amp; goDown){
+        xMinLimit = obj_yellow.x - 50 * behindPlayer();
     }
-    else{
-        x-=flightSpeed;
-        image_xscale = 1;
+
+    show_debug_message(hsp * behindPlayer());
+    if(x &gt; xMinLimit - (hsp * behindPlayer()) &amp;&amp; x &lt; xMinLimit + (hsp * behindPlayer())){
+        vspeed = -15;
+        goUp = true;
+    }
+    if(y &gt;= yMaxLimit + vspeed &amp;&amp; y &lt;= yMaxLimit - vspeed &amp;&amp; goUp){
+        vspeed = 0;
+        goUp = false;
     }
 }
 
-if (place_meeting(x,y, obj_bullet)){
-    sprite_index = spr_crow_death;
-    hspeed = 0;
-    death = true;
-    audio_play_sound(snd_ennemy1_hit,10,false);
-    with (obj_bullet){
-        instance_destroy()
-    }
-}
-
-if (death){
-    image_speed = 0.8;
-    if (image_index &gt;= sprite_get_number(spr_crow_death) - 1){
-        instance_destroy();
-    }
-}
+if(obj_lighting.dark) Lighting(200, c_white, c_black);
 </string>
           </argument>
         </arguments>

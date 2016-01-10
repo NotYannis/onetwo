@@ -29,36 +29,39 @@
 image_speed = 0;
 
 if (obj_yellow.gunDown){
-    image_index = 1;
     if(obj_yellow.gunDownRight){
         move_towards_point(x + 1, y + 1, 25);
-        image_angle = 225;
+        image_angle = 315;
     }
     else if(obj_yellow.gunDownLeft){
         move_towards_point(x - 1, y + 1, 25);
-        image_angle = 315;
+        image_angle = 225;
     }
-    else vspeed = 25;
+    else{
+        vspeed = 25;
+        image_angle = 270;
+    }
 }
 else if (obj_yellow.gunUp){
-    image_index = 2;
     if(obj_yellow.gunUpRight){
         move_towards_point(x + 1, y - 1, 25);
-        image_angle = 135;
+        image_angle = 45;
     }
     else if(obj_yellow.gunUpLeft){
         move_towards_point(x - 1, y - 1, 25);
-        image_angle = 45;
+        image_angle = 135;
     }
-    else vspeed = -25;
+    else{
+        vspeed = -25;
+        image_angle = 90;
+    }
 }
 else if(obj_yellow.gunLeft){
     hspeed = -25;
-    image_index = 0;
+    image_angle = 180
 }
 else{
     hspeed = 25;
-    image_index = 0;
 }
 
 </string>
@@ -110,9 +113,10 @@ if(obj_lighting.dark){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Disappear on ground hit
+            <string>///Disappear on ground hit or out of view
 
-if (place_meeting(x,y,obj_ground01)){
+if (place_meeting(x,y,obj_ground01) || x &lt; view_xview || x&gt; view_xview + view_wview
+    || y &lt; 0 || y &gt; room_height){
     instance_destroy();
 }
 </string>

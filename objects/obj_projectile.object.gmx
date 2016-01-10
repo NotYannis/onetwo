@@ -73,6 +73,11 @@ stay = 10;
 
 }
 else{
+    touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
+                                      obj_character.y - 81,
+                                      obj_character.x + (40 * obj_character.image_xscale),
+                                      obj_character.y - 30, id, true, false)
+
     if(aiming){ //Move in the direction of the player
         motion_add(point_direction(x, y, obj_character.x, obj_character.y), hsp);
         aiming = false;
@@ -85,13 +90,8 @@ else{
     }
     
     //If thouches the player, make some damage
-    if(place_meeting(x,y,obj_character)
-        || place_meeting(x,y,obj_yellow)
-        &amp;&amp; ((!obj_character.redprotect)
-            || !collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
-                                        obj_character.y - 81,
-                                        obj_character.x + (40 * obj_character.image_xscale),
-                                        obj_character.y - 34, id, true, false))){
+    if(place_meeting(x,y,obj_character)|| place_meeting(x,y,obj_yellow)
+        &amp;&amp; (!obj_character.redprotect|| !touchshield)){
         obj_character.hit = true;
         obj_character.ennemy = id;
         obj_character.damage = damage;
@@ -99,16 +99,13 @@ else{
         instance_destroy();
     }
     //If touches the player when protected
-    if(place_meeting(x,y, obj_magicshield)
-       || (place_meeting(x,y, obj_yellow) &amp;&amp; obj_character.redprotect)){
+    if(place_meeting(x,y, obj_magicshield) || (obj_character.redprotect &amp;&amp; touchshield)){
         audio_play_sound(snd_shield, 0, false);
         instance_destroy();
     }
     
-    //If touches the ground or out of the view
-    if(place_meeting(x, y, obj_ground01)
-        || x &lt; view_xview || x &gt; view_xview + view_wview
-        || y &lt; view_yview || y &gt; view_yview + view_hview){
+    //If touches the ground or out of the room
+    if(place_meeting(x, y, obj_ground01) || x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height){
         instance_destroy();
     }
 }
