@@ -32,10 +32,26 @@ flying = true;
 applyGravity = false;
 
 goRight = true;
+image_xscale = behindPlayer();
 
 //Flight distances
 distMin = -50;
 distMax = room_width + 50;
+
+//Attack instanciation
+onSlope = false;
+goDown = false;
+goUp = false;
+
+spriteAngle = image_angle;
+
+yMinLimit = obj_yellow.y + 50;
+yMaxLimit = y;
+xMinLimit = obj_yellow.x - 50 * behindPlayer();
+xMaxLimit = obj_yellow.x + 500 * behindPlayer();
+
+speedLimit = 15 * behindPlayer();
+
 </string>
           </argument>
         </arguments>
@@ -59,10 +75,39 @@ distMax = room_width + 50;
           <argument>
             <kind>1</kind>
             <string>if(attack){
-    if (x &gt;= distMax || x &lt;= distMin){
+    if (x &gt;= distMax || x &lt;= distMin){//Go back and forth
         hsp *=-1
+        image_xscale *= -1;
+    }
+    
+    //Going down
+    if(!goDown) xMaxLimit = obj_yellow.x + 500 * behindPlayer();
+    if(x &gt; xMaxLimit + hsp &amp;&amp; x &lt; xMaxLimit - hsp){
+        vspeed = 15;
+        goDown = true;
+    }
+    if(y &gt;= yMinLimit - vspeed &amp;&amp; y &lt;= yMinLimit + vspeed &amp;&amp; goDown){
+        vspeed = 0;
+        goDown = false;
+    }
+    
+    //Going up
+    if(!goUp &amp;&amp; goDown){
+        xMinLimit = obj_yellow.x - 50 * behindPlayer();
+    }
+
+    show_debug_message(hsp * behindPlayer());
+    if(x &gt; xMinLimit - (hsp * behindPlayer()) &amp;&amp; x &lt; xMinLimit + (hsp * behindPlayer())){
+        vspeed = -15;
+        goUp = true;
+    }
+    if(y &gt;= yMaxLimit + vspeed &amp;&amp; y &lt;= yMaxLimit - vspeed &amp;&amp; goUp){
+        vspeed = 0;
+        goUp = false;
     }
 }
+
+if(obj_lighting.dark) Lighting(200, c_white, c_black);
 </string>
           </argument>
         </arguments>

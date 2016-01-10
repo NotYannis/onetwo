@@ -32,7 +32,7 @@ isSpawning = false;
 flying = true;
 
 dropTear = false;
-flyingLimit = 400;
+flyingLimit = 400;//How far from the player it will go
 </string>
           </argument>
         </arguments>

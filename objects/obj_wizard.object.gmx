@@ -70,7 +70,7 @@ if(!death){
     
     if(strike){//Throw the orb
         if(image_index &gt;= sprite_get_number(spr_wizard_attack) - image_speed){
-            orb = instance_create(x - 36, y + 72, obj_orb);
+            orb = instance_create(x - (36 * behindPlayer), y + 72, obj_orb);
             canStrike = cooldown;
             strike = false;
             kameha = true;

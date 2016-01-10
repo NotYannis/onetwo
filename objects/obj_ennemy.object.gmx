@@ -36,7 +36,7 @@ followPlayer = true;
 flying = false;
 
 //Intern state of the enemy
-invulnerability = 0;
+invulnerability = -1;
 attack = true;
 death = false;
 touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),

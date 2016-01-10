@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-follow_player = true;
+followPlayer = true;
 isSpawning = true;
 aiming = true;
 glowSize = 100;

@@ -56,6 +56,7 @@ viewRightLimit = room_width - view_wview;
 view_xview = 0;
 
 //Deactivation of arena triggers
+globalvar arenaTime;
 arenaTime = false;
 </string>
           </argument>
