@@ -82,7 +82,7 @@ if (obj_yellow.canShoot &lt;= 1){
 }
 else{
     draw_sprite(spr_bulletnumber2, 2, view_xview+30, view_yview+100);
-} */
+}
 
 
 </string>

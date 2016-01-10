@@ -95,8 +95,6 @@ speedLimit = 15 * behindPlayer();
     if(!goUp &amp;&amp; goDown){
         xMinLimit = obj_yellow.x - 50 * behindPlayer();
     }
-
-    show_debug_message(hsp * behindPlayer());
     if(x &gt; xMinLimit - (hsp * behindPlayer()) &amp;&amp; x &lt; xMinLimit + (hsp * behindPlayer())){
         vspeed = -15;
         goUp = true;
