@@ -140,6 +140,8 @@
     <background>background\background4</background>
     <background>background\background5</background>
     <background>background\bg_parallax1</background>
+    <background>background\bg_parallax_save</background>
+    <background>background\bg_parallax3</background>
     <background>background\bg_parallax2</background>
   </backgrounds>
   <paths name="paths"/>

@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!arenaTime) &amp;&amp; (!audio_is_playing(snd_tutorial_level)){
+            <string>/* if (!arenaTime) &amp;&amp; (!audio_is_playing(snd_tutorial_level)){
     audio_play_sound(snd_tutorial_level, 10, false);
 }
 else {
     audio_play_sound(snd_tutorial_arena, 10, false);
-}
+} */
 </string>
           </argument>
         </arguments>
