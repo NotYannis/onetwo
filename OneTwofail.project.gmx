@@ -254,15 +254,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
-<<<<<<< HEAD
     <room>rooms\arena</room>
-    <room>rooms\arena2</room>
-    <room>rooms\Tutorial</room>
-=======
     <room>rooms\Tutorial</room>
     <room>rooms\arena2</room>
-    <room>rooms\arena</room>
->>>>>>> 5ccff7197ac01dc30cb45900c0ce8c3ae0367644
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
