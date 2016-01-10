@@ -69,6 +69,7 @@
       <sprite>sprites\spr_red_protect</sprite>
       <sprite>sprites\spr_red_jump</sprite>
       <sprite>sprites\spr_bullet</sprite>
+      <sprite>sprites\spr_bullet_destroy</sprite>
       <sprite>sprites\spr_magicshield</sprite>
       <sprite>sprites\spr_red_walk</sprite>
     </sprites>
@@ -98,6 +99,10 @@
       <sprite>sprites\spr_zombie_strong_hit</sprite>
       <sprite>sprites\spr_tentacle_spawn</sprite>
       <sprite>sprites\spr_tentacle</sprite>
+      <sprite>sprites\spr_imp_start</sprite>
+      <sprite>sprites\spr_imp_fly</sprite>
+      <sprite>sprites\spr_imp_fire</sprite>
+      <sprite>sprites\spr_imp_go</sprite>
       <sprite>sprites\spr_tentacle_hit</sprite>
       <sprite>sprites\spr_tentacle_strike</sprite>
       <sprite>sprites\spr_tentacle_death</sprite>
@@ -133,6 +138,7 @@
     </sprites>
     <sprite>sprites\sprite83</sprite>
     <sprite>sprites\sprite98</sprite>
+    <sprite>sprites\spr_imp_save</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
