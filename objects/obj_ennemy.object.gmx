@@ -217,7 +217,7 @@ if (attack){//Normal behaviour, between spawn and death
         death = true;
         attack = false;
         image_index = 0;
-        if(!flying) hspeed = 0;
+        hspeed = 0;
     }
 }
 
@@ -228,10 +228,11 @@ if(death){
     image_speed = 0.5;
     if(flying){ //Fall on the ground
         vspeed += 0.5;
+        hspeed = 5 * sign(hsp);
         if(image_index == sprite_get_number(deathSprite) - 1){
             image_speed = 0;
         }
-        if(place_meeting(x, y + 2, obj_ground01)){
+        if(y &gt; room_height){
             instance_destroy();
         }
     }
