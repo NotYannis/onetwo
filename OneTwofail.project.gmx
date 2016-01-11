@@ -49,6 +49,9 @@
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_tree_test</sprite>
       <sprite>sprites\spr_tree_2</sprite>
+      <sprite>sprites\spr_roots</sprite>
+      <sprite>sprites\spr_roots2</sprite>
+      <sprite>sprites\spr_roots_save</sprite>
       <sprite>sprites\spr_tree_3</sprite>
       <sprite>sprites\spr_sign</sprite>
       <sprite>sprites\spr_sign_off</sprite>
@@ -231,6 +234,8 @@
       <object>objects\obj_tree</object>
       <object>objects\obj_tree2</object>
       <object>objects\obj_tree3</object>
+      <object>objects\obj_roots</object>
+      <object>objects\obj_roots2</object>
       <object>objects\obj_bridge</object>
       <object>objects\obj_shrine</object>
       <object>objects\obj_cosmicjewel</object>
