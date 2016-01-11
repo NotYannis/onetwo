@@ -251,7 +251,7 @@ if (redprotect){
 //---------------------------------------
 // --------------Collisions--------------
 //---------------------------------------
-platform = instance_place(x,y + vsp + 1,obj_platform)
+/*platform = instance_place(x,y + vsp + 1,obj_platform)
 
 hColl = place_meeting(x+hsp,y,obj_ground01) ;
 grounded = place_meeting(x,y + vsp + 1,obj_ground01)
@@ -266,13 +266,14 @@ if (hColl) {
 }
 
 // Vertical
-if (grounded) {
+if(grounded){
     canDoubleJump = true;
     if(!hColl){ //Shouldn't move vertically only if its grounded
         vsp = 0;
     }
 }
-
+*/
+groundCollision(hsp, vsp);
 //----------- Gravity and jump ------------
 //-----------------------------------------
 if (grounded) { // Player on the ground so he can jump. 
@@ -289,7 +290,7 @@ else{
 }
 
 y += vsp; // Set the variable y, so that the player vertical movements are set.
-x += hsp; // Set the variable x, so that the player can move. 
+x += hsp; // Set the variable x, so that the player can move.
 
 </string>
           </argument>
@@ -353,19 +354,19 @@ if(viewUpdate){
 
 //View behaviour, depend of the direction of the player
 if (keyboard_check(redRightKey)){
-    if(x &gt;= rPos - walkSpeed &amp;&amp; x &lt;= rPos + walkSpeed){
+    if(x &gt;= rPos - walkSpeed*3 &amp;&amp; x &lt;= rPos + walkSpeed*3){
         viewUpdate = true;
         rTrigger = false;
         viewPos = x - (view_wview / 2 - 100);
     }
-    else if(x &gt;= rBor){
+    else if(x &gt;= rBor){//Touch the right trigger, put camera to rPos 
         rTrigger = true
     }
 }
 else if (keyboard_check(redLeftKey)){
-    if(x &gt;= lPos - walkSpeed &amp;&amp; x &lt;= lPos + walkSpeed){
+    if(x &gt;= lPos - walkSpeed*3 &amp;&amp; x &lt;= lPos + walkSpeed*3){
         viewUpdate = true;
-        lTrigger = false;;
+        lTrigger = false;
         viewPos = x - (view_wview / 2 + 100);
     }
     else if(x &lt;= lBor){
@@ -374,8 +375,14 @@ else if (keyboard_check(redLeftKey)){
 }
 
 //If the view is outside the limits of the room
-if(viewPos &lt; viewLeftLimit) viewPos = viewLeftLimit;
-else if (viewPos &gt; viewRightLimit) viewPos = viewRightLimit; 
+if(viewPos &lt; viewLeftLimit){
+    viewPos = viewLeftLimit;
+    lTrigger = false;
+}
+else if (viewPos &gt; viewRightLimit){
+    viewPos = viewRightLimit; 
+    rTigger = false;
+}
 
 view_xview = viewPos;
 

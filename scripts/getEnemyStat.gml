@@ -30,7 +30,7 @@ switch(object_index) {
         stat[0] = -10; stat[1] = 30; stat[2] = 1; stat[3] = 10;
             break;
     case obj_imp :
-        stat[0] = -8; stat[1] = 30; stat[2] = 1; stat[3] = 20;
+        stat[0] = -8; stat[1] = 10; stat[2] = 1; stat[3] = 20;
             break;
     default : return noone;
 }
