@@ -29,7 +29,7 @@ switch(object_index) {
             break;
     case obj_imp :
         anim[0] = 0.5; anim[1] = spr_imp_fly; anim[2] = spr_imp_fly;
-        anim[3] = spr_imp_fly; anim[4] = spr_imp_fly;
+        anim[3] = spr_imp_fly; anim[4] = spr_imp_death;
             break;
     default : return noone;
 }

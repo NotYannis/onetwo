@@ -44,6 +44,8 @@ aiming = false;
 onSlope = false;
 goDown = false;
 goUp = false;
+goBack = false;
+recover = false;
 
 spriteAngle = image_angle;
 
@@ -119,12 +121,12 @@ angleLimit = 20;
         }
     }
     
-    //Crack the match
+    //Cracking the match
     if(preparingAttack){
         image_angle += 0.1;
     }
     show_debug_message(hsp);
-    //Begin to fall
+    //Beginnig of the fall
     if(sprite_index == spr_imp_start &amp;&amp; image_index &gt;= sprite_get_number(spr_imp_start) - image_speed){
         hsp = -1;
         vspeed = 1;
@@ -135,8 +137,9 @@ angleLimit = 20;
         onSlope = true;
     }
     
-    if(aiming){//Falling smoothly to the player
-        if(hsp != hspLimit) hsp -= 1 * behindPlayer();
+    //Falling smoothly to the player
+    if(aiming){
+        if(hsp &gt;= hspLimit) hsp -= 1 * behindPlayer();
         if(vspeed &lt;= vspLimit) vspeed += 2;
         else sprite_index = spr_imp_go;
         if(image_angle &lt;= angleLimit) image_angle += 2;
@@ -145,6 +148,27 @@ angleLimit = 20;
         if(vspeed &gt;= 0) vspeed --;
         if(image_angle &gt;= 0) image_angle -= 2;
     }
+    
+    //When touch the shield
+    if(!goBack){
+        if(touchShield &amp;&amp; obj_character.redprotect){
+            x -= hsp;
+            hsp *= -1;
+            recover = true;
+            goBack = true;
+        }
+    }
+    if(recover){
+        if(hsp &gt; hspLimit) hsp -= 0.5;
+        else if (hsp == hspLimit){
+            recover = false;
+            goBack = false;
+        }
+    }
+}
+if(death){
+    flying = false;
+    vspeed = 0;
 }
 </string>
           </argument>

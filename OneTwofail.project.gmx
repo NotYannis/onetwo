@@ -167,6 +167,7 @@
     <script>scripts\getEnemyStat.gml</script>
     <script>scripts\activateEnemyTrigger.gml</script>
     <script>scripts\getEnemySound.gml</script>
+    <script>scripts\groundCollision.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\sign_font</font>

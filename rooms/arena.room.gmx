@@ -208,7 +208,7 @@
     <instance objName="obj_ground_good" x="576" y="768" name="inst_F434B95D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="704" y="768" name="inst_0AE0F613" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="832" y="768" name="inst_E5108BBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_imp" x="1056" y="288" name="inst_ABA62A05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_flying_eye" x="1152" y="256" name="inst_EECE92E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="768" y="544" w="16" h="16" xo="0" yo="0" id="10000002" name="inst_B4CD3ACE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
