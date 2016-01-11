@@ -7,8 +7,8 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>0</bbox_left>
-  <bbox_right>387</bbox_right>
+  <bbox_left>8</bbox_left>
+  <bbox_right>399</bbox_right>
   <bbox_top>96</bbox_top>
   <bbox_bottom>399</bbox_bottom>
   <HTile>0</HTile>
@@ -20,6 +20,6 @@
   <width>400</width>
   <height>400</height>
   <frames>
-    <frame index="0">images\spr_arena_ruins_0.png</frame>
+    <frame index="0">images\spr_arena_ruins2_0.png</frame>
   </frames>
 </sprite>

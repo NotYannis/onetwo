@@ -60,6 +60,7 @@
       <sprite>sprites\spr_woodtower_bottom</sprite>
       <sprite>sprites\spr_arena_statue</sprite>
       <sprite>sprites\spr_arena_ruins</sprite>
+      <sprite>sprites\spr_arena_ruins2</sprite>
     </sprites>
     <sprites name="Personnages">
       <sprite>sprites\spr_yellow_leg</sprite>
@@ -129,6 +130,7 @@
       <sprite>sprites\spr_target_destroy</sprite>
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_statue</sprite>
+      <sprite>sprites\spr_statue_death</sprite>
     </sprites>
     <sprite>sprites\spr_gameover</sprite>
     <sprites name="hud">
@@ -139,6 +141,7 @@
       <sprite>sprites\spr_health</sprite>
       <sprite>sprites\spr_timer</sprite>
       <sprite>sprites\spr_menubg</sprite>
+      <sprite>sprites\spr_healthbar</sprite>
     </sprites>
     <sprite>sprites\sprite83</sprite>
     <sprite>sprites\sprite98</sprite>
@@ -241,6 +244,7 @@
       <object>objects\obj_woodtower_top</object>
       <object>objects\obj_arena_statue</object>
       <object>objects\obj_arena_ruins</object>
+      <object>objects\obj_arena_ruins2</object>
     </objects>
     <objects name="triggers">
       <object>objects\obj_zombie_party</object>
@@ -258,8 +262,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\arena</room>
     <room>rooms\Tutorial</room>
+    <room>rooms\arena</room>
     <room>rooms\arena2</room>
     <room>rooms\rm_village</room>
     <room>rooms\Church_boss_</room>

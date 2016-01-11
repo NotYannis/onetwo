@@ -171,8 +171,12 @@
     <instance objName="obj_music" x="192" y="256" name="inst_88BA5BA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="4096" y="544" name="inst_413EAC99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="4448" y="672" name="inst_6F0B1919" locked="0" code="" scaleX="0.970238089561462" scaleY="1.01013517379761" colour="4294967295" rotation="0"/>
-    <instance objName="obj_arena_statue" x="4352" y="320" name="inst_871C6FE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_arena_ruins" x="4288" y="160" name="inst_4FE3CD0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_arena_statue" x="4480" y="320" name="inst_871C6FE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_arena_ruins" x="4416" y="160" name="inst_4FE3CD0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="1632" y="768" name="inst_2BE3826A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="1760" y="800" name="inst_DF81FAC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="1888" y="800" name="inst_69FADF78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="1760" y="704" name="inst_35CF2B38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
