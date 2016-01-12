@@ -273,8 +273,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_boss</room>
     <room>rooms\arena</room>
+    <room>rooms\rm_boss</room>
     <room>rooms\rm_village</room>
     <room>rooms\Tutorial</room>
     <room>rooms\arena2</room>

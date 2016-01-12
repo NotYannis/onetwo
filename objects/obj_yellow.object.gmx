@@ -84,8 +84,8 @@ image_alpha = obj_character.image_alpha;
             <kind>1</kind>
             <string>//Follow red
 
-obj_yellow.x = obj_character.x;
-obj_yellow.y = obj_character.y-80;
+x = obj_character.x;
+y = obj_character.y-80;
 
 image_xscale = obj_character.image_xscale;
 
@@ -147,7 +147,7 @@ if (canShoot &lt;= 1){
                 instance_create (x+28,y+29,obj_bullet);
             }
             //Can double jump after jump momentum
-            if (gunDown &amp;&amp; obj_character.canDoubleJump &amp;&amp; vspeed &lt;=0){
+            if (gunDown &amp;&amp; obj_character.canDoubleJump &amp;&amp; vspeed &gt;=0){
                 obj_character.vsp = -10;
                 obj_character.canDoubleJump = false;
             }

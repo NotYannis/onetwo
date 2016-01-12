@@ -3,7 +3,7 @@
   <spriteName>spr_yellow_leg</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-4</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -50,8 +50,8 @@ image_alpha = obj_character.image_alpha;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_yellow_leg.x = obj_character.x;
-obj_yellow_leg.y = obj_character.y-80;
+            <string>x = obj_yellow.x;
+y = obj_yellow.y;
 
 image_xscale = obj_character.image_xscale;
 </string>
