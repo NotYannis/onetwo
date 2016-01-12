@@ -82,6 +82,15 @@
       <sprite>sprites\spr_magicshield</sprite>
     </sprites>
     <sprites name="Ennemis">
+      <sprites name="BOSS">
+        <sprite>sprites\spr_boss1_1</sprite>
+        <sprite>sprites\spr_boss1_2</sprite>
+        <sprite>sprites\spr_boss1_3</sprite>
+        <sprite>sprites\spr_boss1_4</sprite>
+        <sprite>sprites\spr_boss1_5</sprite>
+        <sprite>sprites\spr_boss1_final</sprite>
+        <sprite>sprites\spr_boss_save</sprite>
+      </sprites>
       <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_crow_death</sprite>
       <sprite>sprites\spr_wizard</sprite>
@@ -128,15 +137,6 @@
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_statue</sprite>
       <sprite>sprites\spr_statue_death</sprite>
-      <sprites name="BOSS">
-        <sprite>sprites\spr_boss1_1</sprite>
-        <sprite>sprites\spr_boss1_2</sprite>
-        <sprite>sprites\spr_boss1_3</sprite>
-        <sprite>sprites\spr_boss1_4</sprite>
-        <sprite>sprites\spr_boss1_5</sprite>
-        <sprite>sprites\spr_boss1_final</sprite>
-        <sprite>sprites\spr_boss_save</sprite>
-      </sprites>
     </sprites>
     <sprite>sprites\spr_gameover</sprite>
     <sprites name="hud">
@@ -152,6 +152,7 @@
     <sprite>sprites\sprite83</sprite>
     <sprite>sprites\sprite98</sprite>
     <sprite>sprites\spr_imp_save</sprite>
+    <sprite>sprites\sprite123</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>

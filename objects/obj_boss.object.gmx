@@ -30,7 +30,7 @@
 //General variables
 wait = 80;
 moveSpeed = -2;
-currentSpeed = moveSpeed;
+currentHSpeed = moveSpeed;
 stopMoving = false;
 aggroZone = 250;
 damage = 10;
@@ -47,7 +47,61 @@ strike = false;
 walk = true;
 
 //Phase 2 states
+flying = false;
+launch = true;
+yMaxLimit = 300
+xMinLimit = view_xview + 100;
+xMaxLimit = view_wview - 100;
+currentVSpeed = 0;
+rotate = false;
+rotationSpeed = 0;
+currentRotation = 0;
+rotationDir = -1;
 
+
+//Lighting variables
+darkness = 100;
+darknessMax = 150;
+lightFade = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Lighting
+if(obj_lighting.dark){
+    Lighting(250, c_white, c_black);
+}
+if(transition) lightFade = true;
+if(lightFade){
+    if(phase == 2 || phase == 3){
+        if(darkness &lt; darknessMax){
+            darkness += 1;
+            obj_lighting.color = make_color_rgb(darkness, darkness, darkness);
+        }
+        else {
+            lightFade = false;
+            darknessMax = 200;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -85,12 +139,12 @@ if(phase == 1){
         //First time the player is in the aggro zone while a walk pattern
         if(wait == -1){
             image_xscale = behindPlayer();
-            currentSpeed = (moveSpeed - 2) * behindPlayer();
+            currentHSpeed = (moveSpeed - 2) * behindPlayer();
             wait = 60; //Don't run forever
         }
         //If the player is close : attack then wait
         if(distance_to_point(obj_character.x, obj_character.y) &lt; 40){
-            currentSpeed = 0;
+            currentHSpeed = 0;
             wait = 40;
         }
         
@@ -103,7 +157,7 @@ if(phase == 1){
             }
             else { //If not, continue walking
                 walk = true;
-                currentSpeed = moveSpeed;
+                currentHSpeed = moveSpeed;
             }
         }
     }
@@ -113,14 +167,14 @@ if(phase == 1){
             wait--;
         }
         else{
-            if(currentSpeed != 0){//If already moving, stop moving
-                currentSpeed = 0;
+            if(currentHSpeed != 0){//If already moving, stop moving
+                currentHSpeed = 0;
                 wait = irandom_range(10, 40);
             }
             else{//If not moving, start moving in a random direction on a random distance
                 if(irandom_range(1, 2) == 1) dir = 1
                 else dir = -1;
-                currentSpeed = moveSpeed * dir;
+                currentHSpeed = moveSpeed * dir;
                 image_xscale = dir;
                 wait = irandom_range(10, 100); //Random distance range
             }
@@ -131,28 +185,29 @@ if(phase == 1){
         walk = false;
         strike = false;
         transition = true;
-        currentSpeed = 0;
+        currentHSpeed = 0;
         sprite_index = spr_boss1_2;
         image_index = 0;
         image_speed = 0.2;
         hp = 20;
+        recovery = 0;
     }
     
     if(transition){
         if(image_index &gt;= sprite_get_number(spr_boss1_2) - image_speed){
             sprite_index = spr_boss1_3;
-            image_speed = 0.3;
+            image_speed = 0.3;     
             phase = 2;
             transition = false;
         }
     }
     
     if(place_meeting(x + hspeed, y, obj_ground01)){
-        currentSpeed *= -1;
+        currentHSpeed *= -1;
         image_xscale *= -1;
     }
     
-    hspeed = currentSpeed;
+    hspeed = currentHSpeed;
 }
 
 
@@ -225,7 +280,46 @@ if(!transition){
             <kind>1</kind>
             <string>///Phase 2 : UFO
 if(phase == 2){
+    //
+    if(launch){
+        if(y &gt; yMaxLimit) currentVSpeed -=0.2;
+        else{
+            currentVSpeed = 0;
+            launch = false;
+            flying = true;
+            wait = 20;
+        }
+    }
     
+    if(flying &amp;&amp; wait == 0){
+        if(x &gt; xMaxLimit){
+            currentHSpeed = -15;
+            rotationDir = 1;
+            rotationSpeed = 0;
+        }
+        else if(x &lt; xMinLimit){
+            currentHSpeed = 15;
+            rotationDir = -1;
+            rotationSpeed = 0;
+        }
+        
+    }
+    else if(flying &amp;&amp; !rotate &amp;&amp; wait == 1){
+        rotate = true;
+        currentHSpeed = 15;
+    }
+    
+    if(rotate){
+        currentRotation += rotationSpeed;
+        if( rotationDir == 1) rotationSpeed += 0.01;
+        else if( rotationDir ==  -1) rotationSpeed -= 0.01;
+    }
+    
+    if(wait &gt; 0) wait--;
+    
+    hspeed = currentHSpeed;
+    vspeed = currentVSpeed;
+    image_angle += currentRotation;
 }
 </string>
           </argument>
