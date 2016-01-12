@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>fire = 1;
+death = false;
 </string>
           </argument>
         </arguments>
@@ -48,17 +49,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (fire &lt;= 1){
-    instance_create(x, y, obj_arrow);
-    fire = room_speed*2;
+            <string>if(!death){
+    touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
+                                      obj_character.y,
+                                      obj_character.x + (78 * obj_character.image_xscale),
+                                      obj_character.y + 20,
+                                      id, true, false);
+    
+    if (fire &lt;= 1){
+        instance_create(x, y, obj_arrow);
+        fire = room_speed*2;
+    }
+    else{
+        fire--;
+    }
+    if (touchWeapon){
+        death = true;
+        sprite_index = spr_statue_death;
+        image_speed = 0.25;
+    }
 }
-else{
-    fire--;
-}
-
-if (place_meeting(x,y,obj_bullet)){
-    instance_destroy();
-    with(obj_bullet) instance_destroy();
+if(death){
+    if(image_index &gt;= sprite_get_number(sprite_index) - image_speed){
+        image_speed = 0;
+    }
 }
 
 </string>
