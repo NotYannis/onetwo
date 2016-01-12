@@ -49,7 +49,7 @@ touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xs
                                   obj_character.x + (40 * obj_character.image_xscale),
                                   obj_character.y - 30, id, true, false)
 
-//Instanciation, it will get stats, sprites and sound
+//Instanciation : it will get stats, sprites and sound
 //Used with scripts getEnemyAnim, getEnemyStat and getEnemySound
 anims = getEnemyAnim();
 animationSpeed = anims[0];
@@ -64,6 +64,7 @@ hp = stats[1];
 gunRes = stats[2];
 damage = stats[3];
 vsp = 0;
+
 sounds = getEnemySound();
 spawnSound = sounds[0];
 attackSound = sounds[1];

@@ -27,18 +27,26 @@
             <kind>1</kind>
             <string>image_speed = 0.5;
 
+//General variables
 wait = 80;
 moveSpeed = -2;
 currentSpeed = moveSpeed;
 stopMoving = false;
 aggroZone = 250;
+damage = 10;
+hp = 20;
+phase = 1;
+recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
+recovery = 0;
+invulnerabilityFrames = 35;//Invulnerability time on patterns phase 3
+invulnerability = 0;
+transition = false;
+
+//Phase 1 states
 strike = false;
 walk = true;
 
-phase = 1;
-
-invulnerability = 35;
-hp = 20;
+//Phase 2 states
 
 </string>
           </argument>
@@ -62,7 +70,8 @@ hp = 20;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(phase == 1){
+            <string>///Phase 1 : ol' weirdo walkin'
+if(phase == 1){
     playerInAggroZone = obj_character.x &gt;= x - aggroZone &amp;&amp; obj_character.x &lt;= x + aggroZone;
     //When he's walking and the player is nearby
     if(playerInAggroZone &amp;&amp; walk){
@@ -118,6 +127,26 @@ hp = 20;
         }
     }
     
+    if(hp &lt;= 0){
+        walk = false;
+        strike = false;
+        transition = true;
+        currentSpeed = 0;
+        sprite_index = spr_boss1_2;
+        image_index = 0;
+        image_speed = 0.2;
+        hp = 20;
+    }
+    
+    if(transition){
+        if(image_index &gt;= sprite_get_number(spr_boss1_2) - image_speed){
+            sprite_index = spr_boss1_3;
+            image_speed = 0.3;
+            phase = 2;
+            transition = false;
+        }
+    }
+    
     if(place_meeting(x + hspeed, y, obj_ground01)){
         currentSpeed *= -1;
         image_xscale *= -1;
@@ -128,6 +157,76 @@ hp = 20;
 
 
  
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Hitting and being hitted
+if(!transition){
+    if(recovery == 0){
+        touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
+                                          obj_character.y,
+                                          obj_character.x + (78 * obj_character.image_xscale),
+                                          obj_character.y + 20,
+                                          id, true, false);
+        if(touchWeapon &amp;&amp; obj_character.strike){
+            hp -= 10;
+            recovery = recoveryFrames;
+        }
+    }
+    else{
+        if(recovery % 6 &gt;= 3 &amp;&amp; recovery % 6 &lt;= 6) image_alpha = 0; 
+        else image_alpha = 1;
+        recovery --;
+    }
+    
+    if(place_meeting(x, y, obj_character) &amp;&amp; !obj_character.strike){
+        obj_character.hit = true;
+        obj_character.ennemy = id;
+        obj_character.damage = damage;
+        obj_character.enemyBehind = behindPlayer();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Phase 2 : UFO
+if(phase == 2){
+    
+}
 </string>
           </argument>
         </arguments>
