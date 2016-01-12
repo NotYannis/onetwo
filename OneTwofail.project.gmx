@@ -76,10 +76,10 @@
       <sprite>sprites\spr_red</sprite>
       <sprite>sprites\spr_red_protect</sprite>
       <sprite>sprites\spr_red_jump</sprite>
+      <sprite>sprites\spr_red_walk</sprite>
       <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\spr_bullet_destroy</sprite>
       <sprite>sprites\spr_magicshield</sprite>
-      <sprite>sprites\spr_red_walk</sprite>
     </sprites>
     <sprites name="Ennemis">
       <sprite>sprites\spr_crow</sprite>
@@ -119,13 +119,6 @@
       <sprite>sprites\spr_shadow</sprite>
       <sprite>sprites\spr_shadow_death</sprite>
       <sprite>sprites\spr_shadow_hit</sprite>
-      <sprite>sprites\spr_boss_save</sprite>
-      <sprite>sprites\spr_boss1_final</sprite>
-      <sprite>sprites\spr_boss1_5</sprite>
-      <sprite>sprites\spr_boss1_4</sprite>
-      <sprite>sprites\spr_boss1_3</sprite>
-      <sprite>sprites\spr_boss1_2</sprite>
-      <sprite>sprites\spr_boss1_1</sprite>
       <sprite>sprites\spr_ennemy2_fire</sprite>
       <sprite>sprites\spr_ennemy2</sprite>
       <sprite>sprites\spr_bloodtear</sprite>
@@ -135,6 +128,15 @@
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_statue</sprite>
       <sprite>sprites\spr_statue_death</sprite>
+      <sprites name="BOSS">
+        <sprite>sprites\spr_boss1_1</sprite>
+        <sprite>sprites\spr_boss1_2</sprite>
+        <sprite>sprites\spr_boss1_3</sprite>
+        <sprite>sprites\spr_boss1_4</sprite>
+        <sprite>sprites\spr_boss1_5</sprite>
+        <sprite>sprites\spr_boss1_final</sprite>
+        <sprite>sprites\spr_boss_save</sprite>
+      </sprites>
     </sprites>
     <sprite>sprites\spr_gameover</sprite>
     <sprites name="hud">
@@ -169,8 +171,8 @@
     <script>scripts\behindPlayer.gml</script>
     <script>scripts\getEnemyAnim.gml</script>
     <script>scripts\getEnemyStat.gml</script>
-    <script>scripts\activateEnemyTrigger.gml</script>
     <script>scripts\getEnemySound.gml</script>
+    <script>scripts\activateEnemyTrigger.gml</script>
     <script>scripts\groundCollision.gml</script>
   </scripts>
   <fonts name="fonts">
@@ -271,13 +273,15 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_boss</room>
+    <room>rooms\arena</room>
     <room>rooms\rm_village</room>
     <room>rooms\Tutorial</room>
-    <room>rooms\arena</room>
     <room>rooms\arena2</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
     <room>rooms\rm_titlescreen</room>
+    <room>rooms\room7</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
