@@ -91,7 +91,6 @@
     <instance objName="obj_ground_good" x="1856" y="416" name="inst_80C541D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="1952" y="416" name="inst_BE0C536F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2240" y="416" name="inst_96AA6E66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground_good" x="1120" y="512" name="inst_481A15E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2976" y="768" name="inst_57C4D971" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2784" y="768" name="inst_227E082B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2912" y="768" name="inst_E9BEDE59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -102,13 +101,11 @@
     <instance objName="obj_ground_good" x="2560" y="448" name="inst_02980184" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2656" y="448" name="inst_9C741751" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2784" y="448" name="inst_F204CE92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground_good" x="1376" y="448" name="inst_3287391C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground_good" x="1408" y="448" name="inst_3287391C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="1280" y="448" name="inst_6959BEB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="1216" y="448" name="inst_4671D49B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="3232" y="768" name="inst_69F55576" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lantern" x="864" y="704" name="inst_E9794D19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground_good" x="896" y="672" name="inst_B600C2DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground_good" x="1024" y="608" name="inst_AA5AF167" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="2880" y="480" name="inst_1254C40D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="3008" y="544" name="inst_2689E4C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="3104" y="608" name="inst_1BEBDF2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -135,12 +132,12 @@
     <instance objName="obj_ground_good" x="3840" y="768" name="inst_0B12D750" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="3936" y="768" name="inst_C97EEFC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4160" y="640" name="inst_7748F1C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bridge" x="4288" y="512" name="inst_A65AB83D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bridge" x="4286" y="506" name="inst_A65AB83D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4064" y="704" name="inst_CDCB2130" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4160" y="736" name="inst_C834B859" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4064" y="768" name="inst_EF3235A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4160" y="768" name="inst_4E792D90" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground_good" x="4544" y="640" name="inst_C5FD14A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground_good" x="4540" y="645" name="inst_C5FD14A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4640" y="672" name="inst_A08B5968" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4768" y="704" name="inst_CB8817C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4896" y="736" name="inst_6B0549DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -201,6 +198,19 @@
     <instance objName="obj_arena_ruins2" x="5344" y="448" name="inst_71873677" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_house3" x="5888" y="352" name="inst_B21A87F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_house3" x="7552" y="384" name="inst_8DA2B507" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_roots" x="1152" y="288" name="inst_679468DA" locked="0" code="" scaleX="1.74404764175415" scaleY="2.06779670715332" colour="4294967295" rotation="0"/>
+    <instance objName="obj_roots2" x="1248" y="320" name="inst_5919A815" locked="0" code="" scaleX="1.73214280605316" scaleY="1.85000002384186" colour="4294967295" rotation="0"/>
+    <instance objName="obj_roots" x="1696" y="256" name="inst_B51C5A91" locked="0" code="" scaleX="2.1130952835083" scaleY="2.20608115196228" colour="4294967295" rotation="0"/>
+    <instance objName="obj_roots2" x="1984" y="320" name="inst_770A8539" locked="0" code="" scaleX="1.73214280605316" scaleY="1.85000002384186" colour="4294967295" rotation="0"/>
+    <instance objName="obj_roots" x="2496" y="288" name="inst_DCAB9ED5" locked="0" code="" scaleX="2.1130952835083" scaleY="2.20608115196228" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="3104" y="704" name="inst_F3708AE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="3008" y="672" name="inst_BA54397D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="2880" y="704" name="inst_A56BA23D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="2880" y="608" name="inst_D51B9B74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree" x="1728" y="0" name="inst_09056E29" locked="0" code="" scaleX="1.82738089561462" scaleY="1.85084748268127" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="1920" y="-32" name="inst_39E53EE8" locked="0" code="" scaleX="2.1130952835083" scaleY="1.96959459781647" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree" x="1280" y="32" name="inst_41F5872A" locked="0" code="" scaleX="2.58507466316223" scaleY="2.49662160873413" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree3" x="1152" y="32" name="inst_20E959DE" locked="0" code="" scaleX="6.05405426025391" scaleY="7" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
