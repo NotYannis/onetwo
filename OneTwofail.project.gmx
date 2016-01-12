@@ -29,11 +29,12 @@
       <sprite>sprites\spr_grave</sprite>
       <sprite>sprites\spr_lantern</sprite>
       <sprite>sprites\spr_bridge</sprite>
-      <sprite>sprites\spr_house2</sprite>
       <sprite>sprites\spr_chapel</sprite>
       <sprite>sprites\spr_chapel_save</sprite>
       <sprite>sprites\spr_skull</sprite>
       <sprite>sprites\spr_water</sprite>
+      <sprite>sprites\spr_house2</sprite>
+      <sprite>sprites\spr_house3</sprite>
       <sprite>sprites\spr_house1_back</sprite>
       <sprite>sprites\spr_house1</sprite>
       <sprite>sprites\spr_ground01</sprite>
@@ -49,6 +50,9 @@
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_tree_test</sprite>
       <sprite>sprites\spr_tree_2</sprite>
+      <sprite>sprites\spr_roots</sprite>
+      <sprite>sprites\spr_roots2</sprite>
+      <sprite>sprites\spr_roots_save</sprite>
       <sprite>sprites\spr_tree_3</sprite>
       <sprite>sprites\spr_sign</sprite>
       <sprite>sprites\spr_sign_off</sprite>
@@ -226,11 +230,14 @@
       <object>objects\obj_house1</object>
       <object>objects\obj_house_back</object>
       <object>objects\obj_house2</object>
+      <object>objects\obj_house3</object>
       <object>objects\obj_well</object>
       <object>objects\obj_skull</object>
       <object>objects\obj_tree</object>
       <object>objects\obj_tree2</object>
       <object>objects\obj_tree3</object>
+      <object>objects\obj_roots</object>
+      <object>objects\obj_roots2</object>
       <object>objects\obj_bridge</object>
       <object>objects\obj_shrine</object>
       <object>objects\obj_cosmicjewel</object>
@@ -246,6 +253,7 @@
       <object>objects\obj_arena_statue</object>
       <object>objects\obj_arena_ruins</object>
       <object>objects\obj_arena_ruins2</object>
+      <object>objects\obj_chapel</object>
     </objects>
     <objects name="triggers">
       <object>objects\obj_zombie_party</object>
@@ -263,10 +271,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\arena</room>
-    <room>rooms\Tutorial</room>
-    <room>rooms\arena2</room>
     <room>rooms\rm_village</room>
+    <room>rooms\Tutorial</room>
+    <room>rooms\arena</room>
+    <room>rooms\arena2</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
     <room>rooms\rm_titlescreen</room>
