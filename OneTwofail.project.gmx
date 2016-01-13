@@ -50,10 +50,10 @@
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_tree_test</sprite>
       <sprite>sprites\spr_tree_2</sprite>
+      <sprite>sprites\spr_tree_3</sprite>
       <sprite>sprites\spr_roots</sprite>
       <sprite>sprites\spr_roots2</sprite>
       <sprite>sprites\spr_roots_save</sprite>
-      <sprite>sprites\spr_tree_3</sprite>
       <sprite>sprites\spr_sign</sprite>
       <sprite>sprites\spr_sign_off</sprite>
       <sprite>sprites\spr_particle</sprite>
