@@ -70,7 +70,6 @@ stay = 10;
         stay--
     }
     if(stay == 0) isSpawning = false;
-
 }
 else{
     touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
@@ -79,19 +78,24 @@ else{
                                       obj_character.y - 30, id, true, false)
 
     if(aiming){ //Move in the direction of the player
-        motion_add(point_direction(x, y, obj_character.x, obj_character.y), hsp);
+        motion_add(point_direction(x, y, obj_yellow.x, obj_yellow.y), hsp);
         aiming = false;
     }
-    if(!followPlayer){//or just move horizontally
+    else if(!followPlayer){//or just move horizontally
         hspeed = hsp;
         if(falling){
             vspeed = vsp;
         }
     }
+    //else if(followPlayer){
+    //    if(behindPlayer() == -1)
+    //        move_towards_point(obj_yellow.x, obj_yellow.y, hsp);
+        //followPlayer = false;
+    //}
     
     //If thouches the player, make some damage
     if(place_meeting(x,y,obj_character)|| place_meeting(x,y,obj_yellow)
-        &amp;&amp; (!obj_character.redprotect|| !touchShield)){
+        &amp;&amp; (!obj_character.redprotect || !touchShield)){
         obj_character.hit = true;
         obj_character.ennemy = id;
         obj_character.damage = damage;

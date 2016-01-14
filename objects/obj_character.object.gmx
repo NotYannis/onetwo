@@ -211,7 +211,7 @@ else{
 }
 
 if ((!keyboard_check(redLeftKey) &amp;&amp; !keyboard_check(redRightKey)) 
-    || (keyboard_check(redLeftKey) &amp;&amp; keyboard_check(redRightKey) || redprotect))  {
+    || (keyboard_check(redLeftKey) &amp;&amp; keyboard_check(redRightKey) || (redprotect &amp;&amp; !jumping)))  {
     hsp = 0;
     walking = false;
 }

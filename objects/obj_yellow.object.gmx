@@ -147,7 +147,7 @@ if (canShoot &lt;= 1){
                 instance_create (x+28,y+29,obj_bullet);
             }
             //Can double jump after jump momentum
-            if (gunDown &amp;&amp; obj_character.canDoubleJump &amp;&amp; vspeed &gt;=0){
+            if (gunDown &amp;&amp; obj_character.canDoubleJump &amp;&amp; obj_character.vsp &gt;=0){
                 obj_character.vsp = -10;
                 obj_character.canDoubleJump = false;
             }
