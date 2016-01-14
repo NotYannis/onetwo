@@ -63,7 +63,7 @@ currentVSpeed = 0;
 rotationSpeed = 0;
 currentRotation = 0;
 rotationDir = -1;
-nextAttack = 0;
+nextAttack = 1;
 stopPattern = 25;
 flyOutDir = 1;
 goRight = true;
@@ -320,6 +320,16 @@ if(phase == 2){
                     image_angle = 0;
                     stopPattern = 5;
                 }
+                else if(pattern == 2){
+                    currentHSpeed = 10;
+                    currentVSpeed = 10;
+                    yMaxLimit = irandom_range(600, view_hview - 50);
+                    yMinLimit = irandom_range(200, 400);
+                    xMaxLimit = irandom_range(600, view_wview - 50);
+                    xMaxLimit = irandom_range(view_xview + 50, 400);
+                    image_angle = 0;
+                    stopPattern = 5;
+                }
             }
         }
     }
@@ -331,12 +341,26 @@ if(phase == 2){
     
     if(nextAttack == 0){//Attack instanciation
         nextAttack = 3;
-        currentHSpeed = 0.5 * flyOutDir;
-        currentVSpeed = 0.05;
-        pattern = 1;
-        if(pattern == 1){
+        fly = false;
+        pattern = 2;
+        if(pattern == 0 || pattern == 1){
             flyOut = true;
+            currentHSpeed = 0.5 * flyOutDir;
+            currentVSpeed = 0.05;
         }
+        if(pattern == 2){
+                    attack = true;
+                    currentHSpeed = -15;
+                    currentVSpeed = +15;
+                    yMinLimit = irandom_range(view_yview + 250, 350);
+                    yMaxLimit = irandom_range(450, view_hview - 250);
+                    xMinLimit = irandom_range(view_xview + 500, 540);
+                    xMaxLimit = irandom_range(740, view_wview - 500);
+                    y = yMinLimit;
+                    x = xMinLimit;
+                    //image_angle = 0;
+                    stopPattern = 5;
+                }
     }
     
     //Attack : do the random picked pattern
@@ -391,10 +415,28 @@ if(phase == 2){
                     currentHSpeed = -0.5;
                     x = xMaxLimit - 1;
                 }
-                else{
+                else{//Throw bullets on player
                     instance_create(x, y, obj_boss_orb);
                 }
                 currentHSpeed *= 1.1;
+            }
+        }
+        if(pattern == 2){
+            if(x &lt; xMinLimit){
+                currentHSpeed += 1;
+                if(currentHSpeed == +15) xMinLimit = irandom_range(view_xview + 400, 440);
+            }
+            else if (x &gt; xMaxLimit) {
+                currentHSpeed -= 1;
+                if(currentHSpeed == -15) xMaxLimit = irandom_range(840, view_wview - 800);
+            }
+            if( y &lt; yMinLimit) {
+                currentVSpeed += 1;
+                if(currentVSpeed == 15) yMinLimit = irandom_range(view_yview + 250, 350);
+            }
+            else if (y &gt; yMaxLimit){
+                currentVSpeed -= 1;
+                if(currentVSpeed == -15) yMaxLimit = irandom_range(450, view_hview - 250);
             }
         }
         if(stopPattern == 0){
@@ -417,7 +459,6 @@ if(phase == 2){
     
     hspeed = currentHSpeed;
     vspeed = currentVSpeed;
-    show_debug_message(currentHSpeed);
 }
 </string>
           </argument>
