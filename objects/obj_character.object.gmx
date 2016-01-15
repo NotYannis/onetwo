@@ -84,6 +84,7 @@ arenaTime = false;
 
 if (obj_lighting.dark = true){
     Lighting(360, c_white, c_black);
+    
 }
 
 
