@@ -151,13 +151,13 @@
     <instance objName="obj_ground_good" x="2400" y="672" name="inst_53368C24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_statue" x="3456" y="672" name="inst_1F3780DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="3392" y="736" name="inst_382586FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wizard_trigger" x="4123" y="437" name="inst_9A2CD596" locked="0" code="activation = room_speed*6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wizard_trigger" x="4123" y="437" name="inst_9A2CD596" locked="0" code="activation = room_speed*6;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wizard_trigger" x="5021" y="473" name="inst_50E5B7D2" locked="0" code="activation = room_speed*1&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arena_trigger" x="4593" y="292" name="inst_7C956500" locked="0" code="arenaSize = 600;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_trigger" x="4832" y="544" name="inst_8E0ECDF0" locked="0" code="activation = room_speed*1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_trigger" x="4352" y="544" name="inst_C38A76FF" locked="0" code="activation = room_speed*1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie_trigger" x="4320" y="544" name="inst_680F0FB1" locked="0" code="activation = room_speed*6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie_trigger" x="4864" y="544" name="inst_13CED76D" locked="0" code="activation = room_speed*6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie_trigger" x="4320" y="544" name="inst_680F0FB1" locked="0" code="activation = room_speed*6;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie_trigger" x="4864" y="544" name="inst_13CED76D" locked="0" code="activation = room_speed*6;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4768" y="544" name="inst_FBE6258C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4768" y="672" name="inst_568F9DE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4768" y="768" name="inst_E25D4769" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -112,19 +112,19 @@
     <instance objName="obj_ground_good" x="3232" y="672" name="inst_36EA40B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle_spawn" x="2400" y="32" name="inst_26945D2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ennemy_mimic" x="2016" y="736" name="inst_A6A7B982" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_arena_trigger" x="2016" y="512" name="inst_51382E30" locked="0" code="arenaSize = 800&#xA;" scaleX="1" scaleY="1.75" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie_tentacle_trigger" x="1280" y="480" name="inst_8D711F29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie_tentacle_trigger" x="2848" y="480" name="inst_81DE48E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie_tentacle_trigger" x="1344" y="800" name="inst_87F135B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie_tentacle_trigger" x="2912" y="800" name="inst_2D9668FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_shadow_trigger" x="1440" y="800" name="inst_CCC2EE16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_arena_trigger" x="2432" y="512" name="inst_51382E30" locked="0" code="arenaSize = 1500&#xA;" scaleX="1" scaleY="1.75" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie_tentacle_trigger" x="1280" y="480" name="inst_8D711F29" locked="0" code="activation = room_speed*1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie_tentacle_trigger" x="2848" y="480" name="inst_81DE48E0" locked="0" code="activation = room_speed*1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie_tentacle_trigger" x="1344" y="800" name="inst_87F135B1" locked="0" code="activation = room_speed*1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie_tentacle_trigger" x="2784" y="800" name="inst_2D9668FA" locked="0" code="activation = room_speed*1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shadow_trigger" x="1440" y="800" name="inst_CCC2EE16" locked="0" code="activation = room_speed*3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_trigger" x="2752" y="448" name="inst_F41D6EDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_trigger" x="1376" y="448" name="inst_41D12562" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_trigger" x="1408" y="448" name="inst_0638487B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie_trigger" x="1440" y="448" name="inst_79E394FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie_trigger" x="1440" y="448" name="inst_79E394FB" locked="0" code="activation = room_speed*1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_trigger" x="2720" y="448" name="inst_A21070CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie_trigger" x="2688" y="448" name="inst_4F6A0D2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_flying_eye_trigger" x="2752" y="128" name="inst_6EEE6495" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie_trigger" x="2688" y="448" name="inst_4F6A0D2A" locked="0" code="activation = room_speed*1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_flying_eye_trigger" x="2752" y="128" name="inst_6EEE6495" locked="0" code="activation = room_speed*1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="3360" y="768" name="inst_7B0E02C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="3488" y="768" name="inst_477F5D74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="3616" y="768" name="inst_12F9BF4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -198,19 +198,17 @@
     <instance objName="obj_arena_ruins2" x="5344" y="448" name="inst_71873677" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_house3" x="5888" y="352" name="inst_B21A87F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_house3" x="7552" y="384" name="inst_8DA2B507" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roots" x="1152" y="288" name="inst_679468DA" locked="0" code="" scaleX="1.74404764175415" scaleY="2.06779670715332" colour="4294967295" rotation="0"/>
+    <instance objName="obj_roots" x="1184" y="288" name="inst_679468DA" locked="0" code="" scaleX="1.74404764175415" scaleY="2.06779670715332" colour="4294967295" rotation="0"/>
     <instance objName="obj_roots2" x="1248" y="320" name="inst_5919A815" locked="0" code="" scaleX="1.73214280605316" scaleY="1.85000002384186" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roots" x="1696" y="256" name="inst_B51C5A91" locked="0" code="" scaleX="2.1130952835083" scaleY="2.20608115196228" colour="4294967295" rotation="0"/>
+    <instance objName="obj_roots" x="1696" y="288" name="inst_B51C5A91" locked="0" code="" scaleX="2.1130952835083" scaleY="2.20608115196228" colour="4294967295" rotation="0"/>
     <instance objName="obj_roots2" x="1984" y="320" name="inst_770A8539" locked="0" code="" scaleX="1.73214280605316" scaleY="1.85000002384186" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roots" x="2496" y="288" name="inst_DCAB9ED5" locked="0" code="" scaleX="2.1130952835083" scaleY="2.20608115196228" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="3104" y="704" name="inst_F3708AE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground02" x="3008" y="672" name="inst_BA54397D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ground02" x="2880" y="704" name="inst_A56BA23D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="2880" y="672" name="inst_BA54397D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground02" x="3008" y="672" name="inst_A56BA23D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="2880" y="608" name="inst_D51B9B74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="1728" y="0" name="inst_09056E29" locked="0" code="" scaleX="1.82738089561462" scaleY="1.85084748268127" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree2" x="1920" y="-32" name="inst_39E53EE8" locked="0" code="" scaleX="2.1130952835083" scaleY="1.96959459781647" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="1280" y="32" name="inst_41F5872A" locked="0" code="" scaleX="2.58507466316223" scaleY="2.49662160873413" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree3" x="1152" y="32" name="inst_20E959DE" locked="0" code="" scaleX="6.05405426025391" scaleY="7" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="2944" y="96" name="inst_261D5FE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shadow_trigger" x="2624" y="800" name="inst_9A8E82C4" locked="0" code="activation = room_speed*3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_roots" x="2496" y="288" name="inst_189EC06E" locked="0" code="" scaleX="1.74404764175415" scaleY="2.06779670715332" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
