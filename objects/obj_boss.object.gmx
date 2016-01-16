@@ -52,6 +52,7 @@ walk = true;
 phase2hp = 100;
 fly = false;
 flyOut = false;
+flyMid = false;
 launch = true;
 rotate = false;
 attack = false;
@@ -268,7 +269,7 @@ if(phase == 2){
     
     //Flying : go back and forth horizontally
     if(fly &amp;&amp; wait == 0){
-        if(!flyOut){
+        if(!flyOut &amp;&amp; !flyMid){
             if(x &gt; xMaxLimit){
                 if(currentHSpeed &gt; -15) currentHSpeed -= 1;
                 flyOutDir = -1;
@@ -286,7 +287,8 @@ if(phase == 2){
             //Attack cooldown
             if(currentHSpeed == 0) nextAttack--;
         }
-        else{//Fly Out : go out of the room
+        else if (flyOut &amp;&amp; !flyMid){//Fly Out : go out of the room
+            //Into the room : accelerate
             if((x &gt; view_xview - 100 &amp;&amp; flyOutDir == -1)
             || (x &lt; view_wview + 100 &amp;&amp; flyOutDir == 1)){
                 currentHSpeed *= 1.2;
@@ -320,15 +322,21 @@ if(phase == 2){
                     image_angle = 0;
                     stopPattern = 5;
                 }
-                else if(pattern == 2){
-                    currentHSpeed = 10;
-                    currentVSpeed = 10;
-                    yMaxLimit = irandom_range(600, view_hview - 50);
-                    yMinLimit = irandom_range(200, 400);
-                    xMaxLimit = irandom_range(600, view_wview - 50);
-                    xMaxLimit = irandom_range(view_xview + 50, 400);
-                    image_angle = 0;
-                    stopPattern = 5;
+            }
+        }
+        else if (flyMid){
+            if(x &gt;= view_wview/2 + 100 || x &lt;= view_wview/2 - 100){
+                currentHSpeed += 1 * flyOutDir;
+            }
+            else {
+                if(currentHSpeed != 0)
+                    currentHSpeed -= 5 * flyOutDir;
+                else{
+                    currentHSpeed = 0;
+                    illusion = instance_create(x, y, obj_boss_illusion);
+                    illusion2 = instance_create(x, y, obj_boss_illusion);
+                    fly = false;
+                    attack = true;
                 }
             }
         }
@@ -341,7 +349,6 @@ if(phase == 2){
     
     if(nextAttack == 0){//Attack instanciation
         nextAttack = 3;
-        fly = false;
         pattern = 2;
         if(pattern == 0 || pattern == 1){
             flyOut = true;
@@ -349,18 +356,10 @@ if(phase == 2){
             currentVSpeed = 0.05;
         }
         if(pattern == 2){
-                    attack = true;
-                    currentHSpeed = -15;
-                    currentVSpeed = +15;
-                    yMinLimit = irandom_range(view_yview + 250, 350);
-                    yMaxLimit = irandom_range(450, view_hview - 250);
-                    xMinLimit = irandom_range(view_xview + 500, 540);
-                    xMaxLimit = irandom_range(740, view_wview - 500);
-                    y = yMinLimit;
-                    x = xMinLimit;
-                    //image_angle = 0;
-                    stopPattern = 5;
-                }
+            flyMid = true;
+            currentHSpeed = 1 * flyOutDir;
+            currentVSpeed = 0;
+        }
     }
     
     //Attack : do the random picked pattern
@@ -422,21 +421,9 @@ if(phase == 2){
             }
         }
         if(pattern == 2){
-            if(x &lt; xMinLimit){
-                currentHSpeed += 1;
-                if(currentHSpeed == +15) xMinLimit = irandom_range(view_xview + 400, 440);
-            }
-            else if (x &gt; xMaxLimit) {
-                currentHSpeed -= 1;
-                if(currentHSpeed == -15) xMaxLimit = irandom_range(840, view_wview - 800);
-            }
-            if( y &lt; yMinLimit) {
-                currentVSpeed += 1;
-                if(currentVSpeed == 15) yMinLimit = irandom_range(view_yview + 250, 350);
-            }
-            else if (y &gt; yMaxLimit){
-                currentVSpeed -= 1;
-                if(currentVSpeed == -15) yMaxLimit = irandom_range(450, view_hview - 250);
+            if(flyMid){
+                illusion.hspeed = -1;
+                illusion2.hspeed = 1;
             }
         }
         if(stopPattern == 0){
@@ -448,8 +435,6 @@ if(phase == 2){
             rotate = false;
         }
     }
-
-    
     //Rotate : rotate the sprite
     if(rotate){
         image_angle += rotationSpeed * rotationDir;
@@ -459,6 +444,7 @@ if(phase == 2){
     
     hspeed = currentHSpeed;
     vspeed = currentVSpeed;
+    show_debug_message(currentHSpeed);
 }
 </string>
           </argument>

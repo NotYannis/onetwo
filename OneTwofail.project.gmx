@@ -205,12 +205,14 @@
       <object>objects\obj_flying_eye</object>
       <object>objects\obj_statue</object>
       <object>objects\obj_boss_rotate</object>
+      <object>objects\obj_boss_illusion</object>
       <object>objects\obj_boss</object>
       <object>objects\obj_targetpractice</object>
       <objects name="projectiles">
         <object>objects\obj_projectile</object>
         <object>objects\obj_orb</object>
         <object>objects\obj_boss_orb</object>
+        <object>objects\object82</object>
         <object>objects\obj_arrow</object>
         <object>objects\obj_tear</object>
       </objects>
