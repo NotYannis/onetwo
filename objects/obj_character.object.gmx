@@ -169,7 +169,7 @@ if (hp &lt;= 0){
 }
 
 //Cheat code
-if(keyboard_check(cheatKey)) hp = 1000;
+if(keyboard_check(cheatKey)) hp += 1000;
 
 </string>
           </argument>
