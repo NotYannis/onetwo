@@ -65,15 +65,8 @@ gunRes = stats[2];
 damage = stats[3];
 vsp = 0;
 
-sounds = getEnemySound();
-spawnSound = sounds[0];
-attackSound = sounds[1];
-touchPlayerSound = sounds[2];
-hitedSound = sounds[3];
-deathSound = sounds[4];
 
-image_speed = animationSpeed;
-image_xscale = behindPlayer();
+ 
 </string>
           </argument>
         </arguments>
