@@ -28,7 +28,7 @@
             <string>instance_deactivate_object(object_index);
 
 //This determines what the enemy will do,
-//can be used in the creation event on each type of enemy
+//can be used in the creation event on each type of enemy. Ouh yeah.
 isSpawning = true;
 isProjectile = false;
 applyGravity = true;
