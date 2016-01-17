@@ -383,7 +383,7 @@ if(phase == 2){
     //Attack instanciation
     if(nextAttack == 0){
         nextAttack = 3;
-        pattern = 1;
+        pattern = irandom(2);
         //Control on the randomize : a pattern is done max twice in a row
         if (prevPattern == pattern){
             patternCount++;
