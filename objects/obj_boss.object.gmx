@@ -165,9 +165,7 @@ if(phase == 1){
             if(sprite_index == spr_boss_1_rush){
                 sprite_index = spr_boss_1_attack;
                 image_speed = 0.5;
-                show_debug_message("uech");
             }
-            show_debug_message(image_index);
             currentHSpeed = 0;
             wait = 40;
         }
@@ -222,16 +220,18 @@ if(phase == 1){
         sprite_index = spr_boss1_2;
         image_index = 0;
         image_speed = 0.2;
-        hp = phase2hp;
+        hp = 10;
         recovery = 0;
     }
     
     //Animations towards phase 2
     if(transition){
+        invulnerable = true;
         if(image_index &gt;= sprite_get_number(spr_boss1_2) - image_speed){
             sprite_index = spr_boss1_3;
-            image_speed = 0.3;     
-            phase = 2;
+            image_speed = 0.3;
+            y -= 14;
+            phase = 1.5;
             transition = false;
         }
     }
@@ -242,7 +242,30 @@ if(phase == 1){
     }
     hspeed = currentHSpeed;
 }
-
+else if(phase == 1.5){
+    if(y &gt; 450){
+        vspeed += -0.5;
+    }
+    else{
+        vspeed = 0;
+        invulnerable = false;
+    }
+    if(hp &lt;= 0){
+        transition = true;
+        recovery = 0;
+    }
+    if(transition){
+        instance_create(x, y, obj_boss_heart);
+        sprite_index = -1;
+        image_index = 0;
+        image_speed = 0;
+        phase = 2;
+        transition = false;
+        spawning = true;
+        wait = 0;
+        hp = phase2hp;
+    }
+}
 
  
 </string>
@@ -271,11 +294,18 @@ if(phase == 2){
     if(launch &amp;&amp; wait == 0){
         invulnerable = true;
         yMaxLimit = 280;
-        if(y &gt; yMaxLimit) currentVSpeed -=0.2;
+        if(y &gt; yMaxLimit){
+            currentVSpeed -= 0.05;
+            if(spawning){
+                sprite_index = spr_boss2_armor_spawn;
+                image_speed = 0.07;
+                spawning = false;
+            }
+        }
         else{
             launch = false;
             startFlying = true;
-            wait = 20;
+            wait = 40;
             rotationSpeed = 4;
             yMaxLimit += 10;
             yMinLimit = 270;
@@ -284,6 +314,7 @@ if(phase == 2){
             currentVSpeed = 0;
             currentHSpeed = 0;
             sprite_index = spr_boss2_armor;
+            image_speed = 0.3;
             if(!instance_exists(obj_boss_heart))
                instance_create(x, y, obj_boss_heart);
         }
@@ -419,7 +450,7 @@ if(phase == 2){
             //Jump around
             if(y &gt; yMaxLimit){
                 currentVSpeed = -40;
-                currentHSpeed = irandom_range(5 * sign(currentHSpeed), 15 * sign(currentHSpeed));
+                currentHSpeed = irandom_range(8 * sign(currentHSpeed), 15 * sign(currentHSpeed));
                 stopPattern --;
             }
             else if(y &lt; yMinLimit &amp;&amp; currentVSpeed &lt; 40){
@@ -468,7 +499,7 @@ if(phase == 2){
                     stopPattern--;
                 }
             }
-            else if(hp &lt;= 200 &amp;&amp; x &gt; xMinLimit + 100 &amp;&amp; x &lt; xMaxLimit - 100){//Throw bullets on player
+            else if(hp &lt;= 100 &amp;&amp; x &gt; xMinLimit + 100 &amp;&amp; x &lt; xMaxLimit - 100){//Throw bullets on player
                 if(wait == 0){
                     instance_create(x, y, obj_boss_orb);
                     wait = 2;
@@ -613,48 +644,46 @@ if(phase == 2){
           <argument>
             <kind>1</kind>
             <string>///Hitting and being hitted
-if(!transition){
-    if(recovery == 0 &amp;&amp; !invulnerable){
-        touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
-                                          obj_character.y,
-                                          obj_character.x + (78 * obj_character.image_xscale),
-                                          obj_character.y + 20,
-                                          id, true, false);
-        if(touchWeapon &amp;&amp; obj_character.strike){
+if(recovery == 0 &amp;&amp; !invulnerable){
+    touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
+                                      obj_character.y,
+                                      obj_character.x + (78 * obj_character.image_xscale),
+                                      obj_character.y + 20,
+                                      id, true, false);
+    if(touchWeapon &amp;&amp; obj_character.strike){
+        hp -= 10;
+        recovery = recoveryFrames;
+    }
+    if(phase != 1){
+        if(place_meeting(x, y, obj_bullet)){
+            with(obj_bullet) instance_destroy();
             hp -= 10;
             recovery = recoveryFrames;
         }
-        if(phase == 2){
-            if(place_meeting(x, y, obj_bullet)){
-                with(obj_bullet) instance_destroy();
-                hp -= 10;
-                recovery = recoveryFrames;
-            }
+    }
+}
+else if(recovery &gt; 0){
+    if(phase == 1 || (phase == 2 &amp;&amp; attack)){//Flicker on first phase
+        if(recovery % 6 &gt;= 3 &amp;&amp; recovery % 6 &lt;= 6) image_alpha = 0; 
+        else image_alpha = 1;
+    }
+    else if (phase == 2 &amp;&amp; fly){//Rotate faster on second phase
+        rotationSpeed = 40;
+        rotationDir = 1;
+        if(recovery == 1){
+            rotationSpeed = 4;
+            rotationDir = -1;
         }
     }
-    else if(recovery &gt; 0){
-        if(phase == 1 || (phase == 2 &amp;&amp; attack)){//Flicker on first phase
-            if(recovery % 6 &gt;= 3 &amp;&amp; recovery % 6 &lt;= 6) image_alpha = 0; 
-            else image_alpha = 1;
-        }
-        else if (phase == 2 &amp;&amp; fly){//Rotate faster on second phase
-            rotationSpeed = 40;
-            rotationDir = 1;
-            if(recovery == 1){
-                rotationSpeed = 4;
-                rotationDir = -1;
-            }
-        }
-        recovery --;
-    }
-    
-    if(place_meeting(x, y, obj_character) &amp;&amp; !obj_character.strike
-        || place_meeting(x, y, obj_yellow)){
-        obj_character.hit = true;
-        obj_character.ennemy = id;
-        obj_character.damage = damage;
-        obj_character.enemyBehind = behindPlayer();
-    }       
+    recovery --;
+}
+
+if(place_meeting(x, y, obj_character) &amp;&amp; !obj_character.strike
+    || place_meeting(x, y, obj_yellow)){
+    obj_character.hit = true;
+    obj_character.ennemy = id;
+    obj_character.damage = damage;
+    obj_character.enemyBehind = behindPlayer();
 }
 </string>
           </argument>
