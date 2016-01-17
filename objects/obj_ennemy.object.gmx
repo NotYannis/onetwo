@@ -25,55 +25,94 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_deactivate_object(object_index);
+            <string>///Phase 1 : ol' weirdo walkin'
+if(phase == 1){
+    //When he's walking and the player is nearby
+    playerInAggroZone = obj_character.x &gt;= x - aggroZone &amp;&amp; obj_character.x &lt;= x + aggroZone;
+    if(playerInAggroZone &amp;&amp; walk){
+        walk = false;
+        strike = true;
+        wait = -1;
+    }
+    
+    //Striking pattern : run towards the player, attacks him when close
+    if(strike){
+        //First time the player is in the aggro zone while a walk pattern
+        if(wait == -1){
+            image_xscale = behindPlayer();
+            currentHSpeed = (moveSpeed - 2) * behindPlayer();
+            wait = 60; //Don't run forever
+        }
+        //If the player is close : attacks then wait
+        if(distance_to_point(obj_character.x, obj_character.y) &lt; 40){
+            currentHSpeed = 0;
+            wait = 40;
+        }
+        
+        if(wait &gt; 0){
+            wait --;
+        }
+        else if(wait == 0){
+            if (playerInAggroZone){ //If in the aggro zone : run again !
+                wait = -1;
+            }
+            else { //If not, continue walking
+                walk = true;
+                currentHSpeed = moveSpeed;
+            }
+        }
+    }
+    //walking around the room
+    if(walk){
+        if(wait &gt; 0){//The boss will stay still or walk while wait is over 0
+            wait--;
+        }
+        else {
+            if(currentHSpeed != 0){//If already moving, stop moving
+                currentHSpeed = 0;
+                wait = irandom_range(10, 40);
+            }
+            else{//If not moving, start moving in a random direction on a random distance
+                if(irandom_range(1, 2) == 1) dir = 1;
+                else dir = -1;
+                currentHSpeed = moveSpeed * dir;
+                image_xscale = dir;
+                wait = irandom_range(10, 100);//Random distance range
+            }
+        }
+    }
+    
+    if(hp &lt;= 0){//ded
+        walk = false;
+        strike = false;
+        transition = true;
+        currentHSpeed = 0;
+        sprite_index = spr_boss1_2;
+        image_index = 0;
+        image_speed = 0.2;
+        hp = phase2hp;
+        recovery = 0;
+    }
+    
+    //Animations towards phase 2
+    if(transition){
+        if(image_index &gt;= sprite_get_number(spr_boss1_2) - image_speed){
+            sprite_index = spr_boss1_3;
+            image_speed = 0.3;     
+            phase = 2;
+            transition = false;
+        }
+    }
+    //Turn over when it hits a wall
+    if(place_meeting(x + hspeed, y, obj_ground01)){
+        currentHSpeed *= -1;
+        image_xscale *= -1;
+    }
+    hspeed = currentHSpeed;
+}
 
-//This determines what the enemy will do,
-//can be used in the creation event on each type of enemy
-isSpawning = true;
-isProjectile = false;
-applyGravity = true;
-followPlayer = true;
-flying = false;
 
-//Intern state of the enemy
-invulnerability = -1;
-attack = true;
-death = false;
-touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
-                                    obj_character.y,
-                                    obj_character.x + (78 * obj_character.image_xscale),
-                                    obj_character.y + 20,
-                                    id, true, false);
-touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
-                                  obj_character.y - 81,
-                                  obj_character.x + (40 * obj_character.image_xscale),
-                                  obj_character.y - 30, id, true, false)
-
-//Instanciation : it will get stats, sprites and sound
-//Used with scripts getEnemyAnim, getEnemyStat and getEnemySound
-anims = getEnemyAnim();
-animationSpeed = anims[0];
-spawnSprite = anims[1];
-sprite = anims[2];
-hitSprite = anims[3];
-deathSprite = anims[4];
-
-stats = getEnemyStat();
-hsp = stats[0];
-hp = stats[1];
-gunRes = stats[2];
-damage = stats[3];
-vsp = 0;
-
-sounds = getEnemySound();
-spawnSound = sounds[0];
-attackSound = sounds[1];
-touchPlayerSound = sounds[2];
-hitedSound = sounds[3];
-deathSound = sounds[4];
-
-image_speed = animationSpeed;
-image_xscale = behindPlayer();
+ 
 </string>
           </argument>
         </arguments>
@@ -96,151 +135,60 @@ image_xscale = behindPlayer();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Enemy behaviour
-if(isSpawning){ //Animate the enemy spawn
-    if(!audio_is_playing(spawnSound)) audio_play_sound(spawnSound, 10, false);
-    attack = false;
-    sprite_index = spawnSprite;
-    image_speed = 0.3;
-    if (image_index &gt;= sprite_get_number(spawnSprite) - image_speed){
-        isSpawning = false;
-        attack = true;
-        sprite_index = sprite;
-        mask_index = sprite;
-        image_speed = animationSpeed;
-    }
-}
-if (attack){//Normal behaviour, between spawn and death
-    //Checks if touch the chainsaw
-    touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
-                                      obj_character.y,
-                                      obj_character.x + (78 * obj_character.image_xscale),
-                                      obj_character.y + 20,
-                                      id, true, false);
-    //Checks if touch the upper shield
-    touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xscale) - hsp,
-                                      obj_character.y - 81,
-                                      obj_character.x + (40 * obj_character.image_xscale) - hsp,
-                                      obj_character.y - 30, id, true, false)
-                                    
-                                    
-    if(followPlayer) {// Se tourne et va vers le joueur.
-        if(x &lt; obj_character.x - 150 || x &gt; obj_character.x + 150){
-            move_towards_point(obj_character.x, obj_character.y, hsp);
-            id.image_xscale = behindPlayer();
-        }
-    }
-    else{
-        hspeed = hsp;
-    }
+            <string>image_speed = 0.5;
 
-    //Gravity
-    if(applyGravity){
-        if(!place_meeting(x, y + 2, obj_ground01) || place_meeting(x + 2, y - 2, obj_ground01)){
-            vspeed = 5;
-            hspeed = 0;
-        }
-        else if(place_meeting(x, y + 2, obj_ground01)){
-            vspeed = 0;
-        }
-        //if it's on the border of precipice, stop moving
-        if(place_meeting(x - (10 * behindPlayer()), y + 100, obj_water))
-            hspeed = 0;
-    }
+//General variables
+wait = 0;
+moveSpeed = -3;
+currentHSpeed = moveSpeed;
+stopMoving = false;
+aggroZone = 250;
+damage = 10;
+hp = 200; //Hp on phase 1
+phase = 2;
+recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
+recovery = 0;
+invulnerabilityFrames = 35;//Invulnerability time on patterns phase 3
+invulnerability = 0;
+invulnerable = false;
+transition = false;
+pattern = 0;
+followPlayer = false;
+//Phase 1 states
+strike = false;
+walk = true;
 
-    //If touched by a bullet
-    if(place_meeting(x,y, obj_bullet) &amp;&amp; invulnerability == -1){
-        bullet = instance_place(x, y, obj_bullet);
-        with(bullet) instance_destroy();
-        audio_play_sound(hitedSound, 10, false)
-        invulnerability = 5;
-        if(hp &gt; obj_character.gunDamage * gunRes &amp;&amp; gunRes != 0){
-            sprite_index = hitSprite;
-            if(!place_meeting(x + behindPlayer() * 15, y - 1, obj_ground01)){
-                x += behindPlayer() * 15;
-            }
-            y -= 5
-        }
-        hp -= obj_character.gunDamage * gunRes;
-    }
-    
-    //If touched by the chainsaw
-    if(touchWeapon &amp;&amp; obj_character.strike &amp;&amp; invulnerability == -1){    
-        audio_play_sound(hitedSound, 10, false)
-        invulnerability = 8;
-        if(hp &gt; obj_character.damage){
-            sprite_index = hitSprite;
-            if(!flying){ //If not flying, little push back
-                if(!place_meeting(x + behindPlayer() * 35, y - 1, obj_ground01)){
-                    x += behindPlayer() * 35;
-                }
-                y -= 25
-            }
-            hspeed = 0;
-        }
-        hp -= obj_character.damage;        
-    } //If hits the character while not attacking
-    else if(place_meeting(x,y,obj_character) || place_meeting(x,y,obj_yellow)
-            &amp;&amp; (!obj_character.redprotect || !touchShield)){
-        obj_character.hit = true;
-        obj_character.ennemy = id;
-        obj_character.damage = damage;
-        obj_character.enemyBehind = behindPlayer();
-    }
+//Phase 2 states
+phase2hp = 200;
+startFlying = false;
+fly = false;
+flyOut = false;
+flyMid = false;
+launch = true;
+rotate = false;
+attack = false;
+//Animations variables
+yMaxLimit = 280;
+yMinLimit = 270;
+xMinLimit = view_xview + 200;
+xMaxLimit = view_wview - 200;
+currentVSpeed = 0;
+rotationSpeed = 0;
+currentRotation = 0;
+rotationDir = -1;
+flyOutDir = 1;
+//Attack
+prevPattern = -1;
+patternCount = 0;
+nextAttack = 2;
+stopPattern = 25;
 
-    //Short invulnerability after being striked
-    if(invulnerability &gt; 0){
-        invulnerability--;
-        hspeed = 0;
-    }
-    else if(invulnerability == 0){
-        sprite_index = sprite;
-        invulnerability--
-    }
-    
-    //Plouf !
-    if (place_meeting(x,y,obj_water)){
-        hspeed = 0;
-        audio_play_sound(snd_plouf, 10, false);
-        instance_destroy();
-    }
-    //Boing !
-    if (place_meeting(x,y, obj_magicshield)){
-        if(!place_meeting(x + behindPlayer() * 100,y, obj_ground01)){
-            x += behindPlayer() * 100;
-        }
-        y -= 20;
-    }
 
-    if(!audio_is_playing(attackSound)) audio_play_sound(attackSound, 10, false);
-    
-    if(hp &lt;= 0) {
-        death = true;
-        attack = false;
-        image_index = 0;
-        hspeed = 0;
-    }
-}
 
-// Death animation 
-if(death){
-    if(!audio_is_playing(deathSound)) audio_play_sound(deathSound, 10, false);
-    sprite_index = deathSprite;
-    image_speed = 0.5;
-    if(flying){ //Fall on the ground
-        vspeed += 0.5;
-        hspeed = 5 * sign(hsp);
-        if(image_index == sprite_get_number(deathSprite) - 1){
-            image_speed = 0;
-        }
-        if(y &gt; room_height){
-            instance_destroy();
-        }
-    }
-    else if(image_index == sprite_get_number(deathSprite) - image_speed){
-        instance_destroy();
-    }
-}
+//Lighting variables
+darkness = 200;
+darknessMin = 150;
+lightFade = false;
 </string>
           </argument>
         </arguments>
