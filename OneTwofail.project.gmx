@@ -210,7 +210,7 @@
       <object>objects\obj_imp</object>
       <object>objects\obj_flying_eye</object>
       <object>objects\obj_statue</object>
-      <object>objects\obj_boss_rotate</object>
+      <object>objects\obj_boss_heart</object>
       <object>objects\obj_boss_illusion</object>
       <object>objects\obj_boss</object>
       <object>objects\obj_targetpractice</object>
