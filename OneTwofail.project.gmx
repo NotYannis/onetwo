@@ -212,7 +212,6 @@
         <object>objects\obj_projectile</object>
         <object>objects\obj_orb</object>
         <object>objects\obj_boss_orb</object>
-        <object>objects\object82</object>
         <object>objects\obj_arrow</object>
         <object>objects\obj_tear</object>
       </objects>

@@ -29,12 +29,12 @@
 
 //General variables
 wait = 0;
-moveSpeed = 0;
+moveSpeed = -3;
 currentHSpeed = moveSpeed;
 stopMoving = false;
 aggroZone = 250;
 damage = 10;
-hp = 20; //Hp on phase 1
+hp = 200; //Hp on phase 1
 phase = 2;
 recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
 recovery = 0;
@@ -49,7 +49,7 @@ strike = false;
 walk = true;
 
 //Phase 2 states
-phase2hp = 100;
+phase2hp = 200;
 startFlying = false;
 fly = false;
 flyOut = false;
@@ -57,6 +57,7 @@ flyMid = false;
 launch = true;
 rotate = false;
 attack = false;
+//Animations variables
 yMaxLimit = 280;
 yMinLimit = 270;
 xMinLimit = view_xview + 200;
@@ -65,10 +66,13 @@ currentVSpeed = 0;
 rotationSpeed = 0;
 currentRotation = 0;
 rotationDir = -1;
+flyOutDir = 1;
+//Attack
+prevPattern = -1;
+patternCount = 0;
 nextAttack = 2;
 stopPattern = 25;
-flyOutDir = 1;
-goRight = true;
+
 
 
 //Lighting variables
@@ -138,15 +142,15 @@ if(lightFade){
             <kind>1</kind>
             <string>///Phase 1 : ol' weirdo walkin'
 if(phase == 1){
-    playerInAggroZone = obj_character.x &gt;= x - aggroZone &amp;&amp; obj_character.x &lt;= x + aggroZone;
     //When he's walking and the player is nearby
+    playerInAggroZone = obj_character.x &gt;= x - aggroZone &amp;&amp; obj_character.x &lt;= x + aggroZone;
     if(playerInAggroZone &amp;&amp; walk){
         walk = false;
         strike = true;
         wait = -1;
     }
     
-    //Striking pattern : walk a bit faster toward the player, attack him when close
+    //Striking pattern : run towards the player, attacks him when close
     if(strike){
         //First time the player is in the aggro zone while a walk pattern
         if(wait == -1){
@@ -154,7 +158,7 @@ if(phase == 1){
             currentHSpeed = (moveSpeed - 2) * behindPlayer();
             wait = 60; //Don't run forever
         }
-        //If the player is close : attack then wait
+        //If the player is close : attacks then wait
         if(distance_to_point(obj_character.x, obj_character.y) &lt; 40){
             currentHSpeed = 0;
             wait = 40;
@@ -178,22 +182,22 @@ if(phase == 1){
         if(wait &gt; 0){//The boss will stay still or walk while wait is over 0
             wait--;
         }
-        else{
+        else {
             if(currentHSpeed != 0){//If already moving, stop moving
                 currentHSpeed = 0;
                 wait = irandom_range(10, 40);
             }
             else{//If not moving, start moving in a random direction on a random distance
-                if(irandom_range(1, 2) == 1) dir = 1
+                if(irandom_range(1, 2) == 1) dir = 1;
                 else dir = -1;
                 currentHSpeed = moveSpeed * dir;
                 image_xscale = dir;
-                wait = irandom_range(10, 100); //Random distance range
+                wait = irandom_range(10, 100);//Random distance range
             }
         }
     }
     
-    if(hp &lt;= 0){
+    if(hp &lt;= 0){//ded
         walk = false;
         strike = false;
         transition = true;
@@ -205,6 +209,7 @@ if(phase == 1){
         recovery = 0;
     }
     
+    //Animations towards phase 2
     if(transition){
         if(image_index &gt;= sprite_get_number(spr_boss1_2) - image_speed){
             sprite_index = spr_boss1_3;
@@ -213,7 +218,7 @@ if(phase == 1){
             transition = false;
         }
     }
-    
+    //Turn over when it hits a wall
     if(place_meeting(x + hspeed, y, obj_ground01)){
         currentHSpeed *= -1;
         image_xscale *= -1;
@@ -253,9 +258,7 @@ if(phase == 2){
         else{
             launch = false;
             startFlying = true;
-            invulnerable = true;
             wait = 20;
-            sprite_index = spr_boss_test2;
             rotationSpeed = 4;
             yMaxLimit += 10;
             yMinLimit = 270;
@@ -263,28 +266,32 @@ if(phase == 2){
             xMaxLimit = view_wview - 200;
             currentVSpeed = 0;
             currentHSpeed = 0;
+            sprite_index = spr_boss_test2;
             if(!instance_exists(obj_boss_rotate))
                instance_create(x, y, obj_boss_rotate);
         }
     }
     
-    if(startFlying &amp;&amp; wait == 0){ //When it begin to fly
+    //Start Flying : begin to fly
+    if(startFlying &amp;&amp; wait == 0){
         rotate = true;
         startFlying = false;
         fly = true;
         currentHSpeed = 15;
-        currentVSpeed = 1;
+        currentVSpeed = 1;        
+        invulnerable = false;
     }
     
     //Flying : go back and forth horizontally
     if(fly &amp;&amp; wait == 0){
+        //Waiting time between two patterns : go back and forth horizontally
         if(!flyOut &amp;&amp; !flyMid){
             if(x &gt; xMaxLimit){
                 if(currentHSpeed &gt; -15) currentHSpeed -= 1;
                 flyOutDir = -1;
             }
             else if(x &lt; xMinLimit){
-                if (currentHSpeed &lt; 15) currentHSpeed += 1;
+                if(currentHSpeed &lt; 15) currentHSpeed += 1;
                 flyOutDir = 1;
             }
             if(y &gt; yMaxLimit){
@@ -317,10 +324,9 @@ if(phase == 2){
                     y = yMaxLimit;
                     if(flyOutDir == -1) x = -10;
                     else x = view_wview + 10
-                    image_angle = 90 * -(flyOutDir);
+                    image_angle = 90;
                     rotationSpeed = 0;
                     stopPattern = 25;
-                    
                 }
                 else if(pattern == 1){
                     currentHSpeed = 0.3;
@@ -333,7 +339,7 @@ if(phase == 2){
                 }
             }
         }
-        else if (flyMid){
+        else if (flyMid){ //Fly mid : position itself in the middle of the room (x)
             if(x &gt;= view_wview/2 + 100 || x &lt;= view_wview/2 - 100){
                 currentHSpeed += 1 * flyOutDir;
             }
@@ -343,26 +349,39 @@ if(phase == 2){
                 else{
                     currentHSpeed = 0;
                     if(rotate &amp;&amp; (abs(image_angle) % 180) &lt;= 92 &amp;&amp; (abs(image_angle) % 180) &gt;= 88){
+                        image_angle = 90;
                         wait = 30;
                         rotate = false;
                     }
                     else if(!rotate &amp;&amp; wait == 0){
-                        illusion = instance_create(x, y, obj_boss_illusion);
-                        illusion2 = instance_create(x, y, obj_boss_illusion);
+                        boss[0] = id;
+                        boss[1] = instance_create(x, y, obj_boss_illusion);
+                        boss[2] = instance_create(x, y, obj_boss_illusion);
                         fly = false;
                         attack = true;
-                        boss[0] = id;
-                        boss[1] = illusion;
-                        boss[2] = illusion2;
                     }
                 }
             }
         }
     }
     
-    if(nextAttack == 0){//Attack instanciation
+    //Attack instanciation
+    if(nextAttack == 0){
         nextAttack = 3;
-        pattern = irandom(2);
+        pattern = 1;
+        //Control on the randomize : a pattern is done max twice in a row
+        if (prevPattern == pattern){
+            patternCount++;
+        }
+        if (patternCount &gt; 2){
+            while(prevPattern == pattern){
+                pattern = irandom(2);
+            }
+            patternCount = 0;
+        }
+        prevPattern = pattern;
+        
+        //Before the beginning of the pattern
         if(pattern == 0 || pattern == 1){
             flyOut = true;
             currentHSpeed = 0.5 * flyOutDir;
@@ -380,31 +399,33 @@ if(phase == 2){
     
     //Attack : do the random picked pattern
     if(attack){
-        invulnerable = true;
-        if(pattern == 0){ //Jump on the ground
-            if(!flyOut){
-                if(y &gt; yMaxLimit){
-                    currentVSpeed = -40;
-                    currentHSpeed = irandom_range(5 * sign(currentHSpeed), 15 * sign(currentHSpeed));
-                    stopPattern --;
-                }
-                else if(y &lt; yMinLimit &amp;&amp; currentVSpeed &lt; 40){
-                    currentVSpeed += 4;
-                    rotationSpeed = 9;
-                }
-                else rotationSpeed = 0;
-                
-                //Go in the other way
-                if(x &lt; xMinLimit &amp;&amp; (abs(image_angle) % 180) == 90){
-                    rotationDir = -1;
-                    currentHSpeed = 5;
-                }
-                else if(x &gt; xMaxLimit &amp;&amp; (abs(image_angle) % 180) == 90){
-                    rotationDir = 1;
-                    currentHSpeed = -5;
-                }
-                //launch an orb
-                if(distance_to_object(obj_yellow) &gt; 400){
+        //Pattern 1 : jump on the ground
+        if(pattern == 0){
+            //Jump around
+            if(y &gt; yMaxLimit){
+                currentVSpeed = -40;
+                currentHSpeed = irandom_range(5 * sign(currentHSpeed), 15 * sign(currentHSpeed));
+                stopPattern --;
+            }
+            else if(y &lt; yMinLimit &amp;&amp; currentVSpeed &lt; 40){
+                currentVSpeed += 4;
+                rotationSpeed = 9;
+            }
+            else rotationSpeed = 0;
+            
+            //Go in the other way
+            if(x &lt; xMinLimit &amp;&amp; (abs(image_angle) % 180) == 90){
+                rotationDir = -1;
+                currentHSpeed = 5;
+            }
+            else if(x &gt; xMaxLimit &amp;&amp; (abs(image_angle) % 180) == 90){
+                rotationDir = 1;
+                currentHSpeed = -5;
+            }
+            //launch an orb
+            if(hp &lt;= 100){
+                if(x &gt;= xMinLimit - 50 &amp;&amp; x &lt;= xMinLimit + 350
+                || x &gt;= xMaxLimit - 350 &amp;&amp; x &lt;= xMaxLimit + 50){
                     if(rotationDir == -1 &amp;&amp; abs(image_angle % 180) == 54){
                         orb = instance_create(x + 64, y + 12, obj_boss_orb);
                         
@@ -415,13 +436,11 @@ if(phase == 2){
                 }
             }
         }
-        if(pattern == 1){ //Go back and forth horizontally and really fastly
-            if(!flyOut){
-                //Go in the other way
-                if(x &lt; xMinLimit || x &gt; xMaxLimit){
-                    y = irandom_range(600, 726);
-                    
-                }
+        //Pattern 2 : go back and forth horizontally really fastly
+        if(pattern == 1){
+            //Go in the other way
+            if(x &lt; xMinLimit || x &gt; xMaxLimit){
+                y = irandom_range(600, 726);
                 if(x &lt; xMinLimit){
                     currentHSpeed = 0.5;
                     x = xMinLimit + 1;
@@ -432,24 +451,28 @@ if(phase == 2){
                     x = xMaxLimit - 1;
                     stopPattern--;
                 }
-                else{//Throw bullets on player
-                    instance_create(x, y, obj_boss_orb);
-                }
-                currentHSpeed *= 1.1;
             }
+            else if(hp &lt;= 100 &amp;&amp; x &gt; xMinLimit + 100 &amp;&amp; x &lt; xMaxLimit - 100){//Throw bullets on player
+                if(wait == 0){
+                    instance_create(x, y, obj_boss_orb);
+                    wait = 2;
+                }
+            }
+            currentHSpeed *= 1.1;
         }
         if(pattern == 2){//Fall under the player with 2 illusions
+            //Animation before the true attack
             if(flyMid &amp;&amp; wait == 0){
-                if(illusion.x &gt; view_wview/2 - 200){
+                if(boss[1].x &gt; view_wview/2 - 200){
                     for(i = 1; i &lt;= 2; i++){
                         boss[i].rotationSpeed = rotationSpeed;
                     }
-                    illusion.currentHSpeed = -1;
-                    illusion2.currentHSpeed = 1;
-                    illusion.rotationDir = -1;
+                    boss[1].currentHSpeed += -0.03;
+                    boss[2].currentHSpeed += 0.03;
+                    boss[1].rotationDir = -1;
                 }
-                else if(illusion.x &gt;= view_wview/2 - 200 + illusion.hspeed
-                        &amp;&amp; illusion.x &lt;= view_wview/2 - 200 - illusion.hspeed){
+                else if(boss[1].x &gt;= view_wview/2 - 200 + boss[1].hspeed
+                        &amp;&amp; boss[1].x &lt;= view_wview/2 - 200 - boss[1].hspeed){
                     for(i = 0; i &lt; 3; i++){
                         boss[i].currentVSpeed = -1;
                     }
@@ -458,37 +481,48 @@ if(phase == 2){
                     for(i = 0; i &lt; 3; i++){
                         boss[i].currentVSpeed *= 1.08;
                     }
-                    illusion.currentHSpeed *= 1.05;
-                    illusion2.currentHSpeed *= 1.05;
+                    boss[1].currentHSpeed *= 1.05;
+                    boss[2].currentHSpeed *= 1.05;
                 }
-                if(illusion.y &lt; - 70){
+                if(boss[1].y &lt; - 1000){
                     for(i = 0; i &lt; 3; i++){
                         boss[i].rotate = false;
                         boss[i].image_angle = 90;
                         boss[i].speed = 0;
                         boss[i].followPlayer = true;
                     }
+                    invulnerable = false;
                     flyMid = false;
                     wait = 210;
                     next = irandom(2);
                 }
             }
-            else{
+            else{//Attacking : fall on the ground
                 if(wait &gt; 0){
-                    if(wait % 70 != 0){
-                        if(boss[next % 3].y &lt; -70){
+                    if(wait % 70 != 0){//Prepare to fall
+                        if(boss[next % 3].y &lt; -1000){
                             boss[next % 3].x = irandom_range(440, 840);
                             boss[next % 3].y = 0;
                         }
-                        else if(boss[next % 3].y &lt; 400){
+                        else if(boss[next % 3].y &lt; 400){//Falling
                             with boss[next % 3]{
                                 motion_add(point_direction(x, y, obj_yellow.x, obj_yellow.y), 1.5);
+                            }
+                            //Piew piew
+                            if(wait % 6 == 0 &amp;&amp; hp &lt;= 100){
+                                for(i = 0; i &lt;2; i++){
+                                    bullet[i] = instance_create(boss[next % 3].x, boss[next % 3].y, obj_boss_orb);
+                                    bullet[i].aiming = false;
+                                    bullet[i].speed = -11;
+                                    if(i == 1) bullet[i].direction = boss[next % 3].image_angle + 25;
+                                    else bullet[i].direction = boss[next % 3].image_angle - 25;
+                                }
                             }
                         }
                         if(boss[next % 3].y &gt; 700 - speed){
                             if(boss[next % 3] == id){
-                                y += vspeed * 1.5;
-                                x += hspeed * 1.5;
+                                y += vspeed * 2;
+                                x += hspeed * 2;
                             }
                             boss[next % 3].currentVSpeed = 0;
                             boss[next % 3].currentHSpeed = 0;
@@ -496,8 +530,7 @@ if(phase == 2){
                         }
                         if(wait % 70 == 1){
                             stopPattern--
-                            show_debug_message("hay");
-                            if(stopPattern == 0){
+                            if(stopPattern == 0){//Illusions disappear
                                 for(i = 1; i &lt; 3; i++){
                                     boss[i].isFading = true;
                                 }
@@ -510,6 +543,7 @@ if(phase == 2){
                 }
             }
         }
+        //Pattern is finished, begin to fly again
         if(stopPattern == 0){
             wait = 20;
             launch = true;
@@ -519,6 +553,14 @@ if(phase == 2){
             rotate = false;
         }
     }
+    
+    if(hp &lt;= 0){//Ded
+        transition = true;
+        rotate = false;
+        currentHSpeed = 0;
+        currentVSpeed = 0;
+    }
+    
     //Rotate : rotate the sprite
     if(rotate){
         image_angle += rotationSpeed * rotationDir;
@@ -530,7 +572,7 @@ if(phase == 2){
     if(!followPlayer){
         hspeed = currentHSpeed;
         vspeed = currentVSpeed;
-    }
+    }   
 }
 </string>
           </argument>
@@ -573,11 +615,11 @@ if(!transition){
         }
     }
     else if(recovery &gt; 0){
-        if(phase == 1){//Flicker on first phase
+        if(phase == 1 || (phase == 2 &amp;&amp; attack)){//Flicker on first phase
             if(recovery % 6 &gt;= 3 &amp;&amp; recovery % 6 &lt;= 6) image_alpha = 0; 
             else image_alpha = 1;
         }
-        else if (phase == 2){//Rotate faster on second phase
+        else if (phase == 2 &amp;&amp; fly){//Rotate faster on second phase
             rotationSpeed = 40;
             rotationDir = 1;
             if(recovery == 1){

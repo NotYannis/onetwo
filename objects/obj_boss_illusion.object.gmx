@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-6</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -92,6 +92,14 @@ if(isFading){
     image_alpha -= 0.01;
 }
 if(image_alpha == 0) instance_destroy();
+
+if(place_meeting(x, y, obj_character) &amp;&amp; !obj_character.strike
+        || place_meeting(x, y, obj_yellow)){
+        obj_character.hit = true;
+        obj_character.ennemy = id;
+        obj_character.damage = damage;
+        obj_character.enemyBehind = behindPlayer();
+}
 </string>
           </argument>
         </arguments>

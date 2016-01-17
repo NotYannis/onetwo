@@ -29,6 +29,7 @@
 isSpawning = false;
 aiming = false;
 falling = false;
+destroy = true;
 
 stats = getEnemyStat()
 hsp = stats[0];
@@ -104,8 +105,10 @@ else{
     }
     
     //If touches the ground or out of the room
-    if(place_meeting(x, y, obj_ground01) || x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height){
-        instance_destroy();
+    if(destroy){
+        if(place_meeting(x, y, obj_ground01) || x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height){
+            instance_destroy();
+        }
     }
 }
 </string>

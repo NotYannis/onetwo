@@ -25,7 +25,6 @@ switch(object_index) {
         stat[0] = -8; stat[1] = 10; stat[2] = 1; stat[3] = 20;
             break;
     //Projectiles
-    case object82 :
     case obj_boss_orb :
         stat[0] = 15; stat[1] = 0; stat[2] = 0; stat[3] = 10; stat[4] = 0;
             break;
