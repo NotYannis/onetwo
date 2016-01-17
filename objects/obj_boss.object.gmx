@@ -343,16 +343,14 @@ if(phase == 2){
                     else x = view_wview + 10
                     image_angle = 90;
                     rotationSpeed = 0;
-                    stopPattern = 25;
                 }
                 else if(pattern == 1){
                     currentHSpeed = 0.3;
                     currentVSpeed = 0;
                     y = irandom_range(600, 726);
-                    xMaxLimit = view_wview + 100;
-                    xMinLimit = view_xview - 100;
+                    xMaxLimit = view_wview + 70;
+                    xMinLimit = view_xview - 70;
                     image_angle = 0;
-                    stopPattern = 5;
                 }
             }
         }
@@ -385,7 +383,7 @@ if(phase == 2){
     //Attack instanciation
     if(nextAttack == 0){
         nextAttack = 3;
-        pattern = 1;
+        pattern = irandom(2);
         //Control on the randomize : a pattern is done max twice in a row
         if (prevPattern == pattern){
             patternCount++;
@@ -404,7 +402,7 @@ if(phase == 2){
             currentHSpeed = 0.5 * flyOutDir;
             currentVSpeed = 0.05;
             if(pattern == 0) stopPattern = 20;
-            else stopPattern = 2;
+            else stopPattern = 5;
         }
         if(pattern == 2){
             flyMid = true;
@@ -461,23 +459,23 @@ if(phase == 2){
                 rotationSpeed = 4;                
                 if(x &lt; xMinLimit){
                     currentHSpeed = 0.5;
-                    x = xMinLimit + 1;
+                    x = xMinLimit + 10;
                     stopPattern--;
                 }
                 else if (x &gt; xMaxLimit){
                     currentHSpeed = -0.5;
-                    x = xMaxLimit - 1;
+                    x = xMaxLimit - 10;
                     stopPattern--;
                 }
             }
-            else if(hp &lt;= 100 &amp;&amp; x &gt; xMinLimit + 100 &amp;&amp; x &lt; xMaxLimit - 100){//Throw bullets on player
+            else if(hp &lt;= 200 &amp;&amp; x &gt; xMinLimit + 100 &amp;&amp; x &lt; xMaxLimit - 100){//Throw bullets on player
                 if(wait == 0){
                     instance_create(x, y, obj_boss_orb);
                     wait = 2;
                 }
             }
             currentHSpeed *= 1.1;
-            rotationSpeed *= 1.05;
+            rotationSpeed *= 1.0;
         }
         if(pattern == 2){//Fall under the player with 2 illusions
             //Animation before the true attack
