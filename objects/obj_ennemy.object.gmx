@@ -25,91 +25,45 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Phase 1 : ol' weirdo walkin'
-if(phase == 1){
-    //When he's walking and the player is nearby
-    playerInAggroZone = obj_character.x &gt;= x - aggroZone &amp;&amp; obj_character.x &lt;= x + aggroZone;
-    if(playerInAggroZone &amp;&amp; walk){
-        walk = false;
-        strike = true;
-        wait = -1;
-    }
-    
-    //Striking pattern : run towards the player, attacks him when close
-    if(strike){
-        //First time the player is in the aggro zone while a walk pattern
-        if(wait == -1){
-            image_xscale = behindPlayer();
-            currentHSpeed = (moveSpeed - 2) * behindPlayer();
-            wait = 60; //Don't run forever
-        }
-        //If the player is close : attacks then wait
-        if(distance_to_point(obj_character.x, obj_character.y) &lt; 40){
-            currentHSpeed = 0;
-            wait = 40;
-        }
-        
-        if(wait &gt; 0){
-            wait --;
-        }
-        else if(wait == 0){
-            if (playerInAggroZone){ //If in the aggro zone : run again !
-                wait = -1;
-            }
-            else { //If not, continue walking
-                walk = true;
-                currentHSpeed = moveSpeed;
-            }
-        }
-    }
-    //walking around the room
-    if(walk){
-        if(wait &gt; 0){//The boss will stay still or walk while wait is over 0
-            wait--;
-        }
-        else {
-            if(currentHSpeed != 0){//If already moving, stop moving
-                currentHSpeed = 0;
-                wait = irandom_range(10, 40);
-            }
-            else{//If not moving, start moving in a random direction on a random distance
-                if(irandom_range(1, 2) == 1) dir = 1;
-                else dir = -1;
-                currentHSpeed = moveSpeed * dir;
-                image_xscale = dir;
-                wait = irandom_range(10, 100);//Random distance range
-            }
-        }
-    }
-    
-    if(hp &lt;= 0){//ded
-        walk = false;
-        strike = false;
-        transition = true;
-        currentHSpeed = 0;
-        sprite_index = spr_boss1_2;
-        image_index = 0;
-        image_speed = 0.2;
-        hp = phase2hp;
-        recovery = 0;
-    }
-    
-    //Animations towards phase 2
-    if(transition){
-        if(image_index &gt;= sprite_get_number(spr_boss1_2) - image_speed){
-            sprite_index = spr_boss1_3;
-            image_speed = 0.3;     
-            phase = 2;
-            transition = false;
-        }
-    }
-    //Turn over when it hits a wall
-    if(place_meeting(x + hspeed, y, obj_ground01)){
-        currentHSpeed *= -1;
-        image_xscale *= -1;
-    }
-    hspeed = currentHSpeed;
-}
+            <string>instance_deactivate_object(object_index);
+
+//This determines what the enemy will do,
+//can be used in the creation event on each type of enemy. Ouh yeah.
+isSpawning = true;
+isProjectile = false;
+applyGravity = true;
+followPlayer = true;
+flying = false;
+
+//Intern state of the enemy
+invulnerability = -1;
+attack = true;
+death = false;
+touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
+                                    obj_character.y,
+                                    obj_character.x + (78 * obj_character.image_xscale),
+                                    obj_character.y + 20,
+                                    id, true, false);
+touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
+                                  obj_character.y - 81,
+                                  obj_character.x + (40 * obj_character.image_xscale),
+                                  obj_character.y - 30, id, true, false)
+
+//Instanciation : it will get stats, sprites and sound
+//Used with scripts getEnemyAnim, getEnemyStat and getEnemySound
+anims = getEnemyAnim();
+animationSpeed = anims[0];
+spawnSprite = anims[1];
+sprite = anims[2];
+hitSprite = anims[3];
+deathSprite = anims[4];
+
+stats = getEnemyStat();
+hsp = stats[0];
+hp = stats[1];
+gunRes = stats[2];
+damage = stats[3];
+vsp = 0;
 
 
  
