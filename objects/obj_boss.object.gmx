@@ -49,7 +49,7 @@ strike = false;
 walk = true;
 
 //Phase 2 states
-phase2hp = 200;
+phase2hp = 10;
 startFlying = false;
 fly = false;
 flyOut = false;
@@ -73,6 +73,8 @@ patternCount = 0;
 nextAttack = 2;
 stopPattern = 25;
 
+//Phase 3 states
+phase3hp = 200;
 
 
 //Lighting variables
@@ -292,6 +294,7 @@ else if(phase == 1.5){
 if(phase == 2){
     //Launching : smoothly fly to yMaxLimit and then stop
     if(launch &amp;&amp; wait == 0){
+        recovery = 0;
         invulnerable = true;
         yMaxLimit = 280;
         if(y &gt; yMaxLimit){
@@ -299,6 +302,7 @@ if(phase == 2){
             if(spawning){
                 sprite_index = spr_boss2_armor_spawn;
                 image_speed = 0.07;
+                obj_boss_heart.image_speed = 0.06;
                 spawning = false;
             }
         }
@@ -314,7 +318,7 @@ if(phase == 2){
             currentVSpeed = 0;
             currentHSpeed = 0;
             sprite_index = spr_boss2_armor;
-            image_speed = 0.3;
+            obj_boss_heart.image_speed = 0;
             if(!instance_exists(obj_boss_heart))
                instance_create(x, y, obj_boss_heart);
         }
@@ -322,6 +326,8 @@ if(phase == 2){
     
     //Start Flying : begin to fly
     if(startFlying &amp;&amp; wait == 0){
+        obj_boss_heart.image_speed = 0.3;
+        image_speed = 0.3;
         rotate = true;
         startFlying = false;
         fly = true;
@@ -360,12 +366,12 @@ if(phase == 2){
             }
             else{ //Out of the room : pattern instanciation
                 fly = false;
-                flyOut = false;        
+                flyOut = false;
                 attack = true;
                 if(pattern == 0){
                     currentHSpeed = -8 * flyOutDir;
                     currentVSpeed = -40;
-                    yMaxLimit = 692;
+                    yMaxLimit = 652;
                     yMinLimit = 640;
                     xMaxLimit = view_wview;
                     xMinLimit = view_xview;
@@ -379,8 +385,8 @@ if(phase == 2){
                     currentHSpeed = 0.3;
                     currentVSpeed = 0;
                     y = irandom_range(600, 726);
-                    xMaxLimit = view_wview + 70;
-                    xMinLimit = view_xview - 70;
+                    xMaxLimit = view_wview + 100;
+                    xMinLimit = view_xview - 100;
                     image_angle = 0;
                 }
             }
@@ -393,7 +399,10 @@ if(phase == 2){
                 if(currentHSpeed != 0)
                     currentHSpeed -= 5 * flyOutDir;
                 else{
+                    invulnerable = true;
+                    recovery = 0;
                     currentHSpeed = 0;
+                    rotationSpeed = 4;
                     if(rotate &amp;&amp; (abs(image_angle) % 180) &lt;= 92 &amp;&amp; (abs(image_angle) % 180) &gt;= 88){
                         image_angle = 90;
                         wait = 30;
@@ -490,16 +499,16 @@ if(phase == 2){
                 rotationSpeed = 4;                
                 if(x &lt; xMinLimit){
                     currentHSpeed = 0.5;
-                    x = xMinLimit + 10;
+                    x = xMinLimit + 50;
                     stopPattern--;
                 }
                 else if (x &gt; xMaxLimit){
                     currentHSpeed = -0.5;
-                    x = xMaxLimit - 10;
+                    x = xMaxLimit - 50;
                     stopPattern--;
                 }
             }
-            else if(hp &lt;= 100 &amp;&amp; x &gt; xMinLimit + 100 &amp;&amp; x &lt; xMaxLimit - 100){//Throw bullets on player
+            else if(hp &lt;= 100 &amp;&amp; x &gt; xMinLimit + 150 &amp;&amp; x &lt; xMaxLimit - 150){//Throw bullets on player
                 if(wait == 0){
                     instance_create(x, y, obj_boss_orb);
                     wait = 2;
@@ -515,8 +524,8 @@ if(phase == 2){
                     for(i = 1; i &lt;= 2; i++){
                         boss[i].rotationSpeed = rotationSpeed;
                     }
-                    boss[1].currentHSpeed += -0.02;
-                    boss[2].currentHSpeed += 0.02;
+                    boss[1].currentHSpeed += -0.03;
+                    boss[2].currentHSpeed += 0.03;
                     boss[1].rotationDir = -1;
                 }
                 else if(boss[1].x &gt;= view_wview/2 - 200 + boss[1].hspeed
@@ -567,7 +576,7 @@ if(phase == 2){
                                 }
                             }
                         }
-                        if(boss[next % 3].y &gt; 700 - speed){
+                        if(boss[next % 3].y &gt; 700 - speed){//Hit the ground
                             if(boss[next % 3] == id){
                                 y += vspeed * 2;
                                 x += hspeed * 2;
@@ -577,7 +586,7 @@ if(phase == 2){
                             boss[next % 3].followPlayer = false;
                             boss[next % 3].rotate = false;
                         }
-                        if(wait % 70 == 1){
+                        if(wait % 70 == 1){//Next diamond falling
                             stopPattern--
                             if(stopPattern == 0){//Illusions disappear
                                 for(i = 1; i &lt; 3; i++){
@@ -606,8 +615,49 @@ if(phase == 2){
     if(hp &lt;= 0){//Ded
         transition = true;
         rotate = false;
+        fly = false;
+        attack = false;
+        launch = false;
         currentHSpeed = 0;
         currentVSpeed = 0;
+        if(instance_exists(obj_boss_illusion)) instance_destroy();
+        wait = 40;
+        hp = phase3hp;
+        invulnerable = true;
+    }
+    
+    if(transition){
+         if(obj_boss_heart.y &gt;= view_hview - 50){
+            if(obj_boss_heart.image_index &gt;= 1){
+                rotationSpeed = 0;
+                obj_boss_heart.vspeed = 0;
+                obj_boss_heart.image_speed = 0.1;
+            }
+            else{
+                if(obj_boss_heart.x &gt; view_wview - aggroZone / 2){
+                    x = obj_boss_heart.x;
+                    y = obj_boss_heart.y + 78;
+                    sprite_index = spr_boss1_final;
+                }
+                else{
+                    rotationSpeed = 4;
+                    obj_boss_heart.image_angle -= 4;
+                    obj_boss_heart.image_speed = 0;
+                    obj_boss_heart.hspeed = 8;
+                }
+            }
+        }
+        else if(wait &gt; 0){
+            sprite_index = -1;
+            obj_boss_heart.image_index = 4;
+            obj_boss_heart.image_speed = 0;
+            rotationSpeed = 1;
+        }
+        else{
+            rotationSpeed *= 1.01;
+            obj_boss_heart.vspeed += 0.1;
+            obj_boss_heart.image_angle += rotationSpeed;
+        }
     }
     
     //Rotate : rotate the sprite
@@ -621,7 +671,8 @@ if(phase == 2){
     if(!followPlayer){
         hspeed = currentHSpeed;
         vspeed = currentVSpeed;
-    }   
+    }
+    show_debug_message(hp);
 }
 </string>
           </argument>
