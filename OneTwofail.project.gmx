@@ -95,11 +95,16 @@
         <sprite>sprites\spr_boss_test</sprite>
         <sprite>sprites\spr_boss_1_walk</sprite>
         <sprite>sprites\spr_boss_1_transform</sprite>
+        <sprite>sprites\spr_boss_2_wait</sprite>
+        <sprite>sprites\spr_boss_2_wait2</sprite>
         <sprite>sprites\spr_boss_1_rush</sprite>
         <sprite>sprites\spr_boss_1_attack</sprite>
         <sprite>sprites\spr_boss2_armor</sprite>
         <sprite>sprites\spr_boss2_armor_spawn</sprite>
         <sprite>sprites\spr_boss2_heart</sprite>
+        <sprite>sprites\spr_boss_2_death</sprite>
+        <sprite>sprites\spr_boss_2_land</sprite>
+        <sprite>sprites\spr_boss_2_crawl</sprite>
       </sprites>
       <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_crow_death</sprite>
