@@ -94,6 +94,7 @@
         <sprite>sprites\spr_boss_test2</sprite>
         <sprite>sprites\spr_boss_test</sprite>
         <sprite>sprites\spr_boss_1_walk</sprite>
+        <sprite>sprites\spr_boss_1_transform</sprite>
         <sprite>sprites\spr_boss_1_rush</sprite>
         <sprite>sprites\spr_boss_1_attack</sprite>
         <sprite>sprites\spr_boss2_armor</sprite>
