@@ -49,7 +49,7 @@ strike = false;
 walk = true;
 
 //Phase 2 states
-phase2hp = 10;
+phase2hp = 200;
 startFlying = false;
 fly = false;
 flyOut = false;
@@ -144,6 +144,7 @@ if(lightFade){
             <kind>1</kind>
             <string>///Phase 1 : ol' weirdo walkin'
 if(phase == 1){
+    if(!audio_is_playing(snd_boss_phase1)) audio_play_sound(snd_boss_phase1, 10, true);
     //When he's walking and the player is nearby
     playerInAggroZone = obj_character.x &gt;= x - aggroZone &amp;&amp; obj_character.x &lt;= x + aggroZone;
     if(playerInAggroZone &amp;&amp; walk){
@@ -219,7 +220,7 @@ if(phase == 1){
         strike = false;
         transition = true;
         currentHSpeed = 0;
-        sprite_index = spr_boss1_2;
+        sprite_index = spr_boss_1_transform;
         image_index = 0;
         image_speed = 0.2;
         hp = 10;
@@ -229,10 +230,8 @@ if(phase == 1){
     //Animations towards phase 2
     if(transition){
         invulnerable = true;
-        if(image_index &gt;= sprite_get_number(spr_boss1_2) - image_speed){
-            sprite_index = spr_boss1_3;
-            image_speed = 0.3;
-            y -= 14;
+        if(image_index &gt;= sprite_get_number(spr_boss_1_transform) - image_speed){
+            image_speed = 0;
             phase = 1.5;
             transition = false;
         }
@@ -266,6 +265,8 @@ else if(phase == 1.5){
         spawning = true;
         wait = 0;
         hp = phase2hp;
+        audio_stop_sound(snd_boss_phase1);
+        audio_play_sound(snd_boss_phase2, 10, true);
     }
 }
 
@@ -620,7 +621,8 @@ if(phase == 2){
         launch = false;
         currentHSpeed = 0;
         currentVSpeed = 0;
-        if(instance_exists(obj_boss_illusion)) instance_destroy();
+        if(instance_exists(obj_boss_illusion))
+            with obj_boss_illusion instance_destroy();
         wait = 40;
         hp = phase3hp;
         invulnerable = true;
@@ -636,8 +638,13 @@ if(phase == 2){
             else{
                 if(obj_boss_heart.x &gt; view_wview - aggroZone / 2){
                     x = obj_boss_heart.x;
-                    y = obj_boss_heart.y + 78;
+                    y = obj_boss_heart.y - 85;
+                    with obj_boss_heart instance_destroy();
                     sprite_index = spr_boss1_final;
+                    image_angle = 0;
+                    currentVSpeed = 0;
+                    currentHspeed = 0;
+                    phase = 3;
                 }
                 else{
                     rotationSpeed = 4;
@@ -735,6 +742,30 @@ if(place_meeting(x, y, obj_character) &amp;&amp; !obj_character.strike
     obj_character.ennemy = id;
     obj_character.damage = damage;
     obj_character.enemyBehind = behindPlayer();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Phase 3 : true boss
+if(phase == 3){
+
 }
 </string>
           </argument>
