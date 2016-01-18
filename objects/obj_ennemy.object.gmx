@@ -165,7 +165,7 @@ if (attack){//Normal behaviour, between spawn and death
     
     //If touched by the chainsaw
     if(touchWeapon &amp;&amp; obj_character.strike &amp;&amp; invulnerability == -1){    
-        audio_play_sound(hittùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùfùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùedSound, 10, false)
+        audio_play_sound(hittedSound, 10, false)
         invulnerability = 8;
         if(hp &gt; obj_character.damage){
             sprite_index = hitSprite;

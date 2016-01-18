@@ -269,6 +269,7 @@
       <object>objects\obj_woodtower_top</object>
       <object>objects\obj_arena_statue</object>
       <object>objects\obj_arena_ruins</object>
+      <object>objects\obj_ruins_entrance</object>
       <object>objects\obj_arena_ruins2</object>
       <object>objects\obj_chapel</object>
     </objects>
@@ -288,9 +289,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_village</room>
     <room>rooms\Tutorial</room>
     <room>rooms\rm_boss</room>
-    <room>rooms\rm_village</room>
     <room>rooms\arena</room>
     <room>rooms\arena2</room>
     <room>rooms\Church_boss_</room>
