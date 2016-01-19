@@ -109,6 +109,7 @@
         <sprite>sprites\spr_boss_2_death</sprite>
         <sprite>sprites\spr_boss_2_land</sprite>
         <sprite>sprites\spr_boss_2_crawl</sprite>
+        <sprite>sprites\spr_orb_boss</sprite>
       </sprites>
       <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_crow_death</sprite>

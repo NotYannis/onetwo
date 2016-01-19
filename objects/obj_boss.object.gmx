@@ -35,7 +35,7 @@ stopMoving = false;
 aggroZone = 250;
 damage = 10;
 hp = 20; //Hp on phase 1
-phase = 1;
+phase = 3;
 recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
 recovery = 0;
 invulnerabilityFrames = 35;//Invulnerability time on patterns phase 3
@@ -75,7 +75,8 @@ stopPattern = 25;
 
 //Phase 3 states
 phase3hp = 200;
-
+debug = true;
+rangeAttack = true;
 
 //Lighting variables
 darkness = 200;
@@ -144,7 +145,6 @@ if(lightFade){
             <kind>1</kind>
             <string>///Phase 1 : ol' weirdo walkin'
 if(phase == 1){
-    if(!audio_is_playing(snd_boss_phase1)) audio_play_sound(snd_boss_phase1, 10, true);
     //When he's walking and the player is nearby
     playerInAggroZone = obj_character.x &gt;= x - aggroZone &amp;&amp; obj_character.x &lt;= x + aggroZone;
     if(playerInAggroZone &amp;&amp; walk){
@@ -265,8 +265,6 @@ else if(phase == 1.5){
         spawning = true;
         wait = 0;
         hp = phase2hp;
-        audio_stop_sound(snd_boss_phase1);
-        audio_play_sound(snd_boss_phase2, 10, true);
     }
 }
 
@@ -295,10 +293,10 @@ else if(phase == 1.5){
 if(phase == 2){
     //Launching : smoothly fly to yMaxLimit and then stop
     if(launch &amp;&amp; wait == 0){
-        recovery = 0;
         invulnerable = true;
         yMaxLimit = 280;
         if(y &gt; yMaxLimit){
+            image_alpha = 1;
             currentVSpeed -= 0.05;
             if(spawning){
                 sprite_index = spr_boss2_armor_spawn;
@@ -320,8 +318,6 @@ if(phase == 2){
             currentHSpeed = 0;
             sprite_index = spr_boss2_armor;
             obj_boss_heart.image_speed = 0;
-            if(!instance_exists(obj_boss_heart))
-               instance_create(x, y, obj_boss_heart);
         }
     }
     
@@ -342,7 +338,7 @@ if(phase == 2){
         //Waiting time between two patterns : go back and forth horizontally
         if(!flyOut &amp;&amp; !flyMid){
             if(x &gt; xMaxLimit){
-                if(currentHSpeed &gt; -15) currentHSpeed -= 1;
+            if(currentHSpeed &gt; -15) currentHSpeed -= 1;
                 flyOutDir = -1;
             }
             else if(x &lt; xMinLimit){
@@ -380,7 +376,7 @@ if(phase == 2){
                     if(flyOutDir == -1) x = -10;
                     else x = view_wview + 10
                     image_angle = 90;
-                    rotationSpeed = 0;
+                    rotate = false;
                 }
                 else if(pattern == 1){
                     currentHSpeed = 0.3;
@@ -401,9 +397,7 @@ if(phase == 2){
                     currentHSpeed -= 5 * flyOutDir;
                 else{
                     invulnerable = true;
-                    recovery = 0;
                     currentHSpeed = 0;
-                    rotationSpeed = 4;
                     if(rotate &amp;&amp; (abs(image_angle) % 180) &lt;= 92 &amp;&amp; (abs(image_angle) % 180) &gt;= 88){
                         image_angle = 90;
                         wait = 30;
@@ -465,9 +459,10 @@ if(phase == 2){
             }
             else if(y &lt; yMinLimit &amp;&amp; currentVSpeed &lt; 40){
                 currentVSpeed += 4;
+                rotate = true;
                 rotationSpeed = 9;
             }
-            else rotationSpeed = 0;
+            else rotate = false;
             
             //Go in the other way
             if(x &lt; xMinLimit &amp;&amp; (abs(image_angle) % 180) == 90){
@@ -643,8 +638,12 @@ if(phase == 2){
                     sprite_index = spr_boss1_final;
                     image_angle = 0;
                     currentVSpeed = 0;
-                    currentHspeed = 0;
+                    currentHspeed = -5;
                     phase = 3;
+                    transition = false;
+                    aggroZone = view_wview - 400;
+                    walk = true;
+                    strike = false;
                 }
                 else{
                     rotationSpeed = 4;
@@ -701,6 +700,67 @@ if(phase == 2){
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Phase 3 : true boss
+if(phase == 3){
+    if(debug){
+        x = 1000;
+        y = 800 - 128;
+        sprite_index = spr_boss1_final;
+        image_speed = 0.25;
+        aggroZone = view_wview - 400;
+        currentHSpeed = -5;
+        debug = false;
+        pattern = 0;
+    }
+    playerInAggroZone = obj_character.x &gt;= aggroZone;
+    if(playerInAggroZone){
+        walk = false;
+        strike = true;
+        wait = -1;
+    }
+    if(walk){
+        if(place_meeting(x + hspeed, y, obj_ground01)){
+            currentHSpeed = random_range(-5, -2);
+        }
+        else if(x + hspeed &lt; aggroZone){
+            currentHSpeed = random_range(2, 5);
+        }
+    }
+    else{
+        currentHSpeed = 0;
+    }
+    if(rangeAttack){
+        if(pattern == 0){
+            if(wait == 0){
+                walk = false;
+                instance_create(x - 80, y - 32, obj_boss_orb);
+                wait = 60;
+            }
+        }
+    }
+    if(wait &gt; 0) wait --;
+    hspeed = currentHSpeed;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Hitting and being hitted
 if(recovery == 0 &amp;&amp; !invulnerable){
     touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
@@ -735,6 +795,10 @@ else if(recovery &gt; 0){
     }
     recovery --;
 }
+if(invulnerable){
+    image_alpha = 1;
+    rotationSpeed = 4;
+}
 
 if(place_meeting(x, y, obj_character) &amp;&amp; !obj_character.strike
     || place_meeting(x, y, obj_yellow)){
@@ -742,30 +806,6 @@ if(place_meeting(x, y, obj_character) &amp;&amp; !obj_character.strike
     obj_character.ennemy = id;
     obj_character.damage = damage;
     obj_character.enemyBehind = behindPlayer();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Phase 3 : true boss
-if(phase == 3){
-
 }
 </string>
           </argument>
