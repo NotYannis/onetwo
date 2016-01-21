@@ -32,13 +32,23 @@ destroy = false;
 glowSize = 100;
 
 if(obj_boss.phase == 3){
-    xLimit = irandom_range(100, 200);
-    yLimit = irandom_range(100, 200);
-    followPlayer = false;
-    aiming = false;
-    spawn = true;
-    xStart = x;
-    yStart = y;
+    if(obj_boss.pattern == 0){
+        xLimit = irandom_range(100, 200);
+        yLimit = irandom_range(100, 200);
+        aiming = false;
+        spawn = true;
+        xStart = x;
+        yStart = y;
+        wait = 0;
+    }
+    else if(obj_boss.pattern == 1){
+        aiming = false;
+        spawn = false;
+        followPlayer = false;
+        falling = true;
+        hsp = 0;
+        vsp = 10;
+    }
 }
 </string>
           </argument>
@@ -94,13 +104,18 @@ event_inherited();
 if(spawn){
     if(x &gt; xStart - xLimit &amp;&amp; y &gt; yStart - yLimit){
         move_towards_point(xStart - xLimit, yStart - yLimit, 3);
+        wait = 20;
     }
     else{
+        speed = 0;
+    }
+    if(wait == 0){
         spawn = false;
         aiming = true;
-        followPlayer = true;
-        hsp = 35;
+        hsp = 20;
+        speed = 0;
     }
+    else if(wait &gt; 0) wait--;
 }
 
 if(x &lt; view_xview - 200 || x &gt; view_wview + 200 

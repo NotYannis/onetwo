@@ -76,8 +76,17 @@ stopPattern = 25;
 //Phase 3 states
 phase3hp = 200;
 debug = true;
-rangeAttack = true;
-
+rangeAttack = false;
+pattern1yPos = 300;
+pattern1xPos[0, 0] = 250;
+pattern1xPos[0, 1] = 400;
+pattern1xPos[0, 2] = 550;
+pattern1xPos[1, 0] = 300;
+pattern1xPos[1, 1] = 450;
+pattern1xPos[1, 2] = 600;
+pattern1xPos[2, 0] = 200;
+pattern1xPos[2, 1] = 350;
+pattern1xPos[2, 2] = 500;
 //Lighting variables
 darkness = 200;
 darknessMin = 150;
@@ -710,36 +719,62 @@ if(phase == 3){
         aggroZone = view_wview - 400;
         currentHSpeed = -5;
         debug = false;
-        pattern = 0;
+        pattern = 1;
+        stopPattern = 3;
+        nextAttack = 0;
     }
+    
     playerInAggroZone = obj_character.x &gt;= aggroZone;
     if(playerInAggroZone){
         walk = false;
         strike = true;
         wait = -1;
     }
+
     if(walk){
         if(place_meeting(x + hspeed, y, obj_ground01)){
             currentHSpeed = random_range(-5, -2);
+            nextAttack --;
         }
         else if(x + hspeed &lt; aggroZone){
             currentHSpeed = random_range(2, 5);
+            nextAttack --;
         }
     }
-    else{
+    
+    if(nextAttack == 0){
+        rangeAttack = true;
+        pattern = 1;
+        nextAttack = 3;
         currentHSpeed = 0;
     }
+    
     if(rangeAttack){
         if(pattern == 0){
             if(wait == 0){
                 walk = false;
                 instance_create(x - 80, y - 32, obj_boss_orb);
-                wait = 60;
+                wait = 10;
+                stopPattern--;
             }
+        }
+        if(pattern == 1){
+            walk = false;
+            pos = irandom(2);
+            for(i = 0; i &lt; 3; i++){
+                instance_create(pattern1xPos[pos, i], pattern1yPos, obj_boss_orb);
+            }
+            stopPattern = 0;
+        }
+        if(stopPattern == 0){
+            walk = true;
+            rangeAttack = false;
+            currentHSpeed = 5;
         }
     }
     if(wait &gt; 0) wait --;
     hspeed = currentHSpeed;
+    show_debug_message(nextAttack);
 }
 </string>
           </argument>
