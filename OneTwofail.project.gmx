@@ -168,7 +168,6 @@
     <sprite>sprites\sprite83</sprite>
     <sprite>sprites\sprite98</sprite>
     <sprite>sprites\spr_imp_save</sprite>
-    <sprite>sprites\sprite123</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
