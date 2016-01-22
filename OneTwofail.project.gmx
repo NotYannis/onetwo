@@ -92,7 +92,6 @@
         <sprite>sprites\spr_boss1_2</sprite>
         <sprite>sprites\spr_boss1_3</sprite>
         <sprite>sprites\spr_boss1_4</sprite>
-        <sprite>sprites\spr_boss1_5</sprite>
         <sprite>sprites\spr_boss1_final</sprite>
         <sprite>sprites\spr_boss_save</sprite>
         <sprite>sprites\spr_boss_test2</sprite>
@@ -109,6 +108,9 @@
         <sprite>sprites\spr_boss_2_death</sprite>
         <sprite>sprites\spr_boss_2_land</sprite>
         <sprite>sprites\spr_boss_2_crawl</sprite>
+        <sprite>sprites\spr_boss_2_transform</sprite>
+        <sprite>sprites\spr_boss_3_walk</sprite>
+        <sprite>sprites\spr_boss_3_attack1</sprite>
         <sprite>sprites\spr_orb_boss</sprite>
       </sprites>
       <sprite>sprites\spr_crow</sprite>
