@@ -97,11 +97,11 @@ deathSound = sounds[3];
             <kind>1</kind>
             <string>///Enemy behaviour
 if(isSpawning){ //Animate the enemy spawn. NO.
-    //if(!audio_is_playing(spawnSound)) audio_play_sound(spawnSound, 10, false);
+    if(!audio_is_playing(spawnSound)) audio_play_sound(spawnSound, 10, false);
     attack = false;
     sprite_index = spawnSprite;
     image_speed = 0.3;
-    if (image_index &gt;= sprite_get_number(spawnSprite) - image_speed){
+    if(image_index &gt;= sprite_get_number(spawnSprite) - image_speed){
         isSpawning = false;
         attack = true;
         sprite_index = sprite;

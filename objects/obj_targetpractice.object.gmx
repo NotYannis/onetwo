@@ -54,7 +54,7 @@ if (place_meeting(x, y, obj_bullet) &amp;&amp; !death){
     with(obj_bullet) instance_destroy();
     image_index = 0;
     sprite_index = spr_target_destroy;
-    image_speed = 0.6;
+    image_speed = 1;
     death = true;
 }
 

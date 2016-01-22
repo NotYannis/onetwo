@@ -34,8 +34,8 @@ currentHSpeed = moveSpeed;
 stopMoving = false;
 aggroZone = 250;
 damage = 10;
-hp = 20; //Hp on phase 1
-phase = 3;
+hp = 10; //Hp on phase 1
+phase = 1;
 recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
 recovery = 0;
 invulnerabilityFrames = 35;//Invulnerability time on patterns phase 3
@@ -49,7 +49,7 @@ strike = false;
 walk = true;
 
 //Phase 2 states
-phase2hp = 200;
+phase2hp = 10;
 startFlying = false;
 fly = false;
 flyOut = false;
@@ -231,7 +231,7 @@ if(phase == 1){
         currentHSpeed = 0;
         sprite_index = spr_boss_1_transform;
         image_index = 0;
-        image_speed = 0.2;
+        image_speed = 0.4;
         hp = 10;
         recovery = 0;
     }
@@ -627,17 +627,17 @@ if(phase == 2){
         currentVSpeed = 0;
         if(instance_exists(obj_boss_illusion))
             with obj_boss_illusion instance_destroy();
-        wait = 40;
+        wait = 10;
         hp = phase3hp;
         invulnerable = true;
     }
     
-    if(transition){
-         if(obj_boss_heart.y &gt;= view_hview - 50){
-            if(obj_boss_heart.image_index &gt;= 1){
-                rotationSpeed = 0;
+    if(transition){//Death animations
+         if(obj_boss_heart.y &gt;= view_hview - 140){//When the heart touches the ground
+            if(obj_boss_heart.sprite_index == spr_boss_2_death){
                 obj_boss_heart.vspeed = 0;
-                obj_boss_heart.image_speed = 0.1;
+                obj_boss_heart.sprite_index = spr_boss_2_land;
+                obj_boss_heart.image_speed = 0.5;
             }
             else{
                 if(obj_boss_heart.x &gt; view_wview - aggroZone / 2){
@@ -654,24 +654,25 @@ if(phase == 2){
                     walk = true;
                     strike = false;
                 }
-                else{
-                    rotationSpeed = 4;
-                    obj_boss_heart.image_angle -= 4;
-                    obj_boss_heart.image_speed = 0;
-                    obj_boss_heart.hspeed = 8;
+                else if(obj_boss_heart.sprite_index == spr_boss_2_land){
+                    if(obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_land) - obj_boss_heart.image_speed){
+                        obj_boss_heart.sprite_index = spr_boss_2_crawl;
+                        obj_boss_heart.hspeed = 5;
+                        obj_boss_heart.image_speed = 0.5;
+                    }
                 }
             }
         }
-        else if(wait &gt; 0){
+        else if(wait &gt; 0){//The shield disappear, and the heart tranform into a drop
             sprite_index = -1;
-            obj_boss_heart.image_index = 4;
-            obj_boss_heart.image_speed = 0;
-            rotationSpeed = 1;
+            obj_boss_heart.sprite_index = spr_boss_2_death;
+            obj_boss_heart.image_speed = 0.5;
+            rotate = false;
+            obj_boss_heart.image_angle = 0;
         }
-        else{
-            rotationSpeed *= 1.01;
-            obj_boss_heart.vspeed += 0.1;
-            obj_boss_heart.image_angle += rotationSpeed;
+        else if(obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_death) - obj_boss_heart.image_speed){
+            obj_boss_heart.vspeed = 15;
+            obj_boss_heart.image_speed = 0;
         }
     }
     
@@ -716,19 +717,18 @@ if(phase == 3){
         y = 800 - 128;
         sprite_index = spr_boss1_final;
         image_speed = 0.25;
-        aggroZone = view_wview - 400;
+        aggroZone = view_wview - 500;
         currentHSpeed = -5;
         debug = false;
         pattern = 1;
         stopPattern = 3;
-        nextAttack = 0;
+        nextAttack = 3;
     }
     
     playerInAggroZone = obj_character.x &gt;= aggroZone;
     if(playerInAggroZone){
         walk = false;
         strike = true;
-        wait = -1;
     }
 
     if(walk){
@@ -744,19 +744,36 @@ if(phase == 3){
     
     if(nextAttack == 0){
         rangeAttack = true;
-        pattern = 1;
+        pattern = irandom(1);
         nextAttack = 3;
         currentHSpeed = 0;
+        stopPattern = 3;
+    }
+    
+    if(strike){
+        if((distance_to_point(obj_character.x, y) &lt; 50 || x &lt; aggroZone) &amp;&amp; wait == 0){
+            //change sprite to attack sprite
+            currentHSpeed = 0;
+            wait = 60
+        }
+        else if(distance_to_point(obj_character.x, y) &gt;= 50 &amp;&amp; wait == 0){
+            currentHSpeed = -5;
+        }
+        else{
+            if(!playerInAggroZone){
+                walk = true;
+                currentHSpeed = 5;
+                strike = false;
+            }
+        }
     }
     
     if(rangeAttack){
-        if(pattern == 0){
-            if(wait == 0){
-                walk = false;
-                instance_create(x - 80, y - 32, obj_boss_orb);
-                wait = 10;
-                stopPattern--;
-            }
+        if(pattern == 0 &amp;&amp; wait == 0){
+            walk = false;
+            instance_create(x - 80, y - 32, obj_boss_orb);
+            wait = 10;
+            stopPattern--;
         }
         if(pattern == 1){
             walk = false;
@@ -816,7 +833,7 @@ if(recovery == 0 &amp;&amp; !invulnerable){
     }
 }
 else if(recovery &gt; 0){
-    if(phase == 1 || (phase == 2 &amp;&amp; attack)){//Flicker on first phase
+    if(phase != 2 || (phase == 2 &amp;&amp; attack)){//Flicker on hit
         if(recovery % 6 &gt;= 3 &amp;&amp; recovery % 6 &lt;= 6) image_alpha = 0; 
         else image_alpha = 1;
     }
