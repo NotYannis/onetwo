@@ -10,13 +10,17 @@
     <sound>sound\snd_chainsaw</sound>
     <sound>sound\snd_plouf</sound>
     <sound>sound\snd_shotgunfire</sound>
-    <sound>sound\snd_levelmusic</sound>
     <sound>sound\snd_shield</sound>
     <sound>sound\snd_shadowcry</sound>
     <sound>sound\snd_shadowteeth</sound>
-    <sound>sound\snd_onetwo</sound>
-    <sound>sound\snd_tutorial_level</sound>
-    <sound>sound\snd_tutorial_arena</sound>
+    <sounds name="music">
+      <sound>sound\snd_tutorial_level</sound>
+      <sound>sound\snd_onetwo</sound>
+      <sound>sound\snd_levelmusic</sound>
+      <sound>sound\snd_tutorial_arena</sound>
+      <sound>sound\snd_boss_phase2</sound>
+      <sound>sound\snd_boss_phase1</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_trigger</sprite>
@@ -105,6 +109,7 @@
         <sprite>sprites\spr_boss_2_death</sprite>
         <sprite>sprites\spr_boss_2_land</sprite>
         <sprite>sprites\spr_boss_2_crawl</sprite>
+        <sprite>sprites\spr_orb_boss</sprite>
       </sprites>
       <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_crow_death</sprite>
@@ -293,10 +298,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_village</room>
-    <room>rooms\Tutorial</room>
     <room>rooms\rm_boss</room>
     <room>rooms\arena</room>
+    <room>rooms\rm_village</room>
+    <room>rooms\Tutorial</room>
     <room>rooms\arena2</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
