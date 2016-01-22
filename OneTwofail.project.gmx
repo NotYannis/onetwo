@@ -112,6 +112,7 @@
         <sprite>sprites\spr_boss_3_walk</sprite>
         <sprite>sprites\spr_boss_3_attack1</sprite>
         <sprite>sprites\spr_orb_boss</sprite>
+        <sprite>sprites\spr_attack1</sprite>
       </sprites>
       <sprite>sprites\spr_crow</sprite>
       <sprite>sprites\spr_crow_death</sprite>
@@ -158,7 +159,6 @@
       <sprite>sprites\spr_target_destroy</sprite>
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_statue</sprite>
-      <sprite>sprites\spr_prout</sprite>
       <sprite>sprites\spr_statue_death</sprite>
     </sprites>
     <sprite>sprites\spr_gameover</sprite>
