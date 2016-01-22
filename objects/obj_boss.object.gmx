@@ -634,16 +634,15 @@ if(phase == 2){
     
     if(transition){//Death animations
          if(obj_boss_heart.y &gt;= view_hview - 140){//When the heart touches the ground
-            if(obj_boss_heart.sprite_index == spr_boss_2_death){
+            if(obj_boss_heart.sprite_index == spr_boss_2_death){//Land
                 obj_boss_heart.vspeed = 0;
                 obj_boss_heart.sprite_index = spr_boss_2_land;
                 obj_boss_heart.image_speed = 0.5;
             }
             else{
-                if(obj_boss_heart.x &gt; view_wview - aggroZone / 2){
+                if(obj_boss_heart.sprite_index == spr_boss_2_crawl &amp;&amp; obj_boss_heart.x &gt; view_wview - aggroZone / 2){//Enters on phase 3 zone
                     x = obj_boss_heart.x;
                     y = obj_boss_heart.y - 85;
-                    with obj_boss_heart instance_destroy();
                     sprite_index = spr_boss1_final;
                     image_angle = 0;
                     currentVSpeed = 0;
@@ -654,7 +653,7 @@ if(phase == 2){
                     walk = true;
                     strike = false;
                 }
-                else if(obj_boss_heart.sprite_index == spr_boss_2_land){
+                else if(obj_boss_heart.sprite_index == spr_boss_2_land){//Crawl
                     if(obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_land) - obj_boss_heart.image_speed){
                         obj_boss_heart.sprite_index = spr_boss_2_crawl;
                         obj_boss_heart.hspeed = 5;
