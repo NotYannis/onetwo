@@ -44,6 +44,7 @@ invulnerable = false;
 transition = false;
 pattern = 0;
 followPlayer = false;
+lightSize = 250;
 //Phase 1 states
 strike = false;
 walk = true;
@@ -116,7 +117,7 @@ lightFade = false;
             <kind>1</kind>
             <string>///Lighting
 if(obj_lighting.dark){
-    Lighting(250, c_white, c_black);
+    Lighting(lightSize, c_white, c_black);
 }
 if(transition) lightFade = true;
 if(lightFade){
@@ -634,7 +635,7 @@ if(phase == 2){
     }
     
     if(transition){//Death animations
-         if(obj_boss_heart.y &gt;= view_hview - 150){//When the heart touches the ground
+         if(obj_boss_heart.y &gt;= view_hview - 125){//When the heart touches the ground
             if(obj_boss_heart.sprite_index == spr_boss_2_death){//Land
                 obj_boss_heart.vspeed = 0;
                 obj_boss_heart.sprite_index = spr_boss_2_land;
@@ -643,6 +644,7 @@ if(phase == 2){
             else if(obj_boss_heart.sprite_index == spr_boss_2_land
             &amp;&amp; obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_land) - obj_boss_heart.image_speed){
                 obj_boss_heart.sprite_index = spr_boss_2_crawl;
+                obj_boss_heart.y += 110;
                 obj_boss_heart.hspeed = 5;
                 obj_boss_heart.image_speed = 0.5;
             }            
@@ -656,12 +658,13 @@ if(phase == 2){
             else if(obj_boss_heart.sprite_index == spr_boss_2_transform //End of transformation, phase 3 !
             &amp;&amp; obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_transform) - obj_boss_heart.image_speed){
                 x = obj_boss_heart.x;
-                y = obj_boss_heart.y;
+                y = obj_boss_heart.y - 125;
                 sprite_index = spr_boss_3_walk;
                 image_angle = 0;
                 currentVSpeed = 0;
                 currentHSpeed = -5;
                 phase = 3;
+                lightSize = 400;                
                 transition = false;
                 aggroZone = view_wview - 500;
                 walk = true;

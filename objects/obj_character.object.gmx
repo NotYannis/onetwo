@@ -82,7 +82,7 @@ arenaTime = false;
             <kind>1</kind>
             <string>///Lighting and objects activation
 
-if (obj_lighting.dark = true){
+if (obj_lighting.dark){
     Lighting(360, c_white, c_black);
     
 }

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-15</depth>
+  <depth>-4</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>light = surface_create(view_wview, view_hview);
+            <string>darkness = surface_create(view_wview, view_hview);
+light = surface_create(view_wview, view_hview);
 color = c_ltgray;
 dark = true;
 </string>
@@ -51,12 +52,15 @@ dark = true;
           <argument>
             <kind>1</kind>
             <string>///Light
-
 if (dark){
     surface_set_target(light);
+    draw_set_colour(c_black);
+    draw_rectangle(0,0, view_wview, view_hview, false);
+    surface_set_target(darkness);
     draw_set_colour(color);
     draw_rectangle(0,0, view_wview, view_hview, false);
     surface_reset_target();
+    surface_reset_target();    
 }
 </string>
           </argument>
@@ -80,9 +84,11 @@ if (dark){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (dark){
+            <string>if(dark){
     draw_set_blend_mode(bm_subtract);
-    draw_surface(light, view_xview,view_yview);
+    draw_surface(darkness, view_xview,view_yview);
+    draw_set_blend_mode(bm_add);
+    draw_surface_ext(light, view_xview,view_yview, 1, 1, 0, -1, 0.1);
     draw_set_blend_mode(bm_normal);
 }
 </string>

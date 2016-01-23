@@ -10,7 +10,7 @@ if(!lightDown) id.glowSize += argument2;
 else id.glowSize -= argument2;
 
 //Draw the ellipse
-draw_set_blend_mode(bm_subtract);
+draw_set_blend_mode(bm_add);
 surface_set_target(obj_lighting.light);
 draw_set_circle_precision(16);
 draw_ellipse_colour(x-id.glowSize/2-view_xview,
