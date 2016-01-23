@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>death = false;
+image_speed = 0.2;
 </string>
           </argument>
         </arguments>
@@ -48,9 +49,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.2;
-
-if (place_meeting(x, y, obj_bullet) &amp;&amp; !death){
+            <string>if (place_meeting(x, y, obj_bullet) &amp;&amp; !death){
     with(obj_bullet) instance_destroy();
     image_index = 0;
     sprite_index = spr_target_destroy;
@@ -58,7 +57,7 @@ if (place_meeting(x, y, obj_bullet) &amp;&amp; !death){
     death = true;
 }
 
-if (death &amp;&amp; image_index &gt;= sprite_get_number(spr_target_destroy) - image_speed){
+if (death &amp;&amp; endAnimation()){
     instance_destroy();
 }
 </string>

@@ -30,6 +30,7 @@ followPlayer = true;
 aiming = true;
 destroy = false;
 glowSize = 100;
+spawn = false;
 
 if(obj_boss.phase == 3){
     if(obj_boss.pattern == 0){
