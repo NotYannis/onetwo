@@ -111,7 +111,11 @@
         <sprite>sprites\spr_boss_2_transform</sprite>
         <sprite>sprites\spr_boss_3_walk</sprite>
         <sprite>sprites\spr_boss_3_attack1</sprite>
+        <sprite>sprites\spr_boss_3_shoot</sprite>
+        <sprite>sprites\spr_boss_3_strike</sprite>
         <sprite>sprites\spr_orb_boss</sprite>
+        <sprite>sprites\spr_boss_3_ball</sprite>
+        <sprite>sprites\spr_boss_3_ball2</sprite>
         <sprite>sprites\spr_attack1</sprite>
         <sprite>sprites\spr_attack1_2</sprite>
       </sprites>
