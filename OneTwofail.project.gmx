@@ -198,6 +198,8 @@
     <script>scripts\getEnemySound.gml</script>
     <script>scripts\activateEnemyTrigger.gml</script>
     <script>scripts\groundCollision.gml</script>
+    <script>scripts\touchShields.gml</script>
+    <script>scripts\touchWeapons.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\sign_font</font>
@@ -228,6 +230,7 @@
       <object>objects\obj_boss_illusion</object>
       <object>objects\obj_boss</object>
       <object>objects\obj_targetpractice</object>
+      <object>objects\obj_boss_ray</object>
       <objects name="projectiles">
         <object>objects\obj_projectile</object>
         <object>objects\obj_orb</object>

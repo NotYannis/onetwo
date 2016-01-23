@@ -47,6 +47,7 @@ followPlayer = false;
 //Phase 1 states
 strike = false;
 walk = true;
+i = 0;
 
 //Phase 2 states
 phase2hp = 10;
@@ -77,16 +78,16 @@ stopPattern = 25;
 phase3hp = 200;
 debug = false;
 rangeAttack = false;
-pattern1yPos = 300;
-pattern1xPos[0, 0] = 250;
+pattern1yPos = 200;
+pattern1xPos[0, 0] = 200;
 pattern1xPos[0, 1] = 400;
-pattern1xPos[0, 2] = 550;
-pattern1xPos[1, 0] = 300;
-pattern1xPos[1, 1] = 450;
-pattern1xPos[1, 2] = 600;
-pattern1xPos[2, 0] = 200;
-pattern1xPos[2, 1] = 350;
-pattern1xPos[2, 2] = 500;
+pattern1xPos[0, 2] = 600;
+pattern1xPos[1, 0] = 150;
+pattern1xPos[1, 1] = 350;
+pattern1xPos[1, 2] = 550;
+pattern1xPos[2, 0] = 50;
+pattern1xPos[2, 1] = 250;
+pattern1xPos[2, 2] = 450;
 //Lighting variables
 darkness = 200;
 darknessMin = 150;
@@ -633,42 +634,40 @@ if(phase == 2){
     }
     
     if(transition){//Death animations
-         if(obj_boss_heart.y &gt;= view_hview - 140){//When the heart touches the ground
+         if(obj_boss_heart.y &gt;= view_hview - 150){//When the heart touches the ground
             if(obj_boss_heart.sprite_index == spr_boss_2_death){//Land
                 obj_boss_heart.vspeed = 0;
                 obj_boss_heart.sprite_index = spr_boss_2_land;
                 obj_boss_heart.image_speed = 0.5;
+            }//Crawl
+            else if(obj_boss_heart.sprite_index == spr_boss_2_land
+            &amp;&amp; obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_land) - obj_boss_heart.image_speed){
+                obj_boss_heart.sprite_index = spr_boss_2_crawl;
+                obj_boss_heart.hspeed = 5;
+                obj_boss_heart.image_speed = 0.5;
+            }            
+            else if(obj_boss_heart.sprite_index == spr_boss_2_crawl
+             &amp;&amp; obj_boss_heart.x &gt; view_wview - aggroZone){//Transform
+                obj_boss_heart.sprite_index = spr_boss_2_transform;
+                obj_boss_heart.image_speed = 0.4;
+                obj_boss_heart.image_index = 0;
+                obj_boss_heart.hspeed = 0;
             }
-            else{
-                if(obj_boss_heart.sprite_index == spr_boss_2_crawl
-                 &amp;&amp; obj_boss_heart.x &gt; view_wview - aggroZone / 2){//Transform
-                    obj_boss_heart.sprite_index = spr_boss_2_transform;
-                    obj_boss_heart.image_speed = 0.4;
-                    obj_boss_heart.image_index = 0;
-                    obj_boss_heart.hspeed = 0;
-                }
-                else if(obj_boss_heart.sprite_index == spr_boss_2_transform
-                &amp;&amp; obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_transform) - obj_boss_heart.image_speed){
-                    x = obj_boss_heart.x;
-                    y = obj_boss_heart.y - 85;
-                    sprite_index = spr_boss1_final;
-                    image_angle = 0;
-                    currentVSpeed = 0;
-                    currentHspeed = -5;
-                    phase = 3;
-                    transition = false;
-                    aggroZone = view_wview - 400;
-                    walk = true;
-                    strike = false;
-                    with obj_boss_heart instance_destroy();
-                }
-                else if(obj_boss_heart.sprite_index == spr_boss_2_land){//Crawl
-                    if(obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_land) - obj_boss_heart.image_speed){
-                        obj_boss_heart.sprite_index = spr_boss_2_crawl;
-                        obj_boss_heart.hspeed = 5;
-                        obj_boss_heart.image_speed = 0.5;
-                    }
-                }
+            else if(obj_boss_heart.sprite_index == spr_boss_2_transform //End of transformation, phase 3 !
+            &amp;&amp; obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_transform) - obj_boss_heart.image_speed){
+                x = obj_boss_heart.x;
+                y = obj_boss_heart.y;
+                sprite_index = spr_boss_3_walk;
+                image_angle = 0;
+                currentVSpeed = 0;
+                currentHSpeed = -5;
+                phase = 3;
+                transition = false;
+                aggroZone = view_wview - 500;
+                walk = true;
+                strike = false;
+                invulnerable = false;
+                with obj_boss_heart instance_destroy();
             }
         }
         else if(wait &gt; 0){//The shield disappear, and the heart tranform into a drop
@@ -677,7 +676,7 @@ if(phase == 2){
             obj_boss_heart.image_speed = 0.5;
             rotate = false;
             obj_boss_heart.image_angle = 0;
-        }
+        }//Then it falls
         else if(obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_death) - obj_boss_heart.image_speed){
             obj_boss_heart.vspeed = 15;
             obj_boss_heart.image_speed = 0;
@@ -722,14 +721,14 @@ if(phase == 3){
     if(debug){
         x = 1000;
         y = 800 - 128;
-        sprite_index = spr_boss1_final;
+        sprite_index = spr_boss_3_walk;
         image_speed = 0.25;
         aggroZone = view_wview - 500;
         currentHSpeed = -5;
         debug = false;
         pattern = 1;
-        stopPattern = 3;
-        nextAttack = 3;
+        stopPattern = 2;
+        nextAttack = 1;
     }
     
     playerInAggroZone = obj_character.x &gt;= aggroZone;
@@ -751,17 +750,22 @@ if(phase == 3){
     
     if(nextAttack == 0){
         rangeAttack = true;
+        walk = false;
+        invulnerable = true;
         pattern = irandom(1);
         nextAttack = 3;
         currentHSpeed = 0;
         stopPattern = 3;
+        sprite_index = spr_boss_3_attack1;
+        image_speed = 0.2;
+        if(pattern == 1) pos = irandom(2);
     }
     
     if(strike){
         if((distance_to_point(obj_character.x, y) &lt; 50 || x &lt; aggroZone) &amp;&amp; wait == 0){
             //change sprite to attack sprite
             currentHSpeed = 0;
-            wait = 60
+            wait = 60;
         }
         else if(distance_to_point(obj_character.x, y) &gt;= 50 &amp;&amp; wait == 0){
             currentHSpeed = -5;
@@ -776,29 +780,37 @@ if(phase == 3){
     }
     
     if(rangeAttack){
-        if(pattern == 0 &amp;&amp; wait == 0){
-            walk = false;
-            instance_create(x - 80, y - 32, obj_boss_orb);
-            wait = 10;
-            stopPattern--;
+        if(pattern == 0){
+            if(wait == 0 &amp;&amp; i &lt; 3){
+                instance_create(x - 40, y - 60, obj_boss_orb);
+                wait = 10;
+                i++;
+            }
+            if(!instance_exists(obj_boss_orb)) stopPattern = 0;
         }
         if(pattern == 1){
-            walk = false;
-            pos = irandom(2);
-            for(i = 0; i &lt; 3; i++){
-                instance_create(pattern1xPos[pos, i], pattern1yPos, obj_boss_orb);
+            if(wait == 0 &amp;&amp; i &lt; 3){
+                instance_create(pattern1xPos[pos, i], pattern1yPos, obj_boss_ray);
+                wait = 10
+                i++;
             }
-            stopPattern = 0;
+            if(!instance_exists(obj_boss_ray)) stopPattern = 0;
         }
         if(stopPattern == 0){
+            i = 0;
             walk = true;
             rangeAttack = false;
+            invulnerable = false;
             currentHSpeed = 5;
+            sprite_index = spr_boss_3_walk;
+            image_speed = 0.25;
         }
+        if(image_index &gt; 14) image_index = 6;
+        
     }
     if(wait &gt; 0) wait --;
     hspeed = currentHSpeed;
-    //show_debug_message(nextAttack);
+    show_debug_message(nextAttack);
 }
 </string>
           </argument>
