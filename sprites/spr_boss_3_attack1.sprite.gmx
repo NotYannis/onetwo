@@ -32,5 +32,9 @@
     <frame index="9">images\spr_boss_3_attack1_9.png</frame>
     <frame index="10">images\spr_boss_3_attack1_10.png</frame>
     <frame index="11">images\spr_boss_3_attack1_11.png</frame>
+    <frame index="12">images\spr_boss_3_attack1_12.png</frame>
+    <frame index="13">images\spr_boss_3_attack1_13.png</frame>
+    <frame index="14">images\spr_boss_3_attack1_14.png</frame>
+    <frame index="15">images\spr_boss_3_attack1_15.png</frame>
   </frames>
 </sprite>
