@@ -58,15 +58,24 @@ image_speed = 0.3;
     obj_character.enemyBehind = behindPlayer();
 }
 if(spawn){
-    if(image_index &gt;= sprite_get_number(spr_attack1) - image_speed){
+    if(endAnimation()){
         sprite_index = spr_attack1_2;
         image_speed = 0.7;
         spawn = false;
     }
 }
 else {
-    wait --;
-    if(wait == 0) instance_destroy();
+    if(wait &gt; 0) wait --;
+    if(wait == 0){
+        sprite_index = spr_attack1;;
+        image_index = sprite_get_number(spr_attack1) - 1;
+        image_speed = - 0.3;
+        wait = -1;
+    }
+    else if(wait == -1 &amp;&amp; image_index &lt; 1){
+        instance_destroy();
+    }
+    show_debug_message(image_index);
 }
 </string>
           </argument>

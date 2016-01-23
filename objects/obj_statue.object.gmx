@@ -50,12 +50,6 @@ death = false;
           <argument>
             <kind>1</kind>
             <string>if(!death){
-    touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
-                                      obj_character.y,
-                                      obj_character.x + (78 * obj_character.image_xscale),
-                                      obj_character.y + 20,
-                                      id, true, false);
-    
     if (fire &lt;= 1){
         instance_create(x, y, obj_arrow);
         fire = room_speed*2;
@@ -63,7 +57,7 @@ death = false;
     else{
         fire--;
     }
-    if (touchWeapon){
+    if (touchWeapon()){
         death = true;
         sprite_index = spr_statue_death;
         image_speed = 0.25;
@@ -74,7 +68,6 @@ if(death){
         image_speed = 0;
     }
 }
-
 </string>
           </argument>
         </arguments>

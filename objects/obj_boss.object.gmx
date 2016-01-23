@@ -35,7 +35,7 @@ stopMoving = false;
 aggroZone = 250;
 damage = 10;
 hp = 10; //Hp on phase 1
-phase = 1;
+phase = 3;
 recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
 recovery = 0;
 invulnerabilityFrames = 35;//Invulnerability time on patterns phase 3
@@ -51,6 +51,7 @@ walk = true;
 i = 0;
 
 //Phase 2 states
+endAnim = false;
 phase2hp = 10;
 startFlying = false;
 fly = false;
@@ -77,7 +78,7 @@ stopPattern = 25;
 
 //Phase 3 states
 phase3hp = 200;
-debug = false;
+debug = true;
 rangeAttack = false;
 pattern1yPos = 200;
 pattern1xPos[0, 0] = 200;
@@ -89,6 +90,8 @@ pattern1xPos[1, 2] = 550;
 pattern1xPos[2, 0] = 50;
 pattern1xPos[2, 1] = 250;
 pattern1xPos[2, 2] = 450;
+attackCount = 0;
+
 //Lighting variables
 darkness = 200;
 darknessMin = 150;
@@ -184,7 +187,7 @@ if(phase == 1){
             wait = 40;
         }
         if(sprite_index == spr_boss_1_attack
-         &amp;&amp; image_index &gt;= sprite_get_number(spr_boss_1_attack) - 1){
+         &amp;&amp; endAnimation()){
                 sprite_index = spr_boss_1_walk;
                 image_speed = 0;
                 image_index = 0;
@@ -241,7 +244,7 @@ if(phase == 1){
     //Animations towards phase 2
     if(transition){
         invulnerable = true;
-        if(image_index &gt;= sprite_get_number(spr_boss_1_transform) - image_speed){
+        if(endAnimation()){
             image_speed = 0;
             phase = 1.5;
             transition = false;
@@ -635,54 +638,59 @@ if(phase == 2){
     }
     
     if(transition){//Death animations
-         if(obj_boss_heart.y &gt;= view_hview - 125){//When the heart touches the ground
-            if(obj_boss_heart.sprite_index == spr_boss_2_death){//Land
-                obj_boss_heart.vspeed = 0;
-                obj_boss_heart.sprite_index = spr_boss_2_land;
-                obj_boss_heart.image_speed = 0.5;
-            }//Crawl
-            else if(obj_boss_heart.sprite_index == spr_boss_2_land
-            &amp;&amp; obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_land) - obj_boss_heart.image_speed){
-                obj_boss_heart.sprite_index = spr_boss_2_crawl;
-                obj_boss_heart.y += 110;
-                obj_boss_heart.hspeed = 5;
-                obj_boss_heart.image_speed = 0.5;
-            }            
-            else if(obj_boss_heart.sprite_index == spr_boss_2_crawl
-             &amp;&amp; obj_boss_heart.x &gt; view_wview - aggroZone){//Transform
-                obj_boss_heart.sprite_index = spr_boss_2_transform;
-                obj_boss_heart.image_speed = 0.4;
-                obj_boss_heart.image_index = 0;
-                obj_boss_heart.hspeed = 0;
+        with (obj_boss_heart){
+            if(y &gt;= view_hview - 125){//When the heart touches the ground
+                //Land
+                if(sprite_index == spr_boss_2_death){
+                    vspeed = 0;
+                    sprite_index = spr_boss_2_land;
+                    image_speed = 0.5;
+                }//Crawl
+                else if(sprite_index == spr_boss_2_land &amp;&amp; endAnimation()){
+                    audio_sound_gain(snd_boss_phase2, 0, ((view_wview - obj_boss.aggroZone - x)/5) * room_speed);
+                    sprite_index = spr_boss_2_crawl;
+                    y += 115;
+                    hspeed = 5;
+                    image_speed = 0.5;
+                }//Transform
+                else if(sprite_index == spr_boss_2_crawl &amp;&amp; x &gt; view_wview - obj_boss.aggroZone){
+                    sprite_index = spr_boss_2_transform;
+                    audio_play_sound(snd_boss_phase3, 10, true);
+                    image_speed = 0.4;
+                    image_index = 0;
+                    hspeed = 0;
+                }//End of transformation, phase 3 !
+                else if(sprite_index == spr_boss_2_transform &amp;&amp; endAnimation()){
+                    with(obj_boss){
+                        x = x;
+                        y = y - 125;
+                        sprite_index = spr_boss_3_walk;
+                        image_angle = 0;
+                        currentVSpeed = 0;
+                        currentHSpeed = -5;
+                        phase = 3;
+                        lightSize = 400;                
+                        transition = false;
+                        aggroZone = view_wview - 500;
+                        walk = true;
+                        strike = false;
+                        invulnerable = false;
+                    }
+                    instance_destroy();
+                }
             }
-            else if(obj_boss_heart.sprite_index == spr_boss_2_transform //End of transformation, phase 3 !
-            &amp;&amp; obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_transform) - obj_boss_heart.image_speed){
-                x = obj_boss_heart.x;
-                y = obj_boss_heart.y - 125;
-                sprite_index = spr_boss_3_walk;
+            else if(obj_boss.wait &gt; 0){//The shield disappear, and the heart tranform into a drop
+                audio_sound_gain(snd_boss_phase2, 0.75, 500);
+                obj_boss.sprite_index = -1;
+                sprite_index = spr_boss_2_death;
+                image_speed = 0.5;
+                rotate = false;
                 image_angle = 0;
-                currentVSpeed = 0;
-                currentHSpeed = -5;
-                phase = 3;
-                lightSize = 400;                
-                transition = false;
-                aggroZone = view_wview - 500;
-                walk = true;
-                strike = false;
-                invulnerable = false;
-                with obj_boss_heart instance_destroy();
+            }//Then it falls
+            else if(endAnimation()){
+                vspeed = 15;
+                image_speed = 0;
             }
-        }
-        else if(wait &gt; 0){//The shield disappear, and the heart tranform into a drop
-            sprite_index = -1;
-            obj_boss_heart.sprite_index = spr_boss_2_death;
-            obj_boss_heart.image_speed = 0.5;
-            rotate = false;
-            obj_boss_heart.image_angle = 0;
-        }//Then it falls
-        else if(obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_death) - obj_boss_heart.image_speed){
-            obj_boss_heart.vspeed = 15;
-            obj_boss_heart.image_speed = 0;
         }
     }
     
@@ -726,16 +734,17 @@ if(phase == 3){
         y = 800 - 128;
         sprite_index = spr_boss_3_walk;
         image_speed = 0.25;
-        aggroZone = view_wview - 500;
+        aggroZone = view_wview - 400;
         currentHSpeed = -5;
         debug = false;
         pattern = 1;
         stopPattern = 2;
         nextAttack = 1;
+        lightSize = 450;
     }
     
-    playerInAggroZone = obj_character.x &gt;= aggroZone;
-    if(playerInAggroZone){
+    playerInAggroZone = obj_character.x + 100 &gt;= aggroZone;
+    if(playerInAggroZone &amp;&amp; !rangeAttack){
         walk = false;
         strike = true;
     }
@@ -751,27 +760,15 @@ if(phase == 3){
         }
     }
     
-    if(nextAttack == 0){
-        rangeAttack = true;
-        walk = false;
-        invulnerable = true;
-        pattern = irandom(1);
-        nextAttack = 3;
-        currentHSpeed = 0;
-        stopPattern = 3;
-        sprite_index = spr_boss_3_attack1;
-        image_speed = 0.2;
-        if(pattern == 1) pos = irandom(2);
-    }
-    
-    if(strike){
+    if(strike){//Run towards the player and hit him
+        //When close to the player : attack
         if((distance_to_point(obj_character.x, y) &lt; 50 || x &lt; aggroZone) &amp;&amp; wait == 0){
             //change sprite to attack sprite
             currentHSpeed = 0;
-            wait = 60;
+            wait = 60;//Cooldown between 2 attacks
         }
         else if(distance_to_point(obj_character.x, y) &gt;= 50 &amp;&amp; wait == 0){
-            currentHSpeed = -5;
+            currentHSpeed = -7;
         }
         else{
             if(!playerInAggroZone){
@@ -782,16 +779,33 @@ if(phase == 3){
         }
     }
     
+    if(nextAttack == 0){
+        wait = 0;
+        rangeAttack = true;
+        walk = false;
+        strike = false;
+        invulnerable = true;
+        pattern = irandom(1);
+        nextAttack = 3;
+        currentHSpeed = 0;
+        stopPattern = 3;
+        if(hp &gt; 100) attackCount = 3;
+        else attackCount = 5
+        sprite_index = spr_boss_3_attack1;
+        image_speed = 0.2;
+        if(pattern == 1) pos = irandom(2);
+    }
+    
     if(rangeAttack){
-        if(pattern == 0){
-            if(wait == 0 &amp;&amp; i &lt; 3){
+        if(pattern == 0){//Summon 3 bullets
+            if(wait == 0 &amp;&amp; i &lt; attackCount){
                 instance_create(x - 40, y - 60, obj_boss_orb);
                 wait = 10;
                 i++;
             }
             if(!instance_exists(obj_boss_orb)) stopPattern = 0;
         }
-        if(pattern == 1){
+        if(pattern == 1){//Summon 3 lasers
             if(wait == 0 &amp;&amp; i &lt; 3){
                 instance_create(pattern1xPos[pos, i], pattern1yPos, obj_boss_ray);
                 wait = 10
@@ -799,7 +813,7 @@ if(phase == 3){
             }
             if(!instance_exists(obj_boss_ray)) stopPattern = 0;
         }
-        if(stopPattern == 0){
+        if(stopPattern == 0){//Attacked finished, return walking
             i = 0;
             walk = true;
             rangeAttack = false;
@@ -808,8 +822,7 @@ if(phase == 3){
             sprite_index = spr_boss_3_walk;
             image_speed = 0.25;
         }
-        if(image_index &gt; 14) image_index = 6;
-        
+        if(image_index &gt; 14) image_index = 6;//Loop on the end of the anim
     }
     if(wait &gt; 0) wait --;
     hspeed = currentHSpeed;
@@ -837,18 +850,14 @@ if(phase == 3){
             <kind>1</kind>
             <string>///Hitting and being hitted
 if(recovery == 0 &amp;&amp; !invulnerable){
-    touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
-                                      obj_character.y,
-                                      obj_character.x + (78 * obj_character.image_xscale),
-                                      obj_character.y + 20,
-                                      id, true, false);
-    if(touchWeapon &amp;&amp; obj_character.strike){
+    if(touchWeapon() &amp;&amp; obj_character.strike){
         hp -= 10;
         recovery = recoveryFrames;
     }
     if(phase != 1){
         if(place_meeting(x, y, obj_bullet)){
-            with(obj_bullet) instance_destroy();
+            bullet = instance_place(x, y, obj_bullet);
+            with(bullet) instance_destroy();
             hp -= 10;
             recovery = recoveryFrames;
         }

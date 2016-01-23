@@ -20,6 +20,7 @@
       <sound>sound\snd_tutorial_arena</sound>
       <sound>sound\snd_boss_phase2</sound>
       <sound>sound\snd_boss_phase1</sound>
+      <sound>sound\snd_boss_phase3</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -198,8 +199,9 @@
     <script>scripts\getEnemySound.gml</script>
     <script>scripts\activateEnemyTrigger.gml</script>
     <script>scripts\groundCollision.gml</script>
-    <script>scripts\touchShields.gml</script>
-    <script>scripts\touchWeapons.gml</script>
+    <script>scripts\touchShield.gml</script>
+    <script>scripts\touchWeapon.gml</script>
+    <script>scripts\endAnimation.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\sign_font</font>

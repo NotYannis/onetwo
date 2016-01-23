@@ -45,7 +45,14 @@ else{
         audio_stop_sound(snd_boss_phase1);
         if(!audio_is_playing(snd_boss_phase2)) audio_play_sound(snd_boss_phase2, 10, true);
     }
-}   
+    else if(obj_boss.phase == 3){
+        audio_stop_sound(snd_boss_phase2);
+        if(!audio_is_playing(snd_boss_phase3)){
+            audio_play_sound(snd_boss_phase3, 10, true);
+        }
+    }
+}
+
 </string>
           </argument>
         </arguments>

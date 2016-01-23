@@ -39,15 +39,6 @@ flying = false;
 invulnerability = -1;
 attack = true;
 death = false;
-touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
-                                    obj_character.y,
-                                    obj_character.x + (78 * obj_character.image_xscale),
-                                    obj_character.y + 20,
-                                    id, true, false);
-touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xscale),
-                                  obj_character.y - 81,
-                                  obj_character.x + (40 * obj_character.image_xscale),
-                                  obj_character.y - 30, id, true, false)
 
 //Instanciation : it will get stats, sprites and sound
 //Used with scripts getEnemyAnim, getEnemyStat and getEnemySound
@@ -96,7 +87,7 @@ deathSound = sounds[3];
           <argument>
             <kind>1</kind>
             <string>///Enemy behaviour
-if(isSpawning){ //Animate the enemy spawn. NO.
+if(isSpawning){ //Animate the enemy spawn
     if(!audio_is_playing(spawnSound)) audio_play_sound(spawnSound, 10, false);
     attack = false;
     sprite_index = spawnSprite;
@@ -110,20 +101,7 @@ if(isSpawning){ //Animate the enemy spawn. NO.
     }
 }
 if (attack){//Normal behaviour, between spawn and death
-    //Checks if touch the chainsaw
-    touchWeapon = collision_rectangle(obj_character.x + (36 * obj_character.image_xscale),
-                                      obj_character.y,
-                                      obj_character.x + (78 * obj_character.image_xscale),
-                                      obj_character.y + 20,
-                                      id, true, false);
-    //Checks if touch the upper shield
-    touchShield = collision_rectangle(obj_character.x + (26 * obj_character.image_xscale) - hsp,
-                                      obj_character.y - 81,
-                                      obj_character.x + (40 * obj_character.image_xscale) - hsp,
-                                      obj_character.y - 30, id, true, false)
-                                    
-                                    
-    if(followPlayer) {// Se tourne et va vers le joueur.
+    if(followPlayer) {// Se tourne et va vers le joueur
         if(x &lt; obj_character.x - 150 || x &gt; obj_character.x + 150){
             move_towards_point(obj_character.x, obj_character.y, hsp);
             id.image_xscale = behindPlayer();
@@ -164,7 +142,7 @@ if (attack){//Normal behaviour, between spawn and death
     }
     
     //If touched by the chainsaw
-    if(touchWeapon &amp;&amp; obj_character.strike &amp;&amp; invulnerability == -1){    
+    if(touchWeapon() &amp;&amp; obj_character.strike &amp;&amp; invulnerability == -1){    
         audio_play_sound(hittedSound, 10, false)
         invulnerability = 8;
         if(hp &gt; obj_character.damage){
@@ -180,7 +158,7 @@ if (attack){//Normal behaviour, between spawn and death
         hp -= obj_character.damage;        
     } //If hits the character while not attacking
     else if(place_meeting(x,y,obj_character) || place_meeting(x,y,obj_yellow)
-            &amp;&amp; (!obj_character.redprotect || !touchShield)){
+            &amp;&amp; (!obj_character.redprotect || !touchShield())){
         obj_character.hit = true;
         obj_character.ennemy = id;
         obj_character.damage = damage;
@@ -236,7 +214,7 @@ if(death){
             instance_destroy();
         }
     }
-    else if(image_index == sprite_get_number(deathSprite) - image_speed){
+    else if(endAnimation()){
         instance_destroy();
     }
 }
