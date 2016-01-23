@@ -75,7 +75,7 @@ stopPattern = 25;
 
 //Phase 3 states
 phase3hp = 200;
-debug = true;
+debug = false;
 rangeAttack = false;
 pattern1yPos = 300;
 pattern1xPos[0, 0] = 250;
@@ -640,7 +640,15 @@ if(phase == 2){
                 obj_boss_heart.image_speed = 0.5;
             }
             else{
-                if(obj_boss_heart.sprite_index == spr_boss_2_crawl &amp;&amp; obj_boss_heart.x &gt; view_wview - aggroZone / 2){//Enters on phase 3 zone
+                if(obj_boss_heart.sprite_index == spr_boss_2_crawl
+                 &amp;&amp; obj_boss_heart.x &gt; view_wview - aggroZone / 2){//Transform
+                    obj_boss_heart.sprite_index = spr_boss_2_transform;
+                    obj_boss_heart.image_speed = 0.4;
+                    obj_boss_heart.image_index = 0;
+                    obj_boss_heart.hspeed = 0;
+                }
+                else if(obj_boss_heart.sprite_index == spr_boss_2_transform
+                &amp;&amp; obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_transform) - obj_boss_heart.image_speed){
                     x = obj_boss_heart.x;
                     y = obj_boss_heart.y - 85;
                     sprite_index = spr_boss1_final;
@@ -652,6 +660,7 @@ if(phase == 2){
                     aggroZone = view_wview - 400;
                     walk = true;
                     strike = false;
+                    with obj_boss_heart instance_destroy();
                 }
                 else if(obj_boss_heart.sprite_index == spr_boss_2_land){//Crawl
                     if(obj_boss_heart.image_index &gt;= sprite_get_number(spr_boss_2_land) - obj_boss_heart.image_speed){
@@ -687,7 +696,6 @@ if(phase == 2){
         hspeed = currentHSpeed;
         vspeed = currentVSpeed;
     }
-    show_debug_message(hp);
 }
 </string>
           </argument>
@@ -790,7 +798,7 @@ if(phase == 3){
     }
     if(wait &gt; 0) wait --;
     hspeed = currentHSpeed;
-    show_debug_message(nextAttack);
+    //show_debug_message(nextAttack);
 }
 </string>
           </argument>
