@@ -78,6 +78,7 @@ stopPattern = 25;
 
 //Phase 3 states
 phase3hp = 200;
+run = false;
 debug = true;
 rangeAttack = false;
 pattern1yPos = 200;
@@ -749,11 +750,10 @@ if(phase == 3){
     }
     
     
-    playerInAggroZone = obj_character.x + 200 &gt;= aggroZone;
-    if(playerInAggroZone &amp;&amp; !rangeAttack){
+    playerInAggroZone = obj_character.x + 100 &gt;= aggroZone;
+    if(playerInAggroZone &amp;&amp; !rangeAttack &amp;&amp; !strike){
         walk = false;
-        strike = true;
-        show_debug_message("lalal");
+        run = true;
     }
 
     if(walk){
@@ -767,38 +767,45 @@ if(phase == 3){
         }
     }
     
-    if(strike){//Run towards the player and hit him
-        
+    //Player is in the aggroZone : run towards him
+    if(run){//Run towards the player and hit him
         if(x &gt; aggroZone){
             //When close to the player : attack
-            if(distance_to_point(obj_character.x, y) &lt; 50 &amp;&amp; wait = 0){
+            if(distance_to_point(obj_character.x, y) &lt; 50){
                 sprite_index = spr_boss_3_strike;
                 image_index = 0;
                 image_speed = 0.7;
+                strike = true;
+                run = false;
                 currentHSpeed = -1;
-                wait = 30;
-                //wait = 60;//Cooldown between 2 attacks
+                wait = 30
             }
-            else if(distance_to_point(obj_character.x, y) &gt;= 50 &amp;&amp; wait == 0){
-                currentHSpeed = -7;
+            else if(distance_to_point(obj_character.x, y) &gt;= 50){
+                currentHSpeed = -6;
             }
         }
-        else{
-            currentHSpeed = 0;
-        }
-        if(sprite_index == spr_boss_3_strike &amp;&amp; endAnimation()){
-            sprite_index = spr_boss_3_walk;
-            image_speed = 0.25;
-        }
-        if(!playerInAggroZone &amp;&amp; wait == 0){
-            nextAttack = 0;
-            sprite_index = spr_boss_3_walk;
-            image_speed = 0.25;
-            strike = false;
-        }
-
     }
     
+    //Melee attack
+    if(strike){
+        if(sprite_index = spr_boss_3_strike &amp;&amp; endAnimation()){
+            sprite_index = spr_boss_3_walk;
+            wait = 15;
+            image_speed = 0.25;
+        }
+        else if(wait == 0){
+            image_speed = 0.7;
+            sprite_index = spr_boss_3_strike2;
+        }
+        if(x &lt; aggroZone || (sprite_index == spr_boss_3_strike2 &amp;&amp; endAnimation())){
+            currentHSpeed = 0;
+            if(endAnimation()){
+                image_speed = 0.25;
+                strike = false;
+                nextAttack = 0;
+            }
+        }
+    }
     if(nextAttack == 0){
         wait = 0;
         rangeAttack = true;
@@ -928,6 +935,8 @@ if(place_meeting(x, y, obj_character) &amp;&amp; !obj_character.strike
     obj_character.ennemy = id;
     obj_character.damage = damage;
     obj_character.enemyBehind = behindPlayer();
+    obj_character.vsp = -10;
+    obj_character.hsp = -10;
 }
 </string>
           </argument>
