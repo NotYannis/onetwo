@@ -57,7 +57,7 @@
     <instance objName="obj_ground01" x="0" y="512" name="inst_AC6DB32F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground01" x="0" y="416" name="inst_496EA5B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_character" x="351" y="728" name="inst_F9BB0DE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_yellow" x="352" y="640" name="inst_7EE0FF78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="352" y="640" name="inst_7EE0FF78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow_leg" x="352" y="640" name="inst_427FB13B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle" x="448" y="352" name="inst_80A42B1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle" x="480" y="288" name="inst_C8C68DF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

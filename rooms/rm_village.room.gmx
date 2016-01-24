@@ -269,7 +269,7 @@
     <instance objName="obj_ruins_entrance" x="10752" y="32" name="inst_46F58816" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow_leg" x="128" y="288" name="inst_5030E4BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_character" x="128" y="384" name="inst_0EA35ED4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_yellow" x="128" y="288" name="inst_C63FF0B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="128" y="288" name="inst_C63FF0B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

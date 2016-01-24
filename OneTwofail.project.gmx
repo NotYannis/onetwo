@@ -114,6 +114,8 @@
         <sprite>sprites\spr_boss_3_attack1</sprite>
         <sprite>sprites\spr_boss_3_shoot</sprite>
         <sprite>sprites\spr_boss_3_strike</sprite>
+        <sprite>sprites\spr_boss_3_strike2</sprite>
+        <sprite>sprites\spr_boss_3_blast</sprite>
         <sprite>sprites\spr_orb_boss</sprite>
         <sprite>sprites\spr_boss_3_ball</sprite>
         <sprite>sprites\spr_boss_3_ball2</sprite>
@@ -214,7 +216,6 @@
     <object>objects\obj_platform</object>
     <object>objects\obj_invis_wall</object>
     <objects name="perso">
-      <object>objects\obj_yellow</object>
       <object>objects\obj_yellow_leg</object>
       <object>objects\obj_character</object>
       <object>objects\obj_magicshield</object>
