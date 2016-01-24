@@ -57,14 +57,14 @@ death = false;
     else{
         fire--;
     }
-    if (touchWeapon()){
+    if (touchWeapon() &amp;&amp; obj_character.strike){
         death = true;
         sprite_index = spr_statue_death;
         image_speed = 0.25;
     }
 }
 if(death){
-    if(image_index &gt;= sprite_get_number(sprite_index) - image_speed){
+    if(endAnimation()){
         image_speed = 0;
     }
 }
