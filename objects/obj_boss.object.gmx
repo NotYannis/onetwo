@@ -81,15 +81,15 @@ phase3hp = 200;
 debug = true;
 rangeAttack = false;
 pattern1yPos = 200;
-pattern1xPos[0, 0] = 200;
+pattern1xPos[0, 0] = 150;
 pattern1xPos[0, 1] = 400;
-pattern1xPos[0, 2] = 600;
-pattern1xPos[1, 0] = 150;
+pattern1xPos[0, 2] = 650;
+pattern1xPos[1, 0] = 100;
 pattern1xPos[1, 1] = 350;
-pattern1xPos[1, 2] = 550;
+pattern1xPos[1, 2] = 600;
 pattern1xPos[2, 0] = 50;
-pattern1xPos[2, 1] = 250;
-pattern1xPos[2, 2] = 450;
+pattern1xPos[2, 1] = 300;
+pattern1xPos[2, 2] = 550;
 attackCount = 0;
 
 //Lighting variables
@@ -747,6 +747,7 @@ if(phase == 3){
     if(playerInAggroZone &amp;&amp; !rangeAttack){
         walk = false;
         strike = true;
+        show_debug_message("lalal");
     }
 
     if(walk){
@@ -762,21 +763,34 @@ if(phase == 3){
     
     if(strike){//Run towards the player and hit him
         //When close to the player : attack
-        if((distance_to_point(obj_character.x, y) &lt; 50 || x &lt; aggroZone) &amp;&amp; wait == 0){
-            //change sprite to attack sprite
-            currentHSpeed = 0;
-            wait = 60;//Cooldown between 2 attacks
-        }
-        else if(distance_to_point(obj_character.x, y) &gt;= 50 &amp;&amp; wait == 0){
-            currentHSpeed = -7;
-        }
-        else{
-            if(!playerInAggroZone){
-                walk = true;
-                currentHSpeed = 5;
-                strike = false;
+        if(x &gt; aggroZone){
+            if(distance_to_point(obj_character.x, y) &lt; 50 &amp;&amp; wait == 0){
+                sprite_index = spr_boss_3_strike;
+                image_index = 0;
+                image_speed = 0.7;
+                currentHSpeed = -1;
+                wait = 60;//Cooldown between 2 attacks
+            }
+            else if(distance_to_point(obj_character.x, y) &gt;= 50 &amp;&amp; wait == 0){
+                currentHSpeed = -10;
             }
         }
+        else{
+            currentHSpeed = 0;
+        }
+        if(sprite_index == spr_boss_3_strike &amp;&amp; endAnimation()){
+            sprite_index = spr_boss_3_walk;
+            image_speed = 0.25;
+            currentHSpeed = 3;
+        }
+        if(!playerInAggroZone &amp;&amp; wait == 0){
+            sprite_index = spr_boss_3_walk;
+            image_speed = 0.25;            
+            walk = true;
+            currentHSpeed = 5;
+            strike = false;
+        }
+
     }
     
     if(nextAttack == 0){
@@ -785,8 +799,8 @@ if(phase == 3){
         walk = false;
         strike = false;
         invulnerable = true;
-        pattern = irandom(1);
-        nextAttack = 3;
+        pattern = 1;
+        nextAttack = 1;
         currentHSpeed = 0;
         stopPattern = 3;
         if(hp &gt; 100) attackCount = 3;
@@ -807,9 +821,15 @@ if(phase == 3){
         }
         if(pattern == 1){//Summon 3 lasers
             if(wait == 0 &amp;&amp; i &lt; 3){
-                instance_create(pattern1xPos[pos, i], pattern1yPos, obj_boss_ray);
+                ray[i] = instance_create(pattern1xPos[pos, i], pattern1yPos, obj_boss_ray);
                 wait = 10
                 i++;
+                if(i == 3){
+                    for(i = 0; i &lt; 2; i ++){
+                        instance_create(pattern1xPos[pos, i] + 150, pattern1yPos - (150 + i * 2), obj_boss_ball);
+                    }
+                    i = 4;
+                }
             }
             if(!instance_exists(obj_boss_ray)) stopPattern = 0;
         }
@@ -863,7 +883,7 @@ if(recovery == 0 &amp;&amp; !invulnerable){
         }
     }
 }
-else if(recovery &gt; 0){
+if(recovery &gt; 0){
     if(phase != 2 || (phase == 2 &amp;&amp; attack)){//Flicker on hit
         if(recovery % 6 &gt;= 3 &amp;&amp; recovery % 6 &lt;= 6) image_alpha = 0; 
         else image_alpha = 1;
@@ -878,7 +898,17 @@ else if(recovery &gt; 0){
     }
     recovery --;
 }
-if(invulnerable){
+if(place_meeting(x, y, obj_boss_ball)){
+    ball = instance_place(x, y, obj_boss_ball);
+    hp -= 10;
+    recovery = recoveryFrames;
+    with (ball){
+        death = true;
+        hsp = 0;
+    }
+}
+
+if(invulnerable &amp;&amp; recovery == 0){
     image_alpha = 1;
     rotationSpeed = 4;
 }

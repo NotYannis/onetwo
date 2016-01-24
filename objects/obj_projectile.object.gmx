@@ -76,8 +76,6 @@ else{
 
     if(aiming){ //Move in the direction of the player
         motion_add(point_direction(x, y, obj_yellow.x, obj_yellow.y), hsp);
-        show_debug_message("from : " + string(x) + ", " + string(y));
-        show_debug_message("to : " + string(obj_yellow.x) + ", " + string(obj_yellow.y));
         aiming = false;
     }
     else if(!followPlayer){//or just move horizontally
@@ -97,7 +95,7 @@ else{
         instance_destroy();
     }
     //If touches the player when protected
-    if(place_meeting(x,y, obj_magicshield) || (obj_character.redprotect &amp;&amp; touchShield)){
+    if(place_meeting(x,y, obj_magicshield) || (obj_character.redprotect &amp;&amp; touchShield())){
         audio_play_sound(snd_shield, 0, false);
         instance_destroy();
     }
