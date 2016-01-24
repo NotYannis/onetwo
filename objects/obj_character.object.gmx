@@ -249,31 +249,7 @@ if (strike){
 if (redprotect){
     sprite_index = spr_red_protect;
 }
-//---------------------------------------
-// --------------Collisions--------------
-//---------------------------------------
-/*platform = instance_place(x,y + vsp + 1,obj_platform)
 
-hColl = place_meeting(x+hsp,y,obj_ground01) ;
-grounded = place_meeting(x,y + vsp + 1,obj_ground01)
-         || ((place_meeting(x,y+ vsp + 1,obj_platform) &amp;&amp; vsp &gt;=0)
-                &amp;&amp; (platform != noone  &amp;&amp; !place_meeting(x + hsp, y, obj_platform)));
-// Horizontal
-if (hColl) {
-    if(!place_meeting(x+sign(hsp),y,obj_ground01)){
-        x += sign(hsp);
-    }
-    hsp = 0;
-}
-
-// Vertical
-if(grounded){
-    canDoubleJump = true;
-    if(!hColl){ //Shouldn't move vertically only if its grounded
-        vsp = 0;
-    }
-}
-*/
 groundCollision(hsp, vsp);
 //----------- Gravity and jump ------------
 //-----------------------------------------
@@ -282,7 +258,7 @@ if (grounded) { // Player on the ground so he can jump.
     vsp = 0;
     if (keyboard_check(vk_space)){
         jumping = true;
-        vsp = -25;
+        vsp = -20;
         grounded = false;
     }
 }

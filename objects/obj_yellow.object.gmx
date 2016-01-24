@@ -148,7 +148,7 @@ if (canShoot &lt;= 1){
             }
             //Can double jump after jump momentum
             if (gunDown &amp;&amp;  !gunDownRight &amp;&amp; !gunDownLeft &amp;&amp; obj_character.canDoubleJump){
-                obj_character.vsp = -10;
+                obj_character.vsp = -15;
                 obj_character.canDoubleJump = false;
             }
         }
