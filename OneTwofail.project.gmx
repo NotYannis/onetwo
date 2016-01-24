@@ -173,6 +173,7 @@
     <sprites name="hud">
       <sprite>sprites\spr_bulletnumber2</sprite>
       <sprite>sprites\spr_magicshield_icon</sprite>
+      <sprite>sprites\spr_life_hud</sprite>
       <sprite>sprites\spr_gasbar</sprite>
       <sprite>sprites\spr_lifebar</sprite>
       <sprite>sprites\spr_health</sprite>
@@ -216,6 +217,7 @@
     <object>objects\obj_platform</object>
     <object>objects\obj_invis_wall</object>
     <objects name="perso">
+      <object>objects\obj_yellow</object>
       <object>objects\obj_yellow_leg</object>
       <object>objects\obj_character</object>
       <object>objects\obj_magicshield</object>
@@ -311,10 +313,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\Tutorial</room>
     <room>rooms\rm_boss</room>
     <room>rooms\arena</room>
     <room>rooms\rm_village</room>
-    <room>rooms\Tutorial</room>
     <room>rooms\arena2</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>
