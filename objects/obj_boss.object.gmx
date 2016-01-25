@@ -832,8 +832,9 @@ if(phase == 3){
             }
             if(hp &gt; 100 &amp;&amp; i == 3 &amp;&amp; sprite_index = spr_boss_3_attack1){
                 sprite_index = spr_boss_3_blast;
-                if(endAnimation())
-                    sprite_index = spr_boss_3_walk;
+            }
+            if(sprite_index = spr_boss_3_blast &amp;&amp; endAnimation()){
+                sprite_index = spr_boss_3_walk;
             }
             if(!instance_exists(obj_boss_orb)) stopPattern = 0;
         }
@@ -866,6 +867,17 @@ if(phase == 3){
         if(image_index &gt; 14 &amp;&amp; (phase == 1 || (phase == 0 &amp;&amp; hp &gt; 100)))
             image_index = 6;
     }
+    
+    if(hp &lt;= 0){
+        sprite_index = spr_boss_3_death;
+        image_speed = 0.4;
+        if(endAnimation() == true){
+            instance_destroy();
+        }
+    }
+    
+    
+    
     if(wait &gt; 0) wait --;
     hspeed = currentHSpeed;
     show_debug_message(nextAttack);
