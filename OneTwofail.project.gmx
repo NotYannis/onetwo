@@ -173,6 +173,7 @@
     <sprites name="hud">
       <sprite>sprites\spr_bulletnumber2</sprite>
       <sprite>sprites\spr_magicshield_icon</sprite>
+      <sprite>sprites\spr_gas_bar</sprite>
       <sprite>sprites\spr_life_hud</sprite>
       <sprite>sprites\spr_gasbar</sprite>
       <sprite>sprites\spr_lifebar</sprite>

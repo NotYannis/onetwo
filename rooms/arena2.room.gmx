@@ -120,7 +120,6 @@
     <instance objName="obj_ground01" x="1440" y="640" name="inst_8E4DCEA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="1280" y="640" name="inst_BE96C2B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ennemy_shadow" x="2464" y="640" name="inst_457B0564" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="256" y="480" name="inst_BD441EDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow_leg" x="256" y="480" name="inst_E00FA475" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree2" x="1664" y="480" name="inst_F21E6B6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree2" x="1760" y="384" name="inst_6FFFC547" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
