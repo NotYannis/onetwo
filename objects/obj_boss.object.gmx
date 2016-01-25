@@ -742,7 +742,7 @@ if(phase == 3){
         aggroZone = view_wview - 400;
         currentHSpeed = -5;
         debug = false;
-        pattern = 1;
+        pattern = 0;
         stopPattern = 2;
         nextAttack = 1;
         lightSize = 450;
@@ -812,12 +812,12 @@ if(phase == 3){
         walk = false;
         strike = false;
         invulnerable = true;
-        pattern = irandom(1);
+        pattern = 0;
         nextAttack = 1;
         currentHSpeed = 0;
         stopPattern = 3;
         if(hp &gt; 100) attackCount = 3;
-        else attackCount = 5
+        else attackCount = 5;
         sprite_index = spr_boss_3_attack1;
         image_speed = 0.2;
         if(pattern == 1) pos = irandom(2);
@@ -825,10 +825,15 @@ if(phase == 3){
     
     if(rangeAttack){
         if(pattern == 0){//Summon 3 bullets
-            if(wait == 0 &amp;&amp; i &lt; attackCount){
+            if(wait == 0 &amp;&amp; i &lt; 3){
                 instance_create(x - 40, y - 60, obj_boss_orb);
                 wait = 10;
                 i++;
+            }
+            if(hp &gt; 100 &amp;&amp; i == 3 &amp;&amp; sprite_index = spr_boss_3_attack1){
+                sprite_index = spr_boss_3_blast;
+                if(endAnimation())
+                    sprite_index = spr_boss_3_walk;
             }
             if(!instance_exists(obj_boss_orb)) stopPattern = 0;
         }
@@ -837,7 +842,7 @@ if(phase == 3){
                 ray[i] = instance_create(pattern1xPos[pos, i], pattern1yPos, obj_boss_ray);
                 wait = 10
                 i++;
-                if(i == 4){
+                if(i == 4){//And 3 balls
                     for(i = 0; i &lt; 3; i ++){
                         instance_create(pattern1xPos[pos, i] + 120, pattern1yPos - (150 + i * 2), obj_boss_ball);
                     }
@@ -846,7 +851,8 @@ if(phase == 3){
             }
             if(!instance_exists(obj_boss_ray)) stopPattern = 0;
         }
-        if(stopPattern == 0){//Attacked finished, return walking
+        //Attacked finished, return walking
+        if(stopPattern == 0){
             i = 0;
             walk = true;
             rangeAttack = false;
@@ -856,7 +862,9 @@ if(phase == 3){
             sprite_index = spr_boss_3_walk;
             image_speed = 0.25;
         }
-        if(image_index &gt; 14) image_index = 6;//Loop on the end of the anim
+        //Loop on the end of the summon animation
+        if(image_index &gt; 14 &amp;&amp; (phase == 1 || (phase == 0 &amp;&amp; hp &gt; 100)))
+            image_index = 6;
     }
     if(wait &gt; 0) wait --;
     hspeed = currentHSpeed;
@@ -914,11 +922,14 @@ if(recovery &gt; 0){
     }
     recovery --;
 }
-if(place_meeting(x, y, obj_boss_ball)){
+if(place_meeting(x, y, obj_boss_ball) &amp;&amp; !obj_boss_ball.death){
     ball = instance_place(x, y, obj_boss_ball);
     hp -= 10;
     recovery = recoveryFrames;
     with (ball){
+        if(!death)
+            image_index = 0;
+        sprite_index = spr_ball2_destroy;
         death = true;
         hsp = 0;
     }

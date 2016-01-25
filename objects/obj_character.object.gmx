@@ -166,7 +166,9 @@ if (invulnerability &gt;= 0){
     invulnerability--;
 }
 
-if(cantMove &gt; 0) cantMove--;
+if(cantMove &gt; 0){
+    cantMove--;
+}
 if(wait &gt; 0) wait --;
 
 // Death
