@@ -163,6 +163,7 @@ if (attack){//Normal behaviour, between spawn and death
         obj_character.ennemy = id;
         obj_character.damage = damage;
         obj_character.enemyBehind = behindPlayer();
+        obj_character.cantMove = 5;
     }
 
     //Short invulnerability after being striked

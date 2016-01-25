@@ -141,7 +141,6 @@ if(!strikeKey){
 if (hit &amp;&amp; invulnerability &lt;= 1){
     hp -= damage;
     invulnerability = room_speed*1;
-    cantMove = cantMoveTime;
 
     //Go back in the good direction if there is nothing behind
     if(!place_meeting(x - enemyBehind * 25, y, obj_ground01))

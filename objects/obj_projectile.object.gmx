@@ -92,6 +92,7 @@ else{
         obj_character.ennemy = id;
         obj_character.damage = damage;
         obj_character.enemyBehind = behindPlayer();
+        obj_character.cantMove = 5;
         instance_destroy();
     }
     //If touches the player when protected
