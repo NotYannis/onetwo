@@ -38,7 +38,7 @@ switch(object_index) {
         stat[0] = 0.3; stat[1] = 0; stat[2] = 0; stat[3] = 20; stat[4] = 7;
             break;
     case obj_boss_ball :
-        stat[0] = 0; stat[1] = 0; stat[2] = 0; stat[3] = 10; stat[4] = 10;
+        stat[0] = 0; stat[1] = 0; stat[2] = 0; stat[3] = 10; stat[4] = 7;
             break;
     default : return noone;
 }

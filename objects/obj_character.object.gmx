@@ -35,6 +35,8 @@ walking = false;
 canDoubleJump = true;
 hColl = false;
 walkSpeed = 7;
+cantMoveTime = 15;
+cantMove = 0;
 
 //Attack and stats
 gasFilling = false;
@@ -143,6 +145,7 @@ if(!keyboard_check(strikeKey)){
 if (hit &amp;&amp; invulnerability &lt;= 1){
     hp -= damage;
     invulnerability = room_speed*1;
+    cantMove = cantMoveTime;
 
     //Go back in the good direction if there is nothing behind
     if(!place_meeting(x - enemyBehind * 25, y, obj_ground01))
@@ -163,6 +166,7 @@ if (invulnerability &gt;= 0){
     invulnerability--;
 }
 
+if(cantMove &gt; 0) cantMove--;
 if(wait &gt; 0) wait --;
 
 // Death
@@ -195,28 +199,30 @@ if(keyboard_check(cheatKey)) hp += 1000;
             <kind>1</kind>
             <string>///Movement, collisions and animatons
 
-// Move 
-
-if (keyboard_check(redRightKey)){
-    hsp = walkSpeed;
-    walking = true;
-    image_xscale = 1;
-}
-else if (keyboard_check(redLeftKey)){
-    hsp = -walkSpeed;
-    walking = true;
-    image_xscale = -1;
-}
-
-else{
-    sprite_index = spr_red;
-    image_speed = 0.2;
-}
-
-if ((!keyboard_check(redLeftKey) &amp;&amp; !keyboard_check(redRightKey)) 
-    || (keyboard_check(redLeftKey) &amp;&amp; keyboard_check(redRightKey) || (redprotect &amp;&amp; !jumping)))  {
-    hsp = 0;
-    walking = false;
+// Move
+if(cantMove == 0){
+    if(keyboard_check(redRightKey)){
+        hsp = walkSpeed;
+        walking = true;
+        image_xscale = 1;
+    }
+    else if(keyboard_check(redLeftKey)){
+        hsp = -walkSpeed;
+        walking = true;
+        image_xscale = -1;
+    }
+    
+    else{
+        sprite_index = spr_red;
+        image_speed = 0.2;
+    }
+    
+    if ((!keyboard_check(redLeftKey) &amp;&amp; !keyboard_check(redRightKey)) 
+        || (keyboard_check(redLeftKey) &amp;&amp; keyboard_check(redRightKey)
+        || (redprotect &amp;&amp; !jumping))){
+        hsp = 0;
+        walking = false;
+    }
 }
 
 //---------------------------------------
@@ -253,7 +259,7 @@ if (redprotect){
 groundCollision(hsp, vsp);
 //----------- Gravity and jump ------------
 //-----------------------------------------
-if (grounded) { // Player on the ground so he can jump. 
+if (grounded){ // Player on the ground so he can jump. 
     jumping = false;
     vsp = 0;
     if (keyboard_check(vk_space)){

@@ -240,11 +240,11 @@
       <object>objects\obj_boss_illusion</object>
       <object>objects\obj_boss</object>
       <object>objects\obj_targetpractice</object>
-      <object>objects\obj_boss_ball</object>
       <object>objects\obj_boss_ray</object>
       <objects name="projectiles">
         <object>objects\obj_projectile</object>
         <object>objects\obj_orb</object>
+        <object>objects\obj_boss_ball</object>
         <object>objects\obj_boss_orb</object>
         <object>objects\obj_arrow</object>
         <object>objects\obj_tear</object>
@@ -315,8 +315,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Tutorial</room>
     <room>rooms\rm_boss</room>
+    <room>rooms\Tutorial</room>
     <room>rooms\arena</room>
     <room>rooms\rm_village</room>
     <room>rooms\arena2</room>
