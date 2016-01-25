@@ -112,6 +112,7 @@
         <sprite>sprites\spr_boss_2_crawl</sprite>
         <sprite>sprites\spr_boss_2_transform</sprite>
         <sprite>sprites\spr_boss_3_walk</sprite>
+        <sprite>sprites\spr_boss_3_death</sprite>
         <sprite>sprites\spr_boss_3_attack1</sprite>
         <sprite>sprites\spr_boss_3_shoot</sprite>
         <sprite>sprites\spr_boss_3_strike</sprite>
