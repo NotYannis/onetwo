@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_life_hud, 0, view_xview, view_yview);
+            <string>draw_sprite(spr_life_hud, 0, view_xview+20, view_yview+20);
 </string>
           </argument>
         </arguments>

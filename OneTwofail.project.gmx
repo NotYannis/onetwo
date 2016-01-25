@@ -83,6 +83,7 @@
       <sprite>sprites\spr_red_protect</sprite>
       <sprite>sprites\spr_red_jump</sprite>
       <sprite>sprites\spr_red_walk</sprite>
+      <sprite>sprites\sprite151</sprite>
       <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\spr_bullet_destroy</sprite>
       <sprite>sprites\spr_magicshield</sprite>
@@ -118,6 +119,8 @@
         <sprite>sprites\spr_boss_3_blast</sprite>
         <sprite>sprites\spr_orb_boss</sprite>
         <sprite>sprites\spr_boss_3_ball</sprite>
+        <sprite>sprites\spr_ball_destroy</sprite>
+        <sprite>sprites\spr_ball2_destroy</sprite>
         <sprite>sprites\spr_boss_3_ball2</sprite>
         <sprite>sprites\spr_attack1</sprite>
         <sprite>sprites\spr_attack1_2</sprite>
@@ -315,10 +318,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_boss</room>
-    <room>rooms\Tutorial</room>
-    <room>rooms\arena</room>
     <room>rooms\rm_village</room>
+    <room>rooms\Tutorial</room>
+    <room>rooms\rm_boss</room>
+    <room>rooms\arena</room>
     <room>rooms\arena2</room>
     <room>rooms\Church_boss_</room>
     <room>rooms\Game_Over</room>

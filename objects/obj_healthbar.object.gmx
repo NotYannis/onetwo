@@ -54,34 +54,34 @@ globalvar gasbar;
             <string>//------Health-------
 //-------------------
 
-draw_healthbar(view_xview+4, view_yview+4, view_xview+240, view_yview+84, obj_character.hp, c_black, c_maroon, c_maroon, 0, true, true);
+draw_healthbar(view_xview+24, view_yview+24, view_xview+240, view_yview+84, obj_character.hp, c_black, c_maroon, c_maroon, 0, true, true);
 
 // Gas
 
-draw_healthbar(view_xview+275, view_yview+10, view_xview+350, view_yview+100, gasbar, c_black, c_green, c_green, 3, true, true);
+draw_healthbar(view_xview+275, view_yview+30, view_xview+350, view_yview+120, gasbar, c_black, c_green, c_green, 3, true, true);
 if (!obj_character.gasFilling){
-    draw_sprite(spr_gas_bar, 1, view_xview+250, view_yview+100);
+    draw_sprite(spr_gas_bar, 1, view_xview+250, view_yview+120);
 }
 else{
-    draw_sprite(spr_gas_bar, 0, view_xview+250, view_yview+100);
+    draw_sprite(spr_gas_bar, 0, view_xview+250, view_yview+120);
 }
 // Magic shield icon
 
 
 if (obj_yellow.canProtect &lt;= 1){
-    draw_sprite(spr_magicshield_icon, 1, view_xview+120, view_yview+100);
+    draw_sprite(spr_magicshield_icon, 1, view_xview+130, view_yview+120);
 }
 else{
-    draw_sprite(spr_magicshield_icon, 2, view_xview+120, view_yview+100);
+    draw_sprite(spr_magicshield_icon, 2, view_xview+130, view_yview+120);
 } 
 //-----------Bullets------
 //------------------------
 
 if (obj_yellow.canShoot &lt;= 1){
-   draw_sprite(spr_bulletnumber2, 1, view_xview+10, view_yview+100);
+   draw_sprite(spr_bulletnumber2, 1, view_xview+10, view_yview+120);
 }
 else{
-    draw_sprite(spr_bulletnumber2, 2, view_xview+10, view_yview+100);
+    draw_sprite(spr_bulletnumber2, 2, view_xview+10, view_yview+120);
 }
 
 
