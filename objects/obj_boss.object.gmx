@@ -34,8 +34,8 @@ currentHSpeed = moveSpeed;
 stopMoving = false;
 aggroZone = 250;
 damage = 10;
-hp = 10; //Hp on phase 1
-phase = 3;
+hp = 20; //Hp on phase 1
+phase = 1;
 recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
 recovery = 0;
 invulnerabilityFrames = 35;//Invulnerability time on patterns phase 3
@@ -79,7 +79,7 @@ stopPattern = 25;
 //Phase 3 states
 phase3hp = 200;
 run = false;
-debug = true;
+debug = false;
 rangeAttack = false;
 pattern1yPos = 200;
 pattern1xPos[0, 0] = 150;
@@ -95,6 +95,7 @@ pattern1xPos[2, 1] = 250;
 pattern1xPos[2, 2] = 450;
 pattern1xPos[2, 3] = 650;
 attackCount = 0;
+death = false;
 
 //Lighting variables
 darkness = 200;
@@ -400,7 +401,7 @@ if(phase == 2){
                 else if(pattern == 1){
                     currentHSpeed = 0.3;
                     currentVSpeed = 0;
-                    y = irandom_range(600, 726);
+                    y = irandom_range(650, 726);
                     xMaxLimit = view_wview + 100;
                     xMinLimit = view_xview - 100;
                     image_angle = 0;
@@ -510,7 +511,7 @@ if(phase == 2){
         if(pattern == 1){
             //Go in the other way
             if(x &lt; xMinLimit || x &gt; xMaxLimit){
-                y = irandom_range(600, 726);
+                y = irandom_range(650, 726);
                 rotationSpeed = 4;                
                 if(x &lt; xMinLimit){
                     currentHSpeed = 0.5;
@@ -628,75 +629,84 @@ if(phase == 2){
     }
     
     if(hp &lt;= 0){//Ded
-        transition = true;
+        if(!((y &gt; 256 - 10 &amp;&amp; y &lt; 256 + 10)
+        &amp;&amp; (x &gt; 640 - 10 &amp;&amp; x &lt; 640 + 10))) move_towards_point(640, 256, 10);
+        else{
+            transition = true;
+            hp = phase3hp;
+            vspeed = 0;
+        }
         rotate = false;
         fly = false;
         attack = false;
         launch = false;
         currentHSpeed = 0;
         currentVSpeed = 0;
+        followPlayer = true;
         if(instance_exists(obj_boss_illusion))
             with obj_boss_illusion instance_destroy();
         wait = 10;
-        hp = phase3hp;
         invulnerable = true;
     }
     
     if(transition){//Death animations
-        with (obj_boss_heart){
-            if(y &gt;= view_hview - 125){//When the heart touches the ground
-                //Land
-                if(sprite_index == spr_boss_2_death){
-                    vspeed = 0;
-                    sprite_index = spr_boss_2_land;
-                    image_speed = 0.5;
-                }//Crawl
-                else if(sprite_index == spr_boss_2_land &amp;&amp; endAnimation()){
-                    audio_sound_gain(snd_boss_phase2, 0, ((view_wview - obj_boss.aggroZone - x)/5) * room_speed);
-                    sprite_index = spr_boss_2_crawl;
-                    y += 115;
-                    hspeed = 5;
-                    image_speed = 0.5;
-                }//Transform
-                else if(sprite_index == spr_boss_2_crawl &amp;&amp; x &gt; view_wview - obj_boss.aggroZone){
-                    sprite_index = spr_boss_2_transform;
-                    audio_play_sound(snd_boss_phase3, 10, true);
-                    image_speed = 0.4;
-                    image_index = 0;
-                    hspeed = 0;
-                }//End of transformation, phase 3 !
-                else if(sprite_index == spr_boss_2_transform &amp;&amp; endAnimation()){
-                    with(obj_boss){
-                        x = x;
-                        y = y - 125;
-                        sprite_index = spr_boss_3_walk;
-                        image_angle = 0;
-                        currentVSpeed = 0;
-                        currentHSpeed = -5;
-                        lightSize = 400;                
-                        transition = false;
-                        aggroZone = view_wview - 500;
-                        walk = true;
-                        strike = false;
-                        invulnerable = false;
-                        phase = 3;
+            with (obj_boss_heart){
+                if(y &gt;= view_hview - 125){//When the heart touches the ground
+                    //Land
+                    if(sprite_index == spr_boss_2_death){
+                        vspeed = 0;
+                        sprite_index = spr_boss_2_land;
+                        image_speed = 0.5;
+                    }//Crawl
+                    else if(sprite_index == spr_boss_2_land &amp;&amp; endAnimation()){
+                        audio_sound_gain(snd_boss_phase2, 0, ((view_wview - obj_boss.aggroZone - x)/5) * room_speed);
+                        sprite_index = spr_boss_2_crawl;
+                        y += 115;
+                        hspeed = 5;
+                        image_speed = 0.5;
+                    }//Transform
+                    else if(sprite_index == spr_boss_2_crawl &amp;&amp; x &gt; view_wview - obj_boss.aggroZone){
+                        sprite_index = spr_boss_2_transform;
+                        audio_play_sound(snd_boss_phase3, 10, true);
+                        image_speed = 0.4;
+                        image_index = 0;
+                        hspeed = 0;
+                        show_debug_message("bef" + string(x)+", "+string(y));
+                    }//End of transformation, phase 3 !
+                    else if(sprite_index == spr_boss_2_transform &amp;&amp; endAnimation()){
+                        with(obj_boss){
+                            x = 1032;
+                            y = 665;
+                            show_debug_message("af" + string(x)+", "+string(y));
+                            sprite_index = spr_boss_3_walk;
+                            image_angle = 0;
+                            currentVSpeed = 0;
+                            currentHSpeed = -5;
+                            nextAttack = 1;
+                            lightSize = 400;
+                            transition = false;
+                            aggroZone = view_wview - 500;
+                            walk = true;
+                            strike = false;
+                            invulnerable = false;
+                            phase = 3;
+                        }
+                        instance_destroy();
                     }
-                    instance_destroy();
+                }
+                else if(obj_boss.wait &gt; 0){//The shield disappear, and the heart tranform into a drop
+                    obj_boss.sprite_index = -1;
+                    sprite_index = spr_boss_2_death;
+                    image_speed = 0.5;
+                    rotate = false;
+                    image_angle = 0;
+                }//Then it falls
+                else if(endAnimation()){
+                    vspeed = 15;
+                    image_speed = 0;
                 }
             }
-            else if(obj_boss.wait &gt; 0){//The shield disappear, and the heart tranform into a drop
-                audio_sound_gain(snd_boss_phase2, 0.75, 500);
-                obj_boss.sprite_index = -1;
-                sprite_index = spr_boss_2_death;
-                image_speed = 0.5;
-                rotate = false;
-                image_angle = 0;
-            }//Then it falls
-            else if(endAnimation()){
-                vspeed = 15;
-                image_speed = 0;
-            }
-        }
+        
     }
     
     //Rotate : rotate the sprite
@@ -733,7 +743,8 @@ if(phase == 2){
           <argument>
             <kind>1</kind>
             <string>///Phase 3 : true boss
-if(phase == 3){
+if(phase == 3 &amp;&amp; !death){
+    show_debug_message(string(x)+", "+string(y));
     if(debug){
         x = 1000;
         y = 800 - 128;
@@ -812,7 +823,7 @@ if(phase == 3){
         walk = false;
         strike = false;
         invulnerable = true;
-        pattern = 0;
+        pattern = irandom(1);
         nextAttack = 1;
         currentHSpeed = 0;
         stopPattern = 3;
@@ -823,6 +834,7 @@ if(phase == 3){
         if(pattern == 1) pos = irandom(2);
     }
     
+    //Range Attack : attack with magic
     if(rangeAttack){
         if(pattern == 0){//Summon 3 bullets
             if(wait == 0 &amp;&amp; i &lt; 3){
@@ -830,11 +842,19 @@ if(phase == 3){
                 wait = 10;
                 i++;
             }
-            if(hp &gt; 100 &amp;&amp; i == 3 &amp;&amp; sprite_index = spr_boss_3_attack1){
-                sprite_index = spr_boss_3_blast;
-            }
-            if(sprite_index = spr_boss_3_blast &amp;&amp; endAnimation()){
-                sprite_index = spr_boss_3_walk;
+            if(hp &lt; 100){
+                if(i == 3 &amp;&amp; sprite_index = spr_boss_3_attack1){
+                    image_index = 0;
+                    image_speed = 0.2;
+                    sprite_index = spr_boss_3_blast;
+                }
+                if(sprite_index = spr_boss_3_blast &amp;&amp; endAnimation()){
+                    image_speed = 0.25;
+                    sprite_index = spr_boss_3_walk;
+                }
+                else if(sprite_index = spr_boss_3_blast &amp;&amp; image_index &gt; 12){
+                    image_speed = 0.7;
+                }
             }
             if(!instance_exists(obj_boss_orb)) stopPattern = 0;
         }
@@ -864,23 +884,32 @@ if(phase == 3){
             image_speed = 0.25;
         }
         //Loop on the end of the summon animation
-        if(image_index &gt; 14 &amp;&amp; (phase == 1 || (phase == 0 &amp;&amp; hp &gt; 100)))
+        if(image_index &gt; 14 &amp;&amp; (pattern == 1 || pattern == 0 &amp;&amp; hp &gt; 100))
             image_index = 6;
     }
     
     if(hp &lt;= 0){
+        death = true;
+        strike = false;
+        walk = false;
+        run = false;
+        currentHSpeed = 0;
+        image_index = 0;
+        invulnerable = true;
+        recovery = 0;
         sprite_index = spr_boss_3_death;
         image_speed = 0.4;
-        if(endAnimation() == true){
-            instance_destroy();
-        }
+        hp = 1;
     }
-    
-    
     
     if(wait &gt; 0) wait --;
     hspeed = currentHSpeed;
-    show_debug_message(nextAttack);
+    //show_debug_message(nextAttack);
+}
+else if(death){
+    if(endAnimation()){
+        instance_destroy();
+    }
 }
 </string>
           </argument>
@@ -912,7 +941,7 @@ if(recovery == 0 &amp;&amp; !invulnerable){
         if(place_meeting(x, y, obj_bullet)){
             bullet = instance_place(x, y, obj_bullet);
             with(bullet) instance_destroy();
-            if(phase == 2){
+            if(phase == 2 || phase == 1.5){
                 hp -= 10;
                 recovery = recoveryFrames;
             }

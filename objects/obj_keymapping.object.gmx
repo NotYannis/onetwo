@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///Keymapping
-//Player two key (red)
+//Player one keys (red)
+/*
 globalvar redLeftKey;
 redLeftKey = vk_left;
 globalvar redRightKey;
@@ -38,15 +39,7 @@ strikeKey = ord('S');
 globalvar redShieldKey;
 redShieldKey = ord('F');
 
-//Player two keys (yellow)
-/*globalvar yelLeftKey;
-yelLeftKey = ord('K');
-globalvar yelRightKey;
-yelRightKey = ord('M');
-globalvar yelUpKey;
-yelUpKey = ord('O');
-globalvar yelDownKey;
-yelDownKey = ord('L');*/
+//Player two keys (yel)
 globalvar yelLeftKey;
 yelLeftKey = vk_numpad4;
 globalvar yelRightKey;
@@ -60,10 +53,130 @@ yelShieldKey = ord('D');
 globalvar gunKey;
 gunKey = ord('Q');
 
-
+globalvar restartKey;
+restartKey = vk_space;
 
 globalvar cheatKey;
-cheatKey = vk_numpad8;
+cheatKey = vk_numpad3;
+*/
+//Gamepad Mapping;
+globalvar redLeftKey;
+redLeftKey = keyboard_check(vk_left);
+globalvar redRightKey;
+redRightKey = keyboard_check(vk_right);
+globalvar jumpKey;
+jumpKey = keyboard_check(vk_space);
+globalvar strikeKey;
+strikeKey = keyboard_check(ord('S'));
+globalvar redShieldKey;
+redShieldKey = ord('F');
+
+//Player two keys (yel)
+globalvar yelLeftKey;
+yelLeftKey = keyboard_check(vk_numpad4);
+globalvar yelRightKey;
+yelRightKey = keyboard_check(vk_numpad6);
+globalvar yelUpKey;
+yelUpKey = keyboard_check(vk_numpad8);
+globalvar yelDownKey;
+yelDownKey = keyboard_check(vk_numpad5);
+globalvar yelShieldKey;
+yelShieldKey = keyboard_check(ord('D'));
+globalvar gunKey;
+gunKey = keyboard_check(ord('Q'));
+
+globalvar restartKey;
+restartKey = keyboard_check(vk_space);
+
+globalvar cheatKey;
+cheatKey = keyboard_check(vk_numpad3);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Keymapping
+/*
+//Player one keys (red)
+globalvar redLeftKey;
+redLeftKey = keyboard_check(vk_left);
+globalvar redRightKey;
+redRightKey = keyboard_check(vk_right);
+globalvar jumpKey;
+jumpKey = keyboard_check(vk_space);
+globalvar strikeKey;
+strikeKey = keyboard_check(ord('S'));
+globalvar redShieldKey;
+redShieldKey = keyboard_check(ord('F'));
+
+//Player two keys (yel)
+globalvar yelLeftKey;
+yelLeftKey = keyboard_check(vk_numpad4);
+globalvar yelRightKey;
+yelRightKey = keyboard_check(vk_numpad6);
+globalvar yelUpKey;
+yelUpKey = keyboard_check(vk_numpad8);
+globalvar yelDownKey;
+yelDownKey = keyboard_check(vk_numpad5);
+globalvar yelShieldKey;
+yelShieldKey = keyboard_check(ord('D'));
+globalvar gunKey;
+gunKey = keyboard_check(ord('Q'));
+
+globalvar restartKey;
+restartKey = keyboard_check(vk_space);
+
+globalvar cheatKey;
+cheatKey = keyboard_check(vk_numpad3);
+*/
+//Gamepad Mapping;
+globalvar redLeftKey;
+redLeftKey = gamepad_button_check(0, gp_padl);
+globalvar redRightKey;
+redRightKey = gamepad_button_check(0, gp_padr);
+globalvar jumpKey;
+jumpKey = gamepad_button_check(0, gp_face1);
+globalvar strikeKey;
+strikeKey = gamepad_button_check(0, gp_face3);
+globalvar redShieldKey;
+redShieldKey = gamepad_button_check(0, gp_face2);
+
+//Player two keys (yel)
+globalvar yelLeftKey;
+yelLeftKey = gamepad_button_check(1, gp_padl);
+globalvar yelRightKey;
+yelRightKey = gamepad_button_check(1, gp_padr);
+globalvar yelUpKey;
+yelUpKey = gamepad_button_check(1, gp_padu);
+globalvar yelDownKey;
+yelDownKey = gamepad_button_check(1, gp_padd);
+globalvar yelShieldKey;
+yelShieldKey = gamepad_button_check(1, gp_face2);
+globalvar gunKey;
+gunKey = gamepad_button_check(1, gp_face1);
+
+globalvar restartKey;
+restartKey = gamepad_button_check(1, gp_face1) || gamepad_button_check(0, gp_face1);
+
+globalvar cheatKey;
+cheatKey = keyboard_check(vk_numpad3);
 </string>
           </argument>
         </arguments>

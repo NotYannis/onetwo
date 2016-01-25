@@ -112,12 +112,12 @@ gunLeft = (image_xscale == -1);
             <kind>1</kind>
             <string>///Weapon
 
-gunDown = keyboard_check(yelDownKey);
-gunUp = keyboard_check(yelUpKey);
-gunUpRight = gunUp &amp;&amp; keyboard_check(yelRightKey) &amp;&amp; !gunLeft;
-gunUpLeft = gunUp &amp;&amp; keyboard_check(yelLeftKey) &amp;&amp; gunLeft;
-gunDownRight = gunDown &amp;&amp; keyboard_check(yelRightKey) &amp;&amp; !gunLeft;
-gunDownLeft = gunDown &amp;&amp; keyboard_check(yelLeftKey) &amp;&amp; gunLeft;
+gunDown = yelDownKey;
+gunUp = yelUpKey;
+gunUpRight = gunUp &amp;&amp; yelRightKey &amp;&amp; !gunLeft;
+gunUpLeft = gunUp &amp;&amp; yelLeftKey &amp;&amp; gunLeft;
+gunDownRight = gunDown &amp;&amp; yelRightKey &amp;&amp; !gunLeft;
+gunDownLeft = gunDown &amp;&amp; yelLeftKey &amp;&amp; gunLeft;
 gunDefaultPos = !gunDown &amp;&amp; ! gunUp &amp;&amp; !gunUpRight &amp;&amp; !gunUpLeft &amp;&amp; !gunDownLeft &amp;&amp; !gunDownRight;
 
 if (gunDown){
@@ -138,7 +138,7 @@ else if(gunDefaultPos){
 // ----------- Fire and Double Jump ---------------
 //------------------------------------------
 if (canShoot &lt;= 1){
-        if (keyboard_check(gunKey)){
+        if (gunKey){
             canShoot = gunCooldown;
             if (image_xscale = 1){
                 instance_create (x-26,y+29,obj_bullet);
@@ -183,7 +183,7 @@ else{ //Recoil sprite after shooting and cooldown
             <string>///Red protection
 
 if (canProtect &lt;= 1){
-    if (keyboard_check(yelShieldKey)){
+    if (yelShieldKey){
         canProtect = shieldCooldown;
         instance_create(x,y,obj_magicshield);
     }

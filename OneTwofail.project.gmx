@@ -262,6 +262,7 @@
       <object>objects\obj_keymapping</object>
       <object>objects\obj_hud</object>
       <object>objects\obj_music</object>
+      <object>objects\obj_restart</object>
     </objects>
     <objects name="decor">
       <object>objects\obj_ground01</object>
