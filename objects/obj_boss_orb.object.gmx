@@ -34,7 +34,7 @@ spawn = false;
 
 if(obj_boss.phase == 3){
     if(obj_boss.pattern == 0){
-        xLimit = irandom_range(100, 200);
+        xLimit = irandom_range(-100, -200);
         yLimit = irandom_range(100, 200);
         aiming = false;
         spawn = true;
@@ -103,7 +103,7 @@ if(obj_lighting.dark){
 event_inherited();
 
 if(spawn){
-    if(x &gt; xStart - xLimit &amp;&amp; y &gt; yStart - yLimit){
+    if(x &lt; xStart - xLimit &amp;&amp; y &gt; yStart - yLimit){
         move_towards_point(xStart - xLimit, yStart - yLimit, 3);
         wait = 20;
     }

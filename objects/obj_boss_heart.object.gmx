@@ -53,7 +53,6 @@
     y = obj_boss.y;
 }
 if(sprite_index == spr_boss_2_transform &amp;&amp; lightSize &lt; 400) lightSize+= 2;
-show_debug_message(lightSize);
 if(obj_lighting.dark){
     Lighting(lightSize, c_white, c_black);
 }

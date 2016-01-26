@@ -61,9 +61,11 @@ if(rand &lt; 4){
 if(rand &gt;= 4){
     if(place_meeting(x, y, obj_bullet)){
         vsp = 0;
+        image_index = 0;
         bullet = instance_place(x, y, obj_bullet);
         with (bullet) instance_destroy();
         death = true;
+        sprite_index = spr_ball_destroy;
     }
 }
 else{
@@ -75,7 +77,6 @@ else{
     }
 }
 if(death &amp;&amp; endAnimation()){
-    vspeed = 0;
     instance_destroy();
 }
 </string>

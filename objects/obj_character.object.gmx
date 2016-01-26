@@ -41,7 +41,7 @@ cantMove = 0;
 //Attack and stats
 gasFilling = false;
 gasbar = 100;
-hp = 100;
+hp = 40;
 damage = 10;
 gunDamage = 10;
 hit = false;
@@ -86,14 +86,17 @@ arenaTime = false;
 
 if (obj_lighting.dark){
     Lighting(360, c_white, c_black);
-    
 }
 
 
-instance_activate_region(view_xview, view_yview, view_wview, view_hview, true);
-if(!arenaTime){
+if(arenaTime){
+    instance_activate_region(viewLeftLimit, view_yview, viewRightLimit, view_hview, true);
+}
+else{
+    instance_activate_region(view_xview, view_yview, view_wview, view_hview, true);
     instance_deactivate_object(obj_enemy_trigger);
 }
+
 </string>
           </argument>
         </arguments>
@@ -117,13 +120,13 @@ if(!arenaTime){
           <argument>
             <kind>1</kind>
             <string>/// Attack and Hit
-if (keyboard_check(strikeKey) &amp;&amp; (gasbar &gt; 0) &amp;&amp; !gasFilling){
+if (strikeKey &amp;&amp; gasbar &gt; 0 &amp;&amp; !gasFilling){
     if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
     strike = true;  
     gasbar -= 5;
     wait = 20;
 }
-else if((!keyboard_check(strikeKey) &amp;&amp; gasbar &lt;=100) || gasFilling &amp;&amp; wait ==0){
+else if((!strikeKey &amp;&amp; gasbar &lt;=100) &amp;&amp; wait ==0 || gasFilling){
     gasbar += 2;
 }
 
@@ -131,11 +134,8 @@ if(gasbar &lt;= 0){ //If the bar hit 0, you can't attack while refilling it to 1
     gasFilling = true;
     strike = false;
 }
-else if(gasbar &gt;= 100){
-    gasFilling = false;
-}
-
-if(!keyboard_check(strikeKey)){
+else if(gasbar &gt;= 100) gasFilling = false;
+if(!strikeKey){
     strike = false;
 }
 
@@ -145,7 +145,6 @@ if(!keyboard_check(strikeKey)){
 if (hit &amp;&amp; invulnerability &lt;= 1){
     hp -= damage;
     invulnerability = room_speed*1;
-    cantMove = cantMoveTime;
 
     //Go back in the good direction if there is nothing behind
     if(!place_meeting(x - enemyBehind * 25, y, obj_ground01))
@@ -166,8 +165,12 @@ if (invulnerability &gt;= 0){
     invulnerability--;
 }
 
-if(cantMove &gt; 0) cantMove--;
-if(wait &gt; 0) wait --;
+if(cantMove &gt; 0){
+    cantMove--;
+}
+if(wait &gt; 0){
+    wait --;
+}
 
 // Death
 if (hp &lt;= 0){
@@ -175,7 +178,7 @@ if (hp &lt;= 0){
 }
 
 //Cheat code
-if(keyboard_check(cheatKey)) hp += 1000;
+if(cheatKey) hp += 1000;
 
 </string>
           </argument>
@@ -201,12 +204,12 @@ if(keyboard_check(cheatKey)) hp += 1000;
 
 // Move
 if(cantMove == 0){
-    if(keyboard_check(redRightKey)){
+    if(redRightKey){
         hsp = walkSpeed;
         walking = true;
         image_xscale = 1;
     }
-    else if(keyboard_check(redLeftKey)){
+    else if(redLeftKey){
         hsp = -walkSpeed;
         walking = true;
         image_xscale = -1;
@@ -217,9 +220,8 @@ if(cantMove == 0){
         image_speed = 0.2;
     }
     
-    if ((!keyboard_check(redLeftKey) &amp;&amp; !keyboard_check(redRightKey)) 
-        || (keyboard_check(redLeftKey) &amp;&amp; keyboard_check(redRightKey)
-        || (redprotect &amp;&amp; !jumping))){
+    if ((!redLeftKey &amp;&amp; !redRightKey) 
+        || ((redLeftKey &amp;&amp; redRightKey) || (redprotect &amp;&amp; !jumping))){
         hsp = 0;
         walking = false;
     }
@@ -262,7 +264,7 @@ groundCollision(hsp, vsp);
 if (grounded){ // Player on the ground so he can jump. 
     jumping = false;
     vsp = 0;
-    if (keyboard_check(vk_space)){
+    if (jumpKey){
         jumping = true;
         vsp = -20;
         grounded = false;
@@ -297,7 +299,7 @@ x += hsp; // Set the variable x, so that the player can move.
             <kind>1</kind>
             <string>///Yellow protection
 
-if (keyboard_check(redShieldKey)){
+if (redShieldKey){
     redprotect = true;
 }
 else{
@@ -336,7 +338,7 @@ if(viewUpdate){
 }
 
 //View behaviour, depend of the direction of the player
-if (keyboard_check(redRightKey)){
+if (redRightKey){
     if(x &gt;= rPos - walkSpeed*3 &amp;&amp; x &lt;= rPos + walkSpeed*3){
         viewUpdate = true;
         rTrigger = false;
@@ -346,7 +348,7 @@ if (keyboard_check(redRightKey)){
         rTrigger = true
     }
 }
-else if (keyboard_check(redLeftKey)){
+else if (redLeftKey){
     if(x &gt;= lPos - walkSpeed*3 &amp;&amp; x &lt;= lPos + walkSpeed*3){
         viewUpdate = true;
         lTrigger = false;

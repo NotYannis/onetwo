@@ -89,16 +89,10 @@ else{
 }
 
 //Proper scale.
-if (obj_character.x &lt; obj_ennemy_mimic.x){
-            image_xscale = 1;
-        }
-        else{
-            image_xscale = -1;
-        }
+image_xscale = behindPlayer();
 
 // Attack variable : define the behaviour of the mimic, wheather it has been hit or not. 
 if (attack = false){
-
     hspeed = 0;
     // Spawn if attack, animation. 
     if (place_meeting(x,y,obj_bullet)) || (place_meeting(x,y,obj_character)) &amp;&amp; (obj_character.strike = true){
@@ -114,17 +108,10 @@ if (attack = false){
     }
 }
 
-else if (attack = true){
+else{
     // Attack: move to the player. 
     move_towards_point(obj_character.x, obj_character.y, 6);
     if (!audio_is_playing(snd_shadowteeth))  audio_play_sound(snd_shadowteeth, 10, false);
-    if (place_meeting(x,y+1,obj_ground01)){
-        vspeed = 0;
-    }
-    else{
-        vspeed = 5;
-    }
-    
     
     // Hit: return to his chest.
     if (place_meeting(x,y,obj_bullet)){
@@ -136,7 +123,15 @@ else if (attack = true){
             instance_destroy();
         }
     }
-}
+    if(place_meeting(x, y, obj_character)){
+        obj_character.hit = true;
+        obj_character.ennemy = id;
+        obj_character.damage = 10;
+        obj_character.enemyBehind = behindPlayer();
+        obj_character.cantMove = 5;
+    }
+}   
+
 </string>
           </argument>
         </arguments>
