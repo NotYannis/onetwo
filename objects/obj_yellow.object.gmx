@@ -116,9 +116,7 @@ gunDown = yelDownKey;
 gunUp = yelUpKey;
 gunUpRight = gunUp &amp;&amp; yelRightKey &amp;&amp; !gunLeft;
 gunUpLeft = gunUp &amp;&amp; yelLeftKey &amp;&amp; gunLeft;
-gunDownRight = gunDown &amp;&amp; yelRightKey &amp;&amp; !gunLeft;
-gunDownLeft = gunDown &amp;&amp; yelLeftKey &amp;&amp; gunLeft;
-gunDefaultPos = !gunDown &amp;&amp; ! gunUp &amp;&amp; !gunUpRight &amp;&amp; !gunUpLeft &amp;&amp; !gunDownLeft &amp;&amp; !gunDownRight;
+gunDefaultPos = !gunDown &amp;&amp; ! gunUp &amp;&amp; !gunUpRight &amp;&amp; !gunUpLeft;
 
 if (gunDown){
     sprite_index = spr_yellow_down;
@@ -126,7 +124,7 @@ if (gunDown){
 else if (gunUp){
     sprite_index = spr_yellow_up;
 }
-if(gunUpLeft || gunUpRight || gunDownRight || gunDownLeft){
+if(gunUpLeft || gunUpRight){
     sprite_index = spr_yellow_angle;
 }
 else if(gunDefaultPos){
