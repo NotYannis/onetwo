@@ -31,6 +31,7 @@ isStriking = true;
 cooldown = 28
 canStrike = 0;
 strike = false;
+applyGravity = false;
 </string>
           </argument>
         </arguments>

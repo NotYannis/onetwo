@@ -89,10 +89,14 @@ if (obj_lighting.dark){
 }
 
 
-instance_activate_region(view_xview, view_yview, view_wview, view_hview, true);
-if(!arenaTime){
+if(arenaTime){
+    instance_activate_region(viewLeftLimit, view_yview, viewRightLimit, view_hview, true);
+}
+else{
+    instance_activate_region(view_xview, view_yview, view_wview, view_hview, true);
     instance_deactivate_object(obj_enemy_trigger);
 }
+
 </string>
           </argument>
         </arguments>
