@@ -8,8 +8,8 @@
   <sepmasks>-1</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>111</bbox_right>
-  <bbox_top>12</bbox_top>
+  <bbox_right>115</bbox_right>
+  <bbox_top>16</bbox_top>
   <bbox_bottom>127</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
@@ -27,6 +27,5 @@
     <frame index="4">images\spr_boss_1_attack_4.png</frame>
     <frame index="5">images\spr_boss_1_attack_5.png</frame>
     <frame index="6">images\spr_boss_1_attack_6.png</frame>
-    <frame index="7">images\spr_boss_1_attack_7.png</frame>
   </frames>
 </sprite>

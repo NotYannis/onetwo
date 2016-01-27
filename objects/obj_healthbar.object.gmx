@@ -54,7 +54,7 @@ globalvar gasbar;
             <string>//------Health-------
 //-------------------
 
-draw_healthbar(view_xview+24, view_yview+24, view_xview+240, view_yview+84, obj_character.hp, c_black, c_maroon, c_maroon, 0, true, true);
+draw_healthbar(view_xview+24, view_yview+24, view_xview+600, view_yview+100, obj_character.hp, c_black, c_maroon, c_maroon, 0, true, true);
 
 // Gas
 

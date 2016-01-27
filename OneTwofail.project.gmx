@@ -53,6 +53,7 @@
       <sprite>sprites\spr_cosmicjewel</sprite>
       <sprite>sprites\spr_moon</sprite>
       <sprite>sprites\spr_ruins</sprite>
+      <sprite>sprites\spr_columns</sprite>
       <sprite>sprites\spr_ruins_entrance</sprite>
       <sprite>sprites\spr_shrine</sprite>
       <sprite>sprites\spr_lantern2</sprite>
@@ -106,6 +107,7 @@
         <sprite>sprites\spr_boss_2_wait</sprite>
         <sprite>sprites\spr_boss_2_wait2</sprite>
         <sprite>sprites\spr_boss_1_rush</sprite>
+        <sprite>sprites\spr_boss_1_attack_2_</sprite>
         <sprite>sprites\spr_boss_1_attack</sprite>
         <sprite>sprites\spr_boss2_armor</sprite>
         <sprite>sprites\spr_boss2_armor_spawn</sprite>
@@ -326,13 +328,13 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_village</room>
-    <room>rooms\arena</room>
-    <room>rooms\rm_boss</room>
     <room>rooms\Tutorial</room>
+    <room>rooms\rm_village</room>
+    <room>rooms\rm_boss</room>
+    <room>rooms\Game_Over</room>
+    <room>rooms\arena</room>
     <room>rooms\arena2</room>
     <room>rooms\Church_boss_</room>
-    <room>rooms\Game_Over</room>
     <room>rooms\rm_titlescreen</room>
     <room>rooms\room7</room>
   </rooms>
