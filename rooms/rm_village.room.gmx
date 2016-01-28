@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>globalvar currentRoom;
+    currentRoom = room;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -101,13 +102,13 @@
     <instance objName="obj_ground_good" x="4064" y="352" name="inst_6959BEB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4000" y="384" name="inst_4671D49B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="6016" y="672" name="inst_69F55576" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lantern" x="3648" y="608" name="inst_E9794D19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lantern" x="3680" y="608" name="inst_E9794D19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="5664" y="384" name="inst_1254C40D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="5792" y="448" name="inst_2689E4C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="5888" y="512" name="inst_1BEBDF2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="6016" y="576" name="inst_36EA40B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_particle_spawn" x="5184" y="32" name="inst_26945D2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ennemy_mimic" x="3552" y="640" name="inst_A6A7B982" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ennemy_mimic" x="3584" y="640" name="inst_A6A7B982" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arena_trigger" x="4832" y="448" name="inst_51382E30" locked="0" code="arenaSize = 1500&#xA;" scaleX="1" scaleY="1.75" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_tentacle_trigger" x="4064" y="384" name="inst_8D711F29" locked="0" code="activation = room_speed*1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_tentacle_trigger" x="5632" y="384" name="inst_81DE48E0" locked="0" code="activation = room_speed*1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -265,7 +266,7 @@
     <instance objName="obj_ground_good" x="992" y="320" name="inst_55095B7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="864" y="384" name="inst_3E8F2260" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="736" y="384" name="inst_074DA1E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ruins_entrance" x="10752" y="-64" name="inst_46F58816" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ruins_entrance" x="11264" y="-64" name="inst_46F58816" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow_leg" x="224" y="288" name="inst_5030E4BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_character" x="224" y="384" name="inst_0EA35ED4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow" x="224" y="288" name="inst_06EF4F7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -298,7 +299,13 @@
     <instance objName="obj_tree" x="4896" y="-192" name="inst_F800D39F" locked="0" code="" scaleX="2.30357146263123" scaleY="2.38175678253174" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="7968" y="448" name="inst_19D8F136" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree3" x="9152" y="320" name="inst_BA7A7657" locked="0" code="" scaleX="1.64864861965179" scaleY="1.625" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree2" x="9664" y="416" name="inst_ED1C9948" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="9664" y="448" name="inst_ED1C9948" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_columns" x="10952" y="-77" name="inst_5943C33C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground_good" x="11776" y="672" name="inst_21D8F671" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground_good" x="11904" y="672" name="inst_36001768" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground_good" x="12032" y="672" name="inst_CC61764C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ground_good" x="12160" y="672" name="inst_89A3497D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_columns" x="2451" y="-76" name="inst_B2B4E772" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
