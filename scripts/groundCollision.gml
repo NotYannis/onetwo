@@ -1,22 +1,16 @@
 ///groundCollision(hspeed, vspeed)
-platform = instance_place(id.x,id.y + id.vsp + 1,obj_platform)
+platform = instance_place(id.x,id.y + id.vsp + 1,obj_platform);
 
-hColl = place_meeting(id.x+id.hsp,id.y,obj_ground01) ;
+hColl = place_meeting(id.x+id.hsp,id.y,obj_ground01) || place_meeting(obj_yellow.x+id.hsp,obj_yellow.y,obj_ground01);
 grounded = (place_meeting(id.x,id.y + id.vsp + 1,obj_ground01)
-        || ((place_meeting(id.x,id.y+ id.vsp + 1,obj_platform) && id.vsp >=0)
-        && (platform != noone  && !place_meeting(id.x + id.hsp, id.y, obj_platform))));
+            || ((place_meeting(id.x,id.y + id.vsp + 1,obj_platform) && id.vsp >=0)
+            && (platform != noone  && !place_meeting(id.x + id.hsp, id.y, obj_platform))));
 
-if(collision_line(obj_yellow.x - 26, obj_yellow.y - 30 + id.vsp,
-                  obj_yellow.x + 2, obj_yellow.y - 30 + id.vsp,
-                  obj_ground01, false, true)){
-    id.vsp = 0;
-    grounded = false;
-}
+if(place_meeting(obj_yellow.x,obj_yellow.y,obj_ground01)) vsp = 5;
+
+//Collision test for yellow head
 // Horizontal
-if (hColl) {
-    if(!place_meeting(id.x+sign(id.hsp),id.y,obj_ground01)){
-        id.x += sign(id.hsp);
-    }
+if (hColl){
     id.hsp = 0;
 }
 

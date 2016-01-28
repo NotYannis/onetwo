@@ -125,9 +125,8 @@ angleLimit = 20;
     if(preparingAttack){
         image_angle += 0.1;
     }
-    show_debug_message(hsp);
     //Beginnig of the fall
-    if(sprite_index == spr_imp_start &amp;&amp; image_index &gt;= sprite_get_number(spr_imp_start) - image_speed){
+    if(sprite_index == spr_imp_start &amp;&amp; endAnimation()){
         hsp = -1;
         vspeed = 1;
         image_speed = 0.4;
@@ -135,6 +134,7 @@ angleLimit = 20;
         aiming = true;
         preparingAttack = false;
         onSlope = true;
+        yMinLimit = obj_yellow.y - 100;
     }
     
     //Falling smoothly to the player
@@ -151,7 +151,7 @@ angleLimit = 20;
     
     //When touch the shield
     if(!goBack){
-        if(touchShield &amp;&amp; obj_character.redprotect){
+        if(touchShield() &amp;&amp; obj_character.redprotect){
             x -= hsp;
             hsp *= -1;
             recover = true;

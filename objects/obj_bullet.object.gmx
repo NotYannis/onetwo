@@ -29,18 +29,8 @@
 image_speed = 0;
 
 if (obj_yellow.gunDown){
-    if(obj_yellow.gunDownRight){
-        move_towards_point(x + 1, y + 1, 25);
-        image_angle = 315;
-    }
-    else if(obj_yellow.gunDownLeft){
-        move_towards_point(x - 1, y + 1, 25);
-        image_angle = 225;
-    }
-    else{
-        vspeed = 25;
-        image_angle = 270;
-    }
+    vspeed = 25;
+    image_angle = 270;
 }
 else if (obj_yellow.gunUp){
     if(obj_yellow.gunUpRight){

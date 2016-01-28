@@ -147,7 +147,7 @@ if (attack){//Normal behaviour, between spawn and death
         invulnerability = 8;
         if(hp &gt; obj_character.damage){
             sprite_index = hitSprite;
-            if(!flying){ //If not flying, little push back
+            if(!flying &amp;&amp; object_index != obj_tentacle){ //If not flying, little push back
                 if(!place_meeting(x + behindPlayer() * 35, y - 1, obj_ground01)){
                     x += behindPlayer() * 35;
                 }
@@ -155,7 +155,7 @@ if (attack){//Normal behaviour, between spawn and death
             }
             hspeed = 0;
         }
-        hp -= obj_character.damage;        
+        hp -= obj_character.damage;
     } //If hits the character while not attacking
     else if(place_meeting(x,y,obj_character) || place_meeting(x,y,obj_yellow)
             &amp;&amp; (!obj_character.redprotect || !touchShield())){
@@ -163,7 +163,7 @@ if (attack){//Normal behaviour, between spawn and death
         obj_character.ennemy = id;
         obj_character.damage = damage;
         obj_character.enemyBehind = behindPlayer();
-        obj_character.cantMove = 5;
+        obj_character.cantMove = 0;
     }
 
     //Short invulnerability after being striked
