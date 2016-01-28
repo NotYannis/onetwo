@@ -37,7 +37,7 @@ else if (arenaTime &amp;&amp; room != rm_boss){
         audio_play_sound(snd_tutorial_arena, 10, true);
     }
 }
-else{
+else if(instance_exists(obj_boss)){
     if(obj_boss.phase &lt; 2){
         if(!audio_is_playing(snd_boss_phase1)) audio_play_sound(snd_boss_phase1, 10, true);
     }

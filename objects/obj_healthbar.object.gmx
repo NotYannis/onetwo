@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>globalvar life;
-    life = 100;
+            <string>life = 100;
 globalvar gasbar;
     gasbar = 100;
 </string>
@@ -53,8 +52,8 @@ globalvar gasbar;
             <kind>1</kind>
             <string>//------Health-------
 //-------------------
-
-draw_healthbar(view_xview+24, view_yview+24, view_xview+240, view_yview+84, obj_character.hp, c_black, c_maroon, c_maroon, 0, true, true);
+life = (obj_character.hp / 40) * 100;
+draw_healthbar(view_xview+24, view_yview+24, view_xview+250, view_yview+84, life, c_black, c_maroon, c_maroon, 0, true, true);
 
 // Gas
 

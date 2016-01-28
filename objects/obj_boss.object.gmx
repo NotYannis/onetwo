@@ -72,7 +72,6 @@ rotationDir = -1;
 flyOutDir = 1;
 //Attack
 prevPattern = -1;
-patternCount = 0;
 nextAttack = 2;
 stopPattern = 25;
 
@@ -439,15 +438,9 @@ if(phase == 2){
     if(nextAttack == 0){
         nextAttack = 3;
         pattern = irandom(2);
-        //Control on the randomize : a pattern is done max twice in a row
-        if (prevPattern == pattern){
-            patternCount++;
-        }
-        if (patternCount &gt;= 2){
-            while(prevPattern == pattern){
-                pattern = irandom(2);
-            }
-            patternCount = 0;
+        //Control on the randomize : a pattern is done max once in a row
+        while(prevPattern == pattern){
+            pattern = irandom(2);
         }
         prevPattern = pattern;
         
@@ -619,10 +612,10 @@ if(phase == 2){
         }
         //Pattern is finished, begin to fly again
         if(stopPattern == 0){
-            wait = 20;
+            wait = 10;
             launch = true;
             attack = false;
-            currentVSpeed = 0;
+            currentVSpeed = -5;
             currentHSpeed = 0;
             rotate = false;
         }
@@ -757,7 +750,7 @@ if(phase == 3 &amp;&amp; !death){
         stopPattern = 2;
         nextAttack = 1;
         lightSize = 450;
-        hp = phase3hp;
+        hp = 10;
     }
     
     
@@ -912,6 +905,9 @@ if(phase == 3 &amp;&amp; !death){
     //show_debug_message(nextAttack);
 }
 else if(death){
+    if(instance_exists(obj_boss_ray)) with (obj_boss_ray) instance_destroy();
+    if(instance_exists(obj_boss_ball)) with (obj_boss_ball) instance_destroy();
+    if(instance_exists(obj_boss_orb)) with (obj_boss_orb) instance_destroy();
     if(endAnimation()){
         instance_destroy();
     }
