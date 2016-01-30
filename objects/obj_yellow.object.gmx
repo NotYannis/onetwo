@@ -144,9 +144,8 @@ if (canShoot &lt;= 1){
             if (image_xscale = -1){
                 instance_create (x+28,y+29,obj_bullet);
             }
-            //Can double jump after jump momentum
-            if (gunDown &amp;&amp;  !gunDownRight &amp;&amp; !gunDownLeft
-            &amp;&amp; obj_character.canDoubleJump &amp;&amp; obj_character.cantMove == 0){
+            //Double jump if shoot down will jumping
+            if (gunDown &amp;&amp; obj_character.canDoubleJump &amp;&amp; obj_character.cantMove == 0){
                 obj_character.vsp = -15;
                 obj_character.canDoubleJump = false;
             }

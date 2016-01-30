@@ -120,7 +120,7 @@ else{
           <argument>
             <kind>1</kind>
             <string>/// Attack and Hit
-if (strikeKey &amp;&amp; gasbar &gt; 0 &amp;&amp; !gasFilling){
+if (strikeKey &amp;&amp; gasbar &gt; 0 &amp;&amp; !gasFilling &amp;&amp; !redprotect){
     if (!audio_is_playing(snd_chainsaw)) audio_play_sound(snd_chainsaw, 10, false);   
     strike = true;  
     gasbar -= 5;

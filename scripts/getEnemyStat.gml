@@ -15,7 +15,7 @@ switch(object_index) {
         stat[0] = -10; stat[1] = 10; stat[2] = 0.5; stat[3] = 100;
             break;
     case obj_wizard :
-        stat[0] = 0; stat[1] = 10; stat[2] = 1; stat[3] = 30;
+        stat[0] = 0; stat[1] = 10; stat[2] = 1; stat[3] = 10;
             break;
     //Flying ennemies
     case obj_flying_eye :

@@ -110,7 +110,7 @@ if (attack = false){
 
 else{
     // Attack: move to the player. 
-    move_towards_point(obj_character.x, obj_character.y, 6);
+    move_towards_point(obj_character.x, y, 6);
     if (!audio_is_playing(snd_shadowteeth))  audio_play_sound(snd_shadowteeth, 10, false);
     
     // Hit: return to his chest.
