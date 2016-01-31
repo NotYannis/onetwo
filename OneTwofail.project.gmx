@@ -30,6 +30,7 @@
     <sprites name="decor">
       <sprite>sprites\spr_house_ruins</sprite>
       <sprite>sprites\spr_screen</sprite>
+      <sprite>sprites\sprite160</sprite>
       <sprite>sprites\spr_grave2</sprite>
       <sprite>sprites\spr_grave</sprite>
       <sprite>sprites\spr_lantern</sprite>
@@ -47,12 +48,14 @@
       <sprite>sprites\spr_grass</sprite>
       <sprite>sprites\spr_grass2</sprite>
       <sprite>sprites\spr_flowers</sprite>
+      <sprite>sprites\spr_flower1</sprite>
       <sprite>sprites\spr_ground02</sprite>
       <sprite>sprites\spr_woodplanks</sprite>
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_cosmicjewel</sprite>
       <sprite>sprites\spr_moon</sprite>
       <sprite>sprites\spr_ruins</sprite>
+      <sprite>sprites\spr_columns_bg</sprite>
       <sprite>sprites\spr_columns</sprite>
       <sprite>sprites\spr_ruins_entrance</sprite>
       <sprite>sprites\spr_shrine</sprite>
@@ -75,6 +78,7 @@
       <sprite>sprites\spr_arena_statue</sprite>
       <sprite>sprites\spr_arena_ruins</sprite>
       <sprite>sprites\spr_arena_ruins2</sprite>
+      <sprite>sprites\spr_endscreen</sprite>
     </sprites>
     <sprites name="Personnages">
       <sprite>sprites\spr_yellow_leg</sprite>
@@ -276,6 +280,7 @@
       <object>objects\obj_grass</object>
       <object>objects\obj_grass2</object>
       <object>objects\obj_fllowers</object>
+      <object>objects\obj_flower1</object>
       <object>objects\obj_woodplank</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_water</object>
@@ -283,6 +288,7 @@
       <object>objects\obj_lantern</object>
       <object>objects\obj_grave</object>
       <object>objects\obj_columns</object>
+      <object>objects\obj_columns_bg</object>
       <object>objects\obj_ruins</object>
       <object>objects\obj_moon</object>
       <object>objects\obj_house1</object>
@@ -330,14 +336,14 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\arena</room>
     <room>rooms\rm_village</room>
-    <room>rooms\rm_boss</room>
+    <room>rooms\rm_titlescreen</room>
     <room>rooms\Tutorial</room>
+    <room>rooms\rm_boss</room>
+    <room>rooms\arena</room>
     <room>rooms\Game_Over</room>
     <room>rooms\arena2</room>
     <room>rooms\Church_boss_</room>
-    <room>rooms\rm_titlescreen</room>
     <room>rooms\room7</room>
   </rooms>
   <help>
