@@ -12,6 +12,9 @@
     <sound>sound\snd_shotgunfire</sound>
     <sound>sound\snd_shield</sound>
     <sound>sound\snd_shadowcry</sound>
+    <sound>sound\snd_ennemy_death</sound>
+    <sound>sound\snd_gameover</sound>
+    <sound>sound\snd_ennemyburns</sound>
     <sound>sound\snd_shadowteeth</sound>
     <sounds name="music">
       <sound>sound\snd_tutorial_level</sound>
@@ -22,6 +25,8 @@
       <sound>sound\snd_boss_phase1</sound>
       <sound>sound\snd_boss_phase3</sound>
     </sounds>
+    <sound>sound\snd_magicshield_create</sound>
+    <sound>sound\snd_magicshield_hit</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_trigger</sprite>
