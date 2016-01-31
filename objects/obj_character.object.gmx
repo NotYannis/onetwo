@@ -326,7 +326,7 @@ else{
           <argument>
             <kind>1</kind>
             <string>///View instanciation
-if(viewUpdate){
+/*if(viewUpdate){
     lBor = view_xview + (view_wview / 2 - 150); //Left limit, when the camera reposition itself
     lPos = view_xview + (view_wview / 2 + 100); //Position of the camera when the player walks to the left
     rBor = view_xview + (view_wview / 2 + 150); //Right limit, when the camera reposition itself
@@ -358,15 +358,20 @@ else if (redLeftKey){
         lTrigger = true;
     }
 }
+*/
 
 //If the view is outside the limits of the room
-if(viewPos &lt; viewLeftLimit){
+if(x - view_wview/2 &lt; viewLeftLimit
+    || (arenaTime &amp;&amp; (viewRightLimit-viewLeftLimit &lt; view_wview))){
     viewPos = viewLeftLimit;
-    lTrigger = false;
+    //lTrigger = false;
 }
-else if (viewPos &gt; viewRightLimit){
+else if (x - view_wview/2 &gt; viewRightLimit){
     viewPos = viewRightLimit; 
-    rTigger = false;
+    //rTigger = false;
+}
+else{
+    viewPos = x - view_wview/2;
 }
 
 view_xview = viewPos;
