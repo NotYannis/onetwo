@@ -155,7 +155,6 @@ else{ //Recoil sprite after shooting and cooldown
     if(gunDefaultPos &amp;&amp; canShoot == 20) image_index = 1;
     else if(gunDefaultPos &amp;&amp; canShoot == 15) image_index = 0;
     canShoot --;
-
 }
 </string>
           </argument>

@@ -35,7 +35,7 @@ stopMoving = false;
 aggroZone = 250;
 damage = 10;
 hp = 20; //Hp on phase 1
-phase = 1;
+phase = 3;
 recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
 recovery = 0;
 invulnerabilityFrames = 35;//Invulnerability time on patterns phase 3
@@ -81,18 +81,18 @@ run = false;
 debug = true;
 rangeAttack = false;
 pattern1yPos = 200;
-pattern1xPos[0, 0] = 150;
-pattern1xPos[0, 1] = 350;
-pattern1xPos[0, 2] = 550;
-pattern1xPos[0, 3] = 750;
+pattern1xPos[0, 0] = 50;
+pattern1xPos[0, 1] = 250;
+pattern1xPos[0, 2] = 450;
+pattern1xPos[0, 3] = 650;
 pattern1xPos[1, 0] = 100;
 pattern1xPos[1, 1] = 300;
 pattern1xPos[1, 2] = 500;
 pattern1xPos[1, 3] = 700;
-pattern1xPos[2, 0] = 50;
-pattern1xPos[2, 1] = 250;
-pattern1xPos[2, 2] = 450;
-pattern1xPos[2, 3] = 650;
+pattern1xPos[2, 0] = 0;
+pattern1xPos[2, 1] = 200;
+pattern1xPos[2, 2] = 400;
+pattern1xPos[2, 3] = 600;
 attackCount = 0;
 death = false;
 
@@ -232,7 +232,7 @@ if(phase == 1){
         }
     }
     
-    if(hp &lt;= 0){//ded
+    if(hp &lt;= 0 &amp;&amp; !transition){//ded
         walk = false;
         strike = false;
         transition = true;
@@ -240,13 +240,14 @@ if(phase == 1){
         sprite_index = spr_boss_1_transform;
         image_index = 0;
         image_speed = 0.4;
-        hp = 10;
         recovery = 0;
+
     }
     
     //Animations towards phase 2
     if(transition){
         invulnerable = true;
+        hp = 10;
         if(endAnimation()){
             image_speed = 0;
             phase = 1.5;
@@ -467,7 +468,7 @@ if(phase == 2){
             //Jump around
             if(y &gt; yMaxLimit){
                 currentVSpeed = -40;
-                currentHSpeed = irandom_range(8 * sign(currentHSpeed), 15 * sign(currentHSpeed));
+                currentHSpeed = 12 * sign(currentHSpeed);
                 stopPattern --;
             }
             else if(y &lt; yMinLimit &amp;&amp; currentVSpeed &lt; 40){
@@ -491,11 +492,11 @@ if(phase == 2){
                 if(x &gt;= xMinLimit - 50 &amp;&amp; x &lt;= xMinLimit + 350
                 || x &gt;= xMaxLimit - 350 &amp;&amp; x &lt;= xMaxLimit + 50){
                     if(rotationDir == -1 &amp;&amp; abs(image_angle % 180) == 54){
-                        orb = instance_create(x + 64, y + 12, obj_boss_orb);
+                        instance_create(x + 64, y + 12, obj_boss_orb);
                         
                     }
                     else if(rotationDir == 1 &amp;&amp; abs(image_angle % 180) == 135){
-                        orb = instance_create(x - 64, y + 12, obj_boss_orb);
+                        instance_create(x - 64, y + 12, obj_boss_orb);
                     }
                 }
             }
@@ -520,10 +521,10 @@ if(phase == 2){
             else if(hp &lt;= 50 &amp;&amp; x &gt; xMinLimit + 150 &amp;&amp; x &lt; xMaxLimit - 150){//Throw bullets on player
                 if(wait == 0){
                     instance_create(x, y, obj_boss_orb);
-                    wait = 2;
+                    wait = 10;
                 }
             }
-            currentHSpeed *= 1.1;
+            currentHSpeed *= 1.06;
             rotationSpeed *= 1.0;
         }
         if(pattern == 2){//Fall under the player with 2 illusions
@@ -621,12 +622,12 @@ if(phase == 2){
         }
     }
     
-    if(hp &lt;= 0){//Ded
+    if(hp &lt;= 0 &amp;&amp; !transition){//Ded
+        //When dies, go in the middle of the room
         if(!((y &gt; 256 - 10 &amp;&amp; y &lt; 256 + 10)
         &amp;&amp; (x &gt; 640 - 10 &amp;&amp; x &lt; 640 + 10))) move_towards_point(640, 256, 10);
         else{
             transition = true;
-            hp = phase3hp;
             vspeed = 0;
         }
         rotate = false;
@@ -683,6 +684,7 @@ if(phase == 2){
                             strike = false;
                             invulnerable = false;
                             phase = 3;
+                            hp = phase3hp;
                         }
                         instance_destroy();
                     }
@@ -737,7 +739,6 @@ if(phase == 2){
             <kind>1</kind>
             <string>///Phase 3 : true boss
 if(phase == 3 &amp;&amp; !death){
-    show_debug_message(string(x)+", "+string(y));
     if(debug){
         x = 1000;
         y = 800 - 128;
@@ -816,6 +817,7 @@ if(phase == 3 &amp;&amp; !death){
         }
     }
     if(nextAttack == 0){
+        i = 0;
         wait = 0;
         rangeAttack = true;
         walk = false;
@@ -863,7 +865,11 @@ if(phase == 3 &amp;&amp; !death){
                 i++;
                 if(i == 4){//And 3 balls
                     for(i = 0; i &lt; 3; i ++){
-                        instance_create(pattern1xPos[pos, i] + 120, pattern1yPos - (150 + i * 2), obj_boss_ball);
+                        ball = instance_create(pattern1xPos[pos, i] + 120, pattern1yPos - (150 + i * 2), obj_boss_ball);
+                        if(i == 2){
+                            ball.rand = 0;
+                            ball.sprite_index = spr_boss_3_ball2;
+                        }
                     }
                     i = 4;
                 }
@@ -933,19 +939,31 @@ else if(death){
           <argument>
             <kind>1</kind>
             <string>///Hitting and being hitted
-if(recovery == 0 &amp;&amp; !invulnerable){
-    if(touchWeapon() &amp;&amp; obj_character.strike){
-        hp -= 10;
-        recovery = recoveryFrames;
-    }
-    if(phase != 1){
+if(recovery == 0){
+    if(!invulnerable){
+        if(touchWeapon() &amp;&amp; obj_character.strike){
+            hp -= 10;
+            recovery = recoveryFrames;
+        }
         if(place_meeting(x, y, obj_bullet)){
             bullet = instance_place(x, y, obj_bullet);
             with(bullet) instance_destroy();
-            if(phase == 2 || phase == 1.5){
+            if(phase &lt;= 2){
                 hp -= 10;
                 recovery = recoveryFrames;
             }
+        }
+    }
+    if(place_meeting(x, y, obj_boss_ball) &amp;&amp; !obj_boss_ball.death){
+        ball = instance_place(x, y, obj_boss_ball);
+        hp -= 30;
+        recovery = recoveryFrames;
+        with (ball){
+            if(!death)
+                image_index = 0;
+            sprite_index = spr_ball2_destroy;
+            death = true;
+            hsp = 0;
         }
     }
 }
@@ -963,18 +981,6 @@ if(recovery &gt; 0){
         }
     }
     recovery --;
-}
-if(place_meeting(x, y, obj_boss_ball) &amp;&amp; !obj_boss_ball.death){
-    ball = instance_place(x, y, obj_boss_ball);
-    hp -= 30;
-    recovery = recoveryFrames;
-    with (ball){
-        if(!death)
-            image_index = 0;
-        sprite_index = spr_ball2_destroy;
-        death = true;
-        hsp = 0;
-    }
 }
 
 if(invulnerable &amp;&amp; recovery == 0){
@@ -994,6 +1000,13 @@ if(place_meeting(x, y, obj_character) &amp;&amp; !obj_character.strike
         obj_character.hsp = -10;
     }
 }
+if (place_meeting(x,y, obj_magicshield)){
+    if(!place_meeting(x + behindPlayer() * 100,y, obj_ground01)){
+        x += behindPlayer() * 20;
+    }
+    audio_play_sound(snd_magicshield_hit, 10, false);
+}
+
 </string>
           </argument>
         </arguments>

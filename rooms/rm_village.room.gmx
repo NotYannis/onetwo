@@ -11,7 +11,8 @@
   <colour>1973790</colour>
   <showcolour>-1</showcolour>
   <code>globalvar currentRoom;
-    currentRoom = room;</code>
+    currentRoom = room;
+audio_stop_all();</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -471,8 +472,9 @@
     <instance objName="obj_zombie_strong_trigger" x="8608" y="672" name="inst_D45B878B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ennemy_shadow" x="10048" y="672" name="inst_0F82A672" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ennemy_shadow" x="8896" y="672" name="inst_533C4776" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_zombie_party_trigger" x="9504" y="288" name="inst_F02C3700" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie_party_trigger" x="9536" y="384" name="inst_F02C3700" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie_party_triggeroff" x="10208" y="384" name="inst_5A204E44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_music" x="3008" y="32" name="inst_5F5AEE65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

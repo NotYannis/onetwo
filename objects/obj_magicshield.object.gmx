@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>obj_magicshield.x = obj_character.x;
 obj_magicshield.y = obj_character.y;
+audio_play_sound(snd_magicshield_create, 10, false);
 </string>
           </argument>
         </arguments>

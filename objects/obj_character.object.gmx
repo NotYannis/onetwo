@@ -373,9 +373,7 @@ else if (x - view_wview/2 &gt; viewRightLimit){
 else{
     viewPos = x - view_wview/2;
 }
-else{
-    viewPos = x - view_wview/2;
-}
+
 view_xview = viewPos;
 
 </string>

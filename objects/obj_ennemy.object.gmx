@@ -59,8 +59,9 @@ vsp = 0;
 sounds = getEnemySound()
 spawnSound = sounds[0];
 attackSound = sounds[1];
-hittedSound = sounds[2];
-deathSound = sounds[3];
+hitSound = sounds[2];
+hittedSound = sounds[3];
+deathSound = sounds[4];
 
 
  
@@ -164,6 +165,7 @@ if (attack){//Normal behaviour, between spawn and death
         obj_character.damage = damage;
         obj_character.enemyBehind = behindPlayer();
         obj_character.cantMove = 0;
+        audio_play_sound(hitSound, 10, false);
     }
 
     //Short invulnerability after being striked
@@ -188,6 +190,7 @@ if (attack){//Normal behaviour, between spawn and death
             x += behindPlayer() * 100;
         }
         y -= 20;
+        audio_play_sound(snd_magicshield_hit, 10, false);
     }
 
     if(!audio_is_playing(attackSound)) audio_play_sound(attackSound, 10, false);

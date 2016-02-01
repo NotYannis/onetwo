@@ -51,7 +51,7 @@ stop = 0;
             <kind>1</kind>
             <string>image_speed = 0.4;
 
-if (keyboard_check_pressed(vk_enter)){
+if (gamepad_button_check(0, gp_start) || gamepad_button_check(1, gp_start)){
     grow = true;
 }
 if (grow){

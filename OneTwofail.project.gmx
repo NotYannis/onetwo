@@ -5,40 +5,33 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\snd_gunfire</sound>
     <sound>sound\snd_hit</sound>
-    <sound>sound\snd_chainsaw</sound>
-    <sound>sound\snd_plouf</sound>
     <sound>sound\snd_shotgunfire</sound>
+    <sound>sound\snd_bullethit</sound>
+    <sound>sound\snd_chainsaw</sound>
     <sound>sound\snd_shield</sound>
+    <sound>sound\snd_magicshield_create</sound>
+    <sound>sound\snd_magicshield_hit</sound>
+    <sound>sound\snd_enemy_death</sound>
     <sound>sound\snd_shadowcry</sound>
-    <sound>sound\snd_ennemy_death</sound>
-    <sound>sound\snd_gameover</sound>
-    <sound>sound\snd_ennemyburns</sound>
     <sound>sound\snd_shadowteeth</sound>
+    <sound>sound\snd_plouf</sound>
+    <sound>sound\snd_gameover</sound>
     <sounds name="music">
       <sound>sound\snd_tutorial_level</sound>
       <sound>sound\snd_onetwo</sound>
       <sound>sound\snd_levelmusic</sound>
       <sound>sound\snd_tutorial_arena</sound>
-      <sound>sound\snd_boss_phase2</sound>
       <sound>sound\snd_boss_phase1</sound>
+      <sound>sound\snd_boss_phase2</sound>
       <sound>sound\snd_boss_phase3</sound>
     </sounds>
-    <sound>sound\snd_magicshield_create</sound>
-    <sound>sound\snd_magicshield_hit</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_trigger</sprite>
-    <sprite>sprites\sprite68</sprite>
     <sprite>sprites\spr_platform</sprite>
     <sprites name="decor">
-      <sprite>sprites\spr_house_ruins</sprite>
       <sprite>sprites\spr_screen</sprite>
-      <sprite>sprites\sprite160</sprite>
-      <sprite>sprites\spr_grave2</sprite>
-      <sprite>sprites\spr_grave</sprite>
-      <sprite>sprites\spr_lantern</sprite>
       <sprite>sprites\spr_bridge</sprite>
       <sprite>sprites\spr_chapel</sprite>
       <sprite>sprites\spr_chapel_save</sprite>
@@ -57,7 +50,6 @@
       <sprite>sprites\spr_ground02</sprite>
       <sprite>sprites\spr_woodplanks</sprite>
       <sprite>sprites\spr_wall</sprite>
-      <sprite>sprites\spr_cosmicjewel</sprite>
       <sprite>sprites\spr_moon</sprite>
       <sprite>sprites\spr_ruins</sprite>
       <sprite>sprites\spr_columns_bg</sprite>
@@ -96,21 +88,12 @@
       <sprite>sprites\spr_red_protect</sprite>
       <sprite>sprites\spr_red_jump</sprite>
       <sprite>sprites\spr_red_walk</sprite>
-      <sprite>sprites\sprite151</sprite>
       <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\spr_bullet_destroy</sprite>
       <sprite>sprites\spr_magicshield</sprite>
     </sprites>
     <sprites name="Ennemis">
       <sprites name="BOSS">
-        <sprite>sprites\spr_boss1_1</sprite>
-        <sprite>sprites\spr_boss1_2</sprite>
-        <sprite>sprites\spr_boss1_3</sprite>
-        <sprite>sprites\spr_boss1_4</sprite>
-        <sprite>sprites\spr_boss1_final</sprite>
-        <sprite>sprites\spr_boss_save</sprite>
-        <sprite>sprites\spr_boss_test2</sprite>
-        <sprite>sprites\spr_boss_test</sprite>
         <sprite>sprites\spr_boss_1_walk</sprite>
         <sprite>sprites\spr_boss_1_transform</sprite>
         <sprite>sprites\spr_boss_2_wait</sprite>
@@ -140,14 +123,11 @@
         <sprite>sprites\spr_attack1</sprite>
         <sprite>sprites\spr_attack1_2</sprite>
       </sprites>
-      <sprite>sprites\spr_crow</sprite>
-      <sprite>sprites\spr_crow_death</sprite>
       <sprite>sprites\spr_wizard</sprite>
       <sprite>sprites\spr_wizard_death</sprite>
       <sprite>sprites\spr_wizard_spawn</sprite>
       <sprite>sprites\spr_wizard_attack</sprite>
       <sprite>sprites\spr_orb</sprite>
-      <sprite>sprites\spr_flyingdevil</sprite>
       <sprite>sprites\spr_mimic_attack</sprite>
       <sprite>sprites\spr_mimic_spawn</sprite>
       <sprite>sprites\spr_flying_eye</sprite>
@@ -180,7 +160,6 @@
       <sprite>sprites\spr_ennemy2_fire</sprite>
       <sprite>sprites\spr_ennemy2</sprite>
       <sprite>sprites\spr_bloodtear</sprite>
-      <sprite>sprites\spr_targetpractice</sprite>
       <sprite>sprites\spr_target</sprite>
       <sprite>sprites\spr_target_destroy</sprite>
       <sprite>sprites\spr_arrow</sprite>
@@ -200,7 +179,6 @@
       <sprite>sprites\spr_menubg</sprite>
       <sprite>sprites\spr_healthbar</sprite>
     </sprites>
-    <sprite>sprites\sprite83</sprite>
     <sprite>sprites\sprite98</sprite>
     <sprite>sprites\spr_imp_save</sprite>
   </sprites>
@@ -278,6 +256,7 @@
       <object>objects\obj_music</object>
       <object>objects\obj_restart</object>
       <object>objects\obj_healthbar_boss</object>
+      <object>objects\obj_endscreen</object>
     </objects>
     <objects name="decor">
       <object>objects\obj_ground01</object>
@@ -291,7 +270,6 @@
       <object>objects\obj_water</object>
       <object>objects\obj_sign</object>
       <object>objects\obj_lantern</object>
-      <object>objects\obj_grave</object>
       <object>objects\obj_columns</object>
       <object>objects\obj_columns_bg</object>
       <object>objects\obj_ruins</object>
@@ -309,7 +287,6 @@
       <object>objects\obj_roots2</object>
       <object>objects\obj_bridge</object>
       <object>objects\obj_shrine</object>
-      <object>objects\obj_cosmicjewel</object>
       <object>objects\obj_titlescreen</object>
       <object>objects\obj_particle</object>
       <object>objects\obj_particle_spawn</object>
@@ -329,7 +306,6 @@
       <object>objects\obj_zombie_party</object>
       <object>objects\obj_zombie_party_triggeroff</object>
       <object>objects\obj_zombie_party_trigger</object>
-      <object>objects\obj_shadow_party_trigger</object>
       <object>objects\obj_arena_trigger</object>
       <object>objects\obj_enemy_trigger</object>
       <object>objects\obj_wizard_trigger</object>
@@ -341,10 +317,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_titlescreen</room>
     <room>rooms\Tutorial</room>
     <room>rooms\rm_village</room>
     <room>rooms\rm_boss</room>
+    <room>rooms\rm_titlescreen</room>
     <room>rooms\arena</room>
     <room>rooms\Game_Over</room>
     <room>rooms\arena2</room>

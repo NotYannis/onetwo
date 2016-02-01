@@ -105,6 +105,9 @@ if(obj_lighting.dark){
             <kind>1</kind>
             <string>///Disappear on ground hit or out of view
 
+if (place_meeting(x,y,obj_ground01)){
+    audio_play_sound(snd_bullethit, 10, false);
+}
 if (place_meeting(x,y,obj_ground01) || x &lt; view_xview || x&gt; view_xview + view_wview
     || y &lt; 0 || y &gt; room_height){
     instance_destroy();
