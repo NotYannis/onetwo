@@ -61,11 +61,9 @@ audio_stop_all();</code>
     <instance objName="obj_yellow_leg" x="224" y="576" name="inst_0750BA15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_healthbar" x="128" y="128" name="inst_DE5BBC86" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="192" y="480" name="inst_64A78B70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sign" x="576" y="640" name="inst_D6337FA0" locked="0" code="text = &quot;Welcome ! Press space to jump&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="864" y="704" name="inst_3BA66513" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_targetpractice" x="1728" y="96" name="inst_41C74474" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lighting" x="32" y="32" name="inst_2DCF983C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sign" x="2208" y="640" name="inst_7487CB36" locked="0" code="text = &quot;Use D and F to protect your ally&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="2528" y="704" name="inst_6CF46D21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="2400" y="704" name="inst_E7E6960C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="2848" y="704" name="inst_2DD12FEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -73,7 +71,6 @@ audio_stop_all();</code>
     <instance objName="obj_tree2" x="32" y="480" name="inst_C4BBC143" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree2" x="992" y="608" name="inst_C20CDD82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree2" x="1248" y="544" name="inst_EAC70310" locked="0" code="" scaleX="1.3630952835083" scaleY="1.41694915294647" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sign" x="1536" y="640" name="inst_ABA31E33" locked="0" code="text = &quot;Yellow can aim with the D-pad, then shoot with (A)&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_keymapping" x="64" y="32" name="inst_0549E306" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="128" y="704" name="inst_006E4C11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="256" y="704" name="inst_2D996F29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -105,7 +102,6 @@ audio_stop_all();</code>
     <instance objName="obj_water" x="3104" y="704" name="inst_1DDF4872" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_water" x="3232" y="704" name="inst_978E904E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_statue" x="3360" y="672" name="inst_2B76D36E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sign" x="3680" y="640" name="inst_5D73E5E6" locked="0" code="text = &quot;Shooting down while in the air will allow you to go higher&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4288" y="480" name="inst_B60D331A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4416" y="480" name="inst_50341EE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="4544" y="480" name="inst_6C410F68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -133,7 +129,6 @@ audio_stop_all();</code>
     <instance objName="obj_ground_good" x="5632" y="704" name="inst_23B1F1CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="5856" y="672" name="inst_477D452C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground_good" x="5760" y="704" name="inst_D340DC75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sign" x="4640" y="416" name="inst_4C285A65" locked="0" code="text = &quot;Ready to fight ?&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_gate" x="5632" y="480" name="inst_3B748BE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4288" y="704" name="inst_81209521" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground02" x="4288" y="608" name="inst_0DD7B0EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -190,21 +185,19 @@ audio_stop_all();</code>
     <instance objName="obj_grass2" x="2990" y="627" name="inst_438388A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="3024" y="630" name="inst_954E7575" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="2402" y="479" name="inst_EB0201B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass2" x="2145" y="624" name="inst_9AD95972" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="2048" y="640" name="inst_9253488B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="4736" y="384" name="inst_DACCFB33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="4640" y="416" name="inst_402C5A53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="4352" y="384" name="inst_E0AAA4FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flower1" x="4448" y="384" name="inst_DAE98C4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree2" x="4355" y="167" name="inst_7558AECF" locked="0" code="" scaleX="1.16071426868439" scaleY="1.20000004768372" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="4320" y="160" name="inst_7558AECF" locked="0" code="" scaleX="1.16071426868439" scaleY="1.20000004768372" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="4288" y="384" name="inst_B28CA1E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="4448" y="384" name="inst_240A17EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass2" x="4544" y="416" name="inst_EC17B3A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass2" x="4640" y="384" name="inst_55BCCE40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass2" x="4768" y="384" name="inst_7226137F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="4544" y="384" name="inst_55BCCE40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="4672" y="384" name="inst_7226137F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="5248" y="640" name="inst_424749E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="3648" y="640" name="inst_0A6E98F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass2" x="3552" y="608" name="inst_9D73D82E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="3488" y="608" name="inst_9D73D82E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="5600" y="640" name="inst_91FA198E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="5792" y="608" name="inst_2DC56DC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="5568" y="608" name="inst_755B4F2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -213,6 +206,11 @@ audio_stop_all();</code>
     <instance objName="obj_grass2" x="5408" y="640" name="inst_DD8108FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="608" y="640" name="inst_5259A897" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fllowers" x="-32" y="480" name="inst_9C5327A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="2208" y="608" name="inst_7308F10A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="2139" y="625" name="inst_0C97630D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie" x="1536" y="704" name="inst_4BE58F23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_zombie" x="1376" y="704" name="inst_450690BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="3566" y="619" name="inst_ECA19F1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
