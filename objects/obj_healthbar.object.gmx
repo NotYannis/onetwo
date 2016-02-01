@@ -53,7 +53,7 @@ globalvar gasbar;
             <string>//------Health-------
 //-------------------
 life = (obj_character.hp / 40) * 100;
-draw_healthbar(view_xview+24, view_yview+24, view_xview+250, view_yview+84, life, c_black, c_maroon, c_maroon, 0, true, true);
+draw_healthbar(view_xview+24, view_yview+34, view_xview+250, view_yview+94, life, c_black, c_maroon, c_maroon, 0, true, true);
 
 // Gas
 

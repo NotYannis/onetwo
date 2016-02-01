@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-6</depth>
   <persistent>0</persistent>
-  <parentName>obj_ennemy</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
-
 attack = false;
 
 </string>
@@ -81,13 +80,19 @@ else if (obj_lighting.dark){
             <kind>1</kind>
             <string>/// Behaviour
 // Gravity
-if (place_meeting(x,y+1,obj_ground01)){
-    vspeed = 0;
-}
-else{
-    vspeed = 5;
-}
-
+    if (place_meeting(x,y+1,obj_ground01)){
+            vspeed = 0;
+    }
+    else{
+        vspeed = 5;
+    }
+    if (place_meeting(x+6,y,obj_ground01)){
+        hspeed = 0;
+    }
+    else{
+        hspeed = 5*behindPlayer();
+    }
+        
 //Proper scale.
 image_xscale = behindPlayer();
 
@@ -109,8 +114,9 @@ if (attack = false){
 }
 
 else{
-    // Attack: move to the player. 
     move_towards_point(obj_character.x, y, 6);
+
+    // Attack: move to the player. 
     if (!audio_is_playing(snd_shadowteeth))  audio_play_sound(snd_shadowteeth, 10, false);
     
     // Hit: return to his chest.

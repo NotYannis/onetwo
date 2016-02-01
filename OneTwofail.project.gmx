@@ -317,8 +317,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Tutorial</room>
     <room>rooms\rm_village</room>
+    <room>rooms\Tutorial</room>
     <room>rooms\rm_boss</room>
     <room>rooms\rm_titlescreen</room>
     <room>rooms\arena</room>
