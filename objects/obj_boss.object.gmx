@@ -35,7 +35,7 @@ stopMoving = false;
 aggroZone = 250;
 damage = 10;
 hp = 20; //Hp on phase 1
-phase = 3;
+phase = 1;
 recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
 recovery = 0;
 invulnerabilityFrames = 35;//Invulnerability time on patterns phase 3
@@ -78,7 +78,7 @@ stopPattern = 25;
 //Phase 3 states
 phase3hp = 200;
 run = false;
-debug = true;
+debug = false;
 rangeAttack = false;
 pattern1yPos = 200;
 pattern1xPos[0, 0] = 50;
