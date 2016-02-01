@@ -361,8 +361,8 @@ else if (redLeftKey){
 */
 
 //If the view is outside the limits of the room
-if(x - view_wview/2 &lt; viewLeftLimit
-    || (arenaTime &amp;&amp; (viewRightLimit-viewLeftLimit &lt; view_wview))){
+if(x - view_wview/2 &lt; viewLeftLimit ||
+    (arenaTime &amp;&amp; (viewRightLimit - viewLeftLimit &lt; view_wview))){
     viewPos = viewLeftLimit;
     //lTrigger = false;
 }
@@ -373,7 +373,9 @@ else if (x - view_wview/2 &gt; viewRightLimit){
 else{
     viewPos = x - view_wview/2;
 }
-
+else{
+    viewPos = x - view_wview/2;
+}
 view_xview = viewPos;
 
 </string>

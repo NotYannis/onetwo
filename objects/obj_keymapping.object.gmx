@@ -113,7 +113,7 @@ cheatKey = keyboard_check(vk_numpad3);
           <argument>
             <kind>1</kind>
             <string>///Keymapping
-
+/*
 //Player one keys (red)
 globalvar redLeftKey;
 redLeftKey = keyboard_check(vk_left);
@@ -145,7 +145,7 @@ restartKey = keyboard_check(vk_space);
 
 globalvar cheatKey;
 cheatKey = keyboard_check(vk_numpad3);
-/*
+*/
 //Gamepad Mapping;
 globalvar redLeftKey;
 redLeftKey = gamepad_button_check(0, gp_padl);
@@ -177,7 +177,7 @@ restartKey = gamepad_button_check(1, gp_face1) || gamepad_button_check(0, gp_fac
 
 globalvar cheatKey;
 cheatKey = keyboard_check(vk_numpad3);
-*/
+
 </string>
           </argument>
         </arguments>
