@@ -114,7 +114,7 @@ if (attack){//Normal behaviour, between spawn and death
 
     //Gravity
     if(applyGravity){
-        if(!place_meeting(x, y + 2, obj_ground01) || place_meeting(x + 2, y - 2, obj_ground01)){
+        if(!place_meeting(x, y + 2, obj_ground01) &amp;&amp; place_meeting(x + 2, y - 2, obj_ground01)){
             vspeed = 5;
             hspeed = 0;
         }
@@ -138,6 +138,7 @@ if (attack){//Normal behaviour, between spawn and death
                 x += behindPlayer() * 15;
             }
             y -= 5
+            hspeed = hsp * behindPlayer();
         }
         hp -= obj_character.gunDamage * gunRes;
     }
@@ -153,6 +154,7 @@ if (attack){//Normal behaviour, between spawn and death
                     x += behindPlayer() * 35;
                 }
                 y -= 25
+                hspeed = hsp * behindPlayer();
             }
             hspeed = 0;
         }
@@ -195,7 +197,8 @@ if (attack){//Normal behaviour, between spawn and death
 
     if(!audio_is_playing(attackSound)) audio_play_sound(attackSound, 10, false);
     
-    if(hp &lt;= 0) {
+    if(hp &lt;= 0) {   
+        audio_stop_sound(attackSound);
         death = true;
         attack = false;
         image_index = 0;

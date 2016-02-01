@@ -35,7 +35,7 @@ stopMoving = false;
 aggroZone = 250;
 damage = 10;
 hp = 20; //Hp on phase 1
-phase = 3;
+phase = 1;
 recoveryFrames = 30;//Recovery time when being hited phase 1 &amp; 2
 recovery = 0;
 invulnerabilityFrames = 35;//Invulnerability time on patterns phase 3
@@ -78,21 +78,17 @@ stopPattern = 25;
 //Phase 3 states
 phase3hp = 200;
 run = false;
-debug = true;
+debug = false;
 rangeAttack = false;
 pattern1yPos = 200;
 pattern1xPos[0, 0] = 50;
 pattern1xPos[0, 1] = 250;
 pattern1xPos[0, 2] = 450;
 pattern1xPos[0, 3] = 650;
-pattern1xPos[1, 0] = 100;
-pattern1xPos[1, 1] = 300;
-pattern1xPos[1, 2] = 500;
-pattern1xPos[1, 3] = 700;
-pattern1xPos[2, 0] = 0;
-pattern1xPos[2, 1] = 200;
-pattern1xPos[2, 2] = 400;
-pattern1xPos[2, 3] = 600;
+pattern1xPos[1, 0] = 0;
+pattern1xPos[1, 1] = 200;
+pattern1xPos[1, 2] = 400;
+pattern1xPos[1, 3] = 600;
 attackCount = 0;
 death = false;
 
@@ -487,19 +483,6 @@ if(phase == 2){
                 rotationDir = 1;
                 currentHSpeed = -5;
             }
-            //launch an orb
-            if(hp &lt;= 50){
-                if(x &gt;= xMinLimit - 50 &amp;&amp; x &lt;= xMinLimit + 350
-                || x &gt;= xMaxLimit - 350 &amp;&amp; x &lt;= xMaxLimit + 50){
-                    if(rotationDir == -1 &amp;&amp; abs(image_angle % 180) == 54){
-                        instance_create(x + 64, y + 12, obj_boss_orb);
-                        
-                    }
-                    else if(rotationDir == 1 &amp;&amp; abs(image_angle % 180) == 135){
-                        instance_create(x - 64, y + 12, obj_boss_orb);
-                    }
-                }
-            }
         }
         //Pattern 2 : go back and forth horizontally really fastly
         if(pattern == 1){
@@ -516,12 +499,6 @@ if(phase == 2){
                     currentHSpeed = -0.5;
                     x = xMaxLimit - 50;
                     stopPattern--;
-                }
-            }
-            else if(hp &lt;= 50 &amp;&amp; x &gt; xMinLimit + 150 &amp;&amp; x &lt; xMaxLimit - 150){//Throw bullets on player
-                if(wait == 0){
-                    instance_create(x, y, obj_boss_orb);
-                    wait = 10;
                 }
             }
             currentHSpeed *= 1.06;
@@ -574,16 +551,6 @@ if(phase == 2){
                         else if(boss[next % 3].y &lt; 400){//Falling
                             with boss[next % 3]{
                                 motion_add(point_direction(x, y, obj_yellow.x, obj_yellow.y), 1.2);
-                            }
-                            //Piew piew
-                            if(wait % 6 == 0 &amp;&amp; hp &lt;= 50){
-                                for(i = 0; i &lt;2; i++){
-                                    bullet[i] = instance_create(boss[next % 3].x, boss[next % 3].y, obj_boss_orb);
-                                    bullet[i].aiming = false;
-                                    bullet[i].speed = -11;
-                                    if(i == 1) bullet[i].direction = boss[next % 3].image_angle + 25;
-                                    else bullet[i].direction = boss[next % 3].image_angle - 25;
-                                }
                             }
                         }
                         if(boss[next % 3].y &gt; 700 - speed){//Hit the ground
@@ -831,7 +798,7 @@ if(phase == 3 &amp;&amp; !death){
         else attackCount = 5;
         sprite_index = spr_boss_3_attack1;
         image_speed = 0.2;
-        if(pattern == 1) pos = irandom(2);
+        if(pattern == 1) pos = irandom(1);
     }
     
     //Range Attack : attack with magic

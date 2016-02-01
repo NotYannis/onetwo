@@ -151,11 +151,10 @@ if (hit &amp;&amp; invulnerability &lt;= 1){
         x -= enemyBehind * 25;
     y -= 25
     
-    if (!audio_is_playing(snd_hit))
-        audio_play_sound(snd_hit, 10, false);
+    audio_play_sound(snd_hit, 10, false);
 
     if(redprotect &amp;&amp; place_meeting(obj_yellow.x, obj_yellow.y, obj_ennemy)){
-            audio_play_sound(snd_shield, 10, false);
+        audio_play_sound(snd_shield, 10, false);
     }
 }
 if (invulnerability &gt;= 0){
