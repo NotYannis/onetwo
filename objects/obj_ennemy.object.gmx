@@ -104,7 +104,7 @@ if(isSpawning){ //Animate the enemy spawn
 if (attack){//Normal behaviour, between spawn and death
     if(followPlayer) {// Se tourne et va vers le joueur
         if(x &lt; obj_character.x - 150 || x &gt; obj_character.x + 150){
-            move_towards_point(obj_character.x, obj_character.y, hsp);
+            move_towards_point(obj_character.x, y, hsp);
             id.image_xscale = behindPlayer();
         }
     }
