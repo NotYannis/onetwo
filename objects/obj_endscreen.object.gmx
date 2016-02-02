@@ -56,6 +56,9 @@ if(wait == 0){
     image_speed = 0.3;
     visible = true;
     wait = -1;
+    if (audio_is_playing(snd_boss_phase3)){
+        audio_stop_all();
+    }
 }
 else if(wait == -1 &amp;&amp; endAnimation()){
     image_speed = 0;
